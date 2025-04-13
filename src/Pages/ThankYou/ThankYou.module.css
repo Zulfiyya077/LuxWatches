@@ -1,0 +1,302 @@
+.container {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f5f5f5;
+    padding: 2rem;
+    transition: background-color 0.3s ease;
+  }
+  
+  .containerDark {
+    background-color: #121212;
+    color: #ffffff;
+  }
+  
+  .formWrapper {
+    display: flex;
+    width: 100%;
+    max-width: 1200px;
+    background-color: white;
+    border-radius: 16px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: all 0.3s ease;
+  }
+  
+  .formWrapperDark {
+    background-color: #1e1e1e;
+    box-shadow: 0 10px 25px rgba(255, 255, 255, 0.05);
+  }
+  
+  .formContainer {
+    flex: 3;
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  .banner {
+    flex: 2;
+    background: linear-gradient(135deg, #000000 0%, #8B0000 100%);
+    color: white;
+    padding: 3rem;
+    display: flex;
+    align-items: center;
+  }
+  
+  .logo {
+    display: flex;
+    align-items: center;
+    margin-bottom: 2rem;
+  }
+  
+  .logoText {
+    font-weight: 300;
+    font-size: 1.5rem;
+    color: #000;
+  }
+  
+  .logoTextDark {
+    color: #ffffff;
+  }
+  
+  .logoAccent {
+    font-weight: 700;
+    margin-left: 0.5rem;
+    color: #FF0000;
+  }
+  
+  .checkmarkCircle {
+    width: 100px;
+    height: 100px;
+    background-color: #FF0000;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto 2rem;
+    transform: scale(0.8);
+    animation: popIn 0.5s ease-out;
+  }
+  
+  .checkmarkCircleDark {
+    background-color: #8B0000;
+  }
+  
+  @keyframes popIn {
+    0% { transform: scale(0); }
+    80% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+  }
+  
+  .checkmark {
+    color: white;
+    font-size: 3rem;
+    font-weight: bold;
+  }
+  
+  .title {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #000;
+  }
+  
+  .titleDark {
+    color: #ffffff;
+  }
+  
+  .subtitle {
+    text-align: center;
+    color: #333;
+    margin-bottom: 2rem;
+  }
+  
+  .subtitleDark {
+    color: #cccccc;
+  }
+  
+  .orderDetails {
+    display: flex;
+    justify-content: space-between;
+    background-color: #f1f1f1;
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+  }
+  
+  .orderDetailsDark {
+    background-color: #2a2a2a;
+  }
+  
+  .detailItem {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .detailLabel {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 0.5rem;
+  }
+  
+  .detailLabelDark {
+    color: #aaa;
+  }
+  
+  .detailValue {
+    font-weight: bold;
+    color: #000;
+  }
+  
+  .detailValueDark {
+    color: #ffffff;
+  }
+  
+  .actionButtons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+  }
+  
+  .primaryButton {
+    background-color: #FF0000;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+  
+  .primaryButton:hover {
+    background-color: #8B0000;
+    transform: translateY(-2px);
+  }
+  
+  .secondaryButton {
+    background-color: transparent;
+    color: #FF0000;
+    border: 2px solid #FF0000;
+    padding: 10px 22px;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+  
+  .secondaryButton:hover {
+    background-color: rgba(255, 0, 0, 0.1);
+    transform: translateY(-2px);
+  }
+  
+  .benefitsList {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+  
+  .benefitItem {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: white;
+    opacity: 0.9;
+  }
+  
+  .benefitIcon {
+    font-size: 1.5rem;
+  }
+  
+  .separator {
+    height: 2px;
+    background-color: rgba(255, 255, 255, 0.3);
+    margin: 1rem 0;
+  }
+  
+  .bannerTitle {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .bannerSubtitle {
+    opacity: 0.8;
+    margin-bottom: 1rem;
+  }
+  
+  @media (max-width: 768px) {
+    .formWrapper {
+      flex-direction: column;
+    }
+  
+    .banner {
+      display: none;
+    }
+  
+    .formContainer {
+      padding: 2rem;
+    }
+  
+    .actionButtons {
+      flex-direction: column;
+    }
+  
+    .primaryButton, .secondaryButton {
+      width: 100%;
+    }
+  }
+  
+  /* Mobile-specific styles */
+  @media (max-width: 480px) {
+    .container {
+      padding: 1rem;
+    }
+  
+    .formContainer {
+      padding: 1.5rem;
+    }
+  
+    .logo {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .logoText,
+    .logoAccent {
+      text-align: center;
+    }
+  
+    .checkmarkCircle {
+      width: 80px;
+      height: 80px;
+    }
+  
+    .actionButtons {
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+  
+    .primaryButton,
+    .secondaryButton {
+      min-height: 48px;
+    }
+  }
+
+  .recommendedWrapper {
+    width: 100%;
+    max-width: 1200px;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+    padding: 0 2rem;
+  }
+  
+  .recommendedWrapperDark {
+    background-color: transparent; /* əgər ayrıca fon istəmirsənsə */
+  }
+  

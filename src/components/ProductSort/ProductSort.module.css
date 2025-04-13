@@ -1,0 +1,41 @@
+.sortContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 20px 0;
+  }
+  
+  .sortLabel {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 8px;
+  }
+  
+  .sortSelect {
+    padding: 8px;
+    font-size: 14px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    width: 200px;
+  }
+  
+  @media (max-width: 768px) {
+    .sortContainer {
+      align-items: center;
+    }
+  
+    .sortSelect {
+      width: 150px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .sortContainer {
+      align-items: center;
+    }
+  
+    .sortSelect {
+      width: 120px;
+    }
+  }
+  

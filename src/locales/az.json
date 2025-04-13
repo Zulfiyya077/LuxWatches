@@ -1,0 +1,571 @@
+{
+    "home": "Ana Səhifə",
+    "about": "Haqqımızda",
+    "services": "Xidmətlər",
+    "shop": "Mağaza",
+    "company": "Şirkət",
+    "about_us": "Haqqımızda",
+    "contact": "Əlaqə",
+    "faqs": "Tez-tez verilən suallar",
+    "shipping_returns": "Çatdırılma və Qaytarma",
+    "terms_conditions": "Şərtlər və Qaydalar",
+    "customer_service": "Müştəri Xidməti",
+    "privacy_policy": "Gizlilik Siyasəti",
+    "help_center": "Yardım Mərkəzi",
+    "track_order": "Sifarişi İzləyin",
+    "follow_us": "Bizi İzləyin",
+    "copyright": "Sizin Saat Mağazanız. Bütün hüquqlar qorunur.",
+    "featuredModels": "Seçilmiş Modellər",
+    "buy": "Al",
+    "rolexSubmariner": "Rolex Submariner",
+    "rolexDayDate": "Rolex Day-Date",
+    "rolexGMTMaster": "Rolex GMT-Master II",
+    "customerTestimonials": "Müştəri Şərhləri",
+    "customer1Name": "John D.",
+    "customer1Feedback": "Rolex Submariner mənim üçün mükəmməl saatdır!",
+    "customer2Name": "Sophia L.",
+    "customer2Feedback": "Saatı aldım və çox xoşbəxtəm. Sadəcə gözəl görünmür, həm də çox rahatdır.",
+    "customer3Name": "James T.",
+    "customer3Feedback": "Ən yaxşı saat təcrübəsi və möhtəşəm dizayn!",
+    "aboutDescription": "Biz yüksək keyfiyyətli lüks saatların satışı ilə məşğul oluruq. Buna görə də, müştərilərimizə yalnız ən yaxşı saatları təklif etməyə çalışırıq. Bizimlə işləmək, mükəmməlliyi yaşamaq deməkdir.",
+   "contact_us": "Bizimlə Əlaqə",
+  "newsletter": "Bülletenə Abunə Olun",
+  "email_placeholder": "E-poçt ünvanınızı daxil edin",
+  "subscribe": "Abunə Olun",
+  "rights_reserved": "Bütün hüquqlar qorunur",
+    "ourMission": "Missiyamız","search": "Axtar",
+  "searchProducts": "Məhsulları Axtar",
+ 
+  "blog": "Bloq",
+
+  "registered": "Daxil ol",
+    "missionDescription": "Bizim məqsədimiz müştərilərimizə istisnai saatlar təqdim etmək və keyfiyyətli xidmət göstərməkdir. Hər bir saat bizim üçün mükəmməlliyin təcəssümüdür.",
+    "companyHistory": "Şirkət Tarixi",
+    "event1": "Şirkət quruldu.",
+    "event2": "İlk böyük müştəri ilə əməkdaşlıq başladı.",
+    "event3": "Beynəlxalq bazarda uğur qazandıq.",
+    "contactUs": "Bizimlə Əlaqə",
+    "contactDescription": "Saatlarımız və xidmətlərimizlə bağlı hər hansı bir sualınız varsa, bizə müraciət etməkdən çəkinməyin. Müştəri xidmətimizlə əlaqə saxlayın və ən yaxşı həlləri təklif edək.",
+    "support": "Dəstək",
+    "email": "E-poçt Ünvanı",
+    "additionalInfo": "Əlavə Məlumat",
+    "additionalInfoDescription": "Hər hansı bir sualınız varsa, bizə müraciət etməkdən çəkinməyin.",
+    "yourName": "Adınız",
+    "enterYourName": "Adınızı buraya daxil edin",
+    "emailAddress": "E-poçt Ünvanınız",
+    "enterEmail": "E-poçtunuzu buraya daxil edin",
+    "message": "Mesajınız",
+    "enterMessage": "Mesajınızı buraya daxil edin",
+    "submitQuery": "Sorğunuzu İndi Göndərin",
+    "ourOffice": "Bizim Ofis",
+    "visitUs": "Bizim Lüks Saatlar mağazamıza gəlin, premium saatlarımızı yaxından kəşf edin. Bizimlə əlaqə saxlayın!",
+    "officeAddress": "Ofis Ünvanı",
+    "workingHours": "İş Saatları",
+    "aboutUs": "Rolex Mükəmməlliyi Haqqında",
+    "aboutRolex": "Brend",
+    "aboutStore": "Mağazamız",
+    "craftmanship": "İncə Sənətkar Yaradılışı",
+    "discoverCollection": "Kolleksiyanı Kəşf Edin",
+    "officialDealer": "Rəsmi Satıcı",
+    "founded": "Qurulub",
+    "patents": "Patentlər",
+    "countries": "Ölkələr",
+    "precisionMovement": "Dəqiqlik Hərəkəti",
+    "sapphireCrystal": "Sapphire Kristalı",
+    "preciousMetals": "Qiymətli Metallər",
+    "rolexBrandHistory": "1905-ci ildə qurulan Rolex, lüks saat istehsalının zirvəsidir. Hans Wilsdorfun dəqiqliklə elegansı birləşdirən saatlar yaratmaq vizyonu, əsrlər boyu saat sənayesini dəyişdirdi. Hər bir Rolex saatı, yeniliklə ənənənin harmonik birliyini təmsil edir.",
+    "rolexFact1": "Rolex, 1926-cı ildə ilk suya davamlı əllə saatı 'Oyster'ni icad etdi və saat sənayesində inqilab etdi.",
+    "rolexFact2": "Hər bir Rolex saatı istehsal etmək təxminən bir il çəkir, 200-dən çox fərdi komponentə diqqətlə yanaşılır.",
+    "rolexFact3": "Rolex saatları, Everest dağının zirvəsindən Mariana çökəkliyinin ən dərin nöqtəsinə qədər bir çox tarixi ekspedisiyada geyilib.",
+    "storeDescription": "2005-ci ildən bəri, bizim butik Rolex irsini dəyişməz standartlarla təmsil edir. Rəsmi Rolex satıcısı olaraq, biz bu zamanın fövqəladə əsərlərini təqdim edirik, bu da brendin prestijini və irsini əks etdirən bir atmosferdədir.",
+    "storeFact1": "Bizim personal, hər bir kolleksiya və modelin unikal xüsusiyyətləri barədə mütəxəssis biliyi təmin etmək üçün birbaşa Rolex tərəfindən geniş təlimlərdən keçib.",
+    "storeFact2": "Mağazamızda Rolex tərəfindən sertifikatlaşdırılmış saat ustaları tərəfindən işlənən xüsusi xidmət mərkəzi var.",
+    "storeFact3": "Biz il boyu xüsusi tədbirlər keçiririk və müştərilərimizə məhdud sayda buraxılışlara və xüsusi kolleksiyalara ümumi satışdan əvvəl üstünlük veririk.",
+    "craftsmanshipDescription": "Hər bir Rolex saatı, İsveçrə saatçılığının zirvəsidir. Həyəcanla və dəqiqliklə yaradılan bu saatlar, nəsillər boyu inkişaf etdirilmiş sənətkarlıqla müasir texnologiyanı birləşdirir.",
+    "craftFact1": "Hər bir Rolex hərəkəti əl ilə yığılır və müxtəlif şəraitlərdə dəqiqliyi təmin etmək üçün beş mövqedə yoxlanılır, rəsmi xronometr sertifikatı standartlarını aşır.",
+    "craftFact2": "Rolex öz qızıl əridicisini saxlayır və bu, 18 karat qızıl ərintilərini, o cümlədən heç vaxt solmayan Everose qızılını tam idarə etməyə imkan verir.",
+    "craftFact3": "İkonik Rolex bəzəyi, qızıl və ya platin bir parça olaraq başlayır və xüsusi naxışını əldə etmək üçün 6 saata qədər dəqiqliklə işlənir.",
+    "hero_title": "Hər Zaman Üçün Lüks Saatlar",
+  "hero_subtitle": "Eksklüziv kolleksiyamız ilə zamansız zərifliyi kəşf edin",
+  "video_not_supported": "Brauzeriniz video etiketini dəstəkləmir.",
+  "shop_now": "İndi Al",
+
+  "prestige_collection": "Prestij Kolleksiyası",
+  "prestige_description": "İsveçrə dəqiqliyi ilə hazırlanmış əl işi şah əsərlər",
+  "prestige_price": "2,500$-dan başlayaraq",
+
+  "heritage_series": "İrsi Seriya",
+  "heritage_description": "İkonik klassiklərdən ilham alan zamansız dizaynlar",
+  "heritage_price": "3,200$-dan başlayaraq",
+
+  "nautical_edition": "Dənizçilik Nəşri",
+  "nautical_description": "Dənizləri fəth edənlər üçün dizayn edilib",
+  "nautical_price": "4,800$-dan başlayaraq",
+
+  "feature_sapphire": "Safir Şüşə",
+  "feature_automatic": "Avtomatik Mexanizm",
+  "feature_water_50": "50m Su Keçirməzlik",
+  "feature_gold": "18K Qızıl Korpus",
+  "feature_chronograph": "Xronoqraf",
+  "feature_water_100": "100m Su Keçirməzlik",
+  "feature_titanium": "Titanium Quruluş",
+  "feature_dive": "Dalğıc Taymeri",
+  "feature_water_300": "300m Su Keçirməzlik",
+  "notFound": "Bloq tapılmadı",
+  "backToBlog": "Bloq səhifəsinə qayıt",
+  "technicalSpecifications": "Texniki Xüsusiyyətlər",
+  "diameter": "Diametr",
+  "movement": "Mexanizm",
+  "material": "Material",
+  "waterResistance": "Su keçirməzlik",
+  "powerReserve": "Güc rezervi",
+  "bezel": "Bezel",
+  "gallery": "Qalereya",
+  "relatedPosts": "Oxşar Məqalələr",
+  "backButton": "Bloq Səhifəsinə Qayıt",
+  "author": "Müəllif",
+  "category": "Kateqoriya",
+  "readTime": "Oxuma Vaxtı",
+  "loading": "Yüklənir...",
+  "welcome": "Xoş gəlmisiniz!",
+ 
+  "orders": "Sifarişlərim",
+  "noOrders": "Hələki heç bir sifariş yoxdur.",
+  "myProducts": "Mənim məhsullarım",
+ 
+  "profile": "Profil məlumatları",
+  "editProfile": "Profilinizi redaktə edin",
+  "ourTeam": {
+      "title": "Komandamız",
+      "description": "Sizin uğurlarınızı təmin etmək üçün yorulmadan çalışan peşəkar komandamızla tanış olun. Hər bir üzv ortaq vizyonumuza çatmaq üçün unikal bacarıq və təcrübə gətirir."
+    },
+   
+    
+  
+    "product": {
+    "discount": "Endirim",
+    "addToWishlist": "Sevimlilərə Əlavə Et",
+    "viewDetails": "Ətraflı Bax",
+    "outOfStock": "Anbarlarda Yoxdur",
+    "addToCartShort": "Səbətə Əlavə Et",
+    "inStock": "Anbarlarda Var",
+    "new": "Yeni",
+    "imageUrl": "Şəkil URL",
+      "description": "Təsvir",
+      "rating": "Reytinq",
+      "availability": "Mövcudluq",
+      "material": "Material",
+      "movement": "Mexanizm",
+      "caseDiameter": "Korpus diametri",
+      "waterResistance": "Su müqaviməti",
+      "add": "Əlavə et",
+      "update": "Yenilə"
+  },
+    "positions": {
+      "ceo": "Baş İcraçı Direktor",
+      "cto": "Baş Texnologiya Direktoru",
+      "marketingManager": "Marketinq Meneceri",
+      "designDirector": "Dizayn Direktoru",
+      "leadDeveloper": "Baş Proqramçı",
+      "productManager": "Məhsul Meneceri"
+    },
+    "hero": {
+    "title": "Hər Tədbir üçün Lüks Saatlar",
+    "subtitle": "Eksklüziv kolleksiyamızla zamansız elegantlığı kəşf edin",
+    "videoFallback": "Sizin brauzer video teqini dəstəkləmir.",
+    "buttons": {
+      "shopNow": "İndi Alın",
+      "exploreCollection": "Kolleksiyanı Araşdırın"
+    },
+    "collections": {
+      "prestige": {
+        "name": "Prestij Kolleksiyası",
+        "description": "İsveçrə dəqiqliyi ilə əllə hazırlanmış şah əsərlər",
+        "price": "$2,500-dan başlayan qiymətlər",
+        "features": {
+          "1": "Safir Kristal",
+          "2": "Avtomatik Mexanizm",
+          "3": "50m Su Keçirməzlik"
+        }
+      },
+      "heritage": {
+        "name": "İrs Seriyası",
+        "description": "İkon klassiklərdən ilham alan zamansız dizaynlar",
+        "price": "$3,200-dan başlayan qiymətlər",
+        "features": {
+          "1": "18K Qızıl Qutu",
+          "2": "Xronometr",
+          "3": "100m Su Keçirməzlik"
+        }
+      },
+      "nautical": {
+        "name": "Dəniz Nəşri",
+        "description": "Dənizləri fəth edənlər üçün dizayn edilmişdir",
+        "price": "$4,800-dan başlayan qiymətlər",
+        "features": {
+          "1": "Titan Konstruksiya",
+          "2": "Dalğıc Vaxt Ölçəni",
+          "3": "300m Su Keçirməzlik"
+        }
+      }
+    }
+  },
+   
+    "teamBios": {
+      "johnDoe": "John texnologiya sahəsində 15 ildən çox liderlik təcrübəsinə malikdir və davamlı inkişaf və yenilik üzərində fokuslanır.",
+      "janeSmith": "Jane proqram təminatı arxitekturası və yeni texnologiyalarda geniş təcrübəyə malik bir texnologiya vizyoneridir.",
+      "samGreen": "Sam marka hekayələri yaratmaq və təsirli marketinq strategiyaları hazırlamaq üçün böyük həvəsə malikdir.",
+      "mariaRodriguez": "Maria, bütün platformalarda istifadəçi təcrübələrini artıran bədii dizaynı praktik həllərlə birləşdirir.",
+      "alexChen": "Alex performans optimizasiyası və miqyaslı arxitektura üzrə ixtisaslaşmış full-stack proqramçı mütəxəssisidir.",
+      "emmaWatson": "Emma, müştəri ehtiyaclarını müstəsna dəyər və istifadəçi məmnuniyyətinə çevirməkdə mükəmməldir."
+    }
+    ,
+       
+        "featuredSubtitle": "Nadir vaxt ölçü cihazlarından ibarət eksklüziv kolleksiyamıza baxın",
+        "submarinerDescription": "Rolex Submariner, dalış üçün nəzərdə tutulmuş idman saatları seriyasıdır və suya və korroziyaya qarşı müqavimətləri ilə tanınır.",
+        "dayDateDescription": "Rolex Day-Date, Rolex'in ən prestijli modelidir, daha çox prezident, lider və vizionerlər tərəfindən geyinilmişdir.",
+        "gmtDescription": "Rolex GMT-Master II, beynəlxalq uçuşlar zamanı eyni anda iki fərqli zaman zonasının saatını göstərmək üçün nəzərdə tutulub.",
+        
+        "waterResistant": "300m Suya Davamlı",
+        "automaticMovement": "Avtomatik Hərəkət",
+        "ceramicBezel": "Seramik Bezel",
+        "dayDateComplication": "Day-Date Komplikasiyası",
+        "flutedBezel": "Çıxıntılı Bezel",
+        "prestigiousBracelet": "Prezident Bracleti",
+        "dualTimeZone": "İki Zaman Zonasını Eyni Anda Göstərmə",
+        "rotatingBezel": "24-Saat Fırlanan Bezel",
+        "24hourHand": "24-Saat Əl",
+      
+        "submarinerDial": "Qara",
+        "dayDateDial": "Şampan",
+        "gmtDial": "Qara",
+        
+        "inStock": "Anbarda Mövcuddur",
+        "comingSoon": "Tezliklə Gələcək",
+        "notifyMe": "Məni Xəbərdar Et",
+        
+        "addToCart": "Səbətə Əlavə Et",
+        "addToWishlist": "İstək Siyahısına Əlavə Et",
+        "viewDetails": "Ətraflı Bax",
+        
+        "addedToWishlist": "İstək Siyahısına Əlavə Olundu!",
+        "addedToCart": "Səbətə Uğurla Əlavə Olundu!",
+         "common": {
+    "companyName": {
+      "luxury": "LÜKS",
+      "shop": "SAAT"
+    }
+  },
+   
+  "logout": "Çıxış",
+  "checkout": {
+    "title": "Ödəniş",
+    "total": "Cəmi: ${{amount}}",
+    "cardHolder": "KART SAHİBİ",
+    "nameOnCard": "AD SOYAD",
+    "pay": "Ödə",
+    "processing": "Gözləyin...",
+    "emptyCart": "Səbətiniz boşdur",
+    "addItemsFirst": "Ödəniş etmək üçün əvvəlcə səbətinizə məhsul əlavə edin.",
+    "returnToProducts": "Məhsullara qayıt",
+    "emptyCartError": "Səbətinizdə məhsul yoxdur.",
+    "paymentSuccess": "Ödəniş uğurla tamamlandı!",
+    "paymentError": "Xəta baş verdi. Təkrar cəhd edin."
+  },
+  "register": {
+    "title": "Qeydiyyatdan keç",
+    "fullName": "Ad Soyad",
+    "fullNamePlaceholder": "Ad Soyad daxil edin",
+    "email": "E-poçt",
+    "emailPlaceholder": "E-poçt ünvanı daxil edin",
+    "password": "Şifrə",
+    "passwordPlaceholder": "Şifrənizi daxil edin",
+    "confirmPassword": "Şifrəni təsdiq et",
+    "confirmPasswordPlaceholder": "Şifrənizi təkrar daxil edin",
+    "passwordMismatch": "Şifrələr eyni deyil",
+    "submitButton": "Qeydiyyatdan keç",
+    "haveAccount": "Hesabınız var?",
+    "loginLink": "Daxil ol",
+    "termsAgreement": "Qeydiyyatdan keçməklə siz bizim {{terms}} və {{privacy}} ilə razılaşırsınız.",
+    "termsAndConditions": "Şərtlər və Qaydalar",
+    "privacyPolicy": "Məxfilik Siyasəti",
+    "bannerTitle": "Lüks alış-veriş təcrübəsinə qoşulun",
+    "bannerSubtitle": "Qeydiyyatdan keçərək premium üstünlüklər əldə edin:",
+    "benefits": {
+      "specialOffers": "Xüsusi təkliflər və kampaniyalar",
+      "firstOrderDiscount": "İlk sifarişdə 10% endirim",
+      "freeShipping": "Pulsuz çatdırılma imkanları",
+      "productNotifications": "Yeni məhsullar haqqında bildirişlər",
+      "profileCreationError": "Profil yaradılarkən xəta baş verdi. Zəhmət olmasa biraz sonra yenidən cəhd edin.",
+    "tableNotExistError": "Profiles cədvəli mövcud deyil. Administrator ilə əlaqə saxlayın."
+    }
+  },
+  "thankYou": {
+    "mainTitle": "Sifarişiniz üçün təşəkkür edirik!",
+    "subtitle": "Sifarişiniz uğurla qəbul edildi və hazırlanır.",
+    "orderNumber": "Sifariş nömrəsi",
+    "estimatedDelivery": "Təxmini çatdırılma",
+    "continueShopping": "Alış-verişə davam et",
+    "viewOrder": "Sifarişə bax",
+    "benefits": {
+      "title": "Sizin üçün üstünlüklər",
+      "subtitle": "Bizim xidmətlərin əlavə üstünlükləri:",
+      "freeShipping": "Pulsuz çatdırılma",
+      "easyReturn": "Asan geri qaytarma",
+      "guarantee": "Məhsul zəmanəti",
+      "securePayment": "Təhlükəsiz ödəniş"
+    }
+  },
+  "errorTitle": "Səhifə tapılmadı",
+  "notFoundMessage": "Bağışlayın, axtardığınız səhifə mövcud deyil.",
+  "backToHome": "Ana səhifəyə qayıt",
+
+  "title": "Daxil ol",
+  "emailPlaceholder": "E-poçt ünvanınızı daxil edin",
+  "password": "Şifrə",
+  "passwordPlaceholder": "Şifrənizi daxil edin",
+  "forgotPassword": "Şifrəni unutmusan?",
+  "submitButton": "Daxil ol",
+  "noAccount": "Hesabınız yoxdur?",
+  "registerLink": "Qeydiyyatdan keçin",
+  "successMessage": "Uğurla daxil oldunuz!",
+  "generalError": "Giriş zamanı xəta baş verdi",
+  "invalidCredentials": "Yanlış e-poçt və ya şifrə",
+  "bannerTitle": "Arxayın al!",
+  "bannerSubtitle": "Məhsulun dəyişdirmə və geri qaytarma müddəti 30 günə uzandı.",
+  "benefits": {
+    "secureAccount": "Təhlükəsiz hesab",
+    "orderHistory": "Sifariş tarixçəsi",
+    "quickCheckout": "Sürətli alış-veriş",
+    "exclusiveOffers": "Eksklüziv təkliflər"
+  }, 
+ 
+  "customer4Name": "Nigar Hüseynova",
+
+  "customerPosition": "Müştəri",
+  "customer2Position": "Müştəri",
+  "customer3Position": "Müştəri",
+  "customer4Position": "Müştəri",
+
+  "customer4Feedback": "Gözəl dizayn və keyfiyyətli məhsullar. Əla təcrübə yaşadım.",
+  "login": {
+    "title": "Daxil ol",
+    "email": "E-poçt",
+    "emailPlaceholder": "E-poçt ünvanınızı daxil edin",
+    "password": "Şifrə",
+    "passwordPlaceholder": "Şifrənizi daxil edin",
+    "forgotPassword": "Şifrəni unutmusan?",
+    "submitButton": "Daxil ol",
+    "noAccount": "Hesabınız yoxdur?",
+    "registerLink": "Qeydiyyatdan keçin",
+    "successMessage": "Uğurla daxil oldunuz!",
+    "generalError": "Giriş zamanı xəta baş verdi",
+    "invalidCredentials": "Yanlış e-poçt və ya şifrə",
+    "bannerTitle": "Arxayın al!",
+    "bannerSubtitle": "Məhsulun dəyişdirmə və geri qaytarma müddəti 30 günə uzandı.",
+    "benefits": {
+      "secureAccount": "Təhlükəsiz hesab",
+      "orderHistory": "Sifariş tarixçəsi",
+      "quickCheckout": "Sürətli alış-veriş",
+      "exclusiveOffers": "Eksklüziv təkliflər"
+    }
+  },
+  "hero_title1": "Rolex Kolleksiyası",
+  "hero_subtitle1": "Lüks və dəqiqliyin mükəmməl birləşməsi",
+ 
+
+  "filters": "Filtrlər",
+  "price_range": "Qiymət Aralığı",
+  "available": "Yalnız mövcud olanlar",
+  "new_models": "Yeni modellər",
+  "discounted": "Endirimdə olanlar",
+  "apply_filters": "Filtrləri tətbiq et",
+  "search_placeholder": "Axtarış...",
+  "no_results": "Heç bir məhsul tapılmadı",
+  "no_results_message": "Zəhmət olmasa axtarış və filtr parametrlərinizi dəyişin.",
+  "loading_products": "Məhsullar yüklənir...",
+  "error_message": "Məhsullar yüklənərkən xəta baş verdi. Zəhmət olmasa yenidən cəhd edin.",
+  "retry": "Yenidən cəhd edin",
+  "products_found": "məhsul tapıldı",
+  "next_page": "Növbəti"
+,"loginet": "Daxil ol",
+
+  "newTimepieces2025": "2025 Yeni Saat Modelləri",
+  "exclusiveReleases": "Yalnız bu il üçün təqdim olunan modellər",
+  "hoverForVideo": "Videonu izləmək üçün üstünə gəl",
+  "tapToReveal": "Ətraflı məlumat üçün klikləyin",
+  "back": "Geri",
+ 
+  "caseDiameter": "Korpus diametri",
+ 
+  "limitedTo": "Yalnız",
+  "pieces": "ədəd",
+  "regularRelease": "Daimi buraxılış",
+  "addToFavorites": "Favorilərə əlavə et",
+  "removeFromFavorites": "Favorilərdən sil",
+  "limitedEdition": "Limitli buraxılış",
+
+  "gmtMasterII": "GMT-Master II",
+  "gmtMasterDescription": "İki vaxt qurşağını göstərən və Cerachrom çərçivəli müasir və funksional dizayn.",
+
+  "cerachromBezel": "Cerachrom çərçivə",
+  "jubileeBracelet": "Jubilee bilərzik",
+  "luxuryWatches" : "Lüks Saatlar",
+  "oysterPerpetual": "Oyster Perpetual",
+  "oysterPerpetualDescription": "Sadəlik və dəqiqliyi birləşdirən Oyster Perpetual seriyası.",
+  "superlativeChronometer": "Superlative xronometr",
+  "colorfulDial": "Rəngarəng siferblat",
+  "paramagneticEscapeWheel": "Paramaqnit qaçış çarxı",
+
+  "rolex1908": "Rolex 1908",
+  "rolex1908Description": "Zəriflik və tarixiliyi əks etdirən Rolex 1908 modeli.",
+  "slimCase": "İncə korpus",
+  "openCaseBack": "Açıq arxa qapaq",
+  "handWoundElegance": "Əl ilə qurulan zəriflik",
+
+  "datejust2025": "Datejust 2025",
+  "datejustDescription": "Klassik dizayn və gündəlik praktikliyi özündə birləşdirən Datejust modeli.",
+  
+  "dateCyclops": "Cyclops tarix pəncərəsi",
+  "classicDesign": "Klassik dizayn"
+,
+
+
+  "faqTitle": "Tez-tez Verilən Suallar",
+  "question1Title": "Necə sifariş verə bilərəm?",
+  "question1Content": "Sifariş vermək üçün sadəcə məhsulları nəzərdən keçirin, istədiyiniz məhsulları seçin, səbətə əlavə edin və satın alma mərhələsinə keçin. Çatdırılma və ödəniş məlumatlarını təqdim edin və sonra sifarişinizi təsdiq edin.",
+  
+  "question2Title": "Hansı ödəniş üsullarını qəbul edirsiniz?",
+  "question2Content": "Visa, MasterCard, American Express əsas kredit kartlarını, PayPal, Google Pay və Apple Pay qəbul edirik. Böyük sifarişlər üçün bank köçürməsi seçimləri də mövcuddur.",
+  
+  "question3Title": "Sifarişimi necə izləyə bilərəm?",
+  "question3Content": "Sifarişiniz göndərildikdə, e-poçt vasitəsilə izləmə nömrəsi alacaqsınız. Həmçinin hesabınıza daxil olub sifariş tarixçənizdən sifarişinizi izləyə bilərsiniz.",
+  
+  "question4Title": "İadə siyasətiniz nədir?",
+  "question4Content": "Çoxsaylı məhsullar üçün 30 günlük geri qaytarılma siyasəti təklif edirik. Məhsullar orijinal vəziyyətdə və bütün qablaşdırma ilə olmalıdır. İadə etmək üçün müştəri xidmətləri ilə əlaqə saxlayın. Xüsusi sifarişlər geri qaytarılmır.",
+  
+  "question5Title": "Çatdırılma nə qədər vaxt alır?",
+  "question5Content": "Çatdırılma vaxtı yerinizə görə dəyişir. Daxili sifarişlər adətən 3-5 iş günü ərzində çatdırılır, beynəlxalq sifarişlər isə 7-14 iş günü çəkə bilər. Çatdırılma mərhələsində ekspres çatdırılma seçimləri mövcuddur.",
+  
+  "question6Title": "Beynəlxalq çatdırılma təklif edirsiniz?",
+  "question6Content": "Bəli, əksər ölkələrə çatdırılma təklif edirik. Çatdırılma xərcləri və vaxtı yerə görə dəyişir. İdxal rüsumları və vergilər müştərinin məsuliyyətinə daxildir.",
+  
+  "question7Title": "Məhsullarınız orijinaldır?",
+  "question7Content": "Bəli, biz yalnız 100% orijinal məhsullar satırıq və bu məhsullar birbaşa istehsalçılardan və ya rəsmi distribyutorlardan alınır. Satdığımız hər bir məhsulun orijinallığını təmin edirik.",
+  
+  "question8Title": "Müştəri xidmətləri ilə necə əlaqə saxlaya bilərəm?",
+  "question8Content": "Müştəri xidmətləri komandamızla support@example.com e-poçt ünvanı, +1-800-123-4567 telefon nömrəsi və ya veb saytımızdakı canlı çat vasitəsilə əlaqə saxlaya bilərsiniz. Dəstək saatlarımız bazar ertəsindən cümə gününə qədər, səhər saat 9-dan axşam saat 6-ya qədərdir.",
+  
+  "question9Title": "Hədiyyə qablaşdırma təklif edirsiniz?",
+  "question9Content": "Bəli, əlavə bir ödəniş qarşılığında hədiyyə qablaşdırma xidmətləri təklif edirik. Bu seçimi satın alma mərhələsində seçə bilərsiniz və hətta alıcı üçün şəxsi mesaj da daxil edə bilərsiniz.",
+  
+  "question10Title": "Sifarişim zədələnmiş şəkildə gəlsə nə etməliyəm?",
+  "question10Content": "Sifarişiniz zədələnmiş şəkildə gəlsə, zəhmət olmasa 48 saat ərzində bizimlə əlaqə saxlayın. Zədələnmiş məhsul və qablaşdırmanın şəkillərini çəkin və komandamız əvəz etmə və ya geri ödəmə üçün sizə kömək edəcək.",
+  
+  "question11Title": "Sadiqlik proqramınız var mı?",
+  "question11Content": "Bəli, hər alış-verişiniz üçün bal topladığınız sadiqlik proqramımız var. Bu ballar gələcək sifarişlərdə endirimlər üçün istifadə oluna bilər. Proqrama qeydiyyatdan keçmək üçün satın alma mərhələsində və ya hesabınızın parametrlərində qeydiyyatdan keçə bilərsiniz.",
+  
+  "question12Title": "Sifarişimi ləğv edə bilərəm?",
+  "question12Content": "Sifarişiniz hələ işlənməmişsə, onu ləğv etmək mümkündür. Ləğv etmək istəsəniz, müştəri xidmətləri ilə dərhal əlaqə saxlayın. Sifariş göndərildikdən sonra onu ləğv etmək mümkün deyil, amma geri qaytarılma siyasətimizə əsasən məhsulunuzu geri göndərə bilərsiniz.",
+  
+  "question13Title": "Məhsullarınızda zəmanət təklif edirsiniz?",
+  "question13Content": "Əksər məhsullarımız istehsalçı zəmanəti ilə gəlir. Zəmanət müddəti və şərtləri marka və məhsuldan asılı olaraq dəyişir. Zəmanət məlumatları məhsulun təsvirində və qablaşdırmasında mövcuddur.",
+  
+  "question14Title": "Hesab məlumatlarımı necə dəyişə bilərəm?",
+  "question14Content": "Hesab məlumatlarınızı yeniləmək üçün hesabınıza daxil olun və 'Hesab Parametrləri' səhifəsinə keçin. Oradan şəxsi məlumatlarınızı, ünvanınızı və ödəniş üsullarınızı dəyişə bilərsiniz.",
+  
+  "question15Title": "Topdan endirimləriniz varmı?",
+  "question15Content": "Bəli, topdan sifarişlər üçün endirimlər təklif edirik. Maraqlı olduğunuz məhsullar və miqdarlar barədə məlumatları sales@example.com ünvanına göndərin və biz sizə xüsusi qiymət təklifi təqdim edəcəyik.",
+  
+  "askYourQuestion": "Hələ Suallarınız Var?",
+  "didntFindAnswer": "Axtardığınız cavabı tapmadınız? Aşağıda sualınızı göndərin və komandamız ən qısa müddətdə e-poçt vasitəsilə cavab verəcək.",
+ 
+  "enterYourEmail": "E-poçt ünvanınızı daxil edin",
+  "yourQuestion": "Sualınız",
+  "typeYourQuestion": "Sualınızı buraya yazın və biz e-poçt vasitəsilə cavab verəcəyik...",
+  "sendQuestion": "Sualı Göndər",
+  "sending": "Göndərilir...",
+  "thankYouMessage": "Təşəkkür edirik!",
+  "questionSubmittedSuccess": "Sualınız uğurla göndərildi!",
+  "willRespondSoon": "E-poçtunuza ən qısa müddətdə cavab verəcəyik.",
+  "pleaseCompleteAllFields": "Bütün sahələri doldurun",
+  "invalidEmailFormat": "Zəhmət olmasa düzgün e-poçt ünvanı daxil edin",
+  "errorSubmittingQuestion": "Sualınızı göndərərkən xəta baş verdi. Zəhmət olmasa yenidən cəhd edin.",
+  
+    "hiAdmin": "Salam Admin",
+    "dashboard": "İdarə paneli",
+    "products": "Məhsullar",
+    "users": "İstifadəçilər",
+   
+    "totalSales": "Ümumi satışlar",
+ 
+    "customers": "Müştərilər",
+    "averageOrderValue": "Orta sifariş dəyəri",
+    "fromLastMonth": "ötən aya nisbətən",
+    "salesOverview": "Satış icmalı",
+    "last12Months": "Son 12 ay",
+    "productCategories": "Məhsul kateqoriyaları",
+    "recentSales": "Son satışlar",
+    
+    "customer": "Müştəri",
+    "price": "Qiymət",
+    "date": "Tarix",
+    "id": "ID",
+    "image": "Şəkil",
+    "name": "Ad",
+    "model": "Model",
+    "actions": "Əməliyyatlar",
+    "addProduct": "Məhsul əlavə et",
+    "editProduct": "Məhsulu redaktə et",
+    "loadingProducts": "Məhsullar yüklənir...",
+    "loadingUsers": "İstifadəçilər yüklənir...",
+    "noProductsFound": "Axtarışa uyğun məhsul tapılmadı",
+    "noProductsAvailable": "Mövcud məhsul yoxdur",
+    "noUsersFound": "Axtarışa uyğun istifadəçi tapılmadı",
+    "noUsersAvailable": "Mövcud istifadəçi yoxdur",
+    "role": "Rol",
+   
+   
+    "productName": "Məhsul adı",
+    "discountedPrice": "Endirimli qiymət",
+    
+    "confirmDelete": "Silməyi təsdiqləyin",
+    "confirmDeleteText": "Bu əməliyyat geri qaytarıla bilməz. Davam etmək istəyirsiniz?",
+    "yes": "Bəli",
+    "no": "Xeyr",
+    "deleteCancelled": "Silmə əməliyyatı ləğv edildi",
+    "productAddedSuccess": "Məhsul uğurla əlavə edildi",
+    "productUpdatedSuccess": "Məhsul uğurla yeniləndi",
+    "productDeletedSuccess": "Məhsul uğurla silindi",
+    "userDeletedSuccess": "İstifadəçi uğurla silindi",
+    "failedToAddProduct": "Məhsul əlavə etmək alınmadı",
+    "failedToUpdateProduct": "Məhsulu yeniləmək alınmadı",
+    "failedToDeleteProduct": "Məhsulu silmək alınmadı",
+    "failedToDeleteUser": "İstifadəçini silmək alınmadı",
+    "failedToLoadProducts": "Məhsulları yükləmək alınmadı",
+    "failedToLoadUsers": "İstifadəçiləri yükləmək alınmadı",
+    "noDataReturned": "API-dən heç bir məlumat qaytarılmadı",
+
+    "user": {
+      "name": "Ad",
+      "email": "E-poçt",
+      "role": "Rol",
+      "add": "Əlavə et",
+      "update": "Yenilə"
+    },
+    
+ 
+    
+    "roles": {
+      "admin": "Administrator",
+      "user": "İstifadəçi"
+    }
+  }
+
+
+      
+      
+  
+  
+  
+  

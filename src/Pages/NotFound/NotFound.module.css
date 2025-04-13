@@ -1,0 +1,237 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400;700&display=swap');
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.luxuryContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 90vh;
+  background: linear-gradient(135deg, var(--light-background), #FFF4E0);
+  font-family: 'Roboto', sans-serif;
+  transition: background 0.5s ease;
+
+}
+
+/* Dark Mode */
+.dark {
+  background: linear-gradient(135deg, var(--dark-background), #000000);
+  color: var(--gold-light);
+}
+
+.errorWrapper {
+  text-align: center;
+  max-width: 800px;
+  padding: 40px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  transform-style: preserve-3d;
+  transform: rotateX(10deg);
+  box-shadow: 
+    0 25px 45px rgba(218, 165, 32, 0.3),
+    0 15px 25px rgba(218, 165, 32, 0.2);
+  transition: all 0.5s ease;
+}
+
+.errorWrapper:hover {
+  transform: rotateX(0) scale(1.02);
+  box-shadow: 
+    0 35px 55px rgba(218, 165, 32, 0.4),
+    0 25px 35px rgba(218, 165, 32, 0.3);
+}
+
+.errorDigits {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  margin-bottom: 30px;
+}
+
+.digit4 {
+  font-family: 'Playfair Display', serif;
+  font-size: 210px;
+  font-weight: 700;
+  color: var(--gold-dark);
+  text-shadow: 
+    4px 4px 10px rgba(184, 134, 11, 0.3),
+    -4px -4px 10px rgba(255, 215, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+.digit4:hover {
+  transform: scale(1.05) rotate(3deg);
+  color: var(--gold-deep);
+}
+
+.zeroContainer {
+  position: relative;
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 
+    0 15px 35px rgba(218, 165, 32, 0.5),
+    0 5px 15px rgba(255, 215, 0, 0.3);
+  transition: transform 0.3s ease;
+}
+
+.zeroContainer:hover {
+  transform: scale(1.05) rotate(3deg);
+}
+
+.watchImage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: 
+    opacity 1s ease-in-out, 
+    transform 1s ease-in-out;
+  transform: scale(1.1);
+}
+
+.activeWatch {
+  opacity: 1;
+  transform: scale(1);
+  z-index: 2;
+}
+
+.inactiveWatch {
+  opacity: 0;
+  transform: scale(1.1);
+  z-index: 1;
+}
+
+.errorTitle {
+  font-family: 'Playfair Display', serif;
+  font-size: 48px;
+  color: var(--gold-medium);
+  margin-bottom: 20px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.errorMessage {
+  font-size: 20px;
+  color: var(--gold-dark);
+  max-width: 600px;
+  margin: 0 auto 30px;
+  line-height: 1.6;
+  font-style: italic;
+}
+
+.actionContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.luxuryButton {
+  display: inline-block;
+  padding: 15px 40px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--dark-background);
+  background: linear-gradient(
+    45deg, 
+    var(--gold-light), 
+    var(--gold-deep)
+  );
+  border-radius: 50px;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+  box-shadow: 
+    0 10px 20px rgba(218, 165, 32, 0.3),
+    0 5px 10px rgba(255, 215, 0, 0.2);
+}
+
+.luxuryButton:hover {
+  transform: translateY(-5px);
+  box-shadow: 
+    0 15px 25px rgba(218, 165, 32, 0.4),
+    0 7px 15px rgba(255, 215, 0, 0.3);
+  background: linear-gradient(
+    45deg, 
+    var(--gold-deep), 
+    var(--gold-light)
+  );
+}
+
+.dark .digit4 {
+  color: var(--gold-light);
+  text-shadow: 
+    4px 4px 10px rgba(255, 215, 0, 0.3),
+    -4px -4px 10px rgba(184, 134, 11, 0.2);
+}
+
+.dark .errorMessage {
+  color: var(--gold-medium);
+}
+
+.dark .luxuryButton {
+  color: var(--dark-background);
+  background: linear-gradient(
+    45deg, 
+    var(--gold-deep), 
+    var(--gold-light)
+  );
+}
+
+
+@media (max-width: 768px) {
+  .digit4 {
+    font-size: 120px;
+  }
+
+  .zeroContainer {
+    width: 180px;
+    height: 180px;
+  }
+
+  .errorTitle {
+    font-size: 36px;
+  }
+
+  .errorMessage {
+    font-size: 18px;
+  }
+
+  .luxuryButton {
+    padding: 12px 30px;
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .digit4 {
+    font-size: 80px;
+  }
+
+  .zeroContainer {
+    width: 120px;
+    height: 120px;
+  }
+
+  .errorTitle {
+    font-size: 28px;
+  }
+
+  .errorMessage {
+    font-size: 16px;
+  }
+
+  .luxuryButton {
+    padding: 10px 25px;
+    font-size: 14px;
+  }
+}

@@ -1,0 +1,52 @@
+.recommendedSection {
+    margin-top: 60px;
+    padding: 40px 20px;
+    background-color: transparent;
+    text-align: center;
+    border-radius: 12px;
+  }
+  .recommendedSectionDark {
+    background-color: #1c1c1c;
+    color: white;
+  }
+  
+  .title {
+    font-size: 24px;
+    margin-bottom: 30px;
+  }
+  
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 20px;
+  }
+  
+  .card {
+    background: transparent;
+    border-radius: 12px;
+    padding: 15px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+  }
+  .card:hover {
+    transform: translateY(-6px);
+  }
+  .cardDark {
+    background: #2a2a2a;
+  }
+  
+  .image {
+    width: 100%;
+    border-radius: 10px;
+    object-fit: cover;
+  }
+  
+  .name {
+    margin: 10px 0 5px;
+    font-size: 16px;
+  }
+  .price {
+    font-weight: bold;
+    color: #888;
+  }
+  

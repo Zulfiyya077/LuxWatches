@@ -1,0 +1,86 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  .light-mode {
+    background-color: #fff;
+    color: #333;
+  }
+  
+  .light-mode .navbar-light {
+    background-color: #f1f1f1;
+    color: #333;
+  }
+  
+  .light-mode .footer-light {
+    background-color: #f1f1f1;
+    color: #333;
+  }
+  
+  .light-mode .theme-toggle-btn {
+    background-color: #013f15;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+  }
+  
+  .light-mode .theme-toggle-btn:hover {
+    background-color: #005507;
+  }
+  
+  /* Dark mode üçün üslublar */
+  .dark-mode {
+    background-color: #121212;
+    color: #f6ff00;
+  }
+  
+  .dark-mode .navbar-dark {
+    background-color: #333;
+    color: #f1f1f1;
+  }
+  
+  .dark-mode .footer-dark {
+    background-color: #333;
+    color: #f1f1f1;
+  }
+  
+  .dark-mode .theme-toggle-btn {
+    background-color: #333;
+    color: #f1f1f1;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+  }
+  
+  .dark-mode .theme-toggle-btn:hover {
+    background-color: #555;
+  }
+  
+
+  .navbar-light, .navbar-dark {
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .navbar-content h1 {
+    margin: 0;
+  }
+  
+
+  .footer-light, .footer-dark {
+    padding: 20px;
+    text-align: center;
+  }
+  

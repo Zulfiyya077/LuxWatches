@@ -1,0 +1,241 @@
+:root {
+    --gold-color: #d4af37;
+    --gold-gradient: linear-gradient(135deg, #d4af37, #f9d383, #d4af37);
+    --light-mode-card: linear-gradient(145deg, #000000, #1a1a1a); /* Changed to black */
+    --light-mode-text: #ffffff;
+    --dark-mode-card: linear-gradient(145deg, #f9d383, #d4af37);
+    --dark-mode-text: #000000;
+    --card-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  }
+  
+
+  .checkoutContainer {
+    padding: 2rem;
+    max-width: 500px;
+    margin: 0 auto;
+    font-family: 'Helvetica Neue', sans-serif;
+  }
+  
+
+  .form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  
+  .totalAmount {
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+  
+  .totalAmount h2 {
+    font-size: 1.5rem;
+    color: var(--gold-color);
+  }
+  
+
+  .card {
+    width: 100%;
+    height: 200px;
+    perspective: 1000px;
+    margin-bottom: 1rem;
+  }
+  
+  .cardInner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+  }
+  
+  .card.flipped .cardInner {
+    transform: rotateY(180deg);
+  }
+  
+  .cardFront, .cardBack {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 16px;
+    padding: 1.5rem;
+    box-shadow: var(--card-shadow);
+  }
+  
+
+  .cardFront {
+    background: var(--light-mode-card);
+    color: var(--light-mode-text);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  .cardChip {
+    width: 45px;
+    height: 35px;
+    background: var(--gold-gradient);
+    border-radius: 6px;
+    margin-bottom: 1rem;
+  }
+  
+  .cardLogo {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+  }
+  
+  .bankName {
+    font-size: 0.75rem;
+    font-weight: bold;
+    color: var(--gold-color);
+    text-transform: uppercase;
+  }
+  
+  .cardNumber {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    padding: 0.75rem;
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+  
+  .cardDetails {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.7rem;
+    margin-top: 1rem;
+  }
+  
+  .cardHolder, .cardExpiry {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.75rem;
+  }
+  
+ 
+  .cardBack {
+    background: var(--light-mode-card);
+    transform: rotateY(180deg);
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .cardStrip {
+    width: 100%;
+    height: 40px;
+    background-color: #000;
+    margin: 20px 0;
+  }
+  
+  .cardCvv {
+    background-color: #fff;
+    height: 40px;
+    margin-left: auto;
+    margin-right: 1rem;
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  
+  .cvvTitle {
+    color: #333;
+    font-size: 0.7rem;
+    padding: 4px 8px;
+  }
+  
+  .cvvBand {
+    height: 24px;
+    background-color: #eee;
+    position: relative;
+  }
+  
+  .cvvBand::after {
+    content: "***";
+    position: absolute;
+    right: 10px;
+    top: 4px;
+    color: #333;
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+  }
+  
+  .cardBackInfo {
+    color: var(--light-mode-text);
+    font-size: 0.7rem;
+    margin-top: 1rem;
+    text-align: center;
+  }
+  
+  /* Buttons styles */
+  .cardActions {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+  
+  .flipButton, .payButton {
+    padding: 0.8rem 1.5rem;
+    border-radius: 8px;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .flipButton {
+    background-color: transparent;
+    border: 1px solid var(--gold-color);
+    color: var(--gold-color);
+    flex: 1;
+  }
+  
+  .flipButton:hover {
+    background-color: rgba(212, 175, 55, 0.1);
+  }
+  
+  .payButton {
+    background: var(--gold-gradient);
+    color: #000;
+    flex: 2;
+  }
+  
+  .payButton:hover {
+    box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4);
+    transform: translateY(-2px);
+  }
+  
+  .payButton:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+  }
+  
+ 
+  @media (prefers-color-scheme: dark) {
+    .cardFront {
+      background: var(--dark-mode-card);
+      color: var(--dark-mode-text);
+    }
+    
+    .cardBack {
+      background: var(--dark-mode-card);
+    }
+    
+    .cardHolder, .cardExpiry {
+      color: rgba(0, 0, 0, 0.8);
+    }
+    
+    .cardNumber {
+      background-color: rgba(0, 0, 0, 0.1);
+    }
+    
+    .bankName {
+      color: #121212;
+    }
+    
+    .cardBackInfo {
+      color: var(--dark-mode-text);
+    }}
