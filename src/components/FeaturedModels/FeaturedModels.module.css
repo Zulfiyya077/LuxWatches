@@ -3,6 +3,7 @@
   transition: all 0.5s ease;
   overflow: hidden;
   position: relative;
+
 }
 
 .watchesShowcase.light {
@@ -70,7 +71,7 @@
 .watchesGrid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 3rem;
+  gap: 2rem;
   max-width: 1400px;
   margin: 0 auto;
   position: relative;
@@ -80,7 +81,7 @@
 /* Flip Card Styling */
 .flipCard {
   perspective: 1500px;
-  height: 550px;
+  height: 650px;
   cursor: pointer;
   position: relative;
 }
@@ -382,19 +383,21 @@
 /* Button Container */
 .buttonContainer {
   display: flex;
-  gap: 1rem;
+  /* gap: 1rem; */
   align-items: center;
   margin-top: auto;
+  width: 230px;
 }
 
 .buyButton {
+  width: 60px;
   background: linear-gradient(135deg, #d4af37, #f8e796);
   border: none;
   color: #111;
   padding: 0.9rem 1.8rem;
   border-radius: 30px;
   font-weight: 600;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   cursor: pointer;
   transition: all 0.3s ease;
   flex: 1;
@@ -513,7 +516,7 @@
 }
 
 /* Responsive Styles */
-@media (max-width: 1200px) {
+@media (max-width: 1390px) {
   .watchesGrid {
     grid-template-columns: repeat(3, 1fr);
     gap: 2rem;
@@ -524,14 +527,23 @@
   }
   
   .flipCard {
-    height: 520px;
+    height: 560px;
   }
   
   .watchImageWrapper {
-    height: 350px;
+    height: 300px;
   }
 }
-
+@media (max-width: 1200px) {
+  .watchesGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+  
+  .watchInfo {
+    padding-top: 1.5rem;
+  }
+}
 @media (max-width: 992px) {
   .watchesGrid {
     grid-template-columns: repeat(2, 1fr);
@@ -543,21 +555,35 @@
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 770px) {
   .watchesShowcase {
-    padding: 4rem 1.5rem;
+    padding: 3rem 1rem;
+  }
+  
+  .watchesGrid {
+    grid-template-columns: 1fr;
   }
   
   .sectionTitle {
-    font-size: 2.2rem;
+    font-size: 1.8rem;
   }
   
   .watchImageWrapper {
-    height: 320px;
+    height: 300px;
   }
   
-  .flipCard {
-    height: 500px;
+  .watchName {
+    font-size: 1.4rem;
+  }
+  
+  .watchPrice {
+    font-size: 1.6rem;
+  }
+  
+  .buyButton {
+    width: 70px;
+    padding: 0.8rem 1rem;
+    font-size: 0.8rem;
   }
 }
 
@@ -587,6 +613,7 @@
   }
   
   .buyButton {
+    width: 70px;
     padding: 0.8rem 1rem;
     font-size: 0.8rem;
   }

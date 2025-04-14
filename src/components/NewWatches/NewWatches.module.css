@@ -1012,7 +1012,8 @@
     }
     
     .backButton {
-      font-size: 0.7rem;
+        width: 50px;
+      font-size: 0.6rem;
       padding: 0.3rem 0;
       margin-bottom: 0.5rem;
     }
@@ -1053,7 +1054,7 @@
     }
     
     .priceLabel {
-      font-size: 0.75rem;
+      font-size: 0.5rem;
     }
     
     /* Mövcudluq məlumatı */

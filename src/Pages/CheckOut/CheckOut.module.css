@@ -1,241 +1,497 @@
+/* src/pages/Checkout/Checkout.module.css */
 :root {
-    --gold-color: #d4af37;
-    --gold-gradient: linear-gradient(135deg, #d4af37, #f9d383, #d4af37);
-    --light-mode-card: linear-gradient(145deg, #000000, #1a1a1a); /* Changed to black */
-    --light-mode-text: #ffffff;
-    --dark-mode-card: linear-gradient(145deg, #f9d383, #d4af37);
-    --dark-mode-text: #000000;
-    --card-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-  }
-  
+  --gold: #d4af37;
+  --dark-gold: #b8860b;
+  --premium-gold: #ffd700;
+  --light-gold: #f1c40f;
+  --deep-green: #004d40;
+  --light-green: #00695c;
+  --burgundy: #800020;
+  --light-burgundy: #a52a2a;
+  --black: #1a1a1a;
+  --off-white: #f5f5f5;
+  --cream: #f8f6ea;
+  --metallic-gradient: linear-gradient(145deg, #e6c567, #d4af37, #b8860b);
+}
 
-  .checkoutContainer {
-    padding: 2rem;
-    max-width: 500px;
-    margin: 0 auto;
-    font-family: 'Helvetica Neue', sans-serif;
-  }
-  
+.checkoutContainer {
+  max-width: 1000px;
+  margin: 2rem auto;
+  padding: 0 1.5rem;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+}
 
+.form {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2.5rem;
+}
+
+.orderSummary {
+  background: var(--black);
+  color: var(--off-white);
+  border-radius: 12px;
+  padding: 1.8rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--gold);
+}
+
+.orderSummary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, var(--burgundy), var(--premium-gold), var(--deep-green));
+  background-size: 300% 300%;
+  animation: gradientBorder 6s linear infinite;
+}
+
+.orderSummary::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 120px;
+  height: 120px;
+  background: var(--gold);
+  opacity: 0.05;
+  border-radius: 50%;
+  filter: blur(30px);
+  z-index: 0;
+}
+
+@keyframes gradientBorder {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.orderSummary h2 {
+  margin-top: 0;
+  font-size: 1.6rem;
+  font-weight: 600;
+  position: relative;
+  padding-bottom: 15px;
+  color: var(--premium-gold);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.orderSummary h2::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 80px;
+  height: 2px;
+  background: var(--metallic-gradient);
+  border-radius: 2px;
+}
+
+.summaryDetails {
+  margin-top: 1.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+.summaryRow {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(212, 175, 55, 0.2); /* semi-transparent gold */
+  font-size: 1.05rem;
+  transition: all 0.2s ease;
+}
+
+.summaryRow:hover {
+  background: rgba(212, 175, 55, 0.05);
+  border-radius: 6px;
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+.totalRow {
+  border-bottom: none;
+  margin-top: 1.2rem;
+  padding-top: 1.2rem;
+  border-top: 2px solid var(--gold);
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+
+.totalRow:hover {
+  background: transparent;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.discountAmount {
+  color: #e74c3c;
+  font-weight: 500;
+  text-shadow: 0 0 10px rgba(231, 76, 60, 0.2);
+}
+
+.couponCode {
+  font-size: 0.85rem;
+  background: rgba(212, 175, 55, 0.15);
+  color: var(--premium-gold);
+  padding: 3px 8px;
+  border-radius: 4px;
+  margin: 0 4px;
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.finalAmount {
+  color: var(--premium-gold);
+  font-weight: 700;
+  position: relative;
+  text-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+}
+
+.finalAmount::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  width: 100%;
+  height: 2px;
+  background: var(--metallic-gradient);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s ease;
+}
+
+.finalAmount:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.card {
+  margin: 2rem 0;
+}
+
+.cardInner {
+  position: relative;
+  width: 100%;
+  height: 200px; /* Reduced height for more standard card size */
+  text-align: center;
+  transition: box-shadow 0.3s ease;
+}
+
+.cardFront {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(145deg, var(--deep-green), var(--light-green));
+  border-radius: 16px;
+  padding: 1.5rem;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 1px solid var(--gold);
+  overflow: hidden;
+}
+
+.cardFront::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, rgba(0, 0, 0, 0) 70%);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+}
+
+.card:hover .cardFront::before {
+  opacity: 1;
+}
+
+.cardChip {
+  width: 50px;
+  height: 38px;
+  background: var(--metallic-gradient);
+  border-radius: 6px;
+  position: relative;
+  margin-bottom: 15px;
+  align-self: flex-start;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.cardChip::before, .cardChip::after {
+  content: '';
+  position: absolute;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 2px;
+}
+
+.cardChip::before {
+  width: 60%;
+  height: 6px;
+  top: 10px;
+  left: 20%;
+}
+
+.cardChip::after {
+  width: 60%;
+  height: 6px;
+  bottom: 10px;
+  left: 20%;
+}
+
+.cardLogo {
+  align-self: flex-end;
+  position: relative;
+}
+
+.bankName {
+  font-size: 0.95rem;
+  color: var(--premium-gold);
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  opacity: 0.95;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.bankName::before {
+  content: '';
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  background: var(--metallic-gradient);
+  right: -35px;
+  top: -3px;
+  border-radius: 50%;
+  opacity: 0.8;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.cardNumber {
+  background: rgba(255, 255, 255, 0.12);
+  padding: 15px;
+  border-radius: 8px;
+  margin-top: auto;
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  backdrop-filter: blur(2px);
+  transition: all 0.3s ease;
+}
+
+.card:hover .cardNumber {
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(212, 175, 55, 0.4);
+}
+
+.error {
+  color: var(--light-burgundy);
+  text-align: center;
+  margin: 1rem 0;
+  padding: 12px;
+  background: rgba(128, 0, 32, 0.1);
+  border-radius: 8px;
+  border-left: 3px solid var(--burgundy);
+  animation: shakeError 0.5s ease-in-out;
+  box-shadow: 0 2px 8px rgba(128, 0, 32, 0.1);
+}
+
+@keyframes shakeError {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-5px); }
+  40%, 80% { transform: translateX(5px); }
+}
+
+.cardActions {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.payButton {
+  padding: 14px 45px;
+  background: linear-gradient(135deg, var(--burgundy), var(--light-burgundy));
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.15rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 6px 15px rgba(128, 0, 32, 0.3);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border: 1px solid var(--gold);
+  z-index: 1;
+}
+
+.payButton::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: all 0.6s ease;
+  z-index: -1;
+}
+
+.payButton:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(128, 0, 32, 0.4);
+}
+
+.payButton:hover::before {
+  left: 100%;
+}
+
+.payButton:disabled {
+  background: #95a5a6;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+  border: none;
+}
+
+.emptyCartMessage {
+  text-align: center;
+  padding: 3.5rem 2.5rem;
+  background: var(--black);
+  color: var(--cream);
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  margin: 2rem auto;
+  max-width: 600px;
+  border: 1px solid var(--gold);
+}
+
+.emptyCartMessage h2 {
+  color: var(--premium-gold);
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.emptyCartMessage p {
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+  color: var(--off-white);
+  line-height: 1.5;
+}
+
+.shopButton {
+  padding: 12px 35px;
+  background: linear-gradient(135deg, var(--deep-green), var(--light-green));
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.05rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 1.5rem;
+  transition: all 0.3s;
+  box-shadow: 0 6px 15px rgba(0, 77, 64, 0.3);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border: 1px solid var(--gold);
+  position: relative;
+  overflow: hidden;
+}
+
+.shopButton::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: all 0.6s ease;
+  z-index: -1;
+}
+
+.shopButton:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0, 77, 64, 0.4);
+}
+
+.shopButton:hover::before {
+  left: 100%;
+}
+
+.loadingDots {
+  display: inline-block;
+  margin-left: 8px;
+}
+
+.loadingDots span {
+  display: inline-block;
+  margin-left: 2px;
+  color: var(--premium-gold);
+  animation: loadingDot 1.4s infinite both;
+}
+
+.loadingDots span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.loadingDots span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes loadingDot {
+  0% {
+    opacity: 0.2;
+    transform: translateY(0);
+  }
+  20% {
+    opacity: 1;
+    transform: translateY(-3px);
+  }
+  40% {
+    opacity: 0.2;
+    transform: translateY(0);
+  }
+}
+
+/* Media queries */
+@media (max-width: 768px) {
   .form {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
+    grid-template-columns: 1fr;
   }
   
-  .totalAmount {
-    text-align: center;
-    margin-bottom: 1rem;
-  }
-  
-  .totalAmount h2 {
-    font-size: 1.5rem;
-    color: var(--gold-color);
-  }
-  
-
-  .card {
-    width: 100%;
-    height: 200px;
-    perspective: 1000px;
-    margin-bottom: 1rem;
-  }
-  
-  .cardInner {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    transition: transform 0.8s;
-    transform-style: preserve-3d;
-  }
-  
-  .card.flipped .cardInner {
-    transform: rotateY(180deg);
-  }
-  
-  .cardFront, .cardBack {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    backface-visibility: hidden;
-    border-radius: 16px;
-    padding: 1.5rem;
-    box-shadow: var(--card-shadow);
-  }
-  
-
   .cardFront {
-    background: var(--light-mode-card);
-    color: var(--light-mode-text);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    padding: 1.2rem;
   }
   
   .cardChip {
     width: 45px;
     height: 35px;
-    background: var(--gold-gradient);
-    border-radius: 6px;
-    margin-bottom: 1rem;
   }
   
-  .cardLogo {
-    position: absolute;
-    top: 1.5rem;
-    right: 1.5rem;
+  .summaryRow {
+    font-size: 1rem;
   }
   
-  .bankName {
-    font-size: 0.75rem;
-    font-weight: bold;
-    color: var(--gold-color);
-    text-transform: uppercase;
-  }
-  
-  .cardNumber {
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-    padding: 0.75rem;
-    border-radius: 8px;
-    background-color: rgba(255, 255, 255, 0.1);
-  }
-  
-  .cardDetails {
-    display: flex;
-    justify-content: space-between;
-    font-size: 0.7rem;
-    margin-top: 1rem;
-  }
-  
-  .cardHolder, .cardExpiry {
-    color: rgba(255, 255, 255, 0.8);
-    font-size: 0.75rem;
-  }
-  
- 
-  .cardBack {
-    background: var(--light-mode-card);
-    transform: rotateY(180deg);
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .cardStrip {
-    width: 100%;
-    height: 40px;
-    background-color: #000;
-    margin: 20px 0;
-  }
-  
-  .cardCvv {
-    background-color: #fff;
-    height: 40px;
-    margin-left: auto;
-    margin-right: 1rem;
-    width: 60%;
-    display: flex;
-    flex-direction: column;
-    border-radius: 4px;
-    overflow: hidden;
-  }
-  
-  .cvvTitle {
-    color: #333;
-    font-size: 0.7rem;
-    padding: 4px 8px;
-  }
-  
-  .cvvBand {
-    height: 24px;
-    background-color: #eee;
-    position: relative;
-  }
-  
-  .cvvBand::after {
-    content: "***";
-    position: absolute;
-    right: 10px;
-    top: 4px;
-    color: #333;
-    font-size: 0.9rem;
-    letter-spacing: 2px;
-  }
-  
-  .cardBackInfo {
-    color: var(--light-mode-text);
-    font-size: 0.7rem;
-    margin-top: 1rem;
-    text-align: center;
-  }
-  
-  /* Buttons styles */
-  .cardActions {
-    display: flex;
-    justify-content: space-between;
-    gap: 1rem;
-  }
-  
-  .flipButton, .payButton {
-    padding: 0.8rem 1.5rem;
-    border-radius: 8px;
-    border: none;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-  }
-  
-  .flipButton {
-    background-color: transparent;
-    border: 1px solid var(--gold-color);
-    color: var(--gold-color);
-    flex: 1;
-  }
-  
-  .flipButton:hover {
-    background-color: rgba(212, 175, 55, 0.1);
+  .totalRow {
+    font-size: 1.15rem;
   }
   
   .payButton {
-    background: var(--gold-gradient);
-    color: #000;
-    flex: 2;
+    width: 100%;
+    padding: 14px 20px;
   }
-  
-  .payButton:hover {
-    box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4);
-    transform: translateY(-2px);
-  }
-  
-  .payButton:disabled {
-    background: #ccc;
-    cursor: not-allowed;
-  }
-  
- 
-  @media (prefers-color-scheme: dark) {
-    .cardFront {
-      background: var(--dark-mode-card);
-      color: var(--dark-mode-text);
-    }
-    
-    .cardBack {
-      background: var(--dark-mode-card);
-    }
-    
-    .cardHolder, .cardExpiry {
-      color: rgba(0, 0, 0, 0.8);
-    }
-    
-    .cardNumber {
-      background-color: rgba(0, 0, 0, 0.1);
-    }
-    
-    .bankName {
-      color: #121212;
-    }
-    
-    .cardBackInfo {
-      color: var(--dark-mode-text);
-    }}
+}

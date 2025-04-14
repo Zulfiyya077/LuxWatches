@@ -92,7 +92,9 @@ const AdminDashboard = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [error, setError] = useState("");
   const [blogs, setBlogs] = useState([]);
-
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, []);
   const [blogFormData, setBlogFormData] = useState({
     title: "",
     date: new Date().toISOString().split("T")[0],
@@ -117,11 +119,10 @@ const AdminDashboard = () => {
       product.model?.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-  // Filtrlənmiş istifadəçilər
   const filteredUsers = users.filter(
     (user) =>
       user.email?.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      user.user_metadata?.name?.toLowerCase().includes(searchTerm.toLowerCase())
+      user.name?.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   // Filtrlənmiş bloglar
@@ -157,54 +158,30 @@ const AdminDashboard = () => {
       }
     };
 
-    // İstifadəçiləri əldə etmək
- // İstifadəçiləri əldə etmək
-const fetchUsers = async () => {
-    setIsLoading(true);
-    try {
-      // Supabase auth.admin əvəzinə auth metodu vasitəsilə 
-      const { data: sessionData, error: sessionError } = await supabase.auth.getSession();
-      
-      if (sessionError) throw sessionError;
-  
-      if (sessionData?.session) {
-        // Admin rolunda olduğunu yoxlayırıq (əgər lazımdırsa)
-        const { data: userData, error: userError } = await supabase.auth.getUser();
+    const fetchUsers = async () => {
+      setIsLoading(true);
+      try {
+        // Profiles cədvəlindən bütün istifadəçiləri çəkirik
+        const { data: profilesData, error: profilesError } = await supabase
+          .from('profiles')
+          .select('*');
         
-        if (userError) throw userError;
-  
-        // Bütün istifadəçiləri əldə etmək üçün custom function çağırırıq
-        // Bu funksiyanı Supabase edge functions olaraq yaratmalısınız
-        // Və ya sadəcə testlər üçün nümunə istifadəçilər siyahısını göstərə bilərsiniz
-        const { data, error } = await supabase.functions.invoke('get-all-users');
+        if (profilesError) throw profilesError;
         
-        if (error) {
-          // Əgər funksiya mövcud deyilsə, və ya səhv varsa default nümunə istifadəçilər
-          console.warn("Could not fetch users from functions, using mock data");
-          setUsers([
-            { id: 1, email: 'admin@example.com', user_metadata: { name: 'Admin User', role: 'admin' }, created_at: new Date().toISOString() },
-            { id: 2, email: 'user1@example.com', user_metadata: { name: 'Test User 1', role: 'user' }, created_at: new Date().toISOString() },
-            { id: 3, email: 'user2@example.com', user_metadata: { name: 'Test User 2', role: 'user' }, created_at: new Date().toISOString() }
-          ]);
+        if (profilesData && profilesData.length > 0) {
+          setUsers(profilesData);
         } else {
-          setUsers(data);
+          console.warn("No users found in profiles table.");
+          setUsers([]);
         }
+      } catch (error) {
+        console.error("Error fetching users from profiles:", error);
+        setError("İstifadəçiləri yükləmək alınmadı. Zəhmət olmasa, bir az sonra yenidən cəhd edin.");
+        toast.error(t("failedToLoadUsers"));
+      } finally {
+        setIsLoading(false);
       }
-    } catch (error) {
-      console.error("Error fetching users:", error);
-      setError("Failed to load users. Please try again later.");
-      toast.error(t("failedToLoadUsers"));
-      
-      // Səhv olsa da, test məlumatlarını göstəririk
-      setUsers([
-        { id: 1, email: 'admin@example.com', user_metadata: { name: 'Admin User', role: 'admin' }, created_at: new Date().toISOString() },
-        { id: 2, email: 'user1@example.com', user_metadata: { name: 'Test User 1', role: 'user' }, created_at: new Date().toISOString() },
-        { id: 3, email: 'user2@example.com', user_metadata: { name: 'Test User 2', role: 'user' }, created_at: new Date().toISOString() }
-      ]);
-    } finally {
-      setIsLoading(false);
-    }
-  };
+    };
     
     // Blogları əldə etmək
     const fetchBlogs = async () => {
@@ -240,16 +217,17 @@ const fetchUsers = async () => {
     try {
       const { data, error } = await supabase
         .from("Products")
-        .insert([formData]);
-
+        .insert([formData])
+        .select(); // ✅ Əlavə et!
+  
       if (error) throw error;
-
+  
       if (!data || !data.length) {
         console.error("No data returned from the API");
         toast.error(t("noDataReturned"));
         return;
       }
-
+  
       setProducts([...products, { ...formData, id: data[0].id }]);
       toast.success(t("productAddedSuccess"));
       setModalOpen(false);
@@ -258,6 +236,7 @@ const fetchUsers = async () => {
       toast.error(t("failedToAddProduct"));
     }
   };
+  
 
   // Məhsul yeniləmək
   const updateProduct = async () => {
@@ -311,7 +290,6 @@ const fetchUsers = async () => {
     }
   };
 
-  // İstifadəçi silmək
   const deleteUser = async (userId) => {
     const { value: confirmed } = await Swal.fire({
       title: t("confirmDelete"),
@@ -321,29 +299,23 @@ const fetchUsers = async () => {
       confirmButtonText: t("yes"),
       cancelButtonText: t("no"),
     });
-
+  
     if (!confirmed) {
       toast.info(t("deleteCancelled"));
       return;
     }
-
+  
     try {
-      const response = await fetch(
-        `https://xdzksswqqqoonxbwcmup.supabase.co/auth/v1/admin/users/${userId}`,
-        {
-          method: "DELETE",
-          headers: {
-            Authorization: `Bearer ${process.env.REACT_APP_SUPABASE_SERVICE_KEY}`,
-            "Content-Type": "application/json",
-          },
-        }
-      );
-
-      if (!response.ok) {
-        throw new Error("Failed to delete user");
-      }
-
-      setUsers(users.filter((user) => user.id !== userId));
+      // Profiles cədvəlindən istifadəçini silirik
+      const { error: profileDeleteError } = await supabase
+        .from('profiles')
+        .delete()
+        .eq('user_id', userId);
+  
+      if (profileDeleteError) throw profileDeleteError;
+  
+      // İstifadəçini state-dən silirik
+      setUsers(users.filter((user) => user.user_id !== userId));
       toast.success(t("userDeletedSuccess"));
     } catch (error) {
       console.error("Error deleting user:", error);
@@ -607,7 +579,7 @@ const fetchUsers = async () => {
             onClick={() => setActiveTab("blogs")}
           >
             <Edit size={20} className={styles.navIcon} />
-            <span>{t("blogs")}</span>
+            <span>{t("blog")}</span>
           </div>
         </nav>
       </aside>
@@ -1048,36 +1020,36 @@ const fetchUsers = async () => {
           </tr>
         </thead>
         <tbody>
-          {filteredUsers.length > 0 ? (
-            filteredUsers.map((user) => (
-              <tr key={user.id}>
-                <td className={styles.td}>{user.id}</td>
-                <td className={styles.td}>
-                  {user.user_metadata?.name || "-"}
-                </td>
-                <td className={styles.td}>{user.email}</td>
-                <td className={styles.td}>{user.user_metadata?.role || t("user")}</td>
-                <td className={styles.td}>
-                  {new Date(user.created_at).toLocaleDateString()}
-                </td>
-                <td className={styles.td}>
-                  <button
-                    className={`${styles.actionButton} ${styles.deleteButton}`}
-                    onClick={() => deleteUser(user.id)}
-                  >
-                    <Trash2 size={16} />
-                  </button>
-                </td>
-              </tr>
-            ))
-          ) : (
-            <tr>
-              <td colSpan="6" className={styles.noData}>
-                {searchTerm ? t("noUsersFound") : t("noUsersAvailable")}
-              </td>
-            </tr>
-          )}
-        </tbody>
+  {filteredUsers.length > 0 ? (
+    filteredUsers.map((user) => (
+      <tr key={user.id}>
+        <td className={styles.td}>{user.id}</td>
+        <td className={styles.td}>
+          {user.name || "-"}
+        </td>
+        <td className={styles.td}>{user.email}</td>
+        <td className={styles.td}>{user.role || t("user")}</td>
+        <td className={styles.td}>
+          {user.created_at ? new Date(user.created_at).toLocaleDateString() : "-"}
+        </td>
+        <td className={styles.td}>
+          <button
+            className={`${styles.actionButton} ${styles.deleteButton}`}
+            onClick={() => deleteUser(user.user_id)}
+          >
+            <Trash2 size={16} />
+          </button>
+        </td>
+      </tr>
+    ))
+  ) : (
+    <tr>
+      <td colSpan="6" className={styles.noData}>
+        {searchTerm ? t("noUsersFound") : t("noUsersAvailable")}
+      </td>
+    </tr>
+  )}
+</tbody>
       </table>
     )}
   </div>

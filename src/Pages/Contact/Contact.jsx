@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, {useEffect, useContext, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ThemeContext } from '../../context/ThemeContext';
 import { ToastContainer, toast } from 'react-toastify';
@@ -13,7 +13,7 @@ const Contact = () => {
     email: '',
     message: ''
   });
-
+    
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({
@@ -22,6 +22,11 @@ const Contact = () => {
     }));
   };
 
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, []);
+  
   const handleSubmit = (e) => {
     e.preventDefault();
     

@@ -18,7 +18,7 @@ const Products = () => {
   const [viewMode, setViewMode] = useState("grid");
   const [filterOpen, setFilterOpen] = useState(false);
   const [filters, setFilters] = useState({
-    priceRange: [5000, 100000],
+    priceRange: [5000, 500000],
     onlyAvailable: false,
     onlyNew: false,
     onlyDiscounted: false,

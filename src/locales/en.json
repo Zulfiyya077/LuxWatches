@@ -316,8 +316,15 @@
     },
     "alreadyLoggedIn": "You are already logged in.",
     "anotherAccountActive": "Another account is currently active.",
-    "logoutFirst": "Please log out first."
-  },
+    "logoutFirst": "Please log out first.",
+  
+
+    
+    "successMessage": "Logged in successfully!",
+    "generalError": "An error occurred during login",
+    "invalidCredentials": "Incorrect email or password",
+    
+   
   "register": {
     "successMessage": "Registration successful! Welcome aboard.",
     "generalError": "Something went wrong. Please try again.",
@@ -362,7 +369,11 @@
     "nameOnCard": "Name on Card",
     "processing": "Processing...",
     "pay": "Pay",
-    "title": "Checkout Page"
+    "title": "Checkout Page",
+    "orderSummary": "Order Summary",
+    "discount": "Discount",
+    "subtotal": "Subtotal"
+   
   },
   
   "thankYou": {
@@ -384,27 +395,6 @@
   "errorTitle": "Page Not Found",
   "notFoundMessage": "Sorry, the page you are looking for does not exist.",
   "backToHome": "Back to Home",
-
-  "title": "Login",
-  
-  "emailPlaceholder": "Enter your email address",
-  "password": "Password",
-  "passwordPlaceholder": "Enter your password",
-  "forgotPassword": "Forgot your password?",
-  "submitButton": "Login",
-  "noAccount": "Don't have an account?",
-  "registerLink": "Register now",
-  "successMessage": "Successfully logged in!",
-  "generalError": "An error occurred during login",
-  "invalidCredentials": "Invalid email or password",
-  "bannerTitle": "Shop with confidence!",
-  "bannerSubtitle": "Return and exchange period extended to 30 days.",
-  "benefits": {
-    "secureAccount": "Secure account",
-    "orderHistory": "Order history",
-    "quickCheckout": "Fast checkout",
-    "exclusiveOffers": "Exclusive offers"
-  },
  
   "customer4Name": "Nigar Huseynova",
 
@@ -415,28 +405,8 @@
 
 
   "customer4Feedback": "Great design and quality products. I had a wonderful experience.",
-  "login": {
-    "title": "Login",
-    "email": "Email",
-    "emailPlaceholder": "Enter your email address",
-    "password": "Password",
-    "passwordPlaceholder": "Enter your password",
-    "forgotPassword": "Forgot password?",
-    "submitButton": "Login",
-    "noAccount": "Don't have an account?",
-    "registerLink": "Register",
-    "successMessage": "Logged in successfully!",
-    "generalError": "An error occurred during login",
-    "invalidCredentials": "Incorrect email or password",
-    "bannerTitle": "Shop with Confidence!",
-    "bannerSubtitle": "Return and exchange policy extended to 30 days.",
-    "benefits": {
-      "secureAccount": "Secure account",
-      "orderHistory": "Order history",
-      "quickCheckout": "Quick checkout",
-      "exclusiveOffers": "Exclusive offers"
-    }
-  },
+
+ 
   "hero_title1": "Rolex Collection",
   "hero_subtitle1": "The perfect blend of luxury and precision",
  
@@ -699,20 +669,50 @@
     "failedToUpdateBlog": "Failed to update blog",
     "blogDeletedSuccess": "Blog deleted successfully",
     "failedToDeleteBlog": "Failed to delete blog",
-  "cart": {
-    "title": "Your Cart",
-    "empty": "Your cart is empty.",
-    "remove": "Remove",
-    "total": "Total",
-    "checkout": "Checkout",
-    "itemRemoved": "Item removed from cart",
-    "quantityUpdated": "Quantity updated successfully"
-  },
   "errors": {
     "userFetch": "Error while getting user information",
     "cartUpdate": "Error updating cart"
-  }
-  }
+  },
+  "sort": {
+    "label": "Sort products:",
+    "price_asc": "Price: Low to High",
+    "price_desc": "Price: High to Low",
+    "name_asc": "Name: A - Z",
+    "name_desc": "Name: Z - A",
+    "discounted": "Discounted Products"
+  },
+  "adminDashboard": "Admin Dashboard",
+  "blogs1": {
+    "title": "Blogs About Rolex",
+    "noPosts": "No blog posts available at the moment.",
+    "readMore": "Read More",
+    "error": "Failed to load blog posts."
+  },
+  "coupon": {
+        "title": "Discount Coupon",
+        "apply": "Apply",
+        "checking": "Checking...",
+        "remove": "Remove Coupon",
+        "placeholder": "Enter coupon code",
+        "applied": "Coupon applied:",
+        "discount": "discount",
+        "invalid": "Invalid coupon code",
+        "error": "Error applying coupon. Please try again."
+      },
+   
+      "cart": {
+        "title": "Shopping Cart",
+        "empty": "Your cart is empty",
+        "remove": "Remove",
+        "checkout": "Proceed to Checkout",
+        "orderSummary": "Order Summary",
+        "discount": "Discount",
+        "subtotal": "Subtotal",
+        "total": "Total",
+        "itemRemoved": "Item removed from cart",
+        "quantityUpdated": "Quantity updated"
+      }
+    }}
   
   
   

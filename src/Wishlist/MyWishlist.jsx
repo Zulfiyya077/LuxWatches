@@ -12,7 +12,9 @@ const Wishlist = () => {
   const { theme } = useContext(ThemeContext);
   const isDarkTheme = theme === 'dark';
   const { t } = useTranslation();
-
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, []);
   useEffect(() => {
     setWishlistItems(items);
   }, [items]);

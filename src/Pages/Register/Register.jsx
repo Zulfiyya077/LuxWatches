@@ -100,6 +100,20 @@ const Register = () => {
         emailRedirectTo: `${window.location.origin}/login`,
         allowAutoLogin: false,
       });
+
+      if (data?.user) {
+        const { id, email } = data.user;
+      
+        await supabase.from('profiles').insert([
+          {
+            user_id: id,
+            name: 'Ad Soyad', // formdan ad soyad alırsansa burada əvəz et
+            email: email,
+            role: 'user',
+          },
+        ]);
+      }
+      
       
       if (signUpError) throw signUpError;
 

@@ -260,12 +260,19 @@
    
   "logout": "Çıxış",
   "checkout": {
+    "orderSummary": "Sifariş Məlumatı",
+    "discount": "Endirim",
+    "subtotal": "Aralıq cəm",
+  
+ 
+   
+    "pay": "Ödəniş et",
+    "processing": "İcra olunur...",
     "title": "Ödəniş",
     "total": "Cəmi: ${{amount}}",
     "cardHolder": "KART SAHİBİ",
     "nameOnCard": "AD SOYAD",
-    "pay": "Ödə",
-    "processing": "Gözləyin...",
+  
     "emptyCart": "Səbətiniz boşdur",
     "addItemsFirst": "Ödəniş etmək üçün əvvəlcə səbətinizə məhsul əlavə edin.",
     "returnToProducts": "Məhsullara qayıt",
@@ -354,26 +361,34 @@
 
   "customer4Feedback": "Gözəl dizayn və keyfiyyətli məhsullar. Əla təcrübə yaşadım.",
   "login": {
-    "title": "Daxil ol",
-    "email": "E-poçt",
-    "emailPlaceholder": "E-poçt ünvanınızı daxil edin",
+   
+    
+    "emailPlaceholder": "E-poçtunuzu daxil edin",
     "password": "Şifrə",
     "passwordPlaceholder": "Şifrənizi daxil edin",
-    "forgotPassword": "Şifrəni unutmusan?",
+    "forgotPassword": "Şifrəni unutmusunuz?",
     "submitButton": "Daxil ol",
     "noAccount": "Hesabınız yoxdur?",
     "registerLink": "Qeydiyyatdan keçin",
+    "bannerTitle": "Xoş gəlmisiniz!",
+    "bannerSubtitle": "Daxil olun və alış-verişə başlayın",
+    "benefits": {
+      "secureAccount": "Təhlükəsiz hesab qorunması",
+      "orderHistory": "Sifariş tarixçəsinə baxış",
+      "quickCheckout": "Sürətli ödəmə prosesi",
+      "exclusiveOffers": "Eksklüziv təkliflər və endirimlər"
+    },
+    "alreadyLoggedIn": "Siz artıq daxil olmusunuz.",
+    "anotherAccountActive": "Başqa bir hesab aktivdir.",
+    "logoutFirst": "Zəhmət olmasa əvvəlcə çıxış edin.",
+    "title": "Daxil ol",
+    "email": "E-poçt",
+    
     "successMessage": "Uğurla daxil oldunuz!",
     "generalError": "Giriş zamanı xəta baş verdi",
-    "invalidCredentials": "Yanlış e-poçt və ya şifrə",
-    "bannerTitle": "Arxayın al!",
-    "bannerSubtitle": "Məhsulun dəyişdirmə və geri qaytarma müddəti 30 günə uzandı.",
-    "benefits": {
-      "secureAccount": "Təhlükəsiz hesab",
-      "orderHistory": "Sifariş tarixçəsi",
-      "quickCheckout": "Sürətli alış-veriş",
-      "exclusiveOffers": "Eksklüziv təkliflər"
-    }
+    "invalidCredentials": "Yanlış e-poçt və ya şifrə"
+   
+ 
   },
   "hero_title1": "Rolex Kolleksiyası",
   "hero_subtitle1": "Lüks və dəqiqliyin mükəmməl birləşməsi",
@@ -393,28 +408,8 @@
   "retry": "Yenidən cəhd edin",
   "products_found": "məhsul tapıldı",
   "next_page": "Növbəti"
-,"loginet": "Daxil ol", "login": {
-  "title": "Hesabınıza daxil olun",
-  "email": "E-poçt ünvanı",
-  "emailPlaceholder": "E-poçtunuzu daxil edin",
-  "password": "Şifrə",
-  "passwordPlaceholder": "Şifrənizi daxil edin",
-  "forgotPassword": "Şifrəni unutmusunuz?",
-  "submitButton": "Daxil ol",
-  "noAccount": "Hesabınız yoxdur?",
-  "registerLink": "Qeydiyyatdan keçin",
-  "bannerTitle": "Xoş gəlmisiniz!",
-  "bannerSubtitle": "Daxil olun və alış-verişə başlayın",
-  "benefits": {
-    "secureAccount": "Təhlükəsiz hesab qorunması",
-    "orderHistory": "Sifariş tarixçəsinə baxış",
-    "quickCheckout": "Sürətli ödəmə prosesi",
-    "exclusiveOffers": "Eksklüziv təkliflər və endirimlər"
-  },
-  "alreadyLoggedIn": "Siz artıq daxil olmusunuz.",
-  "anotherAccountActive": "Başqa bir hesab aktivdir.",
-  "logoutFirst": "Zəhmət olmasa əvvəlcə çıxış edin."
-},
+,"loginet": "Daxil ol", 
+
 
 
   "newTimepieces2025": "2025 Yeni Saat Modelləri",
@@ -637,13 +632,7 @@
     "loginPrompt": "Şifrənizi xatırlayırsınız?",
     "registerPrompt": "Hesabınız yoxdur?"
   },
-  "buttons": {
-    "resetPassword": "Sıfırlama Linki Göndər",
-    "loading": "İşlənir...",
-    "login": "Daxil Ol",
-    "register": "Qeydiyyatdan Keç"
-  }
-,
+
 "auth": {
   "logo": {
     "alt": "Şirkət Loqosu"
@@ -755,19 +744,51 @@
 "failedToUpdateBlog": "Bloqun yenilənməsi alınmadı",
 "blogDeletedSuccess": "Bloq uğurla silindi",
 "failedToDeleteBlog": "Bloqun silinməsi alınmadı",
-"cart": {
-  "title": "Səbətiniz",
-  "empty": "Səbətiniz boşdur.",
-  "remove": "Sil",
-  "total": "Cəm",
-  "checkout": "Ödəniş et",
-  "itemRemoved": "Məhsul səbətdən silindi",
-  "quantityUpdated": "Məhsul miqdarı yeniləndi"
-},
+
 "errors": {
   "userFetch": "İstifadəçi məlumatları alınarkən xəta baş verdi",
   "cartUpdate": "Səbət yenilənərkən xəta baş verdi"
-}
+},
+"sort": {
+  "label": "Məhsulları sırala:",
+  "price_asc": "Qiymət: Aşağıdan Yuxarıya",
+  "price_desc": "Qiymət: Yuxarıdan Aşağıya",
+  "name_asc": "Ad: A - Z",
+  "name_desc": "Ad: Z - A",
+  "discounted": "Endirimli Məhsullar"
+},
+"blogs": "Bloqlar",
+"adminDashboard": "Admin Paneli",
+"blogs1": {
+    "title": "Rolex Haqqında Bloqlar",
+    "noPosts": "Hazırda blog məqalələri mövcud deyil.",
+    "readMore": "Daha Çox Oxu",
+    "error": "Blogları yükləmək mümkün olmadı."
+  },
+  "coupon": {
+    "title": "Endirim Kuponu",
+    "apply": "Tətbiq et",
+    "checking": "Yoxlanılır...",
+    "remove": "Kuponu sil",
+    "placeholder": "Kupon kodunu daxil edin",
+    "applied": "Kupon tətbiq edildi:",
+    "discount": "endirim",
+    "invalid": "Yanlış kupon kodu",
+    "error": "Kupon tətbiq edilərkən xəta baş verdi. Zəhmət olmasa yenidən cəhd edin."
+  },
+
+      "cart": {
+        "title": "Səbət",
+        "empty": "Səbətiniz boşdur",
+        "remove": "Sil",
+        "checkout": "Sifarişi tamamla",
+        "orderSummary": "Sifariş Məlumatı",
+        "discount": "Endirim",
+        "subtotal": "Aralıq cəm",
+        "total": "Ümumi məbləğ",
+        "itemRemoved": "Məhsul səbətdən silindi",
+        "quantityUpdated": "Miqdar yeniləndi"
+      }
 }
       
       

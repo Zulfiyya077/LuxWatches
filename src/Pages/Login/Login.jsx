@@ -63,7 +63,7 @@ const Login = () => {
     toast.dismiss(); // Mövcud toast-ları bağla
     toast.error(message, {
       position: "top-right",
-      autoClose: 3000, // 3 saniyə
+      autoClose: 2000, // 3 saniyə
       hideProgressBar: false,
       closeOnClick: true,
       pauseOnHover: true,
@@ -76,10 +76,11 @@ const Login = () => {
   };
 
   const showInfoToast = (message) => {
-    toast.dismiss(); // Mövcud toast-ları bağla
+     // Mövcud toast-ları bağla
+     toast.dismiss();
     toast.info(message, {
       position: "top-right",
-      autoClose: 3000, // 3 saniyə
+      autoClose: 2000, // 3 saniyə
       hideProgressBar: false,
       closeOnClick: true,
       pauseOnHover: true,
@@ -87,8 +88,9 @@ const Login = () => {
       progress: undefined,
       className: styles.infoToast,
       progressClassName: styles.infoToastProgress,
-      closeButton: true, // Bağlama düyməsini əlavə et
+      closeButton: true, 
     });
+    // toast.dismiss();
   };
 
   useEffect(() => {
@@ -105,7 +107,7 @@ const Login = () => {
 
   // Əgər digər istifadəçi girişdədirsə çıxış səhifəsinə yönləndir
   const handleLogout = () => {
-    navigate('/logout');
+    navigate('/');
   };
 
   const loadUser = async (userId) => {
@@ -226,7 +228,7 @@ const Login = () => {
       {/* Toastify Container - düzəldilmiş versiya */}
       <ToastContainer
         position="top-right"
-        autoClose={3000}
+        autoClose={2000}
         hideProgressBar={false}
         newestOnTop={true}
         closeOnClick

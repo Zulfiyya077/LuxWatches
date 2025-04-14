@@ -271,7 +271,7 @@ const Navbar = () => {
                 {isAdmin && (
                   <button 
                     onClick={goToAdminDashboard} 
-                    className={styles.adminButton} // We'll add this class in CSS
+                    className={styles.adminButton}
                   >
                     Admin
                   </button>
