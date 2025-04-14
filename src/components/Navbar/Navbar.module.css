@@ -31,10 +31,7 @@
 }
 
 .logoText {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: var(--gold-color);
-  letter-spacing: 2px;
+ width: 100px;
 }
 
 .logoAccent {
@@ -810,5 +807,391 @@
   .dropdownItem {
     padding: 12px;
     font-size: 0.9rem; /* Adjust item size for mobile */
+  }
+}
+/* Add this to your Navbar.module.css file */
+
+/* Admin Button */
+.adminButton {
+  background-color: var(--gold-color, #d4af37);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 6px 12px;
+  margin-left: 10px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.adminButton:hover {
+  background-color: var(--accent-hover, #b8960e);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Dark theme adjustments */
+.dark .adminButton {
+  background-color: #f7ef8a;
+  color: #1a1a1a;
+}
+
+.dark .adminButton:hover {
+  background-color: #f7d338;
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  .adminButton {
+    padding: 4px 8px;
+    font-size: 0.8rem;
+    margin-left: 6px;
+  }
+}
+
+/* Very small screens */
+@media (max-width: 480px) {
+  .userMenu {
+    flex-wrap: wrap;
+  }
+  
+  .adminButton {
+    order: 3;
+    margin-top: 5px;
+    margin-left: 0;
+    width: 100%;
+  }
+}
+
+/* Əsas navbar və container üçün */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 70px;
+}
+
+/* Mobil və tablet ekranlar üçün konteyner ölçüsünü uyğunlaşdır */
+@media (max-width: 992px) {
+  .container {
+    padding: 0 0.75rem;
+  }
+}
+
+/* Logo ölçüsü */
+.logoText {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--gold-color);
+  letter-spacing: 2px;
+}
+
+.logoAccent {
+  font-size: 0.875rem;
+  color: var(--text-color);
+  letter-spacing: 5px;
+}
+
+/* Tablet üçün */
+@media (max-width: 992px) {
+  .logoText {
+    font-size: 1.3rem;
+    letter-spacing: 1px;
+  }
+  
+  .logoAccent {
+    font-size: 0.75rem;
+    letter-spacing: 3px;
+  }
+}
+
+/* Mobil üçün */
+@media (max-width: 576px) {
+  .logoText {
+    font-size: 1.1rem;
+    letter-spacing: 0.5px;
+  }
+  
+  .logoAccent {
+    font-size: 0.7rem;
+    letter-spacing: 2px;
+  }
+}
+
+/* NavLink-lərin düzgün yerləşdirilməsi üçün */
+.navLinks {
+  display: none;
+}
+
+@media (min-width: 992px) {
+  .navLinks {
+    display: flex;
+    gap: 2rem;
+    margin-right: 2rem;
+  }
+}
+
+/* Mobil menyu açıldığında */
+@media (max-width: 991px) {
+  .navLinks {
+    position: fixed;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    height: 0;
+    background-color: var(--secondary-bg);
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    overflow: hidden;
+    transition: height 0.3s;
+    box-shadow: var(--box-shadow);
+    z-index: 1001; /* Digər elementlərin üzərində olması üçün */
+  }
+  
+  .navLinks.active {
+    height: auto;
+    max-height: 90vh; /* Maksimum hündürlük təyin edərək daşmaların qarşısını alırıq */
+    padding: 1rem 0;
+    display: flex;
+    overflow-y: auto; /* Əgər menyu çox uzundursa, sürüşdürmək mümkün olsun */
+  }
+  
+  .navLink {
+    width: 100%;
+    text-align: center;
+    padding: 1rem 0;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+  }
+}
+
+/* NavActions bölməsi - dil seçimi, tema dəyişmə, səbət, istifadəçi menyusu */
+.navActions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* Tablet və mobil cihazlar üçün kiçildilmiş boşluqlar */
+@media (max-width: 768px) {
+  .navActions {
+    gap: 0.5rem;
+  }
+}
+
+/* Dil seçimi */
+.langDropdown {
+  position: relative;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  border: none;
+  border-radius: 5px;
+}
+
+.langSelected {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 0.25rem 0.5rem;
+}
+
+/* Mobil cihazlar üçün dil seçimi ölçüsünü azalt */
+@media (max-width: 768px) {
+  .langSelected {
+    font-size: 0.85rem;
+    padding: 0.2rem 0.4rem;
+    gap: 0.3rem;
+  }
+}
+
+/* Dil menyu düzgün yerləşdirilməsi */
+.langMenu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  min-width: 80px; /* Minimum genişlik təyin et */
+  background-color: var(--dropdown-background-light);
+  border: 1px solid var(--border-color-light);
+  border-radius: 5px;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+}
+
+/* Səbət və Sevimlilər ikonlarının düzgün görünməsi */
+.cartIconContainer, .favIconContainer {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cartCounter {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background-color: #d43737; 
+  color: white;
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+  font-size: 12px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* İstifadəçi menyusunun düzgün yerləşdirilməsi */
+.userMenu {
+  position: relative;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+/* Mobil cihazlar üçün istifadəçi menyusunu daha kompakt et */
+@media (max-width: 768px) {
+  .userMenu {
+    margin-left: 5px;
+  }
+  
+  .userAvatar {
+    width: 35px;
+    height: 35px;
+    font-size: 1rem;
+  }
+  
+  .greeting {
+    display: none; /* Mobil cihazlarda salamlama mesajını gizlət */
+  }
+}
+
+/* Çox kiçik ekranlar üçün daha da kompakt et */
+@media (max-width: 360px) {
+  .userAvatar {
+    width: 30px;
+    height: 30px;
+    font-size: 0.9rem;
+    margin-right: 5px;
+  }
+  
+  .themeToggle {
+    font-size: 1rem;
+    padding: 0.15rem;
+  }
+  
+  .cartLink, .favLink {
+    font-size: 16px;
+  }
+}
+
+/* İstifadəçi dropdown menyusu */
+.userDropdown {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  background-color: var(--secondary-bg, white);
+  border: 1px solid var(--border-color, #eaeaea);
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+  width: 200px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+}
+
+/* Mobil cihazlar üçün dropdown menyunu düzəlt */
+@media (max-width: 480px) {
+  .userDropdown {
+    width: 150px; /* Kiçik ekranlarda eni azalt */
+    right: -20px; /* Sağa doğru düzəliş */
+  }
+}
+
+/* Admin düyməsi */
+.adminButton {
+  background-color: var(--gold-color, #d4af37);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 6px 12px;
+  margin-left: 10px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap; /* Mətni sındırmamaq üçün */
+}
+
+/* Mobil cihazlar üçün admin düyməsini kiçilt */
+@media (max-width: 768px) {
+  .adminButton {
+    padding: 4px 8px;
+    font-size: 0.8rem;
+    margin-left: 6px;
+  }
+}
+
+/* Çox kiçik ekranlar üçün */
+@media (max-width: 360px) {
+  .adminButton {
+    padding: 3px 6px;
+    font-size: 0.75rem;
+    margin-left: 4px;
+  }
+}
+
+/* İcon-lar və tema düyməsi üçün */
+.themeToggle, .cartLink, .favLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Kiçik ekranlarda hamburger menyu düyməsi */
+.mobileMenuToggle {
+  display: block;
+  background: none;
+  border: none;
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  position: relative;
+  margin-left: 1rem;
+}
+
+@media (min-width: 992px) {
+  .mobileMenuToggle {
+    display: none;
+  }
+}
+
+/* Ən kiçik ekranlarda menuWrapper-in düzgün görünməsi üçün */
+@media (max-width: 360px) {
+  .menuWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-wrap: nowrap;
   }
 }

@@ -15,6 +15,8 @@
   --error-color-light: #f44336;
   --success-bg-light: rgba(76, 175, 80, 0.1);
   --success-color-light: #4caf50;
+  --info-bg-light: rgba(33, 150, 243, 0.1);
+  --info-color-light: #2196f3;
   --shadow-light: 0 15px 50px rgba(0, 0, 0, 0.1);
   --logo-primary-light: #111;
   --logo-accent-light: #8B7D4B;
@@ -34,6 +36,8 @@
   --error-color-dark: #ff6b6b;
   --success-bg-dark: rgba(76, 175, 80, 0.2);
   --success-color-dark: #69f0ae;
+  --info-bg-dark: rgba(1, 30, 54, 0.2);
+  --info-color-dark: #64b5f6;
   --shadow-dark: 0 15px 50px rgba(0, 0, 0, 0.3);
   --logo-primary-dark: #f0f0f0;
   --logo-accent-dark: #F7EF8A;
@@ -273,6 +277,54 @@
   margin-top: 1rem;
 }
 
+/* Already logged in message & logout button */
+.alreadyLoggedIn {
+  margin: 2rem 0;
+  padding: 1.5rem;
+  background-color: var(--info-bg-light);
+  border-radius: 8px;
+  text-align: center;
+  color: var(--text-primary-light);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+[data-theme='dark'] .alreadyLoggedIn {
+  background-color: var(--info-bg-dark);
+  color: var(--text-primary-dark);
+}
+
+.alreadyLoggedIn p {
+  margin-bottom: 1.5rem;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.logoutButton {
+  padding: 0.8rem 1.5rem;
+  background: var(--accent-gradient);
+  background-size: 200% auto;
+  border: none;
+  border-radius: 8px;
+  color: #000;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.5s;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
+}
+
+[data-theme='dark'] .logoutButton {
+  background: var(--accent-gradient-dark);
+  box-shadow: 0 4px 15px rgba(247, 239, 138, 0.4);
+}
+
+.logoutButton:hover {
+  background-position: right center;
+  transform: translateY(-2px);
+}
+
 [data-theme='dark'] .submitButton {
   background: var(--accent-gradient-dark);
   box-shadow: 0 4px 15px rgba(247, 239, 138, 0.4);
@@ -323,34 +375,68 @@
   100% { width: 0; }
 }
 
-.error {
-  background-color: var(--error-bg-light);
-  color: var(--error-color-light);
-  padding: 0.8rem;
-  border-radius: 8px;
-  margin-bottom: 1.5rem;
+/* Toast styles */
+.errorToast {
+  background-color: var(--error-bg-light) !important;
+  color: var(--error-color-light) !important;
+  border-left: 4px solid var(--error-color-light) !important;
   font-size: 0.9rem;
-  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-[data-theme='dark'] .error {
-  background-color: var(--error-bg-dark);
-  color: var(--error-color-dark);
+.errorToastProgress {
+  background: var(--error-color-light) !important;
 }
 
-.success {
-  background-color: var(--success-bg-light);
-  color: var(--success-color-light);
-  padding: 0.8rem;
-  border-radius: 8px;
-  margin-bottom: 1.5rem;
+[data-theme='dark'] .errorToast {
+  background-color: var(--error-bg-dark) !important;
+  color: var(--error-color-dark) !important;
+  border-left: 4px solid var(--error-color-dark) !important;
+}
+
+[data-theme='dark'] .errorToastProgress {
+  background: var(--error-color-dark) !important;
+}
+
+.successToast {
+  background-color: var(--success-bg-light) !important;
+  color: var(--success-color-light) !important;
+  border-left: 4px solid var(--success-color-light) !important;
   font-size: 0.9rem;
-  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-[data-theme='dark'] .success {
-  background-color: var(--success-bg-dark);
-  color: var(--success-color-dark);
+.successToastProgress {
+  background: var(--success-color-light) !important;
+}
+
+[data-theme='dark'] .successToast {
+  background-color: var(--success-bg-dark) !important;
+  color: var(--success-color-dark) !important;
+  border-left: 4px solid var(--success-color-dark) !important;
+}
+
+[data-theme='dark'] .successToastProgress {
+  background: var(--success-color-dark) !important;
+}
+
+.infoToast {
+  background-color: var(--info-bg-light) !important;
+  color: var(--info-color-light) !important;
+  border-left: 4px solid var(--info-color-light) !important;
+  font-size: 0.9rem;
+}
+
+.infoToastProgress {
+  background: var(--info-color-light) !important;
+}
+
+[data-theme='dark'] .infoToast {
+  background-color: var(--info-bg-dark) !important;
+  color: var(--info-color-dark) !important;
+  border-left: 4px solid var(--info-color-dark) !important;
+}
+
+[data-theme='dark'] .infoToastProgress {
+  background: var(--info-color-dark) !important;
 }
 
 .registerPrompt {
@@ -527,10 +613,28 @@
   margin-left: 0.8rem;
 }
 
-/* Responsive design */
+/* Enhanced Responsive design */
+@media (max-width: 1200px) {
+  .formWrapper {
+    max-width: 90%;
+  }
+  
+  .bannerContent h2 {
+    font-size: 2.2rem;
+  }
+  
+  .title {
+    font-size: 2rem;
+  }
+  
+  .logo {
+    font-size: 1.6rem;
+  }
+}
+
 @media (max-width: 992px) {
   .formWrapper {
-    flex-direction: column-reverse;
+    flex-direction: column;
     max-width: 600px;
   }
   
@@ -544,11 +648,161 @@
   }
   
   .bannerContent h2 {
-    font-size: 2rem;
+    font-size: 1.8rem;
+  }
+  
+  .bannerContent p {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
   }
   
   .benefitsList li {
     font-size: 0.9rem;
+    margin-bottom: 0.8rem;
+  }
+  
+  .benefitIcon {
+    width: 25px;
+    height: 25px;
+    font-size: 1rem;
+  }
+  
+  .formContainer {
+    padding: 2.5rem;
+  }
+  
+  .title {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .submitButton {
+    padding: 0.9rem;
+    font-size: 0.9rem;
+  }
+  
+  .inputWrapper input {
+    padding: 0.8rem 1rem 0.8rem 2.5rem;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 1.5rem;
+  }
+  
+  .formWrapper {
+    max-width: 500px;
+  }
+  
+  .formContainer {
+    padding: 2rem;
+  }
+  
+  .logo {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .title {
+    font-size: 1.6rem;
+  }
+  
+  .title::after {
+    width: 50px;
+    height: 2px;
+  }
+  
+  .formGroup label {
+    font-size: 0.9rem;
+  }
+  
+  .inputWrapper input {
+    padding: 0.7rem 1rem 0.7rem 2.2rem;
+    font-size: 0.85rem;
+  }
+  
+  .inputIcon {
+    font-size: 0.8rem;
+  }
+  
+  .forgotPassword span {
+    font-size: 0.8rem;
+  }
+  
+  .submitButton {
+    padding: 0.8rem;
+    font-size: 0.85rem;
+    letter-spacing: 0.5px;
+  }
+  
+  .registerPrompt {
+    font-size: 0.85rem;
+    margin-top: 1.5rem;
+  }
+  
+  .registerLink {
+    font-size: 0.85rem;
+  }
+  
+  .banner {
+    max-height: 250px;
+  }
+  
+  .bannerContent {
+    padding: 1.5rem;
+  }
+  
+  .bannerContent h2 {
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+  }
+  
+  .separator {
+    margin-bottom: 1.5rem;
+  }
+  
+  .bannerContent p {
+    font-size: 0.9rem;
+    margin-bottom: 1.2rem;
+  }
+  
+  .benefitsList {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.8rem;
+  }
+  
+  .benefitsList li {
+    margin-bottom: 0;
+    font-size: 0.8rem;
+  }
+  
+  .benefitIcon {
+    width: 22px;
+    height: 22px;
+    font-size: 0.9rem;
+    margin-right: 0.6rem;
+  }
+  
+  [dir="rtl"] .benefitIcon {
+    margin-left: 0.6rem;
+  }
+  
+  .alreadyLoggedIn {
+    padding: 1.2rem;
+    margin: 1.5rem 0;
+  }
+  
+  .alreadyLoggedIn p {
+    font-size: 0.9rem;
+    margin-bottom: 1.2rem;
+  }
+  
+  .logoutButton {
+    padding: 0.7rem 1.2rem;
+    font-size: 0.8rem;
   }
 }
 
@@ -557,30 +811,100 @@
     padding: 1rem;
   }
   
+  .formWrapper {
+    border-radius: 10px;
+    max-width: 100%;
+  }
+  
   .formContainer {
-    padding: 2rem 1.5rem;
+    padding: 1.5rem;
+  }
+  
+  .logo {
+    font-size: 1.4rem;
+    margin-bottom: 0.8rem;
   }
   
   .title {
-    font-size: 1.8rem;
+    font-size: 1.5rem;
+    margin-bottom: 1.2rem;
+  }
+  
+  .form {
+    margin-top: 1.5rem;
+  }
+  
+  .formGroup {
+    margin-bottom: 1.2rem;
+  }
+  
+  .inputWrapper input {
+    padding: 0.6rem 1rem 0.6rem 2rem;
+    font-size: 0.8rem;
+    border-radius: 6px;
+  }
+  
+  .inputIcon {
+    left: 0.8rem;
+  }
+  
+  [dir="rtl"] .inputIcon {
+    right: 0.8rem;
+  }
+  
+  .forgotPassword {
+    margin-top: 0.3rem;
+  }
+  
+  .submitButton {
+    margin-top: 0.8rem;
+    padding: 0.7rem;
+    font-size: 0.8rem;
+    border-radius: 6px;
   }
   
   .banner {
-    padding: 1.5rem;
-    max-height: 250px;
+    display: none; /* Hide banner on very small screens */
   }
   
-  .bannerContent h2 {
-    font-size: 1.8rem;
+  .registerPrompt {
+    flex-direction: column;
+    gap: 0.3rem;
+    margin-top: 1.2rem;
   }
   
-  .benefitsList {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1rem;
+  .alreadyLoggedIn {
+    padding: 1rem;
+    margin: 1.2rem 0;
+    border-radius: 6px;
   }
   
-  .benefitsList li {
-    margin-bottom: 0;
+  .alreadyLoggedIn p {
+    font-size: 0.8rem;
+    margin-bottom: 1rem;
+  }
+  
+  .logoutButton {
+    padding: 0.6rem 1rem;
+    font-size: 0.75rem;
+    border-radius: 6px;
+  }
+}
+
+@media (max-width: 380px) {
+  .formContainer {
+    padding: 1.2rem;
+  }
+  
+  .logo {
+    font-size: 1.3rem;
+  }
+  
+  .title {
+    font-size: 1.4rem;
+  }
+  
+  .submitButton {
+    letter-spacing: 0;
   }
 }

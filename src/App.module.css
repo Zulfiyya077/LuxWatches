@@ -20,6 +20,50 @@
   --shadow-elevated: 0 15px 35px rgba(0, 0, 0, 0.25);
 }
 
+/* Login.module.css */
+:root {
+  /* Light theme variables */
+  --bg-gradient-light: linear-gradient(135deg, #f5f7fa 0%, #e4e8ec 100%);
+  --container-bg-light: #fff;
+  --text-primary-light: #333;
+  --text-secondary-light: #555;
+  --text-tertiary-light: #777;
+  --input-bg-light: #f8f9fa;
+  --input-border-light: #ddd;
+  --accent-color: #D4AF37;
+  --accent-gradient: linear-gradient(90deg, #D4AF37, #F7EF8A, #D4AF37);
+  --accent-light: rgba(212, 175, 55, 0.2);
+  --error-bg-light: rgba(244, 67, 54, 0.1);
+  --error-color-light: #f44336;
+  --success-bg-light: rgba(76, 175, 80, 0.1);
+  --success-color-light: #4caf50;
+  --info-bg-light: rgba(27, 43, 56, 0.1);
+  --info-color-light: #2196f3;
+  --shadow-light: 0 15px 50px rgba(0, 0, 0, 0.1);
+  --logo-primary-light: #111;
+  --logo-accent-light: #8B7D4B;
+  
+  /* Dark theme variables */
+  --bg-gradient-dark: linear-gradient(135deg, #1a1a1a 0%, #2c2c2c 100%);
+  --container-bg-dark: #222;
+  --text-primary-dark: #f0f0f0;
+  --text-secondary-dark: #ccc;
+  --text-tertiary-dark: #aaa;
+  --input-bg-dark: #333;
+  --input-border-dark: #444;
+  --accent-color-dark: #F7EF8A;
+  --accent-gradient-dark: linear-gradient(90deg, #F7EF8A, #D4AF37, #F7EF8A);
+  --accent-dark: rgba(247, 239, 138, 0.2);
+  --error-bg-dark: rgba(244, 67, 54, 0.2);
+  --error-color-dark: #ff6b6b;
+  --success-bg-dark: rgba(76, 175, 80, 0.2);
+  --success-color-dark: #69f0ae;
+  --info-bg-dark: rgba(0, 78, 22, 0.2);
+  --info-color-dark: #64b5f6;
+  --shadow-dark: 0 15px 50px rgba(0, 0, 0, 0.3);
+  --logo-primary-dark: #f0f0f0;
+  --logo-accent-dark: #F7EF8A;
+}
 
 [data-theme='dark'] {
   --primary-bg: #121212;
@@ -69,3 +113,25 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: var(--gold-hover);
 }
+
+/* Ana responsivlik tənzimləmələri */
+@media (max-width: 768px) {
+  :root {
+    --box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+  }
+  
+  [data-theme='dark'] {
+    --box-shadow: 0 5px 15px rgba(0, 0, 0, 0.25);
+  }
+  
+  .main-content {
+    padding: 0.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+}
+

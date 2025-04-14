@@ -251,6 +251,7 @@
         "addedToWishlist": "İstək Siyahısına Əlavə Olundu!",
         "addedToCart": "Səbətə Uğurla Əlavə Olundu!",
          "common": {
+           "loading": "Yüklənir...",
     "companyName": {
       "luxury": "LÜKS",
       "shop": "SAAT"
@@ -273,6 +274,10 @@
     "paymentError": "Xəta baş verdi. Təkrar cəhd edin."
   },
   "register": {
+    "passwordHint": "Şifrəniz ən azı 8 simvol olmalıdır və bir böyük hərf, bir rəqəm və bir xüsusi simvol daxil etməlidir.",
+    "successMessage": "Qeydiyyat uğurla tamamlandı! Xoş gəlmisiniz.",
+    "generalError": "Bir xəta baş verdi. Zəhmət olmasa yenidən cəhd edin.",
+    "emailInUse": "Bu e-poçt artıq istifadə olunur.",
     "title": "Qeydiyyatdan keç",
     "fullName": "Ad Soyad",
     "fullNamePlaceholder": "Ad Soyad daxil edin",
@@ -388,7 +393,29 @@
   "retry": "Yenidən cəhd edin",
   "products_found": "məhsul tapıldı",
   "next_page": "Növbəti"
-,"loginet": "Daxil ol",
+,"loginet": "Daxil ol", "login": {
+  "title": "Hesabınıza daxil olun",
+  "email": "E-poçt ünvanı",
+  "emailPlaceholder": "E-poçtunuzu daxil edin",
+  "password": "Şifrə",
+  "passwordPlaceholder": "Şifrənizi daxil edin",
+  "forgotPassword": "Şifrəni unutmusunuz?",
+  "submitButton": "Daxil ol",
+  "noAccount": "Hesabınız yoxdur?",
+  "registerLink": "Qeydiyyatdan keçin",
+  "bannerTitle": "Xoş gəlmisiniz!",
+  "bannerSubtitle": "Daxil olun və alış-verişə başlayın",
+  "benefits": {
+    "secureAccount": "Təhlükəsiz hesab qorunması",
+    "orderHistory": "Sifariş tarixçəsinə baxış",
+    "quickCheckout": "Sürətli ödəmə prosesi",
+    "exclusiveOffers": "Eksklüziv təkliflər və endirimlər"
+  },
+  "alreadyLoggedIn": "Siz artıq daxil olmusunuz.",
+  "anotherAccountActive": "Başqa bir hesab aktivdir.",
+  "logoutFirst": "Zəhmət olmasa əvvəlcə çıxış edin."
+},
+
 
   "newTimepieces2025": "2025 Yeni Saat Modelləri",
   "exclusiveReleases": "Yalnız bu il üçün təqdim olunan modellər",
@@ -559,10 +586,189 @@
     "roles": {
       "admin": "Administrator",
       "user": "İstifadəçi"
-    }
+    },
+    "Failed to load products. Please try again later.": "Məhsulların yüklənməsi alınmadı. Zəhmət olmasa daha sonra yenidən cəhd edin.",
+    "Rolex Kolleksiyası": "Rolex Kolleksiyası",
+    "Lüks və dəqiqliyin mükəmməl birləşməsi": "Lüks və dəqiqliyin mükəmməl birləşməsi",
+    "Ana Səhifə": "Ana Səhifə",
+    "Məhsullar": "Məhsullar",
+    "Filtrlər": "Filtrlər",
+    "Qiymət Aralığı": "Qiymət Aralığı",
+    "Yalnız mövcud olanlar": "Yalnız mövcud olanlar",
+    "Yeni modellər": "Yeni modellər",
+    "Endirimdə olanlar": "Endirimdə olanlar",
+    "Filtrləri tətbiq et": "Filtrləri tətbiq et",
+    "Axtarış...": "Axtarış...",
+    "məhsul tapıldı": "məhsul tapıldı",
+    "Məhsullar yüklənir...": "Məhsullar yüklənir...",
+    "Yenidən cəhd edin": "Yenidən cəhd edin",
+    "Heç bir məhsul tapılmadı": "Heç bir məhsul tapılmadı",
+    "Zəhmət olmasa axtarış və filtr parametrlərinizi dəyişin.": "Zəhmət olmasa axtarış və filtr parametrlərinizi dəyişin.",
+    "Növbəti": "Növbəti",
+    "Status": "Status",
+    "product.toggleWishlist": "İstək siyahısına əlavə et/çıxar",
+    "product.inCart": "Səbətdədir",
+    "dial": "Siferblatı",
+  "tapForDetails": "Detallar üçün toxunun",
+  "rolexRainbow": "Rolex Rainbow",
+  "rainbowDescription": "Zərif daşlarla bəzədilmiş və mükəmməl ustalıqla hazırlanmış Rolex Rainbow modeli",
+  "diamondBezel": "Brilyant çərçivə",
+  "luxuryDesign": "Lüks dizayn",
+  "chronograph": "Xronoqraf funksiyası",
+  "rainbowDial": "Rəngli saat göstəriciləri",
+  "wishlist": {
+    "title": "Sizin Bəyəndikləriniz",
+    "empty": "Siyahınız boşdur.",
+    "addToCart": "Səbətə əlavə et",
+    "remove": "Siyahıdan sil"
+  },
+  "logo": {
+    "alt": "Şirkət Loqosu"
+  },
+  
+  "validation": {
+    "emailRequired": "E-poçt ünvanı tələb olunur"
+  },
+  "passwordReset": {
+    "title": "Şifrəni Unutmusunuz",
+    "subtitle": "E-poçt ünvanınızı daxil edin və biz sizə şifrəni sıfırlamaq üçün bir link göndərəcəyik",
+    "success": "Şifrə sıfırlama linki e-poçt ünvanınıza göndərildi. Zəhmət olmasa gələnlər qutunuzu yoxlayın.",
+    "error": "Sıfırlama linkini göndərmək alınmadı: {{message}}",
+    "loginPrompt": "Şifrənizi xatırlayırsınız?",
+    "registerPrompt": "Hesabınız yoxdur?"
+  },
+  "buttons": {
+    "resetPassword": "Sıfırlama Linki Göndər",
+    "loading": "İşlənir...",
+    "login": "Daxil Ol",
+    "register": "Qeydiyyatdan Keç"
   }
+,
+"auth": {
+  "logo": {
+    "alt": "Şirkət Loqosu"
+  },
+  "email": {
+    "label": "E-poçt Ünvanı",
+    "placeholder": "E-poçt ünvanınızı daxil edin"
+  },
+  "validation": {
+    "emailRequired": "E-poçt ünvanı tələb olunur"
+  },
+  "passwordReset": {
+    "title": "Şifrəni Unutmusunuz",
+    "subtitle": "E-poçt ünvanınızı daxil edin və biz sizə şifrəni sıfırlamaq üçün bir link göndərəcəyik",
+    "success": "Şifrə sıfırlama linki e-poçt ünvanınıza göndərildi. Zəhmət olmasa gələnlər qutunuzu yoxlayın.",
+    "error": "Sıfırlama linkini göndərmək alınmadı: {{message}}",
+    "loginPrompt": "Şifrənizi xatırlayırsınız?",
+    "registerPrompt": "Hesabınız yoxdur?"
+  },
+  "buttons": {
+    "resetPassword": "Sıfırlama Linki Göndər",
+    "loading": "İşlənir...",
+    "login": "Daxil Ol",
+    "register": "Qeydiyyatdan Keç"
+  }
+},
+"navigation": {
+  "home": "Ana Səhifə",
+  "products": "Məhsullar",
+  "about": "Haqqımızda",
+  "contact": "Əlaqə",
+  "blog": "Bloq",
+  "faq": "Tez-tez verilən suallar"
+},
+"general": {
+  "search": "Axtar",
+  "loading": "Yüklənir...",
+  "error": "Xəta baş verdi"
+},
+
+"monthlySales": "Aylıq Satışlar",
+"lastYear": "Son İl",
+"salesByCategory": "Kateqoriyaya görə Satışlar",
+"currentYear": "Cari İl",
+"watches": "saat",
+"recentOrders": "Son Sifarişlər",
+"last24Hours": "Son 24 Saat",
+"orderID": "Sifariş İD",
+
+"amount": "Məbləğ",
+"status": "Status",
+"completed": "Tamamlanıb",
+"processing": "İşlənir",
+"topSellingProducts": "Ən Çox Satan Məhsullar",
+"thisMonth": "Bu Ay",
+
+"sold": "Satılıb",
+"revenue": "Gəlir",
+
+"addBlog": "Bloq Əlavə Et",
+"loadingBlogs": "Bloqlar yüklənir...",
+
+"noBlogsFound": "Uyğun bloq tapılmadı",
+"noBlogsAvailable": "Bloq mövcud deyil",
+
+"editBlog": "Bloqu Redaktə Et",
+
+"product.imageUrl": "Şəkil URL",
+"product.description": "Təsvir",
+"product.rating": "Dərəcə",
+"product.availability": "Mövcudluq",
+"product.material": "Material",
+"product.movement": "Mexanizm",
+"product.caseDiameter": "Korpus Diametri",
+"product.waterResistance": "Su Keçirməzlik",
+"blog.title": "Başlıq",
+"blog.content": "Məzmun",
+"blog.date": "Tarix",
+"blog.readTime": "Oxuma Müddəti",
+"blog.author": "Müəllif",
+"blog.category": "Kateqoriya",
+"blog.imageUrl": "Şəkil URL",
+"blog.gallery": "Qalereya",
+"blog.watchDetails": "Saat Təfərrüatları",
+"blog.diameter": "Diametr",
+"blog.movement": "Mexanizm",
+"blog.material": "Material",
+"blog.waterResistance": "Su Keçirməzlik",
+"blog.power": "Güc Ehtiyatı",
+"blog.bezel": "Bezel",
+"user.name": "Ad",
+"user.email": "E-poçt",
+"user.role": "Rol",
+"common.selectRole": "Rol seçin",
+"roles.admin": "Admin",
+"roles.user": "İstifadəçi",
+"common.cancel": "Ləğv et",
+"product.add": "Məhsul Əlavə Et",
+"product.update": "Məhsulu Yenilə",
+"blog.add": "Bloq Əlavə Et",
+"blog.update": "Bloqu Yenilə", 
+"user.add": "İstifadəçi Əlavə Et",
+"user.update": "İstifadəçini Yenilə",
 
 
+"blogAddedSuccess": "Bloq uğurla əlavə edildi",
+"failedToAddBlog": "Bloqun əlavə edilməsi alınmadı",
+"blogUpdatedSuccess": "Bloq uğurla yeniləndi",
+"failedToUpdateBlog": "Bloqun yenilənməsi alınmadı",
+"blogDeletedSuccess": "Bloq uğurla silindi",
+"failedToDeleteBlog": "Bloqun silinməsi alınmadı",
+"cart": {
+  "title": "Səbətiniz",
+  "empty": "Səbətiniz boşdur.",
+  "remove": "Sil",
+  "total": "Cəm",
+  "checkout": "Ödəniş et",
+  "itemRemoved": "Məhsul səbətdən silindi",
+  "quantityUpdated": "Məhsul miqdarı yeniləndi"
+},
+"errors": {
+  "userFetch": "İstifadəçi məlumatları alınarkən xəta baş verdi",
+  "cartUpdate": "Səbət yenilənərkən xəta baş verdi"
+}
+}
       
       
   

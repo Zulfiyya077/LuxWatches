@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import styles from './ThankYou.module.css';
@@ -10,67 +10,102 @@ const ThankYou = () => {
   const navigate = useNavigate();
   const { theme } = useContext(ThemeContext);
 
+  useEffect(() => {
+    // Scroll to top when component mounts
+    window.scrollTo(0, 0);
+    
+    // Set document title
+    document.title = t('thankYou.pageTitle') || 'Thank You for Your Order';
+  }, [t]);
+
+  // Enhanced theme class helper
   const getThemedClass = (baseClass) => {
-    return theme === 'dark' ? `${baseClass} ${baseClass}Dark` : baseClass;
+    return theme === 'dark' ? `${baseClass} ${styles[`${baseClass}Dark`]}` : styles[baseClass];
+  };
+
+  // Generate random order number that stays consistent during the session
+  const getOrderNumber = () => {
+    // Check if we already have an order number in session storage
+    const savedOrderNumber = sessionStorage.getItem('orderNumber');
+    if (savedOrderNumber) {
+      return savedOrderNumber;
+    }
+    
+    // Generate a new order number
+    const newOrderNumber = Math.floor(100000 + Math.random() * 900000).toString();
+    sessionStorage.setItem('orderNumber', newOrderNumber);
+    return newOrderNumber;
+  };
+
+  // Calculate estimated delivery date
+  const getEstimatedDeliveryDate = () => {
+    const deliveryDate = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000);
+    return deliveryDate.toLocaleDateString(i18n.language, {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
+    });
   };
 
   return (
-    <div className={getThemedClass(styles.container)}>
-      <div className={getThemedClass(styles.formWrapper)}>
-        <div className={getThemedClass(styles.formContainer)}>
+    <div className={`${styles.container} ${theme === 'dark' ? styles.containerDark : ''}`}>
+      <div className={`${styles.formWrapper} ${theme === 'dark' ? styles.formWrapperDark : ''}`}>
+        <div className={`${styles.formContainer} ${theme === 'dark' ? styles.formContainerDark : ''}`}>
           <div className={styles.logo}>
-            <span className={getThemedClass(styles.logoText)}>
+            <span className={`${styles.logoText} ${theme === 'dark' ? styles.logoTextDark : ''}`}>
               {t('common.companyName.luxury')}
             </span>
-            <span className={getThemedClass(styles.logoAccent)}>
+            <span className={styles.logoAccent}>
               {t('common.companyName.shop')}
             </span>
           </div>
 
           <div className={styles.thankYouContent}>
-            <div className={getThemedClass(styles.checkmarkCircle)}>
-              <span className={getThemedClass(styles.checkmark)}>✓</span>
+            <div className={`${styles.checkmarkCircle} ${theme === 'dark' ? styles.checkmarkCircleDark : ''}`}>
+              <span className={styles.checkmark}>✓</span>
             </div>
 
-            <h1 className={getThemedClass(styles.title)}>
+            <h1 className={`${styles.title} ${theme === 'dark' ? styles.titleDark : ''}`}>
               {t('thankYou.mainTitle')}
             </h1>
 
-            <p className={getThemedClass(styles.subtitle)}>
+            <p className={`${styles.subtitle} ${theme === 'dark' ? styles.subtitleDark : ''}`}>
               {t('thankYou.subtitle')}
             </p>
 
-            <div className={getThemedClass(styles.orderDetails)}>
+            <div className={`${styles.orderDetails} ${theme === 'dark' ? styles.orderDetailsDark : ''}`}>
               <div className={styles.detailItem}>
-                <span className={getThemedClass(styles.detailLabel)}>
+                <span className={`${styles.detailLabel} ${theme === 'dark' ? styles.detailLabelDark : ''}`}>
                   {t('thankYou.orderNumber')}
                 </span>
-                <span className={getThemedClass(styles.detailValue)}>
-                  #{Math.floor(Math.random() * 100000)}
+                <span className={`${styles.detailValue} ${theme === 'dark' ? styles.detailValueDark : ''}`}>
+                  #{getOrderNumber()}
                 </span>
               </div>
 
               <div className={styles.detailItem}>
-                <span className={getThemedClass(styles.detailLabel)}>
+                <span className={`${styles.detailLabel} ${theme === 'dark' ? styles.detailLabelDark : ''}`}>
                   {t('thankYou.estimatedDelivery')}
                 </span>
-                <span className={getThemedClass(styles.detailValue)}>
-                  {new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toLocaleDateString(i18n.language)}
+                <span className={`${styles.detailValue} ${theme === 'dark' ? styles.detailValueDark : ''}`}>
+                  {getEstimatedDeliveryDate()}
                 </span>
               </div>
             </div>
 
             <div className={styles.actionButtons}>
               <button
-                className={getThemedClass(styles.primaryButton)}
+                className={`${styles.primaryButton} ${theme === 'dark' ? styles.primaryButtonDark : ''}`}
                 onClick={() => navigate('/products')}
+                aria-label={t('thankYou.continueShopping')}
               >
                 {t('thankYou.continueShopping')}
               </button>
 
               <button
-                className={getThemedClass(styles.secondaryButton)}
+                className={`${styles.secondaryButton} ${theme === 'dark' ? styles.secondaryButtonDark : ''}`}
                 onClick={() => navigate('/orders')}
+                aria-label={t('thankYou.viewOrder')}
               >
                 {t('thankYou.viewOrder')}
               </button>
@@ -78,13 +113,13 @@ const ThankYou = () => {
           </div>
         </div>
 
-        <div className={getThemedClass(styles.banner)}>
+        <div className={`${styles.banner} ${theme === 'dark' ? styles.bannerDark : ''}`}>
           <div className={styles.bannerContent}>
-            <h2 className={getThemedClass(styles.bannerTitle)}>
+            <h2 className={`${styles.bannerTitle} ${theme === 'dark' ? styles.bannerTitleDark : ''}`}>
               {t('thankYou.benefits.title')}
             </h2>
             <div className={styles.separator}></div>
-            <p className={getThemedClass(styles.bannerSubtitle)}>
+            <p className={`${styles.bannerSubtitle} ${theme === 'dark' ? styles.bannerSubtitleDark : ''}`}>
               {t('thankYou.benefits.subtitle')}
             </p>
 
@@ -95,7 +130,7 @@ const ThankYou = () => {
                 { icon: '🛡️', key: 'guarantee' },
                 { icon: '💳', key: 'securePayment' },
               ].map((benefit) => (
-                <li key={benefit.key} className={getThemedClass(styles.benefitItem)}>
+                <li key={benefit.key} className={`${styles.benefitItem} ${theme === 'dark' ? styles.benefitItemDark : ''}`}>
                   <span className={styles.benefitIcon}>{benefit.icon}</span>
                   <span>{t(`thankYou.benefits.${benefit.key}`)}</span>
                 </li>
@@ -105,8 +140,7 @@ const ThankYou = () => {
         </div>
       </div>
 
-      
-      <div className={getThemedClass(styles.recommendedWrapper)}>
+      <div className={`${styles.recommendedWrapper} ${theme === 'dark' ? styles.recommendedWrapperDark : ''}`}>
         <RecommendedProducts />
       </div>
     </div>

@@ -3,6 +3,7 @@ import { useWishlist } from "react-use-wishlist";
 import { useCart } from "react-use-cart";
 import styles from "./Wishlist.module.css";
 import { ThemeContext } from "../context/ThemeContext";
+import { useTranslation } from "react-i18next";
 
 const Wishlist = () => {
   const { items, removeWishlistItem, isWishlistEmpty } = useWishlist();
@@ -10,6 +11,7 @@ const Wishlist = () => {
   const [wishlistItems, setWishlistItems] = useState(items);
   const { theme } = useContext(ThemeContext);
   const isDarkTheme = theme === 'dark';
+  const { t } = useTranslation();
 
   useEffect(() => {
     setWishlistItems(items);
@@ -25,16 +27,16 @@ const Wishlist = () => {
 
   return (
     <div className={`${styles.wishlistContainer} ${isDarkTheme ? styles.darkTheme : ''}`}>
-      <h2>Your Wishlist</h2>
+      <h2>{t("wishlist.title")}</h2>
       {isWishlistEmpty ? (
-        <p className={styles.emptyMessage}>Your wishlist is empty.</p>
+        <p className={styles.emptyMessage}>{t("wishlist.empty")}</p>
       ) : (
         <div className={styles.wishlistGrid}>
           {wishlistItems.map((item) => (
             <div key={item.id} className={styles.wishlistItem}>
               <div className={styles.imageWrapper}>
                 <img 
-                  src={item.image} 
+                  src={item.image || ""} 
                   alt={item.name} 
                   className={styles.productImage} 
                 />
@@ -47,13 +49,13 @@ const Wishlist = () => {
                     className={styles.addToCartButton}
                     onClick={() => handleAddToCart(item)}
                   >
-                    Add to Cart
+                    {t("wishlist.addToCart")}
                   </button>
                   <button
                     className={styles.removeButton}
                     onClick={() => handleRemoveFromWishlist(item.id)}
                   >
-                    Remove
+                    {t("wishlist.remove")}
                   </button>
                 </div>
               </div>

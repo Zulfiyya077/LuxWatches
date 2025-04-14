@@ -9,9 +9,9 @@ import "swiper/css/effect-cube";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import styles from "./Hero.module.css";
-import video1 from "../../../public/videos/rolex.mp4";
-import video2 from "../../../public/videos/watch1.mp4";
-import video3 from "../../../public/videos/watch2.mp4";
+import video1 from "../../../public/videos/Rolex Explorer.mp4";
+import video2 from "../../../public/videos/Rolex GMT-Master II.mp4";
+import video3 from "../../../public/videos/Rolex Deepsea – Cerachrom ring.mp4";
 
 const watchCollections = [
   {
@@ -55,7 +55,7 @@ const Hero = () => {
         effect="cube"
         grabCursor={true}
         cubeEffect={{ shadow: true, slideShadows: true, shadowOffset: 50, shadowScale: 0.94 }}
-        autoplay={{ delay: 7000, disableOnInteraction: false }}
+        autoplay={{ delay: 5000, disableOnInteraction: false }}
         pagination={{ clickable: true, dynamicBullets: true }}
         navigation={true}
         modules={[EffectCube, Autoplay, Navigation, Pagination]}

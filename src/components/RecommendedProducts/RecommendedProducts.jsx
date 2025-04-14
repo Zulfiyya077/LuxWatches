@@ -1,5 +1,5 @@
 // components/RecommendedProducts.js
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useState, useContext, useRef } from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import { ThemeContext } from "../../context/ThemeContext";
@@ -11,48 +11,124 @@ const RecommendedProducts = () => {
   const navigate = useNavigate();
   const { theme } = useContext(ThemeContext);
   const [products, setProducts] = useState([]);
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef(null);
+  const cardRefs = useRef([]);
 
   useEffect(() => {
     const fetchRecommended = async () => {
       const { data, error } = await supabase
         .from("Products")
         .select("*")
-        .limit(5)
-        .order("id", { ascending: false }); // Son əlavə olunan 4 məhsul
-
+        .limit(8)
+        .order("id", { ascending: false });
       if (error) {
         console.error("Supabase Error:", error);
       } else {
         setProducts(data);
       }
     };
-
     fetchRecommended();
+    
+    // Add intersection observer for animation on scroll
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.1 }
+    );
+    
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+    
+    return () => {
+      if (sectionRef.current) {
+        observer.disconnect();
+      }
+    };
   }, []);
 
-  const getThemedClass = (base) => {
-    return theme === "dark" ? `${base} ${base}Dark` : base;
+  // Add event listeners to cards after they're rendered
+  useEffect(() => {
+    // Make sure cardRefs are populated and valid
+    cardRefs.current.forEach(card => {
+      if (card) {
+        // Function to handle mouse movement for 3D effect
+        const handleMouseMove = (e) => {
+          if (window.innerWidth >= 1024) {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            
+            const angleY = (x - centerX) / 20;
+            const angleX = (centerY - y) / 20;
+            
+            card.style.transform = `perspective(1000px) rotateX(${angleX}deg) rotateY(${angleY}deg) translateZ(10px)`;
+          }
+        };
+        
+        const handleMouseLeave = () => {
+          if (window.innerWidth >= 1024) {
+            card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateZ(0)';
+          }
+        };
+
+        card.addEventListener('mousemove', handleMouseMove);
+        card.addEventListener('mouseleave', handleMouseLeave);
+        
+        // Clean up event listeners
+        return () => {
+          card.removeEventListener('mousemove', handleMouseMove);
+          card.removeEventListener('mouseleave', handleMouseLeave);
+        };
+      }
+    });
+  }, [products]); // Re-run when products change
+
+  // Fixed getThemedClass function to properly handle dark mode classes
+  const getThemedClass = (baseClass) => {
+    return theme === "dark" ? `${styles[baseClass]} ${styles[`${baseClass}Dark`]}` : styles[baseClass];
   };
 
+  // Ensure cardRefs array has the correct length
+  if (cardRefs.current.length !== products.length) {
+    cardRefs.current = Array(products.length).fill().map((_, i) => cardRefs.current[i] || null);
+  }
+  
   return (
-    <div className={getThemedClass(styles.recommendedSection)}>
-      <h2 className={getThemedClass(styles.title)}>
+    <div 
+      ref={sectionRef}
+      className={`${getThemedClass('recommendedSection')} ${isVisible ? styles.visible : ''}`}
+    >
+      <h2 className={getThemedClass('title')}>
         {t("thankYou.recommendedTitle", "Tövsiyə olunan məhsullar")}
       </h2>
       <div className={styles.grid}>
-        {products.map((product) => (
+        {products.map((product, index) => (
           <div 
             key={product.id} 
-            className={getThemedClass(styles.card)}
+            className={getThemedClass('card')}
             onClick={() => navigate(`/products/${product.id}`)}
+            ref={el => cardRefs.current[index] = el}
+            style={{animationDelay: `${index * 0.1}s`}}
           >
-            <img
-              src={product.image}
-              alt={product.name}
-              className={styles.image}
-            />
-            <h3 className={styles.name}>{product.name}</h3>
-            <p className={styles.price}>${product.price.toLocaleString()}</p>
+            <div className={styles.cardInner}>
+              <img
+                src={product.image}
+                alt={product.name}
+                className={styles.image}
+                loading="lazy"
+              />
+              <h3 className={styles.name}>{product.name}</h3>
+              <p className={styles.price}>${product.price.toLocaleString()}</p>
+            </div>
           </div>
         ))}
       </div>

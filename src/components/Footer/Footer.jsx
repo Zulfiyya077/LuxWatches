@@ -1,40 +1,58 @@
-import React, { useState, useEffect, useContext } from "react";
-import { FaFacebookF, FaInstagram, FaTwitter, FaLinkedinIn, FaYoutube, FaClock } from "react-icons/fa";
+import React, { useContext } from "react";
+import { FaFacebookF, FaInstagram, FaTwitter, FaLinkedinIn, FaYoutube } from "react-icons/fa";
 import { MdEmail, MdLocationOn, MdPhone } from "react-icons/md";
 import { useTranslation } from "react-i18next";
+import { Link } from "react-router-dom"; // Import Link component from react-router-dom
 import styles from "./Footer.module.css";
 import { ThemeContext } from "../../context/ThemeContext"; 
+
+// Link komponenti yerinə istifadə edəcəyimiz öz komponentimiz
+const FooterLink = ({ to, children, className }) => {
+  const handleClick = () => {
+    // Link-ə kliklədikdə səhifəni əvvələ scroll etmək
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+  };
+
+  return (
+    <Link 
+      to={to} 
+      className={className}
+      onClick={handleClick}
+    >
+      {children}
+    </Link>
+  );
+};
 
 const Footer = () => {
   const { t } = useTranslation();
   const { theme } = useContext(ThemeContext); 
-  const [time, setTime] = useState(new Date());
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setTime(new Date());
-    }, 1000);
-    return () => clearInterval(interval);
-  }, []);
-
- 
   const themeClass = theme === 'dark' ? styles.dark : styles.light;
+
+  // Bütün naviqasiya linklərini burada mərkəzləşdirək
+  const navigationLinks = {
+    company: [
+      { href: "/about", text: t("about_us") },
+      { href: "/contact", text: t("contact") },
+      { href: "/faqs", text: t("faqs") },
+      { href: "/shipping", text: t("shipping_returns") },
+      { href: "/terms", text: t("terms_conditions") }
+    ],
+    customerService: [
+      { href: "/privacy", text: t("privacy_policy") },
+      { href: "/help", text: t("help_center") },
+      { href: "/track", text: t("track_order") }
+    ]
+  };
 
   return (
     <footer className={`${styles.footer} ${themeClass}`}>
-    
-     
-
       <div className={styles.container}>
       
-        <div className={styles.topSection}>
-          <div className={`${styles.clockContainer} ${themeClass}`}>
-            <FaClock className={styles.clockIcon} />
-            <span className={styles.time}>{time.toLocaleTimeString()}</span>
-          </div>
-        </div>
-
-   
         <div className={styles.grid}>
          
           <div className={styles.column}>
@@ -42,67 +60,33 @@ const Footer = () => {
               {t("company")}
             </h3>
             <ul className={styles.linkList}>
-              <li className={styles.linkItem}>
-                <a href="/about" className={`${styles.link} ${themeClass}`}>
-                  <span className={styles.bullet}></span>
-                  {t("about_us")}
-                </a>
-              </li>
-              <li className={styles.linkItem}>
-                <a href="/contact" className={`${styles.link} ${themeClass}`}>
-                  <span className={styles.bullet}></span>
-                  {t("contact")}
-                </a>
-              </li>
-              <li className={styles.linkItem}>
-                <a href="/faqs" className={`${styles.link} ${themeClass}`}>
-                  <span className={styles.bullet}></span>
-                  {t("faqs")}
-                </a>
-              </li>
-              <li className={styles.linkItem}>
-                <a href="/shipping" className={`${styles.link} ${themeClass}`}>
-                  <span className={styles.bullet}></span>
-                  {t("shipping_returns")}
-                </a>
-              </li>
-              <li className={styles.linkItem}>
-                <a href="/terms" className={`${styles.link} ${themeClass}`}>
-                  <span className={styles.bullet}></span>
-                  {t("terms_conditions")}
-                </a>
-              </li>
+              {navigationLinks.company.map((link, index) => (
+                <li key={index} className={styles.linkItem}>
+                  <FooterLink to={link.href} className={`${styles.link} ${themeClass}`}>
+                    <span className={styles.bullet}></span>
+                    {link.text}
+                  </FooterLink>
+                </li>
+              ))}
             </ul>
           </div>
 
-         
           <div className={styles.column}>
             <h3 className={`${styles.heading} ${themeClass}`}>
               {t("customer_service")}
             </h3>
             <ul className={styles.linkList}>
-              <li className={styles.linkItem}>
-                <a href="/privacy" className={`${styles.link} ${themeClass}`}>
-                  <span className={styles.bullet}></span>
-                  {t("privacy_policy")}
-                </a>
-              </li>
-              <li className={styles.linkItem}>
-                <a href="/help" className={`${styles.link} ${themeClass}`}>
-                  <span className={styles.bullet}></span>
-                  {t("help_center")}
-                </a>
-              </li>
-              <li className={styles.linkItem}>
-                <a href="/track" className={`${styles.link} ${themeClass}`}>
-                  <span className={styles.bullet}></span>
-                  {t("track_order")}
-                </a>
-              </li>
+              {navigationLinks.customerService.map((link, index) => (
+                <li key={index} className={styles.linkItem}>
+                  <FooterLink to={link.href} className={`${styles.link} ${themeClass}`}>
+                    <span className={styles.bullet}></span>
+                    {link.text}
+                  </FooterLink>
+                </li>
+              ))}
             </ul>
           </div>
 
-        
           <div className={styles.column}>
             <h3 className={`${styles.heading} ${themeClass}`}>
               {t("contact_us")}
@@ -128,24 +112,23 @@ const Footer = () => {
               {t("follow_us")}
             </h3>
             <div className={styles.socialContainer}>
-              <a href="#" className={`${styles.socialIcon} ${styles.facebook} ${themeClass}`}>
+              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className={`${styles.socialIcon} ${styles.facebook} ${themeClass}`}>
                 <FaFacebookF />
               </a>
-              <a href="#" className={`${styles.socialIcon} ${styles.instagram} ${themeClass}`}>
+              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className={`${styles.socialIcon} ${styles.instagram} ${themeClass}`}>
                 <FaInstagram />
               </a>
-              <a href="#" className={`${styles.socialIcon} ${styles.twitter} ${themeClass}`}>
+              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className={`${styles.socialIcon} ${styles.twitter} ${themeClass}`}>
                 <FaTwitter />
               </a>
-              <a href="#" className={`${styles.socialIcon} ${styles.linkedin} ${themeClass}`}>
+              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className={`${styles.socialIcon} ${styles.linkedin} ${themeClass}`}>
                 <FaLinkedinIn />
               </a>
-              <a href="#" className={`${styles.socialIcon} ${styles.youtube} ${themeClass}`}>
+              <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className={`${styles.socialIcon} ${styles.youtube} ${themeClass}`}>
                 <FaYoutube />
               </a>
             </div>
 
-           
             <div className={styles.newsletter}>
               <h4 className={`${styles.newsletterHeading} ${themeClass}`}>{t("newsletter")}</h4>
               <div className={`${styles.subscribeForm} ${themeClass}`}>
@@ -162,12 +145,10 @@ const Footer = () => {
           </div>
         </div>
 
-        
         <div className={`${styles.copyright} ${themeClass}`}>
           <p>
             &copy; {new Date().getFullYear()} {t("copyright") }
           </p>
-       
         </div>
       </div>
     </footer>

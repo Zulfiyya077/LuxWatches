@@ -810,3 +810,198 @@
   height: 6px;
   border-radius: 5px;
 }
+/* Əsas container üçün responsiv tənzimləmələr */
+.productsContainer {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 15px; /* Kiçik ekranlarda kənar padding-i azaltdım */
+}
+
+/* Hero section responsivliyi */
+@media (max-width: 1024px) {
+  .heroSection {
+    height: 250px; /* Orta ölçülü ekranlarda hündürlüyü azaltdım */
+  }
+  
+  .heroTitle {
+    font-size: 2.5rem; /* Başlıq ölçüsünü azaltdım */
+  }
+  
+  .heroSubtitle {
+    font-size: 1.1rem; /* Alt başlıq ölçüsünü azaltdım */
+  }
+}
+
+@media (max-width: 768px) {
+  .heroSection {
+    height: 200px; /* Tablet ölçüsündə daha da kiçiltdim */
+  }
+  
+  .heroTitle {
+    font-size: 2rem;
+  }
+  
+  .heroSubtitle {
+    font-size: 1rem;
+    max-width: 90%; /* Mətnin çox geniş olmaması üçün məhdudlaşdırdım */
+  }
+}
+
+@media (max-width: 480px) {
+  .heroSection {
+    height: 180px; /* Mobil ekranlarda daha kiçik */
+  }
+  
+  .heroTitle {
+    font-size: 1.7rem;
+  }
+  
+  .heroSubtitle {
+    font-size: 0.9rem;
+  }
+}
+
+/* Produktların siyahısı üçün responsiv tənzimləmələr */
+@media (max-width: 1200px) {
+  .productList.grid {
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); /* Ekran kiçiləndə kartoçkaların ölçüsünü azaltdım */
+  }
+}
+
+@media (max-width: 992px) {
+  .productList.grid {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  /* Tablet görünüşündə sütunların nisbəti */
+  .productList.grid {
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 15px; /* Kartoçkalar arası məsafəni azaltdım */
+  }
+  
+  /* Axtarış və filter bölməsinin düzgün görünməsi */
+  .toolbarLeft, .toolbarRight {
+    width: 100%;
+    flex-wrap: wrap; /* Elementlərin sınması üçün */
+  }
+  
+  .searchContainer {
+    flex: 1;
+    min-width: 200px; /* Minimum eni təyin etdim */
+  }
+  
+  .searchInput {
+    width: 100%; /* Tam genişlikdə olması üçün */
+  }
+}
+
+@media (max-width: 576px) {
+  .productList.grid {
+    grid-template-columns: repeat(2, 1fr); /* Mobil görünüşdə iki sütun */
+    gap: 10px;
+  }
+  
+  .filterToggleBtn span {
+    display: none; /* Kiçik ekranda yalnız ikonu göstər */
+  }
+  
+  /* Pagination düymələrinin kiçilməsi */
+  .pageBtn {
+    padding: 6px 12px;
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .productList.grid {
+    grid-template-columns: 1fr; /* Çox kiçik ekranlarda tək sütun */
+  }
+  
+  /* Filter sidebar-in tam ekran görünməsi */
+  .filterSidebar {
+    width: 100%;
+    max-width: 100%;
+  }
+  
+  /* Toolbar düymələrinin kiçilməsi */
+  .viewBtn, .filterToggleBtn {
+    padding: 6px;
+  }
+  
+  /* Axtarış sahəsinin kiçilməsi */
+  .searchInput {
+    padding: 8px 8px 8px 35px;
+    font-size: 0.85rem;
+  }
+  
+  .searchIcon {
+    left: 8px;
+  }
+  
+  /* Filter elementlərinin kiçilməsi */
+  .filterCheckbox label {
+    font-size: 0.85rem;
+    padding-left: 30px;
+  }
+  
+  .filterCheckbox label::before {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+/* Filter sidebar-in mobil versiyası üçün overlay */
+@media (max-width: 768px) {
+  .filterSidebar[data-open="true"]::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: -1;
+  }
+  
+  /* Filter sidebar örtüyü əlavə et */
+  .productsWrapper::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    pointer-events: none;
+  }
+  
+  .productsWrapper.filterOpen::before {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: all;
+  }
+}
+
+/* Qiymət sürgüsünün yaxşılaşdırılması */
+@media (max-width: 768px) {
+  .priceSlider::-webkit-slider-thumb {
+    width: 16px;
+    height: 16px;
+  }
+  
+  .priceSlider::-moz-range-thumb {
+    width: 16px;
+    height: 16px;
+  }
+  
+  .priceRange span {
+    font-size: 0.8rem;
+  }
+}

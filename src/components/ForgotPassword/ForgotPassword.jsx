@@ -2,25 +2,27 @@ import React, { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
+import { toast } from 'react-toastify';
 import supabase from '../../supabaseClient';
 import { ThemeContext } from '../../context/ThemeContext';
 import styles from './ForgotPassword.module.css';
 
 const ForgotPassword = () => {
-  const { t } = useTranslation('auth');
+  const { t } = useTranslation();
   const { theme } = useContext(ThemeContext);
   const navigate = useNavigate();
 
   const [email, setEmail] = useState('');
   const [loading, setLoading] = useState(false);
-  const [message, setMessage] = useState(null);
-  const [error, setError] = useState(null);
 
   const handleResetPassword = async (e) => {
     e.preventDefault();
+    if (!email.trim()) {
+      toast.error(t('auth.validation.emailRequired'));
+      return;
+    }
+    
     setLoading(true);
-    setMessage(null);
-    setError(null);
 
     try {
       const { error } = await supabase.auth.resetPasswordForEmail(email, {
@@ -29,9 +31,10 @@ const ForgotPassword = () => {
 
       if (error) throw error;
 
-      setMessage(t('passwordReset.success'));
+      toast.success(t('auth.passwordReset.success'));
+      setEmail(''); // Clear the form after successful submission
     } catch (error) {
-      setError(t('passwordReset.error', { message: error.message }));
+      toast.error(t('auth.passwordReset.error', { message: error.message }));
     } finally {
       setLoading(false);
     }
@@ -41,6 +44,10 @@ const ForgotPassword = () => {
     navigate('/login');
   };
 
+  const goToRegister = () => {
+    navigate('/register');
+  };
+
   return (
     <motion.div 
       initial={{ opacity: 0 }}
@@ -48,31 +55,33 @@ const ForgotPassword = () => {
       transition={{ duration: 0.5 }}
       className={`${styles.container} ${styles[theme]}`}
     >
-      <div className={styles.background}></div>
+      <div className={styles.backgroundWave}></div>
       <div className={styles.formWrapper}>
         <motion.div 
-          initial={{ scale: 0.9 }}
-          animate={{ scale: 1 }}
-          transition={{ type: "spring", stiffness: 300 }}
+          initial={{ y: 20, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ type: "spring", stiffness: 300, delay: 0.2 }}
           className={styles.formContainer}
         >
           <div className={styles.logoSection}>
             <img 
-              src="/logo.png" 
-              alt={t('logo.alt')} 
+              src="public/videos/Screenshot Capture - 2025-04-14 - 02-25-33-Photoroom.png" 
+              alt={t('auth.logo.alt')} 
               className={styles.logo} 
             />
           </div>
 
-          <h2 className={styles.title}>{t('passwordReset.title')}</h2>
+          <h2 className={styles.title}>{t('auth.passwordReset.title')}</h2>
+          <p className={styles.subtitle}>{t('auth.passwordReset.subtitle')}</p>
 
           <form onSubmit={handleResetPassword} className={styles.form}>
             <div className={styles.formGroup}>
+              <label className={styles.inputLabel}>{t('auth.email.label')}</label>
               <div className={styles.inputWrapper}>
                 <i className={`fas fa-envelope ${styles.inputIcon}`}></i>
                 <input
                   type="email"
-                  placeholder={t('email.placeholder')}
+                  placeholder={t('auth.email.placeholder')}
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   className={styles.input}
@@ -81,49 +90,42 @@ const ForgotPassword = () => {
               </div>
             </div>
 
-            {error && (
-              <motion.div 
-                initial={{ x: -10 }}
-                animate={{ x: 0 }}
-                transition={{ type: "spring", stiffness: 300 }}
-                className={styles.errorMessage}
-              >
-                {error}
-              </motion.div>
-            )}
-
-            {message && (
-              <motion.div 
-                initial={{ x: 10 }}
-                animate={{ x: 0 }}
-                transition={{ type: "spring", stiffness: 300 }}
-                className={styles.successMessage}
-              >
-                {message}
-              </motion.div>
-            )}
-
             <motion.button 
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.97 }}
               type="submit" 
               className={styles.resetButton} 
               disabled={loading}
             >
-              {loading ? t('buttons.loading') : t('buttons.resetPassword')}
+              {loading ? (
+                <span className={styles.loadingSpinner}>
+                  <i className="fas fa-spinner fa-spin"></i> {t('auth.buttons.loading')}
+                </span>
+              ) : (
+                t('auth.buttons.resetPassword')
+              )}
             </motion.button>
           </form>
 
-          <div className={styles.loginPrompt}>
-            <p>
-              {t('passwordReset.loginPrompt')}
+          <div className={styles.authLinks}>
+            <motion.p whileHover={{ scale: 1.05 }} className={styles.loginPrompt}>
+              {t('auth.passwordReset.loginPrompt')}{' '}
               <button 
                 onClick={goToLogin} 
                 className={styles.loginLink}
               >
-                {t('buttons.login')}
+                {t('auth.buttons.login')}
               </button>
-            </p>
+            </motion.p>
+            <motion.p whileHover={{ scale: 1.05 }} className={styles.registerPrompt}>
+              {t('auth.passwordReset.registerPrompt')}{' '}
+              <button 
+                onClick={goToRegister} 
+                className={styles.registerLink}
+              >
+                {t('auth.buttons.register')}
+              </button>
+            </motion.p>
           </div>
         </motion.div>
       </div>
