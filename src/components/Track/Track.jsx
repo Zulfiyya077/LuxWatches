@@ -99,32 +99,15 @@ const OrderTracking = () => {
           id: 1,
           product_id: 1,
           quantity: 1,
-          price: 20000,
+          price: 1999.99,
           products: {
             id: 1,
             name: 'Rolex Submariner',
             image_url: 'https://xdzksswqqqoonxbwcmup.supabase.co/storage/v1/object/sign/Images/submarine.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJJbWFnZXMvc3VibWFyaW5lLnBuZyIsImlhdCI6MTc0NDY5NTM4MSwiZXhwIjoxNzc2MjMxMzgxfQ.MRS7iZtdoA1s7k0Qt6mPaVq5g9C77VeFCaShvW-fsOY'
           }
-        }],
-        id: 2,
-      order_number: orderNumber,
-      total_amount: 40000,
-      status: 2, 
-      created_at: createdAt.toISOString(),
-      estimated_delivery: estimatedDelivery.toISOString(),
-      order_items: [ {
-          id: 2,
-          product_id: 2,
-          quantity: 2,
-          price: 30000,
-          products: {
-            id: 2,
-            name: 'Rolex Datejust',
-            image_url: 'https://xdzksswqqqoonxbwcmup.supabase.co/storage/v1/object/sign/Images/submarine.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJJbWFnZXMvc3VibWFyaW5lLnBuZyIsImlhdCI6MTc0NDY5NTM4MSwiZXhwIjoxNzc2MjMxMzgxfQ.MRS7iZtdoA1s7k0Qt6mPaVq5g9C77VeFCaShvW-fsOY'
-          }
         }
-      
-   ] };
+      ]
+    };
   };
 
 
