@@ -92,7 +92,7 @@ const TestimonialSlider = () => {
         <h2 className={styles.sectionTitle}>{t("customerTestimonials")}</h2>
         
         <div className={styles.testimonialLayout}>
-          {/* Rolex Video Section - Left Side */}
+         
           <div className={styles.videoContainer}>
             <video 
               className={styles.video} 
@@ -108,7 +108,7 @@ const TestimonialSlider = () => {
             </div>
           </div>
           
-          {/* Testimonial Slider - Right Side */}
+         
           <div 
             className={styles.sliderContainer}
             onMouseEnter={pauseAutoplay}

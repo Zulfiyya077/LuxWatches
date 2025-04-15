@@ -1,0 +1,10 @@
+.ordersPage {
+    padding-top: 2rem;
+    padding-bottom: 4rem;
+    min-height: 80vh;
+    background-color: var(--primary-bg, #ffffff);
+  }
+  
+  .ordersPageDark {
+    background-color: var(--primary-bg, #121212);
+  }

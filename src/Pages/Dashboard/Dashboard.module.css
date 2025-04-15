@@ -1,33 +1,5 @@
-/* Dashboard.module.css */
-:root {
-  /* Light Theme Colors */
-  --background-light: #f8f9fa;
-  --card-light: #ffffff;
-  --text-primary-light: #212529;
-  --text-secondary-light: #6c757d;
-  --border-light: #dee2e6;
-  --gold: #d4af37;
-  --burgundy: #800020;
-  --dark-green: #013220;
-  --red: #dc3545;
-  --green: #198754;
-  --hover-light: #f1f3f5;
-  --shadow-light: 0 4px 6px rgba(0, 0, 0, 0.1);
-  
-  /* Dark Theme Colors */
-  --background-dark: #121212;
-  --card-dark: #1e1e1e;
-  --text-primary-dark: #e9ecef;
-  --text-secondary-dark: #adb5bd;
-  --border-dark: #343a40;
-  --gold-dark: #bf9b30;
-  --burgundy-dark: #9a0025;
-  --dark-green-dark: #044330;
-  --hover-dark: #2c2c2c;
-  --shadow-dark: 0 4px 6px rgba(0, 0, 0, 0.3);
-}
 
-/* Base Styles */
+
 .container {
   display: flex;
   min-height: 100vh;
@@ -41,7 +13,6 @@
   color: var(--text-primary-dark);
 }
 
-/* Sidebar Styles */
 .sidebar {
   width: 240px;
   background-color: var(--card-light);
@@ -50,9 +21,7 @@
   display: flex;
   flex-direction: column;
   position: fixed;
-  /* Changed from height: 100vh to top and bottom positioning */
- 
-/* Adds scrolling if sidebar content is too tall */
+
   z-index: 10;
   transition: all 0.3s ease;
   box-shadow: var(--shadow-light);
@@ -473,7 +442,7 @@
   background-color: var(--hover-dark);
 }
 
-/* Loading States */
+
 .loadingContainer {
   display: flex;
   align-items: center;
@@ -756,7 +725,7 @@
   background-color: var(--hover-dark);
 }
 
-/* Language Switcher */
+
 .languageSelector {
   display: flex;
   align-items: center;
@@ -848,7 +817,7 @@
     padding: 1rem;
   }
 }
-/* Enhanced Pie Chart Container */
+
 .chartContainer {
   background-color: var(--card-light);
   border-radius: 0.75rem;
@@ -874,7 +843,7 @@
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
 }
 
-/* Enhanced Chart Header */
+
 .chartHeader {
   display: flex;
   justify-content: space-between;
@@ -925,7 +894,6 @@
   background-color: rgba(1, 50, 32, 0.2);
 }
 
-/* Chart Grid */
 .chartGrid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -933,7 +901,6 @@
   margin-bottom: 2rem;
 }
 
-/* Enhanced Pie Chart */
 .pieChart {
   filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
 }
@@ -942,7 +909,7 @@
   filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.2));
 }
 
-/* Responsive Design */
+
 @media (max-width: 1024px) {
   .chartGrid {
     grid-template-columns: 1fr;

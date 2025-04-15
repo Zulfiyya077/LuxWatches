@@ -1,4 +1,4 @@
-// components/RecommendedProducts.js
+
 import React, { useEffect, useState, useContext, useRef } from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
@@ -29,8 +29,7 @@ const RecommendedProducts = () => {
       }
     };
     fetchRecommended();
-    
-    // Add intersection observer for animation on scroll
+
     const observer = new IntersectionObserver(
       (entries) => {
         if (entries[0].isIntersecting) {
@@ -52,12 +51,12 @@ const RecommendedProducts = () => {
     };
   }, []);
 
-  // Add event listeners to cards after they're rendered
+
   useEffect(() => {
-    // Make sure cardRefs are populated and valid
+   
     cardRefs.current.forEach(card => {
       if (card) {
-        // Function to handle mouse movement for 3D effect
+       
         const handleMouseMove = (e) => {
           if (window.innerWidth >= 1024) {
             const rect = card.getBoundingClientRect();
@@ -83,21 +82,17 @@ const RecommendedProducts = () => {
         card.addEventListener('mousemove', handleMouseMove);
         card.addEventListener('mouseleave', handleMouseLeave);
         
-        // Clean up event listeners
         return () => {
           card.removeEventListener('mousemove', handleMouseMove);
           card.removeEventListener('mouseleave', handleMouseLeave);
         };
       }
     });
-  }, [products]); // Re-run when products change
-
-  // Fixed getThemedClass function to properly handle dark mode classes
+  }, [products]); 
   const getThemedClass = (baseClass) => {
     return theme === "dark" ? `${styles[baseClass]} ${styles[`${baseClass}Dark`]}` : styles[baseClass];
   };
 
-  // Ensure cardRefs array has the correct length
   if (cardRefs.current.length !== products.length) {
     cardRefs.current = Array(products.length).fill().map((_, i) => cardRefs.current[i] || null);
   }

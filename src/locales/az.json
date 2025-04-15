@@ -257,6 +257,10 @@
       "shop": "SAAT"
     }
   },
+
+  "myOrders": "Sifarişlərim",
+  
+  "total": "Cəmi",
    
   "logout": "Çıxış",
   "checkout": {
@@ -264,12 +268,37 @@
     "discount": "Endirim",
     "subtotal": "Aralıq cəm",
   
- 
+    "orders": {
+      "pageTitle": "Sifarişlərim",
+      "myOrders": "Sifarişlərim",
+      "recentOrders": "Son Sifarişlər",
+      "noOrders": "Hal-hazırda sifarişiniz yoxdur",
+      "orderDetails": "Sifariş Detalları",
+      "orderNumber": "Sifariş №",
+      "orderDate": "Sifariş tarixi",
+      "estimatedDelivery": "Təxmini çatdırılma",
+      "items": "Məhsullar",
+      "quantity": "Miqdar",
+      "total": "Ümumi məbləğ",
+      "moreItems": "daha çox məhsul",
+      "viewOrder": "Sifarişi izlə",
+      "status": {
+        "pending": "Gözləmədə",
+        "processing": "Hazırlanır",
+        "shipped": "Göndərilib",
+        "delivered": "Çatdırılıb",
+        "cancelled": "Ləğv edilib"
+      }
+    },
+    "common": {
+      "loading": "Yüklənir",
+      "errorOccurred": "Xəta yarandı"
+    },
    
     "pay": "Ödəniş et",
     "processing": "İcra olunur...",
     "title": "Ödəniş",
-    "total": "Cəmi: ${{amount}}",
+    "total": "Cəmi: ",
     "cardHolder": "KART SAHİBİ",
     "nameOnCard": "AD SOYAD",
   

@@ -22,41 +22,37 @@ const Navbar = () => {
   const location = useLocation();
 
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [searchQuery, setSearchQuery] = useState("");
   const [langMenuOpen, setLangMenuOpen] = useState(false);
   const [userMenuOpen, setUserMenuOpen] = useState(false);
-  const [authLoading, setAuthLoading] = useState(true); // Add loading state
+  const [authLoading, setAuthLoading] = useState(true); 
   const userMenuRef = useRef(null);
 
-  // Check if user is admin
-  const isAdmin = user?.email === ADMIN_EMAIL;
   
-  // Check if currently on admin dashboard
+  const isAdmin = user?.email === ADMIN_EMAIL;
+ 
   const isAdminDashboard = location.pathname === "/admin" || location.pathname.startsWith("/admin/");
 
-  // Check authentication state after a short delay to ensure it's loaded
   useEffect(() => {
     const timer = setTimeout(() => {
       setAuthLoading(false);
-    }, 1000); // Give authentication 1 second to load
+    }, 1000); 
     
     return () => clearTimeout(timer);
   }, []);
 
-  // Only redirect if authentication is not loading
+
   useEffect(() => {
     if (!authLoading) {
       if (isAdminDashboard && !isAdmin && isAuthenticated) {
-        // If user is logged in but not admin, redirect to home
+     
         navigate('/');
       } else if (isAdminDashboard && !isAuthenticated) {
-        // If user is not logged in, redirect to login
         navigate('/login');
       }
     }
   }, [isAdminDashboard, isAdmin, isAuthenticated, navigate, authLoading]);
 
-  // Rest of your existing functions
+  
   const getUserDisplayName = () => {
     if (user?.raw_user_meta_data?.full_name) {
       return user.raw_user_meta_data.full_name;
@@ -86,19 +82,18 @@ const Navbar = () => {
     }
   };
 
-  // Close mobile menu when clicking outside
+
   useEffect(() => {
     const handleClickOutside = (event) => {
-      // Only run if the menu is open
+     
       if (!mobileMenuOpen) return;
-      
-      // Get the toggle button element
+     
       const toggleButton = document.querySelector(`.${styles.mobileMenuToggle}`);
       
-      // Get the menu element
+      
       const menuElement = document.querySelector(`.${styles.navLinks}`);
       
-      // Check if the click was outside both elements
+ 
       if (
         toggleButton && 
         !toggleButton.contains(event.target) && 
@@ -138,13 +133,13 @@ const Navbar = () => {
     setLangMenuOpen(false);
   };
 
-  // Toggle mobile menu without propagating the event
+
   const handleMobileMenuToggle = (e) => {
     e.stopPropagation();
     setMobileMenuOpen(!mobileMenuOpen);
   };
 
-  // Navigate to admin dashboard
+  
   const goToAdminDashboard = () => {
     navigate('/admin');
     setUserMenuOpen(false);
@@ -156,7 +151,9 @@ const Navbar = () => {
         <Link to="/" className={styles.logo}>
           {/* <span className={styles.logoText}>LUXURY</span>
           <span className={styles.logoAccent}>WATCHES</span> */}
-          <img className={styles.logoText} src="public/videos/Screenshot Capture - 2025-04-14 - 02-25-33-Photoroom.png" alt="logo"/>
+          
+          <img className={styles.logoText} src="/videos/Screenshot Capture - 2025-04-14 - 02-25-33-Photoroom.png" alt="logo" />
+
         </Link>
 
         <div className={styles.menuWrapper}>
@@ -180,8 +177,7 @@ const Navbar = () => {
             <Link to="/contact" className={styles.navLink} onClick={() => setMobileMenuOpen(false)}>
               {t("contact")}
             </Link>
-            
-            {/* Admin link removed from here */}
+      
           </div>
 
           <div className={styles.navActions}>
@@ -220,8 +216,7 @@ const Navbar = () => {
               )}
             </div>
 
-            {/* Only show cart and wishlist if not admin or not on admin dashboard */}
-            {isAuthenticated && (!isAdmin || !isAdminDashboard) && (
+                     {isAuthenticated && (!isAdmin || !isAdminDashboard) && (
               <>
                 <Link to="/cart" className={styles.cartLink}>
                   <div className={styles.cartIconContainer}>
@@ -267,7 +262,7 @@ const Navbar = () => {
                   Salam, {getUserDisplayName()}
                 </div>
                 
-                {/* Admin button next to user avatar - only visible to admin */}
+              
                 {isAdmin && (
                   <button 
                     onClick={goToAdminDashboard} 
@@ -282,7 +277,7 @@ const Navbar = () => {
                     userMenuOpen ? styles.show : ""
                   }`}
                 >
-                  {/* Admin dashboard link in dropdown for admin user */}
+                
                   {isAdmin && (
                     <Link 
                       to="/admin" 

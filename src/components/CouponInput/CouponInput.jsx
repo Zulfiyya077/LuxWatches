@@ -1,4 +1,4 @@
-// src/components/CouponInput/CouponInput.jsx
+
 import React, { useState, useContext, useEffect } from "react";
 import { useCoupon } from "../../context/CouponContext";
 import { useTranslation } from "react-i18next";
@@ -11,18 +11,17 @@ const CouponInput = () => {
   const { applyCoupon, removeCoupon, appliedCoupon, loading, couponError } = useCoupon();
   const { t } = useTranslation();
   const { theme } = useContext(ThemeContext);
-  
-  // Animation timeout
+ 
   const [isValidating, setIsValidating] = useState(false);
 
   useEffect(() => {
     if (loading) {
       setIsValidating(true);
     } else {
-      // Keep validating animation a bit longer for better UX
+   
       const timeout = setTimeout(() => {
         setIsValidating(false);
-      }, 300); // Validating animation için küçük bir gecikme
+      }, 300); 
       
       return () => clearTimeout(timeout);
     }
@@ -49,7 +48,7 @@ const CouponInput = () => {
     return "";
   };
 
-  // Animation variants
+
   const containerVariants = {
     hidden: { opacity: 0, y: 20 },
     visible: { 

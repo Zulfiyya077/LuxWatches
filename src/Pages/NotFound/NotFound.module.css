@@ -17,7 +17,6 @@
 
 }
 
-/* Dark Mode */
 .dark {
   background: linear-gradient(135deg, var(--dark-background), #000000);
   color: var(--gold-light);

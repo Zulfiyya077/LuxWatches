@@ -1,4 +1,3 @@
-// AdminDashboard.jsx - 1. Hissə
 import React, { useState, useEffect, useContext } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -29,16 +28,14 @@ import {
   Tooltip,
   Legend,
   ResponsiveContainer,
-  Cell
+  Cell,
 } from "recharts";
 import styles from "./Dashboard.module.css";
 import supabase from "../../supabaseClient";
 import Swal from "sweetalert2";
 import { useTranslation } from "react-i18next";
 import { ThemeContext } from "../../context/ThemeContext";
-import i18n from "../../i18n/i18n";
 
-// Mock data
 const mockStatsData = {
   sales: { value: 124350, change: 12.5 },
   orders: { value: 324, change: 8.2 },
@@ -75,11 +72,9 @@ const categoryData = [
 ];
 
 const AdminDashboard = () => {
-  // Context-ləri əldə edirik
   const { theme, toggleTheme } = useContext(ThemeContext);
   const { t } = useTranslation();
 
-  // State-lər
   const [activeTab, setActiveTab] = useState("dashboard");
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [products, setProducts] = useState([]);
@@ -109,10 +104,8 @@ const AdminDashboard = () => {
     water_resistance: "",
     power: "",
     bezel: "",
-    gallery: ""
+    gallery: "",
   });
-
-  // Filtrlənmiş məhsullar
   const filteredProducts = products.filter(
     (product) =>
       product.name?.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -125,15 +118,12 @@ const AdminDashboard = () => {
       user.name?.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-  // Filtrlənmiş bloglar
   const filteredBlogs = blogs.filter(
     (blog) =>
       blog.title?.toLowerCase().includes(searchTerm.toLowerCase()) ||
       blog.author?.toLowerCase().includes(searchTerm.toLowerCase()) ||
       blog.category?.toLowerCase().includes(searchTerm.toLowerCase())
-  );// AdminDashboard.jsx - 2. Hissə
-  
-  // Məhsulları və digər məlumatları əldə etmək
+  ); 
   useEffect(() => {
     const fetchProducts = async () => {
       setIsLoading(true);
@@ -161,13 +151,13 @@ const AdminDashboard = () => {
     const fetchUsers = async () => {
       setIsLoading(true);
       try {
-        // Profiles cədvəlindən bütün istifadəçiləri çəkirik
+       
         const { data: profilesData, error: profilesError } = await supabase
-          .from('profiles')
-          .select('*');
-        
+          .from("profiles")
+          .select("*");
+
         if (profilesError) throw profilesError;
-        
+
         if (profilesData && profilesData.length > 0) {
           setUsers(profilesData);
         } else {
@@ -176,23 +166,22 @@ const AdminDashboard = () => {
         }
       } catch (error) {
         console.error("Error fetching users from profiles:", error);
-        setError("İstifadəçiləri yükləmək alınmadı. Zəhmət olmasa, bir az sonra yenidən cəhd edin.");
+        setError(
+          "İstifadəçiləri yükləmək alınmadı. Zəhmət olmasa, bir az sonra yenidən cəhd edin."
+        );
         toast.error(t("failedToLoadUsers"));
       } finally {
         setIsLoading(false);
       }
     };
-    
-    // Blogları əldə etmək
+
     const fetchBlogs = async () => {
       setIsLoading(true);
       try {
-        const { data, error } = await supabase
-          .from('blog')
-          .select('*');
-          
+        const { data, error } = await supabase.from("blog").select("*");
+
         if (error) throw error;
-  
+
         if (data && data.length > 0) {
           setBlogs(data);
         } else {
@@ -200,7 +189,7 @@ const AdminDashboard = () => {
         }
       } catch (error) {
         console.error("Error fetching blogs:", error);
-        setError('Failed to load blogs. Please try again later.');
+        setError("Failed to load blogs. Please try again later.");
         toast.error(t("failedToLoadBlogs"));
       } finally {
         setIsLoading(false);
@@ -212,22 +201,22 @@ const AdminDashboard = () => {
     fetchUsers();
   }, [t]);
 
-  // Məhsul əlavə etmək
+
   const addProduct = async () => {
     try {
       const { data, error } = await supabase
         .from("Products")
         .insert([formData])
-        .select(); // ✅ Əlavə et!
-  
+        .select(); 
+
       if (error) throw error;
-  
+
       if (!data || !data.length) {
         console.error("No data returned from the API");
         toast.error(t("noDataReturned"));
         return;
       }
-  
+
       setProducts([...products, { ...formData, id: data[0].id }]);
       toast.success(t("productAddedSuccess"));
       setModalOpen(false);
@@ -236,9 +225,8 @@ const AdminDashboard = () => {
       toast.error(t("failedToAddProduct"));
     }
   };
-  
 
-  // Məhsul yeniləmək
+ 
   const updateProduct = async () => {
     try {
       const { error } = await supabase
@@ -261,7 +249,7 @@ const AdminDashboard = () => {
     }
   };
 
-  // Məhsul silmək
+
   const deleteProduct = async (id) => {
     const { value: confirmed } = await Swal.fire({
       title: t("confirmDelete"),
@@ -299,22 +287,20 @@ const AdminDashboard = () => {
       confirmButtonText: t("yes"),
       cancelButtonText: t("no"),
     });
-  
+
     if (!confirmed) {
       toast.info(t("deleteCancelled"));
       return;
     }
-  
+
     try {
-      // Profiles cədvəlindən istifadəçini silirik
+  
       const { error: profileDeleteError } = await supabase
-        .from('profiles')
+        .from("profiles")
         .delete()
-        .eq('user_id', userId);
-  
+        .eq("user_id", userId);
+
       if (profileDeleteError) throw profileDeleteError;
-  
-      // İstifadəçini state-dən silirik
       setUsers(users.filter((user) => user.user_id !== userId));
       toast.success(t("userDeletedSuccess"));
     } catch (error) {
@@ -322,21 +308,17 @@ const AdminDashboard = () => {
       toast.error(t("failedToDeleteUser"));
     }
   };
-  
-  // Blog əlavə etmək
+
   const addBlog = async () => {
     try {
-      // Məlumatları hazırlayırıq
       const newBlog = {
         ...blogFormData,
-        created_at: new Date().toISOString()
+        created_at: new Date().toISOString(),
       };
 
       const { data, error } = await supabase.from("blog").insert([newBlog]);
 
       if (error) throw error;
-
-      // Yeni blog əlavə edilirsə, onu əldə edirik
       const { data: newBlogData, error: fetchError } = await supabase
         .from("blog")
         .select("*")
@@ -348,8 +330,6 @@ const AdminDashboard = () => {
       if (newBlogData && newBlogData.length > 0) {
         setBlogs([...blogs, newBlogData[0]]);
       }
-
-      // Uğurlu əməliyyat
       toast.success(t("blogAddedSuccess"));
       setModalOpen(false);
     } catch (error) {
@@ -358,7 +338,7 @@ const AdminDashboard = () => {
     }
   };
 
-  // Blog yeniləmək
+
   const updateBlog = async () => {
     try {
       const { error } = await supabase
@@ -367,13 +347,11 @@ const AdminDashboard = () => {
         .eq("id", currentItem.id);
 
       if (error) throw error;
-
-      // State-i yeniləyirik
-      setBlogs(blogs.map(blog => 
-        blog.id === currentItem.id ? { ...blog, ...blogFormData } : blog
-      ));
-
-      // Uğurlu əməliyyat
+      setBlogs(
+        blogs.map((blog) =>
+          blog.id === currentItem.id ? { ...blog, ...blogFormData } : blog
+        )
+      );
       toast.success(t("blogUpdatedSuccess"));
       setModalOpen(false);
     } catch (error) {
@@ -382,7 +360,7 @@ const AdminDashboard = () => {
     }
   };
 
-  // Blog silmək
+
   const deleteBlog = async (id) => {
     const { value: confirmed } = await Swal.fire({
       title: t("confirmDelete"),
@@ -402,8 +380,6 @@ const AdminDashboard = () => {
       const { error } = await supabase.from("blog").delete().eq("id", id);
 
       if (error) throw error;
-
-      // Siyahıdan silirik və UI yeniləyirik
       setBlogs(blogs.filter((blog) => blog.id !== id));
       toast.success(t("blogDeletedSuccess"));
     } catch (error) {
@@ -412,7 +388,7 @@ const AdminDashboard = () => {
     }
   };
 
-  // Modal açmaq
+
   const openModal = (type, item = null) => {
     setModalType(type);
     setCurrentItem(item);
@@ -442,7 +418,6 @@ const AdminDashboard = () => {
     setModalOpen(true);
   };
 
-  // Blog modalını açmaq
   const openBlogModal = (type, item = null) => {
     setModalType(type);
     setCurrentItem(item);
@@ -464,14 +439,14 @@ const AdminDashboard = () => {
         water_resistance: "",
         power: "",
         bezel: "",
-        gallery: ""
+        gallery: "",
       });
     }
 
     setModalOpen(true);
   };
-  
-  // Form dəyişikliklərini idarə etmək
+
+
   const handleFormChange = (e) => {
     const { name, value } = e.target;
     if (name.startsWith("details.")) {
@@ -490,8 +465,7 @@ const AdminDashboard = () => {
       });
     }
   };
-  
-  // Blog form dəyişikliklərini idarə etmək
+
   const handleBlogFormChange = (e) => {
     const { name, value, type, checked } = e.target;
     setBlogFormData({
@@ -500,7 +474,6 @@ const AdminDashboard = () => {
     });
   };
 
-  // Form təqdim etmək
   const handleFormSubmit = (e) => {
     e.preventDefault();
 
@@ -522,10 +495,10 @@ const AdminDashboard = () => {
     }
   };
 
-  // Yan menyunu açıb-bağlamaq
+  
   const toggleSidebar = () => {
     setSidebarOpen(!sidebarOpen);
-  };// AdminDashboard.jsx - 3. Hissə
+  };
 
   return (
     <div
@@ -533,7 +506,6 @@ const AdminDashboard = () => {
         theme === "dark" ? styles.darkTheme : ""
       }`}
     >
-      {/* Sidebar */}
       <aside
         className={`${styles.sidebar} ${sidebarOpen ? styles.sidebarOpen : ""}`}
       >
@@ -717,191 +689,264 @@ const AdminDashboard = () => {
             </div>
 
             {/* Charts and other dashboard components */}
-{/* Sales Chart */}
-<div className={styles.chartContainer}>
-  <div className={styles.chartHeader}>
-    <h3 className={styles.chartTitle}>{t("monthlySales")}</h3>
-    <span className={styles.chartPeriod}>{t("lastYear")}</span>
-  </div>
-  <ResponsiveContainer width="100%" height={400}>
-    <LineChart
-      data={salesData}
-      margin={{
-        top: 20,
-        right: 30,
-        left: 20,
-        bottom: 10,
-      }}
-    >
-      <CartesianGrid strokeDasharray="3 3" className={styles.cartesianGrid} />
-      <XAxis 
-        dataKey="name" 
-        className={styles.axis}
-      />
-      <YAxis className={styles.axis} />
-      <Tooltip className={styles.tooltip} />
-      <Legend />
-      <Line
-        type="monotone"
-        dataKey="sales"
-        className={styles.chartLine}
-        strokeWidth={2}
-        activeDot={{ r: 8 }}
-        name={t("totalSales")}
-      />
-    </LineChart>
-  </ResponsiveContainer>
-</div>
-
-{/* Products by Category Chart */}
-<div className={styles.chartGrid}>
-  <div className={styles.chartContainer}>
-    <div className={styles.chartHeader}>
-      <h3 className={styles.chartTitle}>{t("salesByCategory")}</h3>
-      <span className={styles.chartPeriod}>{t("currentYear")}</span>
-    </div>
-    <ResponsiveContainer width="100%" height={300}>
-      <PieChart>
-        <Pie
-          data={categoryData}
-          cx="50%"
-          cy="50%"
-          labelLine={false}
-          outerRadius={90}
-          innerRadius={60}
-          paddingAngle={2}
-          dataKey="value"
-          className={styles.pieChart}
-          label={({ name, percent }) => `${(percent * 100).toFixed(0)}%`}
-        >
-          {categoryData.map((entry, index) => {
-            // Tünd yaşıl və bordo rəng tonları
-            const colors = [
-              '#013220', // Tünd yaşıl
-              '#800020', // Bordo
-              '#01543a', // Yaşıl ton 1
-              '#9a0025', // Bordo ton 1
-              '#017055', // Yaşıl ton 2 
-              '#b4002d', // Bordo ton 2
-              '#019071', // Yaşıl ton 3
-              '#ce0035', // Bordo ton 3
-              '#01ab8d', // Yaşıl ton 4
-              '#e8003e'  // Bordo ton 4
-            ];
-            
-            return (
-              <Cell
-                key={`cell-${index}`}
-                fill={colors[index % colors.length]}
-                stroke="#ffffff"
-                strokeWidth={1}
-              />
-            );
-          })}
-        </Pie>
-        <Tooltip 
-          formatter={(value, name) => [`${value} ${t("watches")}`, name]}
-          contentStyle={{
-            backgroundColor: theme === 'dark' ? '#1e1e1e' : '#fff',
-            borderRadius: '4px',
-            border: theme === 'dark' ? '1px solid #343a40' : '1px solid #dee2e6',
-            boxShadow: '0 2px 8px rgba(0, 0, 0, 0.15)'
-          }}
-        />
-        <Legend 
-          layout="horizontal"
-          verticalAlign="bottom"
-          align="center"
-          iconType="circle"
-          iconSize={8}
-          wrapperStyle={{
-            paddingTop: '1rem',
-            fontSize: '0.75rem'
-          }}
-        />
-      </PieChart>
-    </ResponsiveContainer>
-  </div>
-
-  {/* Recent Orders */}
-  <div className={styles.chartContainer}>
-    <div className={styles.chartHeader}>
-      <h3 className={styles.chartTitle}>{t("recentOrders")}</h3>
-      <span className={styles.chartPeriod}>{t("last24Hours")}</span>
-    </div>
-    <table className={styles.table}>
-      <thead className={styles.thead}>
-        <tr>
-          <th className={styles.th}>{t("orderID")}</th>
-          <th className={styles.th}>{t("customer")}</th>
-          <th className={styles.th}>{t("product")}</th>
-          <th className={styles.th}>{t("amount")}</th>
-          <th className={styles.th}>{t("status")}</th>
-        </tr>
-      </thead>
-      <tbody>
-        {[
-          { id: '#ORD-5531', customer: 'John Smith', product: 'Submariner', amount: '$10,800', status: 'completed' },
-          { id: '#ORD-5530', customer: 'Emma Brown', product: 'Datejust', amount: '$8,400', status: 'processing' },
-          { id: '#ORD-5529', customer: 'Michael Chen', product: 'GMT-Master II', amount: '$11,500', status: 'completed' },
-          { id: '#ORD-5528', customer: 'Sarah Johnson', product: 'Day-Date', amount: '$15,200', status: 'processing' },
-          { id: '#ORD-5527', customer: 'David Wilson', product: 'Explorer', amount: '$7,200', status: 'completed' },
-        ].map((order, index) => (
-          <tr key={index}>
-            <td className={styles.td}>{order.id}</td>
-            <td className={styles.td}>{order.customer}</td>
-            <td className={styles.td}>{order.product}</td>
-            <td className={styles.td}>{order.amount}</td>
-            <td className={styles.td}>
-              <span className={`${styles.status} ${styles[order.status]}`}>
-                {t(order.status)}
-              </span>
-            </td>
-          </tr>
-        ))}
-      </tbody>
-    </table>
-  </div>
-</div>
-
-{/* Top Selling Products */}
-<div className={styles.tableContainer}>
-  <div className={styles.tableHeader}>
-    <h3 className={styles.tableTitle}>{t("topSellingProducts")}</h3>
-    <span className={styles.chartPeriod}>{t("thisMonth")}</span>
-  </div>
-  <table className={styles.table}>
-    <thead className={styles.thead}>
-      <tr>
-        <th className={styles.th}>{t("product")}</th>
-        <th className={styles.th}>{t("price")}</th>
-        <th className={styles.th}>{t("sold")}</th>
-        <th className={styles.th}>{t("revenue")}</th>
-      </tr>
-    </thead>
-    <tbody>
-      {[
-        { name: 'Submariner Date', model: 'Ref. 126610LN', price: '$10,800', sold: 42, revenue: '$453,600' },
-        { name: 'Datejust 41', model: 'Ref. 126334', price: '$8,400', sold: 37, revenue: '$310,800' },
-        { name: 'GMT-Master II', model: 'Ref. 126710BLRO', price: '$11,500', sold: 30, revenue: '$345,000' },
-        { name: 'Daytona', model: 'Ref. 116500LN', price: '$14,500', sold: 25, revenue: '$362,500' },
-        { name: 'Oyster Perpetual 41', model: 'Ref. 124300', price: '$6,300', sold: 23, revenue: '$144,900' },
-      ].map((product, index) => (
-        <tr key={index}>
-          <td className={styles.td}>
-            <div>
-              <div>{product.name}</div>
-              <div className={styles.modelText}>{product.model}</div>
+            {/* Sales Chart */}
+            <div className={styles.chartContainer}>
+              <div className={styles.chartHeader}>
+                <h3 className={styles.chartTitle}>{t("monthlySales")}</h3>
+                <span className={styles.chartPeriod}>{t("lastYear")}</span>
+              </div>
+              <ResponsiveContainer width="100%" height={400}>
+                <LineChart
+                  data={salesData}
+                  margin={{
+                    top: 20,
+                    right: 30,
+                    left: 20,
+                    bottom: 10,
+                  }}
+                >
+                  <CartesianGrid
+                    strokeDasharray="3 3"
+                    className={styles.cartesianGrid}
+                  />
+                  <XAxis dataKey="name" className={styles.axis} />
+                  <YAxis className={styles.axis} />
+                  <Tooltip className={styles.tooltip} />
+                  <Legend />
+                  <Line
+                    type="monotone"
+                    dataKey="sales"
+                    className={styles.chartLine}
+                    strokeWidth={2}
+                    activeDot={{ r: 8 }}
+                    name={t("totalSales")}
+                  />
+                </LineChart>
+              </ResponsiveContainer>
             </div>
-          </td>
-          <td className={styles.td}>{product.price}</td>
-          <td className={styles.td}>{product.sold}</td>
-          <td className={styles.td}>{product.revenue}</td>
-        </tr>
-      ))}
-    </tbody>
-  </table>
-</div>
+
+            {/* Products by Category Chart */}
+            <div className={styles.chartGrid}>
+              <div className={styles.chartContainer}>
+                <div className={styles.chartHeader}>
+                  <h3 className={styles.chartTitle}>{t("salesByCategory")}</h3>
+                  <span className={styles.chartPeriod}>{t("currentYear")}</span>
+                </div>
+                <ResponsiveContainer width="100%" height={300}>
+                  <PieChart>
+                    <Pie
+                      data={categoryData}
+                      cx="50%"
+                      cy="50%"
+                      labelLine={false}
+                      outerRadius={90}
+                      innerRadius={60}
+                      paddingAngle={2}
+                      dataKey="value"
+                      className={styles.pieChart}
+                      label={({ name, percent }) =>
+                        `${(percent * 100).toFixed(0)}%`
+                      }
+                    >
+                      {categoryData.map((entry, index) => {
+                        const colors = [
+                          "#013220", 
+                          "#800020", 
+                          "#01543a",
+                          "#9a0025", 
+                          "#017055", 
+                          "#b4002d", 
+                          "#019071", 
+                          "#ce0035", 
+                          "#01ab8d",
+                          "#e8003e", 
+                        ];
+
+                        return (
+                          <Cell
+                            key={`cell-${index}`}
+                            fill={colors[index % colors.length]}
+                            stroke="#ffffff"
+                            strokeWidth={1}
+                          />
+                        );
+                      })}
+                    </Pie>
+                    <Tooltip
+                      formatter={(value, name) => [
+                        `${value} ${t("watches")}`,
+                        name,
+                      ]}
+                      contentStyle={{
+                        backgroundColor: theme === "dark" ? "#1e1e1e" : "#fff",
+                        borderRadius: "4px",
+                        border:
+                          theme === "dark"
+                            ? "1px solid #343a40"
+                            : "1px solid #dee2e6",
+                        boxShadow: "0 2px 8px rgba(0, 0, 0, 0.15)",
+                      }}
+                    />
+                    <Legend
+                      layout="horizontal"
+                      verticalAlign="bottom"
+                      align="center"
+                      iconType="circle"
+                      iconSize={8}
+                      wrapperStyle={{
+                        paddingTop: "1rem",
+                        fontSize: "0.75rem",
+                      }}
+                    />
+                  </PieChart>
+                </ResponsiveContainer>
+              </div>
+
+              {/* Recent Orders */}
+              <div className={styles.chartContainer}>
+                <div className={styles.chartHeader}>
+                  <h3 className={styles.chartTitle}>{t("recentOrders")}</h3>
+                  <span className={styles.chartPeriod}>{t("last24Hours")}</span>
+                </div>
+                <table className={styles.table}>
+                  <thead className={styles.thead}>
+                    <tr>
+                      <th className={styles.th}>{t("orderID")}</th>
+                      <th className={styles.th}>{t("customer")}</th>
+                      <th className={styles.th}>{t("product")}</th>
+                      <th className={styles.th}>{t("amount")}</th>
+                      <th className={styles.th}>{t("status")}</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {[
+                      {
+                        id: "#ORD-5531",
+                        customer: "John Smith",
+                        product: "Submariner",
+                        amount: "$10,800",
+                        status: "completed",
+                      },
+                      {
+                        id: "#ORD-5530",
+                        customer: "Emma Brown",
+                        product: "Datejust",
+                        amount: "$8,400",
+                        status: "processing",
+                      },
+                      {
+                        id: "#ORD-5529",
+                        customer: "Michael Chen",
+                        product: "GMT-Master II",
+                        amount: "$11,500",
+                        status: "completed",
+                      },
+                      {
+                        id: "#ORD-5528",
+                        customer: "Sarah Johnson",
+                        product: "Day-Date",
+                        amount: "$15,200",
+                        status: "processing",
+                      },
+                      {
+                        id: "#ORD-5527",
+                        customer: "David Wilson",
+                        product: "Explorer",
+                        amount: "$7,200",
+                        status: "completed",
+                      },
+                    ].map((order, index) => (
+                      <tr key={index}>
+                        <td className={styles.td}>{order.id}</td>
+                        <td className={styles.td}>{order.customer}</td>
+                        <td className={styles.td}>{order.product}</td>
+                        <td className={styles.td}>{order.amount}</td>
+                        <td className={styles.td}>
+                          <span
+                            className={`${styles.status} ${
+                              styles[order.status]
+                            }`}
+                          >
+                            {t(order.status)}
+                          </span>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            {/* Top Selling Products */}
+            <div className={styles.tableContainer}>
+              <div className={styles.tableHeader}>
+                <h3 className={styles.tableTitle}>{t("topSellingProducts")}</h3>
+                <span className={styles.chartPeriod}>{t("thisMonth")}</span>
+              </div>
+              <table className={styles.table}>
+                <thead className={styles.thead}>
+                  <tr>
+                    <th className={styles.th}>{t("product")}</th>
+                    <th className={styles.th}>{t("price")}</th>
+                    <th className={styles.th}>{t("sold")}</th>
+                    <th className={styles.th}>{t("revenue")}</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {[
+                    {
+                      name: "Submariner Date",
+                      model: "Ref. 126610LN",
+                      price: "$10,800",
+                      sold: 42,
+                      revenue: "$453,600",
+                    },
+                    {
+                      name: "Datejust 41",
+                      model: "Ref. 126334",
+                      price: "$8,400",
+                      sold: 37,
+                      revenue: "$310,800",
+                    },
+                    {
+                      name: "GMT-Master II",
+                      model: "Ref. 126710BLRO",
+                      price: "$11,500",
+                      sold: 30,
+                      revenue: "$345,000",
+                    },
+                    {
+                      name: "Daytona",
+                      model: "Ref. 116500LN",
+                      price: "$14,500",
+                      sold: 25,
+                      revenue: "$362,500",
+                    },
+                    {
+                      name: "Oyster Perpetual 41",
+                      model: "Ref. 124300",
+                      price: "$6,300",
+                      sold: 23,
+                      revenue: "$144,900",
+                    },
+                  ].map((product, index) => (
+                    <tr key={index}>
+                      <td className={styles.td}>
+                        <div>
+                          <div>{product.name}</div>
+                          <div className={styles.modelText}>
+                            {product.model}
+                          </div>
+                        </div>
+                      </td>
+                      <td className={styles.td}>{product.price}</td>
+                      <td className={styles.td}>{product.sold}</td>
+                      <td className={styles.td}>{product.revenue}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
             {/* ... */}
           </>
         )}
@@ -910,150 +955,159 @@ const AdminDashboard = () => {
         {activeTab === "products" && (
           <div className={styles.tableContainer}>
             {/* Products Tab */}
-{activeTab === "products" && (
-  <div className={styles.tableContainer}>
-    <div className={styles.tableHeader}>
-      <h3 className={styles.tableTitle}>{t("products")}</h3>
-      <button
-        className={styles.addButton}
-        onClick={() => openModal("addProduct")}
-      >
-        <Plus size={16} />
-        <span>{t("addProduct")}</span>
-      </button>
-    </div>
+            {activeTab === "products" && (
+              <div className={styles.tableContainer}>
+                <div className={styles.tableHeader}>
+                  <h3 className={styles.tableTitle}>{t("products")}</h3>
+                  <button
+                    className={styles.addButton}
+                    onClick={() => openModal("addProduct")}
+                  >
+                    <Plus size={16} />
+                    <span>{t("addProduct")}</span>
+                  </button>
+                </div>
 
-    {isLoading ? (
-      <div className={styles.loadingContainer}>
-        <RefreshCw size={24} className={styles.loadingIcon} />
-        <p>{t("loadingProducts")}</p>
-      </div>
-    ) : (
-      <table className={styles.table}>
-        <thead className={styles.thead}>
-          <tr>
-            <th className={styles.th}>{t("id")}</th>
-            <th className={styles.th}>{t("image")}</th>
-            <th className={styles.th}>{t("name")}</th>
-            <th className={styles.th}>{t("model")}</th>
-            <th className={styles.th}>{t("price")}</th>
-            <th className={styles.th}>{t("actions")}</th>
-          </tr>
-        </thead>
-        <tbody>
-          {filteredProducts.length > 0 ? (
-            filteredProducts.map((product) => (
-              <tr key={product.id}>
-                <td className={styles.td}>{product.id}</td>
-                <td className={styles.td}>
-                  <div className={styles.productImage}>
-                    {product.image ? (
-                      <img src={product.image} alt={product.name} />
-                    ) : (
-                      <Watch size={24} />
-                    )}
+                {isLoading ? (
+                  <div className={styles.loadingContainer}>
+                    <RefreshCw size={24} className={styles.loadingIcon} />
+                    <p>{t("loadingProducts")}</p>
                   </div>
-                </td>
-                <td className={styles.td}>{product.name}</td>
-                <td className={styles.td}>{product.model}</td>
-                <td className={styles.td}>
-                  ${product.price ? Number(product.price).toLocaleString() : "0"}
-                </td>
-                <td className={styles.td}>
-                  <button
-                    className={`${styles.actionButton} ${styles.editButton}`}
-                    onClick={() => openModal("editProduct", product)}
-                  >
-                    <Edit size={16} />
-                  </button>
-                  <button
-                    className={`${styles.actionButton} ${styles.deleteButton}`}
-                    onClick={() => deleteProduct(product.id)}
-                  >
-                    <Trash2 size={16} />
-                  </button>
-                </td>
-              </tr>
-            ))
-          ) : (
-            <tr>
-              <td colSpan="6" className={styles.noData}>
-                {searchTerm
-                  ? t("noProductsFound")
-                  : t("noProductsAvailable")}
-              </td>
-            </tr>
-          )}
-        </tbody>
-      </table>
-    )}
-  </div>
-)}
+                ) : (
+                  <table className={styles.table}>
+                    <thead className={styles.thead}>
+                      <tr>
+                        <th className={styles.th}>{t("id")}</th>
+                        <th className={styles.th}>{t("image")}</th>
+                        <th className={styles.th}>{t("name")}</th>
+                        <th className={styles.th}>{t("model")}</th>
+                        <th className={styles.th}>{t("price")}</th>
+                        <th className={styles.th}>{t("actions")}</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {filteredProducts.length > 0 ? (
+                        filteredProducts.map((product) => (
+                          <tr key={product.id}>
+                            <td className={styles.td}>{product.id}</td>
+                            <td className={styles.td}>
+                              <div className={styles.productImage}>
+                                {product.image ? (
+                                  <img src={product.image} alt={product.name} />
+                                ) : (
+                                  <Watch size={24} />
+                                )}
+                              </div>
+                            </td>
+                            <td className={styles.td}>{product.name}</td>
+                            <td className={styles.td}>{product.model}</td>
+                            <td className={styles.td}>
+                              $
+                              {product.price
+                                ? Number(product.price).toLocaleString()
+                                : "0"}
+                            </td>
+                            <td className={styles.td}>
+                              <button
+                                className={`${styles.actionButton} ${styles.editButton}`}
+                                onClick={() =>
+                                  openModal("editProduct", product)
+                                }
+                              >
+                                <Edit size={16} />
+                              </button>
+                              <button
+                                className={`${styles.actionButton} ${styles.deleteButton}`}
+                                onClick={() => deleteProduct(product.id)}
+                              >
+                                <Trash2 size={16} />
+                              </button>
+                            </td>
+                          </tr>
+                        ))
+                      ) : (
+                        <tr>
+                          <td colSpan="6" className={styles.noData}>
+                            {searchTerm
+                              ? t("noProductsFound")
+                              : t("noProductsAvailable")}
+                          </td>
+                        </tr>
+                      )}
+                    </tbody>
+                  </table>
+                )}
+              </div>
+            )}
           </div>
         )}
 
         {/* Users Tab */}
         {activeTab === "users" && (
           <div className={styles.tableContainer}>
-           {/* Users Tab */}
-{activeTab === "users" && (
-  <div className={styles.tableContainer}>
-    <div className={styles.tableHeader}>
-      <h3 className={styles.tableTitle}>{t("users")}</h3>
-    </div>
+            {/* Users Tab */}
+            {activeTab === "users" && (
+              <div className={styles.tableContainer}>
+                <div className={styles.tableHeader}>
+                  <h3 className={styles.tableTitle}>{t("users")}</h3>
+                </div>
 
-    {isLoading ? (
-      <div className={styles.loadingContainer}>
-        <RefreshCw size={24} className={styles.loadingIcon} />
-        <p>{t("loadingUsers")}</p>
-      </div>
-    ) : (
-      <table className={styles.table}>
-        <thead className={styles.thead}>
-          <tr>
-            <th className={styles.th}>{t("id")}</th>
-            <th className={styles.th}>{t("name")}</th>
-            <th className={styles.th}>{t("email")}</th>
-            <th className={styles.th}>{t("role")}</th>
-            <th className={styles.th}>{t("registered")}</th>
-            <th className={styles.th}>{t("actions")}</th>
-          </tr>
-        </thead>
-        <tbody>
-  {filteredUsers.length > 0 ? (
-    filteredUsers.map((user) => (
-      <tr key={user.id}>
-        <td className={styles.td}>{user.id}</td>
-        <td className={styles.td}>
-          {user.name || "-"}
-        </td>
-        <td className={styles.td}>{user.email}</td>
-        <td className={styles.td}>{user.role || t("user")}</td>
-        <td className={styles.td}>
-          {user.created_at ? new Date(user.created_at).toLocaleDateString() : "-"}
-        </td>
-        <td className={styles.td}>
-          <button
-            className={`${styles.actionButton} ${styles.deleteButton}`}
-            onClick={() => deleteUser(user.user_id)}
-          >
-            <Trash2 size={16} />
-          </button>
-        </td>
-      </tr>
-    ))
-  ) : (
-    <tr>
-      <td colSpan="6" className={styles.noData}>
-        {searchTerm ? t("noUsersFound") : t("noUsersAvailable")}
-      </td>
-    </tr>
-  )}
-</tbody>
-      </table>
-    )}
-  </div>
-)}
+                {isLoading ? (
+                  <div className={styles.loadingContainer}>
+                    <RefreshCw size={24} className={styles.loadingIcon} />
+                    <p>{t("loadingUsers")}</p>
+                  </div>
+                ) : (
+                  <table className={styles.table}>
+                    <thead className={styles.thead}>
+                      <tr>
+                        <th className={styles.th}>{t("id")}</th>
+                        <th className={styles.th}>{t("name")}</th>
+                        <th className={styles.th}>{t("email")}</th>
+                        <th className={styles.th}>{t("role")}</th>
+                        <th className={styles.th}>{t("registered")}</th>
+                        <th className={styles.th}>{t("actions")}</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {filteredUsers.length > 0 ? (
+                        filteredUsers.map((user) => (
+                          <tr key={user.id}>
+                            <td className={styles.td}>{user.id}</td>
+                            <td className={styles.td}>{user.name || "-"}</td>
+                            <td className={styles.td}>{user.email}</td>
+                            <td className={styles.td}>
+                              {user.role || t("user")}
+                            </td>
+                            <td className={styles.td}>
+                              {user.created_at
+                                ? new Date(user.created_at).toLocaleDateString()
+                                : "-"}
+                            </td>
+                            <td className={styles.td}>
+                              <button
+                                className={`${styles.actionButton} ${styles.deleteButton}`}
+                                onClick={() => deleteUser(user.user_id)}
+                              >
+                                <Trash2 size={16} />
+                              </button>
+                            </td>
+                          </tr>
+                        ))
+                      ) : (
+                        <tr>
+                          <td colSpan="6" className={styles.noData}>
+                            {searchTerm
+                              ? t("noUsersFound")
+                              : t("noUsersAvailable")}
+                          </td>
+                        </tr>
+                      )}
+                    </tbody>
+                  </table>
+                )}
+              </div>
+            )}
           </div>
         )}
 
@@ -1106,9 +1160,7 @@ const AdminDashboard = () => {
                         <td className={styles.td}>{blog.title}</td>
                         <td className={styles.td}>{blog.author}</td>
                         <td className={styles.td}>{blog.category}</td>
-                        <td className={styles.td}>
-                          {blog.date}
-                        </td>
+                        <td className={styles.td}>{blog.date}</td>
                         <td className={styles.td}>
                           <button
                             className={`${styles.actionButton} ${styles.editButton}`}
@@ -1128,9 +1180,7 @@ const AdminDashboard = () => {
                   ) : (
                     <tr>
                       <td colSpan="7" className={styles.noData}>
-                        {searchTerm
-                          ? t("noBlogsFound")
-                          : t("noBlogsAvailable")}
+                        {searchTerm ? t("noBlogsFound") : t("noBlogsAvailable")}
                       </td>
                     </tr>
                   )}
@@ -1140,8 +1190,8 @@ const AdminDashboard = () => {
           </div>
         )}
 
-     {/* Modal */}
-     {modalOpen && (
+        {/* Modal */}
+        {modalOpen && (
           <div className={styles.modalOverlay}>
             <div className={styles.modal}>
               <div className={styles.modalHeader}>
@@ -1161,177 +1211,178 @@ const AdminDashboard = () => {
 
               <form onSubmit={handleFormSubmit}>
                 {/* Product Form */}
-                {(modalType === "addProduct" || modalType === "editProduct") && (
-                 <div>
-                  <div className={styles.formGroup}>
-                    <label className={styles.label}>{t("productName")}</label>
-                    <input
-                      type="text"
-                      name="name"
-                      className={styles.input}
-                      value={formData.name || ""}
-                      onChange={handleFormChange}
-                      required
-                    />
-                  </div>
-                  <div className={styles.formGroup}>
-                    <label className={styles.label}>{t("model")}</label>
-                    <input
-                      type="text"
-                      name="model"
-                      className={styles.input}
-                      value={formData.model || ""}
-                      onChange={handleFormChange}
-                      required
-                    />
-                  </div>
-                  <div className={styles.formGrid}>
+                {(modalType === "addProduct" ||
+                  modalType === "editProduct") && (
+                  <div>
                     <div className={styles.formGroup}>
-                      <label className={styles.label}>{t("price")} ($)</label>
+                      <label className={styles.label}>{t("productName")}</label>
                       <input
-                        type="number"
-                        name="price"
+                        type="text"
+                        name="name"
                         className={styles.input}
-                        value={formData.price || ""}
+                        value={formData.name || ""}
                         onChange={handleFormChange}
                         required
                       />
                     </div>
                     <div className={styles.formGroup}>
+                      <label className={styles.label}>{t("model")}</label>
+                      <input
+                        type="text"
+                        name="model"
+                        className={styles.input}
+                        value={formData.model || ""}
+                        onChange={handleFormChange}
+                        required
+                      />
+                    </div>
+                    <div className={styles.formGrid}>
+                      <div className={styles.formGroup}>
+                        <label className={styles.label}>{t("price")} ($)</label>
+                        <input
+                          type="number"
+                          name="price"
+                          className={styles.input}
+                          value={formData.price || ""}
+                          onChange={handleFormChange}
+                          required
+                        />
+                      </div>
+                      <div className={styles.formGroup}>
+                        <label className={styles.label}>
+                          {t("discountedPrice")} ($)
+                        </label>
+                        <input
+                          type="number"
+                          name="discountedPrice"
+                          className={styles.input}
+                          value={formData.discountedPrice || ""}
+                          onChange={handleFormChange}
+                        />
+                      </div>
+                    </div>
+                    <div className={styles.formGroup}>
+                      <label className={styles.label}>{t("discounted")}</label>
+                      <input
+                        type="checkbox"
+                        name="discounted"
+                        className={styles.checkbox}
+                        checked={formData.discounted || false}
+                        onChange={(e) =>
+                          setFormData({
+                            ...formData,
+                            discounted: e.target.checked,
+                          })
+                        }
+                      />
+                    </div>
+                    <div className={styles.formGroup}>
                       <label className={styles.label}>
-                        {t("discountedPrice")} ($)
+                        {t("product.imageUrl")}
+                      </label>
+                      <input
+                        type="text"
+                        name="image"
+                        className={styles.input}
+                        value={formData.image || ""}
+                        onChange={handleFormChange}
+                      />
+                    </div>
+                    <div className={styles.formGroup}>
+                      <label className={styles.label}>
+                        {t("product.description")}
+                      </label>
+                      <textarea
+                        name="description"
+                        className={styles.textarea}
+                        value={formData.description || ""}
+                        onChange={handleFormChange}
+                        rows="4"
+                      ></textarea>
+                    </div>
+                    <div className={styles.formGroup}>
+                      <label className={styles.label}>
+                        {t("product.rating")}
                       </label>
                       <input
                         type="number"
-                        name="discountedPrice"
+                        name="rating"
                         className={styles.input}
-                        value={formData.discountedPrice || ""}
+                        value={formData.rating || ""}
+                        onChange={handleFormChange}
+                        min="0"
+                        max="5"
+                        step="0.1"
+                      />
+                    </div>
+                    <div className={styles.formGroup}>
+                      <label className={styles.label}>
+                        {t("product.availability")}
+                      </label>
+                      <input
+                        type="checkbox"
+                        name="availability"
+                        className={styles.checkbox}
+                        checked={formData.availability || false}
+                        onChange={(e) =>
+                          setFormData({
+                            ...formData,
+                            availability: e.target.checked,
+                          })
+                        }
+                      />
+                    </div>
+                    <div className={styles.formGroup}>
+                      <label className={styles.label}>
+                        {t("product.material")}
+                      </label>
+                      <input
+                        type="text"
+                        name="details.material"
+                        className={styles.input}
+                        value={formData.details?.material || ""}
+                        onChange={handleFormChange}
+                      />
+                    </div>
+                    <div className={styles.formGroup}>
+                      <label className={styles.label}>
+                        {t("product.movement")}
+                      </label>
+                      <input
+                        type="text"
+                        name="details.movement"
+                        className={styles.input}
+                        value={formData.details?.movement || ""}
+                        onChange={handleFormChange}
+                      />
+                    </div>
+                    <div className={styles.formGroup}>
+                      <label className={styles.label}>
+                        {t("product.caseDiameter")}
+                      </label>
+                      <input
+                        type="text"
+                        name="details.caseDiameter"
+                        className={styles.input}
+                        value={formData.details?.caseDiameter || ""}
+                        onChange={handleFormChange}
+                      />
+                    </div>
+                    <div className={styles.formGroup}>
+                      <label className={styles.label}>
+                        {t("product.waterResistance")}
+                      </label>
+                      <input
+                        type="text"
+                        name="details.waterResistance"
+                        className={styles.input}
+                        value={formData.details?.waterResistance || ""}
                         onChange={handleFormChange}
                       />
                     </div>
                   </div>
-                  <div className={styles.formGroup}>
-                    <label className={styles.label}>{t("discounted")}</label>
-                    <input
-                      type="checkbox"
-                      name="discounted"
-                      className={styles.checkbox}
-                      checked={formData.discounted || false}
-                      onChange={(e) =>
-                        setFormData({
-                          ...formData,
-                          discounted: e.target.checked,
-                        })
-                      }
-                    />
-                  </div>
-                  <div className={styles.formGroup}>
-                    <label className={styles.label}>
-                      {t("product.imageUrl")}
-                    </label>
-                    <input
-                      type="text"
-                      name="image"
-                      className={styles.input}
-                      value={formData.image || ""}
-                      onChange={handleFormChange}
-                    />
-                  </div>
-                  <div className={styles.formGroup}>
-                    <label className={styles.label}>
-                      {t("product.description")}
-                    </label>
-                    <textarea
-                      name="description"
-                      className={styles.textarea}
-                      value={formData.description || ""}
-                      onChange={handleFormChange}
-                      rows="4"
-                    ></textarea>
-                  </div>
-                  <div className={styles.formGroup}>
-                    <label className={styles.label}>
-                      {t("product.rating")}
-                    </label>
-                    <input
-                      type="number"
-                      name="rating"
-                      className={styles.input}
-                      value={formData.rating || ""}
-                      onChange={handleFormChange}
-                      min="0"
-                      max="5"
-                      step="0.1"
-                    />
-                  </div>
-                  <div className={styles.formGroup}>
-                    <label className={styles.label}>
-                      {t("product.availability")}
-                    </label>
-                    <input
-                      type="checkbox"
-                      name="availability"
-                      className={styles.checkbox}
-                      checked={formData.availability || false}
-                      onChange={(e) =>
-                        setFormData({
-                          ...formData,
-                          availability: e.target.checked,
-                        })
-                      }
-                    />
-                  </div>
-                  <div className={styles.formGroup}>
-                    <label className={styles.label}>
-                      {t("product.material")}
-                    </label>
-                    <input
-                      type="text"
-                      name="details.material"
-                      className={styles.input}
-                      value={formData.details?.material || ""}
-                      onChange={handleFormChange}
-                    />
-                  </div>
-                  <div className={styles.formGroup}>
-                    <label className={styles.label}>
-                      {t("product.movement")}
-                    </label>
-                    <input
-                      type="text"
-                      name="details.movement"
-                      className={styles.input}
-                      value={formData.details?.movement || ""}
-                      onChange={handleFormChange}
-                    />
-                  </div>
-                  <div className={styles.formGroup}>
-                    <label className={styles.label}>
-                      {t("product.caseDiameter")}
-                    </label>
-                    <input
-                      type="text"
-                      name="details.caseDiameter"
-                      className={styles.input}
-                      value={formData.details?.caseDiameter || ""}
-                      onChange={handleFormChange}
-                    />
-                  </div>
-                  <div className={styles.formGroup}>
-                    <label className={styles.label}>
-                      {t("product.waterResistance")}
-                    </label>
-                    <input
-                      type="text"
-                      name="details.waterResistance"
-                      className={styles.input}
-                      value={formData.details?.waterResistance || ""}
-                      onChange={handleFormChange}
-                    />
-                  </div>
-                </div>
                 )}
-                
+
                 {/* Blog Form */}
                 {(modalType === "addBlog" || modalType === "editBlog") && (
                   <>
@@ -1348,7 +1399,9 @@ const AdminDashboard = () => {
                     </div>
 
                     <div className={styles.formGroup}>
-                      <label className={styles.label}>{t("blog.content")}</label>
+                      <label className={styles.label}>
+                        {t("blog.content")}
+                      </label>
                       <textarea
                         name="content"
                         className={styles.textarea}
@@ -1372,7 +1425,9 @@ const AdminDashboard = () => {
                       </div>
 
                       <div className={styles.formGroup}>
-                        <label className={styles.label}>{t("blog.readTime")}</label>
+                        <label className={styles.label}>
+                          {t("blog.readTime")}
+                        </label>
                         <input
                           type="text"
                           name="read_time"
@@ -1386,7 +1441,9 @@ const AdminDashboard = () => {
 
                     <div className={styles.formGrid}>
                       <div className={styles.formGroup}>
-                        <label className={styles.label}>{t("blog.author")}</label>
+                        <label className={styles.label}>
+                          {t("blog.author")}
+                        </label>
                         <input
                           type="text"
                           name="author"
@@ -1398,7 +1455,9 @@ const AdminDashboard = () => {
                       </div>
 
                       <div className={styles.formGroup}>
-                        <label className={styles.label}>{t("blog.category")}</label>
+                        <label className={styles.label}>
+                          {t("blog.category")}
+                        </label>
                         <input
                           type="text"
                           name="category"
@@ -1410,7 +1469,9 @@ const AdminDashboard = () => {
                     </div>
 
                     <div className={styles.formGroup}>
-                      <label className={styles.label}>{t("blog.imageUrl")}</label>
+                      <label className={styles.label}>
+                        {t("blog.imageUrl")}
+                      </label>
                       <input
                         type="text"
                         name="image"
@@ -1421,7 +1482,9 @@ const AdminDashboard = () => {
                     </div>
 
                     <div className={styles.formGroup}>
-                      <label className={styles.label}>{t("blog.gallery")}</label>
+                      <label className={styles.label}>
+                        {t("blog.gallery")}
+                      </label>
                       <textarea
                         name="gallery"
                         className={styles.textarea}
@@ -1433,12 +1496,19 @@ const AdminDashboard = () => {
                     </div>
 
                     <div className={styles.formGroup}>
-                      <label className={styles.label} style={{ fontWeight: 'bold' }}>{t("blog.watchDetails")}</label>
+                      <label
+                        className={styles.label}
+                        style={{ fontWeight: "bold" }}
+                      >
+                        {t("blog.watchDetails")}
+                      </label>
                     </div>
 
                     <div className={styles.formGrid}>
                       <div className={styles.formGroup}>
-                        <label className={styles.label}>{t("blog.diameter")}</label>
+                        <label className={styles.label}>
+                          {t("blog.diameter")}
+                        </label>
                         <input
                           type="text"
                           name="diameter"
@@ -1450,7 +1520,9 @@ const AdminDashboard = () => {
                       </div>
 
                       <div className={styles.formGroup}>
-                        <label className={styles.label}>{t("blog.movement")}</label>
+                        <label className={styles.label}>
+                          {t("blog.movement")}
+                        </label>
                         <input
                           type="text"
                           name="movement"
@@ -1464,7 +1536,9 @@ const AdminDashboard = () => {
 
                     <div className={styles.formGrid}>
                       <div className={styles.formGroup}>
-                        <label className={styles.label}>{t("blog.material")}</label>
+                        <label className={styles.label}>
+                          {t("blog.material")}
+                        </label>
                         <input
                           type="text"
                           name="material"
@@ -1476,7 +1550,9 @@ const AdminDashboard = () => {
                       </div>
 
                       <div className={styles.formGroup}>
-                        <label className={styles.label}>{t("blog.waterResistance")}</label>
+                        <label className={styles.label}>
+                          {t("blog.waterResistance")}
+                        </label>
                         <input
                           type="text"
                           name="water_resistance"
@@ -1490,7 +1566,9 @@ const AdminDashboard = () => {
 
                     <div className={styles.formGrid}>
                       <div className={styles.formGroup}>
-                        <label className={styles.label}>{t("blog.power")}</label>
+                        <label className={styles.label}>
+                          {t("blog.power")}
+                        </label>
                         <input
                           type="text"
                           name="power"
@@ -1502,7 +1580,9 @@ const AdminDashboard = () => {
                       </div>
 
                       <div className={styles.formGroup}>
-                        <label className={styles.label}>{t("blog.bezel")}</label>
+                        <label className={styles.label}>
+                          {t("blog.bezel")}
+                        </label>
                         <input
                           type="text"
                           name="bezel"
@@ -1515,7 +1595,7 @@ const AdminDashboard = () => {
                     </div>
                   </>
                 )}
-            
+
                 {/* User Form */}
                 {(modalType === "addUser" || modalType === "editUser") && (
                   <>

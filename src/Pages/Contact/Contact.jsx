@@ -29,11 +29,7 @@ const Contact = () => {
   
   const handleSubmit = (e) => {
     e.preventDefault();
-    
-    // Here you would typically send the data to your backend
-    // For now, we'll just simulate a successful submission
-    
-    // Show success toast notification
+  
     toast.success(t('successMessage2') || 'Your message has been sent successfully!', {
       position: "top-right",
       autoClose: 5000,
@@ -44,7 +40,7 @@ const Contact = () => {
       theme: theme === 'dark' ? 'dark' : 'light',
     });
     
-    // Reset form fields
+    
     setFormData({
       name: '',
       email: '',

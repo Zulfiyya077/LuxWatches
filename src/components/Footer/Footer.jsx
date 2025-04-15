@@ -2,14 +2,14 @@ import React, { useContext } from "react";
 import { FaFacebookF, FaInstagram, FaTwitter, FaLinkedinIn, FaYoutube } from "react-icons/fa";
 import { MdEmail, MdLocationOn, MdPhone } from "react-icons/md";
 import { useTranslation } from "react-i18next";
-import { Link } from "react-router-dom"; // Import Link component from react-router-dom
+import { Link } from "react-router-dom"; 
 import styles from "./Footer.module.css";
 import { ThemeContext } from "../../context/ThemeContext"; 
 
-// Link komponenti yerinə istifadə edəcəyimiz öz komponentimiz
+
 const FooterLink = ({ to, children, className }) => {
   const handleClick = () => {
-    // Link-ə kliklədikdə səhifəni əvvələ scroll etmək
+    
     window.scrollTo({
       top: 0,
       behavior: "smooth"
@@ -33,19 +33,19 @@ const Footer = () => {
 
   const themeClass = theme === 'dark' ? styles.dark : styles.light;
 
-  // Bütün naviqasiya linklərini burada mərkəzləşdirək
+ 
   const navigationLinks = {
     company: [
       { href: "/about", text: t("about_us") },
       { href: "/contact", text: t("contact") },
       { href: "/faqs", text: t("faqs") },
-      { href: "/shipping", text: t("shipping_returns") },
-      { href: "/terms", text: t("terms_conditions") }
+      { href: "/orders", text: t("shipping_returns") },
+      { href: "/about", text: t("terms_conditions") }
     ],
     customerService: [
-      { href: "/privacy", text: t("privacy_policy") },
-      { href: "/help", text: t("help_center") },
-      { href: "/track", text: t("track_order") }
+      { href: "/about", text: t("privacy_policy") },
+      { href: "/about", text: t("help_center") },
+      { href: "/orders", text: t("track_order") }
     ]
   };
 

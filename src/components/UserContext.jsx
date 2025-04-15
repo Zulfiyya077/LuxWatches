@@ -2,8 +2,8 @@ import React, { createContext, useContext, useState, useEffect } from 'react';
 import supabase from '../supabaseClient';
 
 const UserContext = createContext();
-
 export const useUser = () => useContext(UserContext);
+
 
 export const UserProvider = ({ children }) => {
   const [user, setUser] = useState(null);
@@ -17,10 +17,9 @@ export const UserProvider = ({ children }) => {
         
         if (user) {
           setUser(user);
-          
-          // Burada 'profiles' cədvəlini istifadə etməyəcəyik, yalnız `auth`dan istifadə edəcəyik
+        
           if (user.user_metadata && user.user_metadata.username) {
-            setUserName(user.user_metadata.username);  // `user_metadata`dan username əldə edirik
+            setUserName(user.user_metadata.username); 
           }
         }
       } catch (error) {
@@ -35,9 +34,9 @@ export const UserProvider = ({ children }) => {
         if (event === 'SIGNED_IN' && session) {
           setUser(session.user);
 
-          // Burada da `profiles` cədvəlindən məlumat çəkmirik, yalnız `user_metadata`dan istifadə edirik
+          
           if (session.user.user_metadata && session.user.user_metadata.username) {
-            setUserName(session.user.user_metadata.username);  // `user_metadata`dan username əldə edirik
+            setUserName(session.user.user_metadata.username);  
           }
         } else if (event === 'SIGNED_OUT') {
           setUser(null);
@@ -58,10 +57,12 @@ export const UserProvider = ({ children }) => {
   const logout = async () => {
     try {
       const { error } = await supabase.auth.signOut();
+      
       if (!error) {
         setUser(null);
         setUserName('');
       }
+      
       return { error };
     } catch (error) {
       console.error('Error signing out:', error);

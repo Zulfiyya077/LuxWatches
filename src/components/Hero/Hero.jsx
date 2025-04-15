@@ -3,7 +3,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { EffectCube, Autoplay, Navigation, Pagination } from "swiper/modules";
 import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
-import { useNavigate } from "react-router-dom";  // Import useNavigate
+import { useNavigate } from "react-router-dom";  
 import "swiper/css";
 import "swiper/css/effect-cube";
 import "swiper/css/navigation";

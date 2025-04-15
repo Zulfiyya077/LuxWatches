@@ -16,7 +16,6 @@
   color: #1a1a1a;
 }
 
-/* Wave animation at the top */
 .waveContainer {
   position: absolute;
   top: 0;
@@ -53,7 +52,6 @@
   100% { transform: translateX(-50%) translateY(0) scaleY(1); }
 }
 
-/* Main container */
 .container {
   width: 100%;
   max-width: 1280px;
@@ -63,7 +61,7 @@
   z-index: 10;
 }
 
-/* Theme toggle button */
+
 .themeToggle {
   padding: 0.7rem 1.5rem;
   border-radius: 50px;
@@ -94,14 +92,14 @@
 }
 
 .themeToggle.dark {
-  background-color: #8B0000; /* Burgundy */
-  color: #d4af37; /* Gold */
+  background-color: #8B0000; 
+  color: #d4af37; 
 }
 
 .themeToggle.light {
   background-color: #f8f9fa;
-  color: #8B0000; /* Burgundy */
-  border: 1px solid #d4af37; /* Gold border */
+  color: #8B0000; 
+  border: 1px solid #d4af37; 
 }
 
 .themeToggle:hover {
@@ -113,7 +111,7 @@
   transform: translateY(-1px);
 }
 
-/* Top section */
+
 .topSection {
   display: flex;
   justify-content: space-between;
@@ -123,7 +121,7 @@
   gap: 1.5rem;
 }
 
-/* Clock container */
+
 .clockContainer {
   display: flex;
   align-items: center;
@@ -133,7 +131,7 @@
   box-shadow: 0 15px 25px -5px rgba(0, 0, 0, 0.1);
   transform: translateY(0);
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  border: 1px solid rgba(212, 175, 55, 0.3); /* Gold with opacity */
+  border: 1px solid rgba(212, 175, 55, 0.3); 
 }
 
 .clockContainer:hover {
@@ -153,7 +151,7 @@
 
 .clockIcon {
   font-size: 1.5rem;
-  color: #d4af37; /* Gold */
+  color: #d4af37; 
 }
 
 .time {
@@ -161,7 +159,6 @@
   font-weight: 700;
 }
 
-/* Main grid */
 .grid {
   display: grid;
   grid-template-columns: repeat(1, 1fr);
@@ -223,7 +220,7 @@
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
-/* Headings */
+
 .heading {
   font-size: 1.375rem;
   font-weight: 700;
@@ -245,18 +242,18 @@
 }
 
 .heading.dark::after {
-  background: linear-gradient(90deg, #d4af37, transparent); /* Gold gradient */
+  background: linear-gradient(90deg, #d4af37, transparent); 
 }
 
 .heading.light::after {
-  background: linear-gradient(90deg, #8B0000, transparent); /* Burgundy gradient */
+  background: linear-gradient(90deg, #8B0000, transparent); 
 }
 
 .column:hover .heading::after {
   width: 100%;
 }
 
-/* Link lists */
+
 .linkList {
   display: flex;
   flex-direction: column;
@@ -284,14 +281,14 @@
 }
 
 .dark .link:hover {
-  color: #d4af37; /* Gold */
+  color: #d4af37;
 }
 
 .light .link:hover {
-  color: #8B0000; /* Burgundy */
+  color: #8B0000; 
 }
 
-/* Arrow instead of bullets for more modern look */
+
 .link::before {
   content: '→';
   opacity: 0;
@@ -306,7 +303,7 @@
   transform: translateX(0);
 }
 
-/* Contact list */
+
 .contactList {
   display: flex;
   flex-direction: column;
@@ -332,18 +329,18 @@
 }
 
 .dark .contactIcon {
-  color: #d4af37; /* Gold */
+  color: #d4af37; 
 }
 
 .light .contactIcon {
-  color: #8B0000; /* Burgundy */
+  color: #8B0000; 
 }
 
 .contactItem:hover .contactIcon {
   transform: scale(1.2);
 }
 
-/* Social icons */
+
 .socialContainer {
   display: flex;
   flex-wrap: wrap;
@@ -389,13 +386,13 @@
 
 .dark .socialIcon {
   background-color: #1e1e1e;
-  color: #d4af37; /* Gold */
+  color: #d4af37;
   border: 1px solid rgba(212, 175, 55, 0.3);
 }
 
 .light .socialIcon {
   background-color: #fcfcfc;
-  color: #8B0000; /* Burgundy */
+  color: #8B0000; 
   border: 1px solid rgba(139, 0, 0, 0.2);
 }
 
@@ -429,7 +426,7 @@
   border-color: transparent;
 }
 
-/* Newsletter section */
+
 .newsletter {
   margin-top: 2rem;
 }
@@ -449,7 +446,7 @@
   overflow: hidden;
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
-  border: 1px solid rgba(212, 175, 55, 0.3); /* Gold with opacity */
+  border: 1px solid rgba(212, 175, 55, 0.3); 
 }
 
 .subscribeForm:focus-within {
@@ -507,12 +504,12 @@
 }
 
 .dark .subscribeButton {
-  background-color: #d4af37; /* Gold */
-  color: #171717; /* Near black */
+  background-color: #d4af37; 
+  color: #171717;
 }
 
 .light .subscribeButton {
-  background-color: #8B0000; /* Burgundy */
+  background-color: #8B0000; 
   color: #f8f9fa;
 }
 
@@ -536,7 +533,6 @@
   transform: translateY(-2px);
 }
 
-/* Copyright section */
 .copyright {
   text-align: center;
   padding-top: 2rem;
@@ -556,11 +552,11 @@
 }
 
 .dark .copyright::before {
-  --border-color: rgba(212, 175, 55, 0.3); /* Gold with opacity */
+  --border-color: rgba(212, 175, 55, 0.3); 
 }
 
 .light .copyright::before {
-  --border-color: rgba(139, 0, 0, 0.2); /* Burgundy with opacity */
+  --border-color: rgba(139, 0, 0, 0.2); 
 }
 
 .rights {
@@ -569,13 +565,12 @@
   opacity: 0.8;
 }
 
-/* Apply 3D transforms */
 .footer * {
   transform-style: preserve-3d;
   backface-visibility: hidden;
 }
 
-/* Responsive adjustments */
+
 @media (max-width: 768px) {
   .container {
     padding-top: 6rem;
@@ -601,12 +596,12 @@
   }
 }
 
-/* Adding smooth scrolling for the entire page */
+
 html {
   scroll-behavior: smooth;
 }
 
-/* Fix for mobile hover states */
+
 @media (hover: none) {
   .column:hover,
   .contactItem:hover,
@@ -618,9 +613,6 @@ html {
   }
 }
 
-/* Əvvəlki CSS kodlarını saxlayırıq və yalnız saat əvəzinə logo üçün lazım olan stillər əlavə edirik */
-
-/* Clock container -> Logo container */
 .logoContainer {
   display: flex;
   align-items: center;
@@ -631,7 +623,7 @@ html {
   box-shadow: 0 15px 25px -5px rgba(0, 0, 0, 0.1);
   transform: translateY(0);
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  border: 1px solid rgba(212, 175, 55, 0.3); /* Gold with opacity */
+  border: 1px solid rgba(212, 175, 55, 0.3);
 }
 
 .logoContainer:hover {
@@ -659,4 +651,3 @@ html {
   transform: scale(1.05);
 }
 
-/* Qalan CSS kodları olduğu kimi qalır */

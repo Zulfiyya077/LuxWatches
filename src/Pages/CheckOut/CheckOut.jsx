@@ -11,7 +11,7 @@ import { useCart } from "react-use-cart";
 import { useTranslation } from "react-i18next";
 import { useCoupon } from "../../context/CouponContext";
 import CouponInput from "../../components/CouponInput/CouponInput";
-import { motion } from "framer-motion"; // Animasiyalar üçün əlavə edildi
+import { motion } from "framer-motion"; 
 import styles from "./Checkout.module.css";
 
 const stripePromise = loadStripe("YOUR_STRIPE_PUBLIC_KEY");
@@ -19,14 +19,14 @@ const stripePromise = loadStripe("YOUR_STRIPE_PUBLIC_KEY");
 const CARD_ELEMENT_OPTIONS = {
   style: {
     base: {
-      color: "#f8f6ea",  // Lighter color for better visibility
+      color: "#f8f6ea", 
       fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
       fontSmoothing: "antialiased",
       fontSize: "16px",
       "::placeholder": {
-        color: "#bdc3c7",  // Lighter placeholder color
+        color: "#bdc3c7",  
       },
-      iconColor: "#d4af37",  // Gold color for icons
+      iconColor: "#d4af37",  
     },
     invalid: {
       color: "#fa755a",
@@ -35,7 +35,6 @@ const CARD_ELEMENT_OPTIONS = {
   },
 };
 
-// Enhanced animation variants
 const fadeInUp = {
   hidden: { opacity: 0, y: 30 },
   visible: { 
@@ -59,7 +58,6 @@ const staggerItems = {
   }
 };
 
-// New scale animation for interactive elements
 const scaleOnHover = {
   whileHover: { scale: 1.05, transition: { duration: 0.3 } },
   whileTap: { scale: 0.95 }
@@ -74,26 +72,22 @@ const CheckoutForm = () => {
   const { t } = useTranslation();
   const { isEmpty, items, emptyCart, cartTotal } = useCart();
   const navigate = useNavigate();
-  
-  // Scroll to top on component mount
+
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, []);
-  
-  // Add coupon functionality
+
   const { calculateSubtotal, calculateDiscount, getFinalPrice, appliedCoupon } = useCoupon();
 
-  // Aralıq cəmi hesablayırıq - cart items əsasında
   const subtotal = calculateSubtotal();
   
-  // Endirim məbləğini hesablayırıq
+ 
   const discount = calculateDiscount();
   
-  // Son qiyməti hesablayırıq
   const finalTotal = getFinalPrice();
 
   const handleCardChange = (event) => {
-    // Kart məlumatları yoxlanışı
+ 
     if (event.error) {
       setCardError(event.error.message);
     } else {
@@ -105,7 +99,6 @@ const CheckoutForm = () => {
     e.preventDefault();
     
     if (!stripe || !elements) {
-      // Stripe yüklənməyibsə
       return;
     }
     
@@ -118,8 +111,6 @@ const CheckoutForm = () => {
     setLoading(true);
     
     try {
-      // Real tətbiqdə burada Stripe API ilə ödəniş əməliyyatı
-      // Sadələşdirmə məqsədilə, simulyasiya edirik:
       setTimeout(() => {
         emptyCart();
         navigate("/thankyou");

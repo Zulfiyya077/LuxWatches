@@ -78,7 +78,7 @@
   z-index: 1;
 }
 
-/* Flip Card Styling */
+
 .flipCard {
   perspective: 1500px;
   height: 650px;
@@ -222,7 +222,6 @@
   margin-top: 0.5rem;
 }
 
-/* Back Button */
 .backButton {
   position: absolute;
   top: 1.2rem;
@@ -306,7 +305,7 @@
   color: #aaa;
 }
 
-/* Watch Specs */
+
 .watchSpecs {
   background-color: rgba(212, 175, 55, 0.05);
   border-radius: 8px;
@@ -515,7 +514,7 @@
   animation: addedToCart 1s ease-out;
 }
 
-/* Responsive Styles */
+
 @media (max-width: 1390px) {
   .watchesGrid {
     grid-template-columns: repeat(3, 1fr);

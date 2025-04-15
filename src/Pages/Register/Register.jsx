@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useContext } from "react";
 import { useNavigate, Navigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { FaUser, FaEnvelope, FaLock, FaEye, FaEyeSlash } from "react-icons/fa";
@@ -7,12 +7,12 @@ import 'react-toastify/dist/ReactToastify.css';
 import styles from "./Register.module.css";
 import supabase from "../../supabaseClient";
 import { ThemeContext } from "../../context/ThemeContext";
-import { useUser } from "../../components/UserContext";
+import { useAuth } from "../../context/AuthContext";
 
 const Register = () => {
   const { t } = useTranslation();
   const { theme } = useContext(ThemeContext);
-  const { isAuthenticated } = useUser();
+  const { isAuthenticated } = useAuth();
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -23,12 +23,11 @@ const Register = () => {
 
   const navigate = useNavigate();
 
-  // Redirect if user is already authenticated
+
   if (isAuthenticated) {
     return <Navigate to="/" replace />;
   }
 
-  // Toast notification functions
   const showSuccessToast = (message) => {
     toast.success(message, {
       position: "top-right",
@@ -87,37 +86,38 @@ const Register = () => {
     }
 
     try {
-      // Create user
+      
       const { data, error: signUpError } = await supabase.auth.signUp({
         email,
         password,
         options: {
           data: {
             username: username,
-            role: "user",
+            role: "user", 
           },
         },
         emailRedirectTo: `${window.location.origin}/login`,
         allowAutoLogin: false,
       });
 
-      if (data?.user) {
-        const { id, email } = data.user;
-      
-        await supabase.from('profiles').insert([
-          {
-            user_id: id,
-            name: 'Ad Soyad', // formdan ad soyad alırsansa burada əvəz et
-            email: email,
-            role: 'user',
-          },
-        ]);
-      }
-      
-      
       if (signUpError) throw signUpError;
 
       if (data && data.user) {
+      
+        const { error: profileError } = await supabase.from('profiles').insert([
+          {
+            user_id: data.user.id,
+            name: username, 
+            email: email,
+            role: 'user', 
+          },
+        ]);
+
+        if (profileError) {
+          console.error("Error creating profile:", profileError);
+          
+        }
+
         showSuccessToast(t('register.successMessage') || 'Qeydiyyat uğurla tamamlandı! Zəhmət olmasa, daxil olun.');
 
         setTimeout(() => {
@@ -161,7 +161,7 @@ const Register = () => {
 
   return (
     <div className={`${styles.container} ${theme === 'dark' ? styles.darkTheme : ''}`}>
-      {/* Toastify Container */}
+  
       <ToastContainer />
       
       <div className={styles.formWrapper}>

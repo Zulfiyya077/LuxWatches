@@ -11,33 +11,30 @@ const ThankYou = () => {
   const { theme } = useContext(ThemeContext);
 
   useEffect(() => {
-    // Scroll to top when component mounts
     window.scrollTo(0, 0);
-    
-    // Set document title
+
     document.title = t('thankYou.pageTitle') || 'Thank You for Your Order';
   }, [t]);
 
-  // Enhanced theme class helper
+
   const getThemedClass = (baseClass) => {
     return theme === 'dark' ? `${baseClass} ${styles[`${baseClass}Dark`]}` : styles[baseClass];
   };
 
-  // Generate random order number that stays consistent during the session
+  
   const getOrderNumber = () => {
-    // Check if we already have an order number in session storage
+  
     const savedOrderNumber = sessionStorage.getItem('orderNumber');
     if (savedOrderNumber) {
       return savedOrderNumber;
     }
-    
-    // Generate a new order number
+ 
     const newOrderNumber = Math.floor(100000 + Math.random() * 900000).toString();
     sessionStorage.setItem('orderNumber', newOrderNumber);
     return newOrderNumber;
   };
 
-  // Calculate estimated delivery date
+ 
   const getEstimatedDeliveryDate = () => {
     const deliveryDate = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000);
     return deliveryDate.toLocaleDateString(i18n.language, {

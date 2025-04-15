@@ -1835,7 +1835,6 @@
   }
 }
 
-/* Ən kiçik ekranlarda menuWrapper-in düzgün görünməsi üçün */
 @media (max-width: 360px) {
   .menuWrapper {
     display: flex;

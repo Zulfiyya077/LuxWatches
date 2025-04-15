@@ -32,7 +32,7 @@ const ForgotPassword = () => {
       if (error) throw error;
 
       toast.success(t('auth.passwordReset.success'));
-      setEmail(''); // Clear the form after successful submission
+      setEmail(''); 
     } catch (error) {
       toast.error(t('auth.passwordReset.error', { message: error.message }));
     } finally {

@@ -1,0 +1,473 @@
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+    background-color: var(--primary-bg, #ffffff);
+    color: var(--text-color, #333333);
+    min-height: 80vh;
+  }
+  
+  .containerDark {
+    background-color: var(--primary-bg, #121212);
+    color: var(--text-color, #f0f0f0);
+  }
+  
+  .pageTitle {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    text-align: center;
+    color: var(--text-color, #333333);
+  }
+  
+  .contentWrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+  }
+  
+  .ordersList {
+    flex: 1;
+    min-width: 300px;
+    background-color: var(--container-bg-light, #fff);
+    border-radius: 8px;
+    box-shadow: var(--shadow-light);
+    padding: 1.5rem;
+  }
+  
+  .ordersListDark {
+    background-color: var(--container-bg-dark, #222);
+    box-shadow: var(--shadow-dark);
+  }
+  
+  .sectionTitle {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    color: var(--text-primary-light, #333);
+  }
+  
+  .ordersListDark .sectionTitle {
+    color: var(--text-primary-dark, #f0f0f0);
+  }
+  
+  .noOrders {
+    text-align: center;
+    padding: 2rem;
+    font-size: 1.2rem;
+    color: var(--text-tertiary-light, #777);
+  }
+  
+  .ordersListDark .noOrders {
+    color: var(--text-tertiary-dark, #aaa);
+  }
+  
+  .ordersContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-height: 600px;
+    overflow-y: auto;
+  }
+  
+  .orderCard {
+    background-color: var(--input-bg-light, #f8f9fa);
+    border: 1px solid var(--input-border-light, #ddd);
+    border-radius: 8px;
+    padding: 1rem;
+    cursor: pointer;
+    transition: var(--transition-standard);
+  }
+  
+  .orderCardDark {
+    background-color: var(--input-bg-dark, #333);
+    border: 1px solid var(--input-border-dark, #444);
+  }
+  
+  .orderCard:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  .orderCardDark:hover {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  }
+  
+  .selectedOrder {
+    border: 2px solid var(--accent-color, #D4AF37);
+  }
+  
+  .orderCardHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+  }
+  
+  .orderCardNumber {
+    font-weight: 600;
+    font-size: 1.1rem;
+  }
+  
+  .orderCardDate {
+    font-size: 0.9rem;
+    color: var(--text-tertiary-light, #777);
+    margin-bottom: 1rem;
+  }
+  
+  .orderCardDark .orderCardDate {
+    color: var(--text-tertiary-dark, #aaa);
+  }
+  
+  .orderCardItems {
+    margin-bottom: 1rem;
+  }
+  
+  .orderCardItem {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+  }
+  
+  .itemName {
+    font-size: 0.95rem;
+  }
+  
+  .itemQuantity {
+    font-size: 0.9rem;
+    color: var(--text-tertiary-light, #777);
+  }
+  
+  .orderCardDark .itemQuantity {
+    color: var(--text-tertiary-dark, #aaa);
+  }
+  
+  .moreItems {
+    font-size: 0.85rem;
+    color: var(--accent-color, #D4AF37);
+    text-align: right;
+    font-style: italic;
+  }
+  
+  .orderCardTotal {
+    display: flex;
+    justify-content: space-between;
+    font-weight: 600;
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--input-border-light, #ddd);
+  }
+  
+  .orderCardDark .orderCardTotal {
+    border-top: 1px solid var(--input-border-dark, #444);
+  }
+  
+  .totalAmount {
+    color: var(--accent-color, #D4AF37);
+  }
+  
+  /* Order Details Section */
+  .orderDetails {
+    flex: 2;
+    min-width: 300px;
+    background-color: var(--container-bg-light, #fff);
+    border-radius: 8px;
+    box-shadow: var(--shadow-light);
+    padding: 1.5rem;
+  }
+  
+  .orderDetailsDark {
+    background-color: var(--container-bg-dark, #222);
+    box-shadow: var(--shadow-dark);
+  }
+  
+  .orderDetailsTitle {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    color: var(--text-primary-light, #333);
+  }
+  
+  .orderDetailsDark .orderDetailsTitle {
+    color: var(--text-primary-dark, #f0f0f0);
+  }
+  
+  .orderDetailHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+  
+  .orderNumberLabel {
+    font-weight: 600;
+    font-size: 1rem;
+  }
+  
+  .orderNumber {
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: var(--accent-color, #D4AF37);
+  }
+  
+  .orderDates {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+  
+  .dateLabel {
+    font-weight: 600;
+  }
+  
+  /* Timeline Styles */
+  .timeline {
+    display: flex;
+    justify-content: space-between;
+    margin: 2.5rem 0;
+    position: relative;
+  }
+  
+  .timeline::before {
+    content: '';
+    position: absolute;
+    height: 4px;
+    top: 10px;
+    left: 0;
+    right: 0;
+    background-color: var(--input-border-light, #ddd);
+    z-index: 1;
+  }
+  
+  .orderDetailsDark .timeline::before {
+    background-color: var(--input-border-dark, #444);
+  }
+  
+  .timelineItem {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+    flex: 1;
+    text-align: center;
+  }
+  
+  .timelinePoint {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background-color: var(--input-border-light, #ddd);
+    margin-bottom: 8px;
+  }
+  
+  .orderDetailsDark .timelinePoint {
+    background-color: var(--input-border-dark, #444);
+  }
+  
+  .timelineItem.completed .timelinePoint {
+    background-color: var(--accent-color, #D4AF37);
+  }
+  
+  .timelineName {
+    font-size: 0.9rem;
+    white-space: nowrap;
+  }
+  
+  /* Status Badge */
+  .statusBadge {
+    padding: 0.25rem 0.75rem;
+    border-radius: 999px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+  
+  .statusblue {
+    background-color: var(--info-bg-light, rgba(27, 43, 56, 0.1));
+    color: var(--info-color-light, #2196f3);
+  }
+  
+  .statusyellow {
+    background-color: rgba(255, 191, 0, 0.1);
+    color: #ffbf00;
+  }
+  
+  .statuspurple {
+    background-color: rgba(156, 39, 176, 0.1);
+    color: #9c27b0;
+  }
+  
+  .statusgreen {
+    background-color: var(--success-bg-light, rgba(76, 175, 80, 0.1));
+    color: var(--success-color-light, #4caf50);
+  }
+  
+  .statusred {
+    background-color: var(--error-bg-light, rgba(244, 67, 54, 0.1));
+    color: var(--error-color-light, #f44336);
+  }
+  
+  .orderDetailsDark .statusblue {
+    background-color: var(--info-bg-dark, rgba(0, 78, 22, 0.2));
+    color: var(--info-color-dark, #64b5f6);
+  }
+  
+  .orderDetailsDark .statusyellow {
+    background-color: rgba(255, 191, 0, 0.2);
+    color: #ffe082;
+  }
+  
+  .orderDetailsDark .statuspurple {
+    background-color: rgba(156, 39, 176, 0.2);
+    color: #ce93d8;
+  }
+  
+  .orderDetailsDark .statusgreen {
+    background-color: var(--success-bg-dark, rgba(76, 175, 80, 0.2));
+    color: var(--success-color-dark, #69f0ae);
+  }
+  
+  .orderDetailsDark .statusred {
+    background-color: var(--error-bg-dark, rgba(244, 67, 54, 0.2));
+    color: var(--error-color-dark, #ff6b6b);
+  }
+  
+  /* Order Items */
+  .orderItems {
+    margin: 2rem 0;
+  }
+  
+  .itemsTitle {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+  }
+  
+  .orderItem {
+    display: flex;
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--input-border-light, #ddd);
+  }
+  
+  .orderDetailsDark .orderItem {
+    border-bottom: 1px solid var(--input-border-dark, #444);
+  }
+  
+  .orderItem:last-child {
+    border-bottom: none;
+  }
+  
+  .productImage {
+    width: 80px;
+    height: 80px;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-right: 1rem;
+  }
+  
+  .productImage img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .itemDetails {
+    flex: 1;
+  }
+  
+  .productName {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .itemMeta {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .itemQuantity {
+    color: var(--text-tertiary-light, #777);
+  }
+  
+  .orderDetailsDark .itemQuantity {
+    color: var(--text-tertiary-dark, #aaa);
+  }
+  
+  .itemPrice {
+    font-weight: 600;
+    color: var(--accent-color, #D4AF37);
+  }
+  
+  .orderTotal {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    font-size: 1.2rem;
+    padding-top: 1rem;
+    border-top: 2px solid var(--input-border-light, #ddd);
+  }
+  
+  .orderDetailsDark .orderTotal {
+    border-top: 2px solid var(--input-border-dark, #444);
+  }
+  
+  .totalLabel {
+    font-weight: 600;
+    margin-right: 0.5rem;
+  }
+  
+  .totalValue {
+    font-weight: 700;
+    color: var(--accent-color, #D4AF37);
+    font-size: 1.5rem;
+  }
+  
+  /* Loading and Error States */
+  .loading, .error {
+    text-align: center;
+    padding: 2rem;
+    font-size: 1.2rem;
+  }
+  
+  .error {
+    color: var(--error-color-light, #f44336);
+  }
+  
+  /* Responsive Adjustments */
+  @media (max-width: 768px) {
+    .contentWrapper {
+      flex-direction: column;
+    }
+    
+    .ordersList, .orderDetails {
+      width: 100%;
+    }
+    
+    .orderDates {
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    
+    .timeline {
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: flex-start;
+    }
+    
+    .timeline::before {
+      display: none;
+    }
+    
+    .timelineItem {
+      flex-basis: calc(50% - 1rem);
+      margin-bottom: 1rem;
+    }
+    
+    .timelinePoint {
+      margin-right: 8px;
+    }
+    
+    .timelineName {
+      white-space: normal;
+    }
+  }

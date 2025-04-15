@@ -681,6 +681,37 @@
     "name_desc": "Name: Z - A",
     "discounted": "Discounted Products"
   },
+
+  "myOrders": "My Orders",
+  
+
+  "total": "Total",
+  "orders": {
+    "pageTitle": "My Orders",
+    "myOrders": "My Orders",
+    "recentOrders": "Recent Orders",
+    "noOrders": "You don't have any orders yet",
+    "orderDetails": "Order Details",
+    "orderNumber": "Order #",
+    "orderDate": "Order Date",
+    "estimatedDelivery": "Estimated Delivery",
+    "items": "Items",
+    "quantity": "Quantity",
+    "total": "Total",
+    "moreItems": "more items",
+    "viewOrder": "Track Order",
+    "status": {
+      "pending": "Pending",
+      "processing": "Processing",
+      "shipped": "Shipped",
+      "delivered": "Delivered",
+      "cancelled": "Cancelled"
+    }
+  },
+  "common": {
+    "loading": "Loading",
+    "errorOccurred": "An error occurred"
+  },
   "adminDashboard": "Admin Dashboard",
   "blogs1": {
     "title": "Blogs About Rolex",

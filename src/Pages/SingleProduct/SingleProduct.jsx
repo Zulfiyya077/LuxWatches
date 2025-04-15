@@ -58,14 +58,11 @@ const SingleProduct = () => {
   const { addItem } = useCart();
   const { addWishlistItem, removeWishlistItem, inWishlist } = useWishlist();
 
-  // Səhifə yüklənəndə yuxarı scroll et və məhsul məlumatlarını gətir
   useEffect(() => {
     window.scrollTo(0, 0);
     
     const fetchProduct = async () => {
       setLoading(true);
-      
-      // Məhsul məlumatlarını Supabase-dən gətir
       const { data, error } = await supabase
         .from('Products')
         .select('*')
@@ -78,8 +75,7 @@ const SingleProduct = () => {
       } else {
         setProduct(data);
         setSelectedImage(data.image);
-        
-        // Video URL-ni yoxla və təyin et
+  
         if (data.video_url) {
           setVideoUrl(data.video_url);
         } else {
@@ -100,7 +96,6 @@ const SingleProduct = () => {
     if (id) fetchProduct();
   }, [id]);
 
-  // Video popup-nı bağlamaq üçün kənar kliklərini izlə
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (popupRef.current && !popupRef.current.contains(event.target)) {
@@ -127,7 +122,6 @@ const SingleProduct = () => {
     setShowVideoPopup(false);
   };
 
-  // Şəkil üzərində böyütmə effekti üçün
   const handleMouseMove = (e) => {
     if (!imageContainerRef.current) return;
     
@@ -147,7 +141,6 @@ const SingleProduct = () => {
     setIsZooming(false);
   };
 
-  // Yeni rəy əlavə etmək üçün
   const handleReviewChange = (e) => {
     const { name, value } = e.target;
     setNewReview(prev => ({ ...prev, [name]: value }));
@@ -157,14 +150,13 @@ const SingleProduct = () => {
     setNewReview(prev => ({ ...prev, rating }));
   };
 
-  // Fixed review submission to add to static reviews
+
   const handleReviewSubmit = (e) => {
     e.preventDefault();
     if (!newReview.name || !newReview.comment) return;
     
     setReviewSubmitting(true);
-    
-    // Create a new review object
+ 
     const newReviewObj = {
       id: reviews.length + 1,
       name: newReview.name,
@@ -173,10 +165,9 @@ const SingleProduct = () => {
       created_at: new Date().toISOString()
     };
     
-    // Update the reviews state with the new review
+
     setReviews(prevReviews => [newReviewObj, ...prevReviews]);
-    
-    // Reset form
+
     setNewReview({ name: '', rating: 5, comment: '' });
     setShowReviewForm(false);
     setReviewSubmitting(false);
@@ -201,11 +192,9 @@ const SingleProduct = () => {
     </div>
   );
 
-  // Dəyərlərin doğruluğunu yoxla
   const validPrice = product.price != null && !isNaN(product.price) ? parseFloat(product.price).toFixed(2) : "0.00";
   const validDiscountedPrice = product.discountedPrice != null && !isNaN(product.discountedPrice) ? parseFloat(product.discountedPrice).toFixed(2) : validPrice;
-  
-  // Məhsulun orta reytinqini hesabla
+
   const avgRating = reviews.length 
     ? (reviews.reduce((sum, review) => sum + review.rating, 0) / reviews.length).toFixed(1)
     : product.rating != null && !isNaN(product.rating) && product.rating >= 0 && product.rating <= 5 
@@ -228,8 +217,6 @@ const SingleProduct = () => {
   };
 
   const handleGoBack = () => navigate(-1);
-
-  // Reytinq ulduzlarını göstər
   const renderRatingStars = (rating, interactive = false) => {
     const fullStars = Math.floor(rating);
     const hasHalfStar = rating % 1 >= 0.5;
@@ -267,7 +254,6 @@ const SingleProduct = () => {
       </button>
 
       <div className={styles.productLayout}>
-        {/* Left Column - Product Image and Reviews */}
         <div className={styles.leftColumn}>
           <div className={styles.imageGalleryWrapper}>
             <div 
@@ -296,8 +282,6 @@ const SingleProduct = () => {
               )}
             </div>
           </div>
-
-          {/* Reviews Section - Now directly below the product image */}
           <div className={styles.reviewsSection} ref={reviewsRef}>
             <h2 className={styles.reviewsTitle}>
               <MessageSquare size={24} />
@@ -327,8 +311,6 @@ const SingleProduct = () => {
                 </div>
               ))}
             </div>
-            
-            {/* Yeni Rəy Əlavə etmə Formu */}
             <div className={styles.addReviewContainer}>
               {!showReviewForm ? (
                 <button 
@@ -399,8 +381,6 @@ const SingleProduct = () => {
             </div>
           </div>
         </div>
-
-        {/* Right Column - Product Details and Technical Specifications */}
         <div className={styles.rightColumn}>
           <div className={styles.productInfo}>
             <div className={styles.productHeader}>
@@ -483,8 +463,6 @@ const SingleProduct = () => {
           </div>
         </div>
       </div>
-
-      {/* Video Popup */}
       {showVideoPopup && videoUrl && (
         <div className={styles.videoPopupOverlay}>
           <div className={styles.videoPopupContainer} ref={popupRef}>

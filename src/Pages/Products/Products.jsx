@@ -6,11 +6,11 @@ import ProductSort from "../../components/ProductSort/ProductSort";
 import { Search, Filter, ChevronDown } from "lucide-react";
 import supabase from "../../supabaseClient";
 import { useTranslation } from "react-i18next";
-import { ThemeContext } from "../../context/ThemeContext"; // Import ThemeContext
+import { ThemeContext } from "../../context/ThemeContext"; 
 
 const Products = () => {
   const { t } = useTranslation();
-  const { theme } = useContext(ThemeContext); // Use the theme context
+  const { theme } = useContext(ThemeContext); 
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -130,27 +130,23 @@ const Products = () => {
     }
   };
 
-  // Pagination logic
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
 
   const filteredProducts = applyFilters(products);
   const sortedProducts = sortProducts(filteredProducts);
-  
-  // Calculate pagination
+
   const totalPages = Math.ceil(sortedProducts.length / productsPerPage);
   const indexOfLastProduct = currentPage * productsPerPage;
   const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
   const currentProducts = sortedProducts.slice(indexOfFirstProduct, indexOfLastProduct);
 
-  // Generate page numbers
   const pageNumbers = [];
   for (let i = 1; i <= totalPages; i++) {
     pageNumbers.push(i);
   }
 
-  // Theme-specific styles
   const themeStyles = {
     container: theme === 'dark' ? styles.darkContainer : styles.lightContainer,
     text: theme === 'dark' ? styles.darkText : styles.lightText,

@@ -60,7 +60,7 @@
   opacity: 0;
 }
 
-/* Breadcrumbs */
+
 .breadcrumbs {
   display: flex;
   align-items: center;
@@ -88,14 +88,12 @@
   font-weight: 500;
 }
 
-/* Products Layout */
 .productsWrapper {
   display: flex;
   gap: 30px;
   position: relative;
 }
 
-/* ======= 3D LUXURY FILTER SIDEBAR ======= */
 .filterSidebar {
   width: 300px;
   background: var(--card-bg);
@@ -232,7 +230,6 @@
   border-radius: 2px;
 }
 
-/* 3D Price Range Slider */
 .priceSliderContainer {
   position: relative;
   padding: 10px 0 30px;
@@ -314,7 +311,6 @@
   transform: translateX(-50%) rotate(45deg);
 }
 
-/* Luxury Checkboxes */
 .filterCheckbox {
   display: flex;
   align-items: center;
@@ -389,7 +385,6 @@
   opacity: 1;
 }
 
-/* Apply Filters Button */
 .applyFilters {
   width: 100%;
   padding: 15px;
@@ -427,7 +422,6 @@
   left: 100%;
 }
 
-/* Mobile Filter Toggle */
 @media (max-width: 768px) {
   .filterSidebar {
     position: fixed;
@@ -451,13 +445,11 @@
   }
 }
 
-/* Products Content Area */
 .productsContent {
   flex: 1;
   min-width: 0;
 }
 
-/* Toolbar */
 .productsToolbar {
   display: flex;
   justify-content: space-between;
@@ -538,7 +530,7 @@
   pointer-events: none;
 }
 
-/* View Toggle */
+
 .viewToggle {
   display: flex;
   gap: 5px;
@@ -576,14 +568,13 @@
   stroke: var(--luxury-black);
 }
 
-/* Results Info */
+
 .resultsInfo {
   margin-bottom: 20px;
   color: var(--text-secondary);
   font-size: 0.9rem;
 }
 
-/* Product Listing */
 .productList {
   margin-bottom: 30px;
 }
@@ -600,7 +591,6 @@
   gap: 20px;
 }
 
-/* Loading & Error States */
 .loadingContainer, .errorContainer {
   display: flex;
   flex-direction: column;
@@ -639,7 +629,7 @@
   background: var(--secondary-gold);
 }
 
-/* No Results */
+
 .noResults {
   text-align: center;
   padding: 40px 0;
@@ -655,7 +645,7 @@
   color: var(--text-secondary);
 }
 
-/* Pagination */
+
 .pagination {
   display: flex;
   justify-content: center;
@@ -696,7 +686,7 @@
   transform: rotate(-90deg);
 }
 
-/* Animations */
+
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -708,7 +698,7 @@
   }
 }
 
-/* Responsive Design */
+
 @media (max-width: 1024px) {
   .productsWrapper {
     flex-direction: column;
@@ -775,7 +765,6 @@
 }
 
 .priceSlider {
-  /* -webkit-appearance: none; */
   width: 100%;
   height: 6px;
   border-radius: 5px;
@@ -793,7 +782,7 @@
   border: 2px solid #014421;
   border-radius: 50%;
   cursor: pointer;
-  margin-top: -6px; /* thumb-u track ortasında saxlamaq üçün */
+  margin-top: -6px; 
 }
 
 .priceSlider::-moz-range-thumb {
@@ -810,32 +799,32 @@
   height: 6px;
   border-radius: 5px;
 }
-/* Əsas container üçün responsiv tənzimləmələr */
+
 .productsContainer {
   width: 100%;
   max-width: 1440px;
   margin: 0 auto;
-  padding: 0 15px; /* Kiçik ekranlarda kənar padding-i azaltdım */
+  padding: 0 15px; 
 }
 
-/* Hero section responsivliyi */
+
 @media (max-width: 1024px) {
   .heroSection {
-    height: 250px; /* Orta ölçülü ekranlarda hündürlüyü azaltdım */
+    height: 250px; 
   }
   
   .heroTitle {
-    font-size: 2.5rem; /* Başlıq ölçüsünü azaltdım */
+    font-size: 2.5rem; 
   }
   
   .heroSubtitle {
-    font-size: 1.1rem; /* Alt başlıq ölçüsünü azaltdım */
+    font-size: 1.1rem;
   }
 }
 
 @media (max-width: 768px) {
   .heroSection {
-    height: 200px; /* Tablet ölçüsündə daha da kiçiltdim */
+    height: 200px;
   }
   
   .heroTitle {
@@ -844,13 +833,13 @@
   
   .heroSubtitle {
     font-size: 1rem;
-    max-width: 90%; /* Mətnin çox geniş olmaması üçün məhdudlaşdırdım */
+    max-width: 90%; 
   }
 }
 
 @media (max-width: 480px) {
   .heroSection {
-    height: 180px; /* Mobil ekranlarda daha kiçik */
+    height: 180px; 
   }
   
   .heroTitle {
@@ -862,10 +851,9 @@
   }
 }
 
-/* Produktların siyahısı üçün responsiv tənzimləmələr */
 @media (max-width: 1200px) {
   .productList.grid {
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); /* Ekran kiçiləndə kartoçkaların ölçüsünü azaltdım */
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); 
   }
 }
 
@@ -876,39 +864,38 @@
 }
 
 @media (max-width: 768px) {
-  /* Tablet görünüşündə sütunların nisbəti */
   .productList.grid {
     grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-    gap: 15px; /* Kartoçkalar arası məsafəni azaltdım */
+    gap: 15px;
   }
   
-  /* Axtarış və filter bölməsinin düzgün görünməsi */
+
   .toolbarLeft, .toolbarRight {
     width: 100%;
-    flex-wrap: wrap; /* Elementlərin sınması üçün */
+    flex-wrap: wrap; 
   }
   
   .searchContainer {
     flex: 1;
-    min-width: 200px; /* Minimum eni təyin etdim */
+    min-width: 200px; 
   }
   
   .searchInput {
-    width: 100%; /* Tam genişlikdə olması üçün */
+    width: 100%; 
   }
 }
 
 @media (max-width: 576px) {
   .productList.grid {
-    grid-template-columns: repeat(2, 1fr); /* Mobil görünüşdə iki sütun */
+    grid-template-columns: repeat(2, 1fr);
     gap: 10px;
   }
   
   .filterToggleBtn span {
-    display: none; /* Kiçik ekranda yalnız ikonu göstər */
+    display: none;
   }
   
-  /* Pagination düymələrinin kiçilməsi */
+
   .pageBtn {
     padding: 6px 12px;
     font-size: 0.8rem;
@@ -917,21 +904,20 @@
 
 @media (max-width: 400px) {
   .productList.grid {
-    grid-template-columns: 1fr; /* Çox kiçik ekranlarda tək sütun */
+    grid-template-columns: 1fr; 
   }
-  
-  /* Filter sidebar-in tam ekran görünməsi */
+ 
   .filterSidebar {
     width: 100%;
     max-width: 100%;
   }
   
-  /* Toolbar düymələrinin kiçilməsi */
+
   .viewBtn, .filterToggleBtn {
     padding: 6px;
   }
   
-  /* Axtarış sahəsinin kiçilməsi */
+
   .searchInput {
     padding: 8px 8px 8px 35px;
     font-size: 0.85rem;
@@ -940,8 +926,7 @@
   .searchIcon {
     left: 8px;
   }
-  
-  /* Filter elementlərinin kiçilməsi */
+
   .filterCheckbox label {
     font-size: 0.85rem;
     padding-left: 30px;
@@ -953,7 +938,6 @@
   }
 }
 
-/* Filter sidebar-in mobil versiyası üçün overlay */
 @media (max-width: 768px) {
   .filterSidebar[data-open="true"]::after {
     content: '';
@@ -965,8 +949,7 @@
     background: rgba(0, 0, 0, 0.5);
     z-index: -1;
   }
-  
-  /* Filter sidebar örtüyü əlavə et */
+
   .productsWrapper::before {
     content: '';
     position: fixed;
@@ -989,7 +972,6 @@
   }
 }
 
-/* Qiymət sürgüsünün yaxşılaşdırılması */
 @media (max-width: 768px) {
   .priceSlider::-webkit-slider-thumb {
     width: 16px;

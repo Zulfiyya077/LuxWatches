@@ -1,4 +1,4 @@
-// src/context/CouponContext.jsx
+
 import React, { createContext, useState, useContext, useEffect, useRef } from "react";
 import { useCart } from "react-use-cart";
 import supabase from "../supabaseClient";
@@ -11,17 +11,17 @@ export const CouponProvider = ({ children }) => {
   const [couponError, setCouponError] = useState(null);
   const { items, isEmpty, cartTotal, updateItemQuantity } = useCart();
   
-  // Hesablamaların yenilənməsi üçün ref
+
   const itemsRef = useRef(items);
   const [cartUpdate, setCartUpdate] = useState(0);
   
-  // Items dəyişdikdə ref yeniləyək və recalculation trigger edək
+ 
   useEffect(() => {
     itemsRef.current = items;
     setCartUpdate(prev => prev + 1);
   }, [items, cartTotal]);
 
-  // LocalStorage-dən məlumatları yükləyirik
+
   useEffect(() => {
     const savedCoupon = localStorage.getItem("appliedCoupon");
     if (savedCoupon) {
@@ -34,7 +34,7 @@ export const CouponProvider = ({ children }) => {
     }
   }, []);
 
-  // LocalStorage-ə məlumatları yazırıq
+
   useEffect(() => {
     if (appliedCoupon) {
       localStorage.setItem("appliedCoupon", JSON.stringify(appliedCoupon));
@@ -43,7 +43,7 @@ export const CouponProvider = ({ children }) => {
     }
   }, [appliedCoupon]);
 
-  // Kuponun tətbiq edilməsi
+
   const applyCoupon = async (code) => {
     setLoading(true);
     setCouponError(null);
@@ -51,10 +51,9 @@ export const CouponProvider = ({ children }) => {
     try {
       console.log("Kupon kodunu yoxlayırıq:", code);
       
-      // Supabase mövcud deyilsə, fake kuponları yoxlayaq
+      
       if (!supabase) {
         console.log("Supabase mövcud deyil, fake kuponları yoxlayırıq");
-        // Əgər Supabase bağlantısı problemi varsa, demo kuponlarla işləyə bilərik
         const demoData = checkDemoCoupon(code);
         
         if (demoData) {
@@ -67,8 +66,7 @@ export const CouponProvider = ({ children }) => {
         setLoading(false);
         return;
       }
-      
-      // Supabase-dən kuponu yoxlayırıq
+
       const { data, error } = await supabase
         .from("coupons")
         .select("*")
@@ -80,8 +78,7 @@ export const CouponProvider = ({ children }) => {
       
       if (error) {
         console.error("Supabase xətası:", error);
-        
-        // Əgər Supabase xətası verərsə, demo kuponları yoxlayaq
+   
         const demoData = checkDemoCoupon(code);
         
         if (demoData) {
@@ -94,7 +91,6 @@ export const CouponProvider = ({ children }) => {
         throw new Error("Kupon kodu tapılmadı");
       }
       
-      // Kupon tapıldı, indi keçərli olduğunu yoxlayırıq
       const currentDate = new Date();
       const startDate = data.start_date ? new Date(data.start_date) : null;
       const endDate = data.end_date ? new Date(data.end_date) : null;
@@ -106,12 +102,10 @@ export const CouponProvider = ({ children }) => {
       if (endDate && currentDate > endDate) {
         throw new Error("Bu kuponun istifadə müddəti bitib");
       }
-      
-      // Kupon keçərlidir, tətbiq edirik
+
       setAppliedCoupon(data);
       setCouponError(null);
-      
-      // Kupon tətbiq edildikdə recalculation trigger edək
+   
       setCartUpdate(prev => prev + 1);
     } catch (error) {
       console.error("Kupon tətbiq edilərkən xəta:", error);
@@ -122,7 +116,6 @@ export const CouponProvider = ({ children }) => {
     }
   };
 
-  // Demo kuponları üçün yoxlama (Supabase olmadığı halda)
   const checkDemoCoupon = (code) => {
     const demoCoupons = [
       {
@@ -160,19 +153,17 @@ export const CouponProvider = ({ children }) => {
     );
   };
 
-  // Kuponu silmək
   const removeCoupon = () => {
     setAppliedCoupon(null);
     setCouponError(null);
   };
 
-  // Aralıq cəmi hesablamaq - Hər sətir üçün debug log
+
   const calculateSubtotal = () => {
     if (isEmpty || !itemsRef.current || itemsRef.current.length === 0) return 0;
     
     console.log("Subtotal hesablanır. Items:", itemsRef.current);
-    
-    // Her bir məhsulu ayrı-ayrı hesablayaraq log edirik
+  
     let totalAmount = 0;
     for (const item of itemsRef.current) {
       const itemPrice = item.discounted ? parseFloat(item.discountedPrice) : parseFloat(item.price);
@@ -187,7 +178,6 @@ export const CouponProvider = ({ children }) => {
     return totalAmount;
   };
 
-  // Kupon endirimini hesablamaq
   const calculateDiscount = () => {
     if (!appliedCoupon || isEmpty) return 0;
     

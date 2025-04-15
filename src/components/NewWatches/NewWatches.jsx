@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { FaRegHeart, FaHeart, FaAngleLeft, FaInfoCircle } from "react-icons/fa";
 import styles from "./NewWatches.module.css";
 import { ThemeContext } from "../../context/ThemeContext";
-import { useWishlist } from "react-use-wishlist"; // Import useWishlist hook
+import { useWishlist } from "react-use-wishlist"; 
 
 const NewWatches = () => {
   const { t } = useTranslation();
@@ -13,7 +13,7 @@ const NewWatches = () => {
   const [isLoading, setIsLoading] = useState(true);
   const videoRefs = useRef({});
   
-  // Use the wishlist functionality from react-use-wishlist
+
   const { addWishlistItem, removeWishlistItem, inWishlist } = useWishlist();
 
   const newModels = [
@@ -111,16 +111,14 @@ const NewWatches = () => {
     }));
   };
 
-  // Updated to use wishlist functionality
+ 
   const handleAddToFavorites = (e, model) => {
     e.stopPropagation();
-    
-    // Check if the item is already in the wishlist
+
     if (inWishlist(model.id)) {
-      // If already in wishlist, remove it
       removeWishlistItem(model.id);
     } else {
-      // If not in wishlist, add it with all necessary details
+   
       addWishlistItem({
         id: model.id,
         name: model.name,
@@ -134,7 +132,6 @@ const NewWatches = () => {
       });
     }
 
-    // Animation for the heart icon
     const element = document.getElementById(`favorite-${model.id}`);
     if (element) {
       element.classList.add(styles.favoriteAnimation);
@@ -144,7 +141,7 @@ const NewWatches = () => {
     }
   };
 
-  // Track window width for responsive behavior
+ 
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
   useEffect(() => {
@@ -159,7 +156,6 @@ const NewWatches = () => {
     };
   }, []);
 
-  // Handle video playback
   const handleMouseEnter = (id) => {
     if (windowWidth > 768 && videoRefs.current[id]) {
       videoRefs.current[id].play();
@@ -221,7 +217,7 @@ const NewWatches = () => {
                   flippedCards[model.id] ? styles.flipped : ""
                 }`}
               >
-                {/* Front Side - Watch Image/Video */}
+             
                 <div className={styles.cardFront}>
                   <div className={styles.mediaContainer}>
                     <img
@@ -273,8 +269,7 @@ const NewWatches = () => {
                     </div>
                   </div>
                 </div>
-             
-                {/* Back Side - Watch Details */}
+            
                 <div className={styles.cardBack}>
                   <button
                     className={styles.backButton}

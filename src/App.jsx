@@ -1,7 +1,13 @@
 import React, { useEffect, useContext } from "react";
-import { BrowserRouter as Router, Route, Routes, Navigate, useLocation } from "react-router-dom";
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  Navigate,
+  useLocation,
+} from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import styles from "./App.module.css";
 import i18n from "./i18n/i18n";
 import Home from "./Pages/Home/Home";
@@ -27,44 +33,9 @@ import NotFound from "./Pages/NotFound/NotFound";
 import ForgotPassword from "./components/ForgotPassword/ForgotPassword";
 import Wishlist from "./Wishlist/MyWishlist";
 import { CartProvider } from "react-use-cart";
+import PrivateRoute from "./context/PrivateRoute";
+import Orders from "./Pages/Orders/Orders";
 
-// Admin e-poçt ünvanı
-const ADMIN_EMAIL = "mammadli.zulfiyya77@gmail.com";
-
-// Admin səhifələri üçün qorunan marşrut komponenti
-const ProtectedAdminRoute = ({ children }) => {
-  const { isAuthenticated, user } = useUser();
-  const location = useLocation();
-
-  if (!isAuthenticated) {
-    // Giriş etməmiş istifadəçiləri login səhifəsinə yönləndir
-    return <Navigate to="/login" state={{ from: location }} replace />;
-  }
-
-  if (user?.email !== ADMIN_EMAIL) {
-    // Admin olmayan istifadəçiləri ana səhifəyə yönləndir
-    return <Navigate to="/" replace />;
-  }
-
-  // İstifadəçi həm giriş edib, həm də admindirsə, uşaq komponentlərini göstər
-  return children;
-};
-
-// Ümumi qorunan marşrut komponenti (giriş tələb edir)
-const ProtectedRoute = ({ children }) => {
-  const { isAuthenticated } = useUser();
-  const location = useLocation();
-
-  if (!isAuthenticated) {
-    // Giriş etməmiş istifadəçiləri login səhifəsinə yönləndir
-    return <Navigate to="/login" state={{ from: location }} replace />;
-  }
-
-  // İstifadəçi giriş edibsə, uşaq komponentlərini göstər
-  return children;
-};
-
-// Əsas App komponentinin içərisində marşrutları idarə edən komponent
 const AppRoutes = () => {
   const themeContext = useContext(ThemeContext);
 
@@ -97,44 +68,65 @@ const AppRoutes = () => {
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
               <Route path="/forgot-password" element={<ForgotPassword />} />
-              
-              {/* Admin marşrutu - yalnız admin istifadəçilər üçün */}
-              <Route path="/admin" element={
-                <ProtectedAdminRoute>
-                  <Dashboard />
-                </ProtectedAdminRoute>
-              } />
-              
-              {/* Qorunan marşrutlar - yalnız giriş etmiş istifadəçilər üçün */}
-              <Route path="/cart" element={
-                <ProtectedRoute>
-                  <CartPage />
-                </ProtectedRoute>
-              } />
-              <Route path="/checkout" element={
-                <ProtectedRoute>
-                  <CheckoutPage />
-                </ProtectedRoute>
-              } />
-              <Route path="/favorites" element={
-                <ProtectedRoute>
-                  <Wishlist />
-                </ProtectedRoute>
-              } />
-              <Route path="/thankyou" element={
-                <ProtectedRoute>
-                  <ThankYou />
-                </ProtectedRoute>
-              } />
-              
+
+              <Route
+                path="/admin"
+                element={
+                  <PrivateRoute adminOnly={true}>
+                    <Dashboard />
+                  </PrivateRoute>
+                }
+              />
+
+          
+              <Route
+                path="/cart"
+                element={
+                  <PrivateRoute>
+                    <CartPage />
+                  </PrivateRoute>
+                }
+              />
+              <Route
+                path="/checkout"
+                element={
+                  <PrivateRoute>
+                    <CheckoutPage />
+                  </PrivateRoute>
+                }
+              />
+              <Route
+                path="/favorites"
+                element={
+                  <PrivateRoute>
+                    <Wishlist />
+                  </PrivateRoute>
+                }
+              />
+              <Route
+                path="/thankyou"
+                element={
+                  <PrivateRoute>
+                    <ThankYou />
+                  </PrivateRoute>
+                }
+              />
+              <Route
+                path="/orders"
+                element={
+                  <PrivateRoute>
+                    <Orders />
+                  </PrivateRoute>
+                }
+              />
               {/* 404 səhifəsi */}
               <Route path="*" element={<NotFound />} />
             </Routes>
           </main>
           <Footer />
+
           
-          {/* Add ToastContainer for React Toastify */}
-          <ToastContainer 
+          <ToastContainer
             position="bottom-right"
             autoClose={5000}
             hideProgressBar={false}

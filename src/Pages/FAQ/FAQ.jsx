@@ -9,7 +9,6 @@ const FAQ = () => {
   const { t } = useTranslation();
   const { theme } = useContext(ThemeContext);
   
-  // State for custom question form
   const [customerQuestion, setCustomerQuestion] = useState("");
   const [customerEmail, setCustomerEmail] = useState("");
   const [formSubmitted, setFormSubmitted] = useState(false);
@@ -20,11 +19,9 @@ const FAQ = () => {
     setActiveQuestion(activeQuestion === index ? null : index);
   };
 
-  // Handler for submitting customer questions
   const handleQuestionSubmit = async (e) => {
     e.preventDefault();
     
-    // Basic validation
     if (!customerQuestion.trim() || !customerEmail.trim()) {
       setFormError(t("pleaseCompleteAllFields"));
       return;
@@ -39,22 +36,11 @@ const FAQ = () => {
     setFormError("");
     
     try {
-      // You would replace this with your actual API call to send the question
-      // For example:
-      // await supabase.from("CustomerQuestions").insert([
-      //   { question: customerQuestion, email: customerEmail, status: "pending" }
-      // ]);
-      
-      // Simulating API call with timeout
       await new Promise(resolve => setTimeout(resolve, 1000));
-      
-      // Clear form and show success message
       setCustomerQuestion("");
       setCustomerEmail("");
       setFormSubmitted(true);
       setIsSubmitting(false);
-      
-      // Reset success message after 5 seconds
       setTimeout(() => {
         setFormSubmitted(false);
       }, 5000);
@@ -66,13 +52,11 @@ const FAQ = () => {
     }
   };
   
-  // Email validation helper
   const isValidEmail = (email) => {
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return regex.test(email);
   };
 
-  // Questions data array
   const questions = [
     { id: 0, title: "question1Title", content: "question1Content" },
     { id: 1, title: "question2Title", content: "question2Content" },
@@ -130,8 +114,6 @@ const FAQ = () => {
             </div>
           ))}
         </div>
-        
-        {/* Custom Question Form */}
         <div className={`${styles.customQuestionSection} ${theme === 'dark' ? styles.darkForm : styles.lightForm}`}>
           <h2 className={styles.formTitle}>{t("askYourQuestion")}</h2>
           <p className={styles.formDescription}>{t("didntFindAnswer")}</p>

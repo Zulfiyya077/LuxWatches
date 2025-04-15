@@ -218,8 +218,7 @@
     background-clip: text;
     color: transparent;
   }
-  
-  /* Add animation for card entrance */
+ 
   .grid {
     position: relative;
   }
@@ -249,7 +248,7 @@
     }
   }
   
-  /* 3D Effect for hover */
+
   .card::after {
     content: '';
     position: absolute;
@@ -273,7 +272,7 @@
     transform: translateY(0);
   }
   
-  /* Highlight effect on hover */
+
   .card::before {
     content: '';
     position: absolute;
@@ -306,7 +305,7 @@
     }
   }
   
-  /* Add card hover states */
+  
   .card {
     will-change: transform, box-shadow;
   }
@@ -315,7 +314,7 @@
     will-change: transform, box-shadow;
   }
   
-  /* Add product badge */
+
   .card {
     position: relative;
   }
@@ -342,7 +341,7 @@
     transform: translateY(0);
   }
   
-  /* Responsive Styles */
+
   @media (max-width: 992px) {
     .grid {
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -449,14 +448,13 @@
     }
   }
   
-  /* Card animations for entrance */
+ 
   .card:nth-child(1) { --index: 1; }
   .card:nth-child(2) { --index: 2; }
   .card:nth-child(3) { --index: 3; }
   .card:nth-child(4) { --index: 4; }
   .card:nth-child(5) { --index: 5; }
-  
-  /* Custom interactive 3D tilt effect for desktop */
+
   @media (min-width: 1024px) {
     .card {
       transform-style: preserve-3d;

@@ -7,7 +7,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import styles from './Login.module.css';
 import supabase from '../../supabaseClient';
 
-// Admin e-poçt ünvanı
+
 const ADMIN_EMAIL = "mammadli.zulfiyya77@gmail.com";
 
 const Login = () => {
@@ -15,11 +15,11 @@ const Login = () => {
   const location = useLocation();
   const navigate = useNavigate();
   
-  // Qeydiyyatdan sonra gələn e-poçt və mesaj
+
   const initialEmail = location.state?.email || '';
   const initialMessage = location.state?.message || '';
   
-  // Yönləndirmə üçün "from" məlumatı
+
   const from = location.state?.from?.pathname || "/";
   
   const [email, setEmail] = useState(initialEmail);
@@ -28,7 +28,7 @@ const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [userAlreadyLoggedIn, setUserAlreadyLoggedIn] = useState(false);
 
-  // İstifadəçinin giriş vəziyyətini yoxla
+
   useEffect(() => {
     const checkLoggedInStatus = async () => {
       const { data } = await supabase.auth.getSession();
@@ -42,12 +42,12 @@ const Login = () => {
     checkLoggedInStatus();
   }, [t]);
 
-  // Toast notifikasiya funksiyaları - düzəldilmiş versiyalar
+
   const showSuccessToast = (message) => {
-    toast.dismiss(); // Mövcud toast-ları bağla
+    toast.dismiss();
     toast.success(message, {
-      position: "top-right",
-      autoClose: 2000, // 2 saniyə
+      position: "bottom-right",
+      autoClose: 2000, 
       hideProgressBar: false,
       closeOnClick: true,
       pauseOnHover: true,
@@ -55,15 +55,15 @@ const Login = () => {
       progress: undefined,
       className: styles.successToast,
       progressClassName: styles.successToastProgress,
-      closeButton: true, // Bağlama düyməsini əlavə et
+      closeButton: true,
     });
   };
 
   const showErrorToast = (message) => {
-    toast.dismiss(); // Mövcud toast-ları bağla
+    toast.dismiss(); 
     toast.error(message, {
-      position: "top-right",
-      autoClose: 2000, // 3 saniyə
+      position: "bottom-right",
+      autoClose: 2000, 
       hideProgressBar: false,
       closeOnClick: true,
       pauseOnHover: true,
@@ -71,16 +71,15 @@ const Login = () => {
       progress: undefined,
       className: styles.errorToast,
       progressClassName: styles.errorToastProgress,
-      closeButton: true, // Bağlama düyməsini əlavə et
+      closeButton: true, 
     });
   };
 
   const showInfoToast = (message) => {
-     // Mövcud toast-ları bağla
      toast.dismiss();
     toast.info(message, {
       position: "top-right",
-      autoClose: 2000, // 3 saniyə
+      autoClose: 2000, 
       hideProgressBar: false,
       closeOnClick: true,
       pauseOnHover: true,
@@ -90,13 +89,12 @@ const Login = () => {
       progressClassName: styles.infoToastProgress,
       closeButton: true, 
     });
-    // toast.dismiss();
+  
   };
 
   useEffect(() => {
-    // Əgər qeydiyyatdan sonra mesaj varsa, onu toast ilə göstər
+   
     if (initialMessage) {
-      // setTimeout ilə kiçik bir gecikdirmə əlavə et
       const timer = setTimeout(() => {
         showSuccessToast(initialMessage);
       }, 100);
@@ -105,7 +103,6 @@ const Login = () => {
     }
   }, [initialMessage]);
 
-  // Əgər digər istifadəçi girişdədirsə çıxış səhifəsinə yönləndir
   const handleLogout = () => {
     navigate('/');
   };
@@ -133,8 +130,6 @@ const Login = () => {
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    
-    // Əgər artıq bir istifadəçi daxil olubsa, xəta göstər
     if (userAlreadyLoggedIn) {
       showErrorToast(t('login.mustLogoutFirst') || 'Başqa hesaba daxil olmaq üçün əvvəlcə çıxış etməlisiniz');
       return;
@@ -157,15 +152,12 @@ const Login = () => {
       if (error) {
         throw error;
       }
-
-      // İstifadəçi adını metadata-dan al
       const username = data.user.user_metadata?.username;
       
       if (username) {
-        // İstifadəçi adını localStorage-də saxla
         localStorage.setItem('userName', username);
       } else {
-        // Metadata-da istifadəçi adı yoxdursa, profiles cədvəlindən al
+       
         const { data: profileData } = await supabase
           .from('profiles')
           .select('first_name, role')
@@ -184,16 +176,15 @@ const Login = () => {
       setEmail('');
       setPassword('');
 
-      // Giriş uğurlu olduqda istifadəçinin yönləndirilməsi
       setTimeout(() => {
         if (data.user.email === ADMIN_EMAIL) {
-          // Admin istifadəçisini admin panelə yönləndir
+         
           navigate('/admin');
         } else if (from !== '/') {
-          // Xüsusi bir səhifədən gəlmişsə, ora qaytar
+      
           navigate(from);
         } else {
-          // Əks halda ana səhifəyə yönləndir
+         
           navigate('/home');
         }
       }, 1500);
@@ -225,7 +216,7 @@ const Login = () => {
 
   return (
     <div className={styles.container}>
-      {/* Toastify Container - düzəldilmiş versiya */}
+    
       <ToastContainer
         position="top-right"
         autoClose={2000}
@@ -236,7 +227,7 @@ const Login = () => {
         pauseOnFocusLoss
         draggable
         pauseOnHover
-        limit={1} // Eyni anda yalnız 1 toast göstər
+        limit={1} 
       />
       
       <div className={styles.formWrapper}>

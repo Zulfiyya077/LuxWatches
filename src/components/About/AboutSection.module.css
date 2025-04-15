@@ -487,7 +487,7 @@
   flex: 1;
   position: relative;
   transition: transform 0.5s ease;
-  overflow: hidden; /* Ensures that anything overflowing the wrapper is hidden */
+  overflow: hidden; 
 }
 
 .imageWrapper:hover {
@@ -495,12 +495,12 @@
 }
 
 .watchImage {
-  width: 100%; /* Makes the video take the full width of its parent */
-  height: auto; /* Maintains the aspect ratio of the video */
-  object-fit: cover; /* Ensures the video covers the area while maintaining its aspect ratio */
+  width: 100%;
+  height: auto; 
+  object-fit: cover; 
 }
 
-/* Responsive adjustments */
+
 @media (max-width: 768px) {
   .watchImage {
     width: 100%;

@@ -22,25 +22,23 @@ const CartPage = () => {
     setItems 
   } = useCart();
   
-  // Force re-render üçün counter
   const [forceUpdate, setForceUpdate] = useState(0);
   const [cartItems, setCartItems] = useState(items);
   const { t } = useTranslation();
   const { calculateSubtotal, calculateDiscount, getFinalPrice, appliedCoupon } = useCoupon();
   
-  // Səhifə başlanğıcında scroll-u yuxarı qaldıraq
+
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, []);
-  
-  // Komponenti force update etmək üçün function
+
   const handleForceUpdate = () => {
     setForceUpdate(prev => prev + 1);
   };
   
-  // Səhifə yükləndikdə bir dəfə yeniləyək
+
   useEffect(() => {
-    // Bir dəfə delay ilə force update edək
+  
     const timer = setTimeout(() => {
       handleForceUpdate();
     }, 100);
@@ -48,14 +46,13 @@ const CartPage = () => {
     return () => clearTimeout(timer);
   }, []);
 
-  // Səbət dəyişdikdə items state-ni yeniləyək
+ 
   useEffect(() => {
     setCartItems(items);
-    // Səbətdəki məlumatları dəyişdikdə force update edək
+ 
     handleForceUpdate();
   }, [items, cartTotal]);
   
-  // Supabase-də səbəti yeniləyək
   const updateCartInSupabase = async () => {
     const { data: user, error } = await supabase.auth.getUser(); 
 
@@ -92,28 +89,22 @@ const CartPage = () => {
     }
   };
 
-  // Səbət dəyişdikdə supabase-də yeniləyək
   useEffect(() => {
     if (items.length > 0) {
       updateCartInSupabase();
     }
   }, [cartItems]); 
 
-  // Real-time hesablamalar üçün dəyərləri hesablayaq
   const subtotal = calculateSubtotal();
   const discount = calculateDiscount();
   const finalTotal = getFinalPrice();
 
-  // Məhsul miqdarını dəyişmək üçün yeni funksiya
   const handleQuantityChange = (itemId, newQuantity) => {
     if (newQuantity <= 0) {
       toast.info(t("cart.itemRemoved"));
       removeItem(itemId);
     } else {
-      // Əvvəlcə məhsul miqdarını yeniləyək
       updateItemQuantity(itemId, newQuantity);
-      
-      // Sonra force update edək
       setTimeout(() => {
         handleForceUpdate();
       }, 50);
@@ -121,8 +112,6 @@ const CartPage = () => {
       toast.success(t("cart.quantityUpdated"));
     }
   };
-
-  // Məhsulu silmək üçün yeni funksiya
   const handleRemoveItem = (itemId) => {
     removeItem(itemId);
     setTimeout(() => {
@@ -130,8 +119,6 @@ const CartPage = () => {
     }, 50);
     toast.info(t("cart.itemRemoved"));
   };
-
-  // Animation variants
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: { 
@@ -280,7 +267,7 @@ const CartPage = () => {
             ))}
           </div>
         
-          {/* Add coupon input section */}
+
           <motion.div
             variants={itemVariants}
             className={styles.couponSection}
@@ -300,7 +287,6 @@ const CartPage = () => {
               <span>{subtotal.toFixed(2)} AZN</span>
             </div>
             
-            {/* Show discount if coupon is applied */}
             {discount > 0 && (
               <motion.div 
                 className={styles.summaryRow}

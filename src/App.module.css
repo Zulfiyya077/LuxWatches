@@ -20,9 +20,8 @@
   --shadow-elevated: 0 15px 35px rgba(0, 0, 0, 0.25);
 }
 
-/* Login.module.css */
 :root {
-  /* Light theme variables */
+
   --bg-gradient-light: linear-gradient(135deg, #f5f7fa 0%, #e4e8ec 100%);
   --container-bg-light: #fff;
   --text-primary-light: #333;
@@ -64,7 +63,142 @@
   --logo-primary-dark: #f0f0f0;
   --logo-accent-dark: #F7EF8A;
 }
+/* Register.module.css */
+:root {
+  /* Light theme variables */
+  --bg-gradient-light: linear-gradient(135deg, #f5f7fa 0%, #e4e8ec 100%);
+  --container-bg-light: #fff;
+  --text-primary-light: #333;
+  --text-secondary-light: #555;
+  --text-tertiary-light: #777;
+  --input-bg-light: #f8f9fa;
+  --input-border-light: #ddd;
+  --accent-color: #D4AF37;
+  --accent-gradient: linear-gradient(90deg, #D4AF37, #F7EF8A, #D4AF37);
+  --accent-light: rgba(212, 175, 55, 0.2);
+  --error-bg-light: rgba(244, 67, 54, 0.1);
+  --error-color-light: #f44336;
+  --success-bg-light: rgba(76, 175, 80, 0.1);
+  --success-color-light: #4caf50;
+  --shadow-light: 0 15px 50px rgba(0, 0, 0, 0.1);
+  --logo-primary-light: #111;
+  --logo-accent-light: #8B7D4B;
+  
+  /* Dark theme variables */
+  --bg-gradient-dark: linear-gradient(135deg, #1a1a1a 0%, #2c2c2c 100%);
+  --container-bg-dark: #222;
+  --text-primary-dark: #f0f0f0;
+  --text-secondary-dark: #ccc;
+  --text-tertiary-dark: #aaa;
+  --input-bg-dark: #333;
+  --input-border-dark: #444;
+  --accent-color-dark: #F7EF8A;
+  --accent-gradient-dark: linear-gradient(90deg, #F7EF8A, #D4AF37, #F7EF8A);
+  --accent-dark: rgba(247, 239, 138, 0.2);
+  --error-bg-dark: rgba(244, 67, 54, 0.2);
+  --error-color-dark: #ff6b6b;
+  --success-bg-dark: rgba(76, 175, 80, 0.2);
+  --success-color-dark: #69f0ae;
+  --shadow-dark: 0 15px 50px rgba(0, 0, 0, 0.3);
+  --logo-primary-dark: #f0f0f0;
+  --logo-accent-dark: #F7EF8A;
+}
+:root {
+  /* Light Theme Colors */
+  --background-light: #f8f9fa;
+  --card-light: #ffffff;
+  --text-primary-light: #212529;
+  --text-secondary-light: #6c757d;
+  --border-light: #dee2e6;
+  --gold: #d4af37;
+  --burgundy: #800020;
+  --dark-green: #013220;
+  --red: #dc3545;
+  --green: #198754;
+  --hover-light: #f1f3f5;
+  --shadow-light: 0 4px 6px rgba(0, 0, 0, 0.1);
+  
+  /* Dark Theme Colors */
+  --background-dark: #121212;
+  --card-dark: #1e1e1e;
+  --text-primary-dark: #e9ecef;
+  --text-secondary-dark: #adb5bd;
+  --border-dark: #343a40;
+  --gold-dark: #bf9b30;
+  --burgundy-dark: #9a0025;
+  --dark-green-dark: #044330;
+  --hover-dark: #2c2c2c;
+  --shadow-dark: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
 
+:root {
+  /* Light theme variables */
+  --bg-gradient-light: linear-gradient(135deg, #f5f7fa 0%, #e4e8ec 100%);
+  --container-bg-light: #fff;
+  --text-primary-light: #333;
+  --text-secondary-light: #555;
+  --text-tertiary-light: #777;
+  --input-bg-light: #f8f9fa;
+  --input-border-light: #ddd;
+  --accent-color: #D4AF37;
+  --accent-gradient: linear-gradient(90deg, #D4AF37, #F7EF8A, #D4AF37);
+  --accent-light: rgba(212, 175, 55, 0.2);
+  --error-bg-light: rgba(244, 67, 54, 0.1);
+  --error-color-light: #f44336;
+  --success-bg-light: rgba(76, 175, 80, 0.1);
+  --success-color-light: #4caf50;
+  --info-bg-light: rgba(33, 150, 243, 0.1);
+  --info-color-light: #2196f3;
+  --shadow-light: 0 15px 50px rgba(0, 0, 0, 0.1);
+  --logo-primary-light: #111;
+  --logo-accent-light: #8B7D4B;
+  
+  /* Dark theme variables */
+  --bg-gradient-dark: linear-gradient(135deg, #1a1a1a 0%, #2c2c2c 100%);
+  --container-bg-dark: #222;
+  --text-primary-dark: #f0f0f0;
+  --text-secondary-dark: #ccc;
+  --text-tertiary-dark: #aaa;
+  --input-bg-dark: #333;
+  --input-border-dark: #444;
+  --accent-color-dark: #F7EF8A;
+  --accent-gradient-dark: linear-gradient(90deg, #F7EF8A, #D4AF37, #F7EF8A);
+  --accent-dark: rgba(247, 239, 138, 0.2);
+  --error-bg-dark: rgba(244, 67, 54, 0.2);
+  --error-color-dark: #ff6b6b;
+  --success-bg-dark: rgba(76, 175, 80, 0.2);
+  --success-color-dark: #69f0ae;
+  --info-bg-dark: rgba(1, 30, 54, 0.2);
+  --info-color-dark: #64b5f6;
+  --shadow-dark: 0 15px 50px rgba(0, 0, 0, 0.3);
+  --logo-primary-dark: #f0f0f0;
+  --logo-accent-dark: #F7EF8A;
+}
+
+:root {
+  --gold: #d4af37;
+  --dark-gold: #b8860b;
+  --deep-green: #004d40;
+  --light-green: #00695c;
+  --burgundy: #800020;
+  --light-burgundy: #a52a2a;
+  --black: #1a1a1a;
+  --off-white: #f5f5f5;
+  --cream: #f8f6ea;
+}
+
+
+:root {
+  --gold: #d4af37;
+  --dark-gold: #b8860b;
+  --deep-green: #004d40;
+  --light-green: #00695c;
+  --burgundy: #800020;
+  --light-burgundy: #a52a2a;
+  --black: #1a1a1a;
+  --off-white: #f5f5f5;
+  --cream: #f8f6ea;
+}
 [data-theme='dark'] {
   --primary-bg: #121212;
   --secondary-bg: #1e1e1e;

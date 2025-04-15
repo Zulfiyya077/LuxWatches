@@ -18,8 +18,6 @@ export const AuthProvider = ({ children }) => {
         
         if (user) {
           setUser(user);
-
-          // `user_metadata` istifadə edərək məlumatları almaq
           const { user_metadata } = user;
           setUserName(user_metadata?.username || '');
           setIsAdmin(user_metadata?.role === 'admin');
@@ -35,8 +33,6 @@ export const AuthProvider = ({ children }) => {
       async (event, session) => {
         if (event === 'SIGNED_IN' && session) {
           setUser(session.user);
-
-          // `user_metadata`-dan məlumatları almaq
           const { user_metadata } = session.user;
           setUserName(user_metadata?.username || '');
           setIsAdmin(user_metadata?.role === 'admin');

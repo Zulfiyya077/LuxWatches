@@ -1,15 +1,5 @@
-/* src/components/CouponInput/CouponInput.module.css */
-:root {
-    --gold: #d4af37;
-    --dark-gold: #b8860b;
-    --deep-green: #004d40;
-    --light-green: #00695c;
-    --burgundy: #800020;
-    --light-burgundy: #a52a2a;
-    --black: #1a1a1a;
-    --off-white: #f5f5f5;
-    --cream: #f8f6ea;
-  }
+
+
   
   .couponContainer {
     background: var(--black);
@@ -257,8 +247,7 @@
       transform: translateX(0);
     }
   }
-  
-  /* Mobile Responsive */
+
   @media (max-width: 768px) {
     .couponForm {
       flex-direction: column;
