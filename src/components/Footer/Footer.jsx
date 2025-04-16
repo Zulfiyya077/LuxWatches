@@ -88,24 +88,34 @@ const Footer = () => {
           </div>
 
           <div className={styles.column}>
-            <h3 className={`${styles.heading} ${themeClass}`}>
-              {t("contact_us")}
-            </h3>
-            <ul className={styles.contactList}>
-              <li className={styles.contactItem}>
-                <MdLocationOn className={`${styles.contactIcon} ${themeClass}`} />
-                <span>123 Street, City, Country</span>
-              </li>
-              <li className={styles.contactItem}>
-                <MdPhone className={`${styles.contactIcon} ${themeClass}`} />
-                <span>+1 234 567 8900</span>
-              </li>
-              <li className={styles.contactItem}>
-                <MdEmail className={`${styles.contactIcon} ${themeClass}`} />
-                <span>info@example.com</span>
-              </li>
-            </ul>
-          </div>
+  <h3 className={`${styles.heading} ${themeClass}`}>
+    {t("contact_us")}
+  </h3>
+  <ul className={styles.contactList}>
+    <li className={styles.contactItem}>
+      <MdLocationOn className={`${styles.contactIcon} ${themeClass}`} />
+      <span>123 Street, City, Country</span>
+    </li>
+    <li className={styles.contactItem}>
+      <MdPhone className={`${styles.contactIcon} ${themeClass}`} />
+      <span>+994 12 123 45 67</span>
+    </li>
+    <li className={styles.contactItem}>
+      <MdPhone className={`${styles.contactIcon} ${themeClass}`} />
+      <span>+994 50 123 45 67</span>
+    </li>
+    <li className={styles.contactItem}>
+      <MdEmail className={`${styles.contactIcon} ${themeClass}`} />
+      <span>info@luxurywatches.az</span>
+    </li>
+    <li className={styles.contactItem}>
+      <MdEmail className={`${styles.contactIcon} ${themeClass}`} />
+      <span>support@luxurywatches.az</span>
+    </li>
+   
+  </ul>
+</div>
+
 
           <div className={styles.column}>
             <h3 className={`${styles.heading} ${themeClass}`}>

@@ -168,8 +168,8 @@ const Products = () => {
         <Link to="/" className={`${styles.breadcrumbLink} ${themeStyles.text}`}>
           {t('Ana Səhifə')}
         </Link>
-        <span className={`${styles.breadcrumbSeparator} ${themeStyles.text}`}>/</span>
-        <span className={`${styles.breadcrumbCurrent} ${themeStyles.text}`}>{t('Məhsullar')}</span>
+        {/* <span className={`${styles.breadcrumbSeparator} ${themeStyles.text}`}>/</span>
+        <span className={`${styles.breadcrumbCurrent} ${themeStyles.text}`}>{t('Məhsullar1')}</span> */}
       </div>
 
       <div className={styles.productsWrapper}>
@@ -182,7 +182,7 @@ const Products = () => {
           </div>
 
           <div className={styles.filterSection}>
-            <h4 className={`${styles.filterTitle} ${themeStyles.text}`}>{t('Qiymət Aralığı')}</h4>
+            {/* <h4 className={`${styles.filterTitle} ${themeStyles.text}`}>{t('QiymətAralığı')}</h4> */}
             <div className={styles.priceSliderContainer}>
               <input
                 type="range"
@@ -331,9 +331,10 @@ const Products = () => {
           </div>
 
           <div className={styles.resultsInfo}>
-            <span className={themeStyles.text}>{sortedProducts.length} {t('məhsul tapıldı')}</span>
+            <span className={themeStyles.text}>{sortedProducts.length} {t('productsfound')}</span>
+            
           </div>
-
+         
           {loading ? (
             <div className={`${styles.loadingContainer} ${themeStyles.container}`}>
               <div className={styles.spinner}></div>

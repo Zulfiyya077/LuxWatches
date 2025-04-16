@@ -6,8 +6,10 @@ import { useWishlist } from 'react-use-wishlist';
 import { useCart } from 'react-use-cart';
 import supabase from '../../supabaseClient';
 import { useTheme } from '../../context/ThemeContext';
+import { useTranslation } from 'react-i18next';
 
 const SingleProduct = () => {
+  const { t, i18n } = useTranslation();
   const { id } = useParams();
   const navigate = useNavigate();
   const { theme } = useTheme();
@@ -150,7 +152,6 @@ const SingleProduct = () => {
     setNewReview(prev => ({ ...prev, rating }));
   };
 
-
   const handleReviewSubmit = (e) => {
     e.preventDefault();
     if (!newReview.name || !newReview.comment) return;
@@ -165,7 +166,6 @@ const SingleProduct = () => {
       created_at: new Date().toISOString()
     };
     
-
     setReviews(prevReviews => [newReviewObj, ...prevReviews]);
 
     setNewReview({ name: '', rating: 5, comment: '' });
@@ -182,13 +182,13 @@ const SingleProduct = () => {
 
   if (loading) return (
     <div className={`${styles.loading} ${theme === 'dark' ? styles.darkMode : ''}`}>
-      Yüklənir...
+      {t('loading')}
     </div>
   );
   
   if (!product) return (
     <div className={`${styles.notFound} ${theme === 'dark' ? styles.darkMode : ''}`}>
-      Məhsul tapılmadı.
+      {t('notFound')}
     </div>
   );
 
@@ -217,6 +217,7 @@ const SingleProduct = () => {
   };
 
   const handleGoBack = () => navigate(-1);
+  
   const renderRatingStars = (rating, interactive = false) => {
     const fullStars = Math.floor(rating);
     const hasHalfStar = rating % 1 >= 0.5;
@@ -251,6 +252,7 @@ const SingleProduct = () => {
     <div className={`${styles.singleProductContainer} ${theme === 'dark' ? styles.darkMode : ''}`}>
       <button className={styles.backButton} onClick={handleGoBack}>
         <ChevronLeft size={24} />
+        <span className={styles.srOnly}>{t('backButton')}</span>
       </button>
 
       <div className={styles.productLayout}>
@@ -272,12 +274,12 @@ const SingleProduct = () => {
               />
               {videoUrl && (
                 <div className={styles.videoIndicator}>
-                  <span>Videonu izləmək üçün klikləyin</span>
+                  <span>{t('watchVideo')}</span>
                 </div>
               )}
               {product.discounted && (
                 <span className={styles.discountBadge}>
-                  -{Math.round(((product.price - product.discountedPrice) / product.price) * 100)}%
+                  {t('discount', { percent: Math.round(((product.price - product.discountedPrice) / product.price) * 100) })}
                 </span>
               )}
             </div>
@@ -285,7 +287,7 @@ const SingleProduct = () => {
           <div className={styles.reviewsSection} ref={reviewsRef}>
             <h2 className={styles.reviewsTitle}>
               <MessageSquare size={24} />
-              Müştəri Rəyləri
+              {t('reviewsTitle')}
             </h2>
             
             <div className={styles.reviewsList}>
@@ -306,7 +308,7 @@ const SingleProduct = () => {
                     <p>{review.comment}</p>
                   </div>
                   <div className={styles.reviewDate}>
-                    {new Date(review.created_at).toLocaleDateString('az-AZ')}
+                    {new Date(review.created_at).toLocaleDateString(i18n.language === 'az' ? 'az-AZ' : 'en-US')}
                   </div>
                 </div>
               ))}
@@ -318,14 +320,14 @@ const SingleProduct = () => {
                   onClick={() => setShowReviewForm(true)}
                 >
                   <MessageSquare size={18} />
-                  Rəy Yazın
+                  {t('writeReview')}
                 </button>
               ) : (
                 <form className={styles.reviewForm} onSubmit={handleReviewSubmit}>
-                  <h3>Rəyinizi Bildirin</h3>
+                  <h3>{t('shareYourReview')}</h3>
                   
                   <div className={styles.formGroup}>
-                    <label htmlFor="name">Adınız</label>
+                    <label htmlFor="name">{t('nameLabel')}</label>
                     <input
                       type="text"
                       id="name"
@@ -333,27 +335,27 @@ const SingleProduct = () => {
                       value={newReview.name}
                       onChange={handleReviewChange}
                       required
-                      placeholder="Adınızı daxil edin"
+                      placeholder={t('namePlaceholder')}
                       className={styles.reviewInput}
                     />
                   </div>
                   
                   <div className={styles.formGroup}>
-                    <label>Reytinq</label>
+                    <label>{t('ratingLabel')}</label>
                     <div className={styles.ratingSelector}>
                       {renderRatingStars(newReview.rating, true)}
                     </div>
                   </div>
                   
                   <div className={styles.formGroup}>
-                    <label htmlFor="comment">Rəyiniz</label>
+                    <label htmlFor="comment">{t('commentLabel')}</label>
                     <textarea
                       id="comment"
                       name="comment"
                       value={newReview.comment}
                       onChange={handleReviewChange}
                       required
-                      placeholder="Məhsul haqqında fikirlərinizi yazın..."
+                      placeholder={t('commentPlaceholder')}
                       className={styles.reviewTextarea}
                       rows={4}
                     />
@@ -365,14 +367,14 @@ const SingleProduct = () => {
                       className={styles.cancelButton}
                       onClick={() => setShowReviewForm(false)}
                     >
-                      Ləğv Et
+                      {t('cancelReview')}
                     </button>
                     <button 
                       type="submit" 
                       className={styles.submitButton}
                       disabled={reviewSubmitting}
                     >
-                      {reviewSubmitting ? 'Göndərilir...' : 'Rəy Göndər'}
+                      {reviewSubmitting ? t('submittingReview') : t('submitReview')}
                       <Send size={16} />
                     </button>
                   </div>
@@ -395,7 +397,7 @@ const SingleProduct = () => {
                   className={styles.reviewsButton} 
                   onClick={scrollToReviews}
                 >
-                  {reviews.length} rəy | Rəy yazın
+                  {t('reviews', { count: reviews.length })}
                 </button>
               </div>
               <div className={styles.availability}>
@@ -405,7 +407,7 @@ const SingleProduct = () => {
                   }`}
                 />
                 <span className={styles.statusText}>
-                  {product.availability ? 'Stokda var' : 'Stokda yoxdur'}
+                  {product.availability ? t('inStock') : t('outOfStock')}
                 </span>
               </div>
             </div>
@@ -415,7 +417,7 @@ const SingleProduct = () => {
             </div>
 
             <div className={styles.productDetails}>
-              <h3>Texniki Xüsusiyyətlər</h3>
+              <h3>{t('technicalSpecs')}</h3>
               <ul className={styles.specificationsList}>
                 {product.details &&
                   Object.entries(product.details).map(([key, value]) => (
@@ -445,7 +447,7 @@ const SingleProduct = () => {
                 <button
                   className={`${styles.wishlistButton} ${isProductInWishlist ? styles.active : ''}`}
                   onClick={handleToggleWishlist}
-                  aria-label={isProductInWishlist ? "Seçilmişlərdən çıxar" : "Seçilmişlərə əlavə et"}
+                  aria-label={isProductInWishlist ? t('removeFromWishlist') : t('addToWishlist')}
                 >
                   <Heart size={24} />
                 </button>
@@ -456,7 +458,7 @@ const SingleProduct = () => {
                   disabled={!product.availability}
                 >
                   <ShoppingCart size={16} />
-                  <span>Səbətə əlavə et</span>
+                  <span>{t('addToCart')}</span>
                 </button>
               </div>
             </div>

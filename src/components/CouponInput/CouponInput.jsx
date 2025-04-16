@@ -1,4 +1,3 @@
-
 import React, { useState, useContext, useEffect } from "react";
 import { useCoupon } from "../../context/CouponContext";
 import { useTranslation } from "react-i18next";
@@ -18,7 +17,6 @@ const CouponInput = () => {
     if (loading) {
       setIsValidating(true);
     } else {
-   
       const timeout = setTimeout(() => {
         setIsValidating(false);
       }, 300); 
@@ -27,8 +25,21 @@ const CouponInput = () => {
     }
   }, [loading]);
 
+  // Form təqdim edilməsini idarə edən funksiya
   const handleApplyCoupon = async (e) => {
+    // Bu xətt gərək necə olursa olsun işlənilsin
     e.preventDefault();
+    
+    if (couponCode.trim()) {
+      await applyCoupon(couponCode.trim());
+    }
+  };
+
+  // Düymə kliklənməsini idarə edən funksiya
+  const handleButtonClick = async (e) => {
+    // Düymə klikləndikdə də default davranışı dayandırırıq
+    e.preventDefault();
+    
     if (couponCode.trim()) {
       await applyCoupon(couponCode.trim());
     }
@@ -47,7 +58,6 @@ const CouponInput = () => {
     
     return "";
   };
-
 
   const containerVariants = {
     hidden: { opacity: 0, y: 20 },
@@ -136,7 +146,10 @@ const CouponInput = () => {
               ({getDiscountText()})
             </div>
             <motion.button 
-              onClick={removeCoupon} 
+              onClick={(e) => {
+                e.preventDefault();
+                removeCoupon();
+              }} 
               className={styles.removeCouponBtn}
               type="button"
               whileHover={{ scale: 1.05 }}
@@ -165,7 +178,8 @@ const CouponInput = () => {
               disabled={loading}
             />
             <motion.button
-              type="submit"
+              type="button" // "submit" yerine "button" istifadə edirik
+              onClick={handleButtonClick} // Kliklənmə hadisəsini idarə edirik
               className={styles.couponButton}
               disabled={loading || !couponCode.trim()}
               variants={formItemVariants}

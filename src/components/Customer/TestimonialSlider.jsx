@@ -44,7 +44,7 @@ const TestimonialSlider = () => {
 
   
   const rolexVideo = {
-    src: "public/videos/Rolex new watches 2025 – Once upon a first time (1).mp4",
+    src: "/videos/Rolex new watches 2025 – Once upon a first time (1).mp4",
   
   };
 

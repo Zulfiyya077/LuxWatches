@@ -102,7 +102,7 @@
   box-shadow: var(--shadow-standard);
   transform-style: preserve-3d;
   transition: var(--transition-standard);
-  position: sticky;
+  /* position: sticky; */
   top: 20px;
   height: fit-content;
   z-index: 10;
@@ -425,11 +425,11 @@
 @media (max-width: 768px) {
   .filterSidebar {
     position: fixed;
-    left: -320px;
+    /* left: -320px; */
     top: 0;
     height: 100vh;
     width: 300px;
-    z-index: 1000;
+    /* z-index: 1000; */
     border-radius: 0;
     box-shadow: 5px 0 15px rgba(0, 0, 0, 0.2);
     overflow-y: auto;
@@ -941,7 +941,7 @@
 @media (max-width: 768px) {
   .filterSidebar[data-open="true"]::after {
     content: '';
-    position: fixed;
+    /* position: fixed; */
     top: 0;
     left: 0;
     right: 0;
@@ -952,16 +952,16 @@
 
   .productsWrapper::before {
     content: '';
-    position: fixed;
+    /* position: fixed; */
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
     background: rgba(0, 0, 0, 0.5);
     z-index: 999;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.3s ease, visibility 0.3s ease;
+    /* opacity: 0; */
+    /* visibility: hidden; */
+    /* transition: opacity 0.3s ease, visibility 0.3s ease; */
     pointer-events: none;
   }
   

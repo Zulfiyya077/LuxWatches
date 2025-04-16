@@ -556,7 +556,7 @@ const AdminDashboard = () => {
         </nav>
       </aside>
 
-      {/* Main Content */}
+      
       <main className={styles.content}>
         {/* Mobile Header */}
         <div className={styles.mobileHeader}>
@@ -813,9 +813,9 @@ const AdminDashboard = () => {
                     <tr>
                       <th className={styles.th}>{t("orderID")}</th>
                       <th className={styles.th}>{t("customer")}</th>
-                      <th className={styles.th}>{t("product")}</th>
+                      <th className={styles.th}>{t("product1")}</th>
                       <th className={styles.th}>{t("amount")}</th>
-                      <th className={styles.th}>{t("status")}</th>
+                      <th className={styles.th}>{t("status2")}</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -886,7 +886,7 @@ const AdminDashboard = () => {
               <table className={styles.table}>
                 <thead className={styles.thead}>
                   <tr>
-                    <th className={styles.th}>{t("product")}</th>
+                    <th className={styles.th}>{t("product1")}</th>
                     <th className={styles.th}>{t("price")}</th>
                     <th className={styles.th}>{t("sold")}</th>
                     <th className={styles.th}>{t("revenue")}</th>

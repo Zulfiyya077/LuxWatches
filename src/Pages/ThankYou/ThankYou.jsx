@@ -52,9 +52,7 @@ const ThankYou = () => {
             <span className={`${styles.logoText} ${theme === 'dark' ? styles.logoTextDark : ''}`}>
               {t('common.companyName.luxury')}
             </span>
-            <span className={styles.logoAccent}>
-              {t('common.companyName.shop')}
-            </span>
+            
           </div>
 
           <div className={styles.thankYouContent}>

@@ -1,12 +1,125 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useContext, useEffect, useCallback, useRef } from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import { FaInfoCircle, FaAngleLeft } from "react-icons/fa";
+import { FaInfoCircle, FaAngleLeft, FaTimes } from "react-icons/fa";
 import styles from "./FeaturedModels.module.css";
 import { ThemeContext } from "../../context/ThemeContext";
 import { useCart } from "react-use-cart";
 
+// Create a separate modal component to isolate re-renders
+const NotifyMeModal = ({ isOpen, onClose, selectedModel, t, theme }) => {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: ""
+  });
+  const [submitted, setSubmitted] = useState(false);
+  const modalRef = useRef(null);
+
+  // Reset form when modal opens with a new model
+  useEffect(() => {
+    if (isOpen && selectedModel) {
+      setFormData({ name: "", email: "" });
+      setSubmitted(false);
+    }
+  }, [isOpen, selectedModel]);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("Bildiriş formu göndərildi:", formData, "Məhsul:", selectedModel?.name);
+    setSubmitted(true);
+    
+    setTimeout(() => {
+      setSubmitted(false);
+      onClose();
+    }, 3000);
+  };
+
+  // Close on click outside
+  const handleOutsideClick = (e) => {
+    if (modalRef.current && !modalRef.current.contains(e.target)) {
+      onClose();
+    }
+  };
+
+  if (!isOpen) return null;
+
+  return (
+    <div 
+      className={styles.modalOverlay} 
+      onClick={handleOutsideClick}
+    >
+      <div 
+        ref={modalRef}
+        className={`${styles.modalContent} ${theme === 'dark' ? styles.dark : ''}`}
+        onClick={(e) => e.stopPropagation()}
+      >
+        <button className={styles.closeButton} onClick={onClose}>
+          <FaTimes />
+        </button>
+        
+        {!submitted ? (
+          <>
+            <h3 className={styles.modalTitle}>
+              {t('getNotified')} - {selectedModel?.name}
+            </h3>
+            <p className={styles.modalDescription}>
+              {t('notifyMeDescription')}
+            </p>
+            
+            <form onSubmit={handleSubmit} className={styles.notifyForm}>
+              <div className={styles.formGroup}>
+                <label htmlFor="name">{t('fullName')}</label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  placeholder={t('enterName')}
+                  required
+                />
+              </div>
+              
+              <div className={styles.formGroup}>
+                <label htmlFor="email">{t('email')}</label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  placeholder={t('enterEmail')}
+                  required
+                />
+              </div>
+              
+              <button type="submit" className={styles.submitButton}>
+                {t('notifyMe')}
+              </button>
+            </form>
+          </>
+        ) : (
+          <div className={styles.successMessage}>
+            <div className={styles.checkmarkContainer}>
+              <div className={styles.checkmark}></div>
+            </div>
+            <h3>{t('thankYou2')}</h3>
+            <p>{t('notificationSuccess')}</p>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+};
 
 const FlippableWatches = () => {
   const { t } = useTranslation();
@@ -15,6 +128,10 @@ const FlippableWatches = () => {
   const [flippedCards, setFlippedCards] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const navigate = useNavigate();
+  
+  // Modal state-lərini əlavə edirik
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedModel, setSelectedModel] = useState(null);
 
   const models = [
     {
@@ -75,14 +192,14 @@ const FlippableWatches = () => {
     return () => clearTimeout(timer);
   }, []);
 
-  const handleFlipCard = (id) => {
+  const handleFlipCard = useCallback((id) => {
     setFlippedCards(prev => ({
       ...prev,
       [id]: !prev[id]
     }));
-  };
+  }, []);
 
-  const handleAddToCart = (e, model) => {
+  const handleAddToCart = useCallback((e, model) => {
     e.stopPropagation();
     
     if (!model.available) return;
@@ -102,12 +219,28 @@ const FlippableWatches = () => {
         element.classList.remove(styles.addedToCart);
       }, 1000);
     }
-  };
+  }, [addItem]);
+  
+  // Function to open modal
+  const handleNotifyClick = useCallback((e, model) => {
+    e.stopPropagation();
+    setSelectedModel(model);
+    setIsModalOpen(true);
+  }, []);
+  
+  // Function to close modal
+  const closeModal = useCallback(() => {
+    setIsModalOpen(false);
+    // Don't immediately clear the selected model to avoid UI jumps
+    setTimeout(() => {
+      setSelectedModel(null);
+    }, 300); // Wait for modal close animation
+  }, []);
 
-  const handleViewDetails = (e, model) => {
+  const handleViewDetails = useCallback((e, model) => {
     e.stopPropagation();
     navigate(`/products/${model.id}`);
-  };
+  }, [navigate]);
 
   return (
     <section className={`${styles.watchesShowcase} ${theme === 'dark' ? styles.dark : styles.light}`}>
@@ -223,13 +356,21 @@ const FlippableWatches = () => {
                 </div>
                 
                 <div className={styles.buttonContainer}>
-                  <button 
-                    className={`${styles.buyButton} ${!model.available ? styles.disabledButton : ''}`}
-                    onClick={(e) => handleAddToCart(e, model)}
-                    disabled={!model.available}
-                  >
-                    {model.available ? t('addToCart') : t('notifyMe')}
-                  </button>
+                  {model.available ? (
+                    <button 
+                      className={styles.buyButton}
+                      onClick={(e) => handleAddToCart(e, model)}
+                    >
+                      {t('addToCart')}
+                    </button>
+                  ) : (
+                    <button 
+                      className={styles.buyButton}
+                      onClick={(e) => handleNotifyClick(e, model)}
+                    >
+                      {t('notifyMe')}
+                    </button>
+                  )}
                   
                   <div className={styles.secondaryActions}>
                     <button 
@@ -245,6 +386,15 @@ const FlippableWatches = () => {
           </motion.div>
         ))}
       </div>
+      
+      {/* Separated modal component */}
+      <NotifyMeModal 
+        isOpen={isModalOpen}
+        onClose={closeModal}
+        selectedModel={selectedModel}
+        t={t}
+        theme={theme}
+      />
     </section>
   );
 };

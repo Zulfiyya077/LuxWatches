@@ -1,7 +1,6 @@
 import React, { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { motion } from 'framer-motion';
 import { toast } from 'react-toastify';
 import supabase from '../../supabaseClient';
 import { ThemeContext } from '../../context/ThemeContext';
@@ -18,7 +17,7 @@ const ForgotPassword = () => {
   const handleResetPassword = async (e) => {
     e.preventDefault();
     if (!email.trim()) {
-      toast.error(t('auth.validation.emailRequired'));
+      toast.error(t('auth.validation.emailRequired') || "E-poçt ünvanı tələb olunur");
       return;
     }
     
@@ -31,10 +30,10 @@ const ForgotPassword = () => {
 
       if (error) throw error;
 
-      toast.success(t('auth.passwordReset.success'));
+      toast.success(t('auth.passwordReset.success') || "Şifrə sıfırlama təlimatları e-poçt ünvanınıza göndərildi");
       setEmail(''); 
     } catch (error) {
-      toast.error(t('auth.passwordReset.error', { message: error.message }));
+      toast.error(t('auth.passwordReset.error', { message: error.message }) || `Şifrə sıfırlama e-poçtunu göndərmək alınmadı: ${error.message}`);
     } finally {
       setLoading(false);
     }
@@ -49,39 +48,28 @@ const ForgotPassword = () => {
   };
 
   return (
-    <motion.div 
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.5 }}
-      className={`${styles.container} ${styles[theme]}`}
-    >
-      <div className={styles.backgroundWave}></div>
+    <div className={`${styles.container} ${styles[theme]}`}>
       <div className={styles.formWrapper}>
-        <motion.div 
-          initial={{ y: 20, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ type: "spring", stiffness: 300, delay: 0.2 }}
-          className={styles.formContainer}
-        >
+        <div className={styles.formContainer}>
           <div className={styles.logoSection}>
             <img 
-              src="public/videos/Screenshot Capture - 2025-04-14 - 02-25-33-Photoroom.png" 
-              alt={t('auth.logo.alt')} 
+              src="/videos/Screenshot Capture - 2025-04-14 - 02-25-33-Photoroom.png" 
+              alt={t('auth.logo.alt') || "Şirkət Loqosu"} 
               className={styles.logo} 
             />
           </div>
 
-          <h2 className={styles.title}>{t('auth.passwordReset.title')}</h2>
-          <p className={styles.subtitle}>{t('auth.passwordReset.subtitle')}</p>
+          <h2 className={styles.title}>{t('auth.passwordReset.title') || "Şifrəni Sıfırla"}</h2>
+          <p className={styles.subtitle}>{t('auth.passwordReset.subtitle') || "E-poçt ünvanınızı daxil edin və biz sizə şifrənizi sıfırlamaq üçün təlimatlar göndərəcəyik"}</p>
 
           <form onSubmit={handleResetPassword} className={styles.form}>
             <div className={styles.formGroup}>
-              <label className={styles.inputLabel}>{t('auth.email.label')}</label>
+              <label className={styles.inputLabel}>{t('auth.email.label') || "E-poçt Ünvanı"}</label>
               <div className={styles.inputWrapper}>
                 <i className={`fas fa-envelope ${styles.inputIcon}`}></i>
                 <input
                   type="email"
-                  placeholder={t('auth.email.placeholder')}
+                  placeholder={t('auth.email.placeholder') || "E-poçt ünvanınızı daxil edin"}
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   className={styles.input}
@@ -90,46 +78,44 @@ const ForgotPassword = () => {
               </div>
             </div>
 
-            <motion.button 
-              whileHover={{ scale: 1.03 }}
-              whileTap={{ scale: 0.97 }}
+            <button 
               type="submit" 
               className={styles.resetButton} 
               disabled={loading}
             >
               {loading ? (
                 <span className={styles.loadingSpinner}>
-                  <i className="fas fa-spinner fa-spin"></i> {t('auth.buttons.loading')}
+                  <i className="fas fa-spinner fa-spin"></i> {t('auth.buttons.loading') || "Yüklənir..."}
                 </span>
               ) : (
-                t('auth.buttons.resetPassword')
+                t('auth.buttons.resetPassword') || "Şifrəni Sıfırla"
               )}
-            </motion.button>
+            </button>
           </form>
 
           <div className={styles.authLinks}>
-            <motion.p whileHover={{ scale: 1.05 }} className={styles.loginPrompt}>
-              {t('auth.passwordReset.loginPrompt')}{' '}
+            <p className={styles.loginPrompt}>
+              {t('auth.passwordReset.loginPrompt') || "Şifrənizi xatırlayırsınız?"}{' '}
               <button 
                 onClick={goToLogin} 
                 className={styles.loginLink}
               >
-                {t('auth.buttons.login')}
+                {t('auth.buttons.login') || "Daxil ol"}
               </button>
-            </motion.p>
-            <motion.p whileHover={{ scale: 1.05 }} className={styles.registerPrompt}>
-              {t('auth.passwordReset.registerPrompt')}{' '}
+            </p>
+            <p className={styles.registerPrompt}>
+              {t('auth.passwordReset.registerPrompt') || "Hələ hesabınız yoxdur?"}{' '}
               <button 
                 onClick={goToRegister} 
                 className={styles.registerLink}
               >
-                {t('auth.buttons.register')}
+                {t('auth.buttons.register') || "Qeydiyyatdan keç"}
               </button>
-            </motion.p>
+            </p>
           </div>
-        </motion.div>
+        </div>
       </div>
-    </motion.div>
+    </div>
   );
 };
 

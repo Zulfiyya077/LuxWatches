@@ -1,91 +1,91 @@
 {
-    "home": "Home",
-    "about": "About",
-    "services": "Services",
-    "shop": "Shop",
-    "company": "Company",
-    "about_us": "About Us",
-    "contact": "Contact",
-    "faqs": "Frequently Asked Questions",
-    "shipping_returns": "Shipping and Returns",
-    "terms_conditions": "Terms and Conditions",
-    "customer_service": "Customer Service",
-    "privacy_policy": "Privacy Policy",
-    "help_center": "Help Center",
-    "track_order": "Track Order",
-    "follow_us": "Follow Us",
-    "copyright": "Your Watch Shop. All rights reserved.",
-    "featuredModels": "Featured Models",
-    "buy": "Buy",
-   "luxuryWatches" : "Lux Watches",
-    "customerTestimonials": "Customer Testimonials",
-    "customer1Name": "John D.",
-    "customer1Feedback": "The Rolex Submariner is the perfect watch for me!",
-    "customer2Name": "Sophia L.",
-    "customer2Feedback": "I bought the watch and I'm very happy. Not only does it look beautiful, but it’s also very comfortable.",
-    "customer3Name": "James T.",
-    "customer3Feedback": "The best watch experience and amazing design!",
-    "aboutDescription": "We specialize in selling high-quality luxury watches. Therefore, we strive to offer our customers only the best watches. Working with us means experiencing perfection.",
-    
-    "ourMission": "Our Mission",
-    "missionDescription": "Our goal is to provide our customers with exceptional watches and quality service. Every watch is a representation of perfection to us.",
-    "companyHistory": "Company History",
-    "event1": "The company was founded.",
-    "event2": "Started collaboration with the first major customer.",
-    "event3": "Achieved success in the international market.",
-    "contactUs": "Contact Us",
-    "contactDescription": "If you have any questions about our watches and services, don’t hesitate to reach out to us. Contact our customer service for the best solutions.",
-    "support": "Support",
-    "email": "Email Address",
-    "additionalInfo": "Additional Information",
-    "additionalInfoDescription": "If you have any questions, feel free to contact us.",
-    "yourName": "Your Name",
-    "enterYourName": "Enter your name here",
-    "emailAddress": "Your Email Address",
-    "enterEmail": "Enter your email here",
-    "message": "Your Message",
-    "enterMessage": "Enter your message here",
-    "submitQuery": "Submit Your Query Now",
-    "ourOffice": "Our Office",
-    "visitUs": "Come to our luxury watch store and explore our premium watches up close. Contact us!",
-    "officeAddress": "Office Address",
-    "workingHours": "Working Hours",
-    "aboutUs": "About Rolex Excellence",
-    "aboutRolex": "Brand",
-    "aboutStore": "Our Store",
-    "craftmanship": "Fine Craftsmanship",
-    "discoverCollection": "Discover the Collection",
-    "officialDealer": "Official Dealer",
-    "founded": "Founded",
-    "patents": "Patents",
-    "countries": "Countries",
-    "precisionMovement": "Precision Movement",
-    "sapphireCrystal": "Sapphire Crystal",
-    "preciousMetals": "Precious Metals",
-    "search": "Search",
+  "home": "Home",
+  "about": "About",
+  "services": "Services",
+  "shop": "Shop",
+  "company": "Company",
+  "about_us": "About Us",
+  "contact": "Contact",
+  "faqs": "Frequently Asked Questions",
+  "shipping_returns": "Shipping and Returns",
+  "terms_conditions": "Terms and Conditions",
+  "customer_service": "Customer Service",
+  "privacy_policy": "Privacy Policy",
+  "help_center": "Help Center",
+  "track_order": "Track Order",
+  "follow_us": "Follow Us",
+  "copyright": "Your Watch Shop. All rights reserved.",
+  "featuredModels": "Featured Models",
+  "buy": "Buy",
+  "luxuryWatches": "Lux Watches",
+  "customerTestimonials": "Customer Testimonials",
+  "customer1Name": "John D.",
+  "customer1Feedback": "The Rolex Submariner is the perfect watch for me!",
+  "customer2Name": "Sophia L.",
+  "customer2Feedback": "I bought the watch and I'm very happy. Not only does it look beautiful, but it’s also very comfortable.",
+  "customer3Name": "James T.",
+  "customer3Feedback": "The best watch experience and amazing design!",
+  "aboutDescription": "We specialize in selling high-quality luxury watches. Therefore, we strive to offer our customers only the best watches. Working with us means experiencing perfection.",
+
+  "ourMission": "Our Mission",
+  "missionDescription": "Our goal is to provide our customers with exceptional watches and quality service. Every watch is a representation of perfection to us.",
+  "companyHistory": "Company History",
+  "event1": "The company was founded.",
+  "event2": "Started collaboration with the first major customer.",
+  "event3": "Achieved success in the international market.",
+  "contactUs": "Contact Us",
+  "contactDescription": "If you have any questions about our watches and services, don’t hesitate to reach out to us. Contact our customer service for the best solutions.",
+  "support": "Support",
+  "email": "Email Address",
+  "additionalInfo": "Additional Information",
+  "additionalInfoDescription": "If you have any questions, feel free to contact us.",
+  "yourName": "Your Name",
+  "enterYourName": "Enter your name here",
+  "emailAddress": "Your Email Address",
+  "enterEmail": "Enter your email here",
+  "message": "Your Message",
+  "enterMessage": "Enter your message here",
+  "submitQuery": "Submit Your Query Now",
+  "ourOffice": "Our Office",
+  "visitUs": "Come to our luxury watch store and explore our premium watches up close. Contact us!",
+  "officeAddress": "Office Address",
+  "workingHours": "Working Hours",
+  "aboutUs": "About Rolex Excellence",
+  "aboutRolex": "Brand",
+  "aboutStore": "Our Store",
+  "craftmanship": "Fine Craftsmanship",
+  "discoverCollection": "Discover the Collection",
+  "officialDealer": "Official Dealer",
+  "founded": "Founded",
+  "patents": "Patents",
+  "countries": "Countries",
+  "precisionMovement": "Precision Movement",
+  "sapphireCrystal": "Sapphire Crystal",
+  "preciousMetals": "Precious Metals",
+  "search": "Search",
   "searchProducts": "Search Products",
   "products": "Products",
   "blog": "Blog",
- 
+
   "registered": "Register",
-    "contact_us": "Contact Us",
+  "contact_us": "Contact Us",
   "newsletter": "Subscribe to Newsletter",
   "email_placeholder": "Enter your email address",
   "subscribe": "Subscribe",
   "rights_reserved": "All rights reserved",
-    "rolexBrandHistory": "Founded in 1905, Rolex is the pinnacle of luxury watchmaking. Hans Wilsdorf’s vision of creating watches that combine precision and elegance revolutionized the watch industry for centuries. Every Rolex watch represents a harmonious blend of innovation and tradition.",
-    "rolexFact1": "Rolex invented the first waterproof wristwatch, the 'Oyster', in 1926, revolutionizing the watch industry.",
-    "rolexFact2": "It takes about one year to produce each Rolex watch, with more than 200 individual components being meticulously assembled.",
-    "rolexFact3": "Rolex watches have been worn on many historical expeditions, from the summit of Mount Everest to the deepest point in the Mariana Trench.",
-    "storeDescription": "Since 2005, our boutique has represented the Rolex legacy with unwavering standards. As an official Rolex dealer, we present extraordinary works of time, reflecting the prestige and heritage of the brand in an exceptional atmosphere.",
-    "storeFact1": "Our staff undergoes extensive training directly from Rolex to provide expert knowledge on every collection and model.",
-    "storeFact2": "Our store features a special service center operated by Rolex-certified watchmakers.",
-    "storeFact3": "We hold exclusive events throughout the year, offering our customers early access to limited releases and special collections before they go on general sale.",
-    "craftsmanshipDescription": "Each Rolex watch is the pinnacle of Swiss watchmaking. Carefully and precisely created, these watches combine time-honored craftsmanship with modern technology, honed over generations.",
-    "craftFact1": "Every Rolex movement is assembled by hand and tested in five positions to ensure accuracy in various conditions, exceeding official chronometer certification standards.",
-    "craftFact2": "Rolex retains its own gold smelting facility, allowing it to fully control the production of 18-carat gold alloys, including the Everose gold, which never fades.",
-    "craftFact3": "Iconic Rolex decoration starts with a piece of gold or platinum, which is worked for up to 6 hours with precision to achieve its unique pattern.",
-    "hero_title": "Luxury Watches for Every Occasion",
+  "rolexBrandHistory": "Founded in 1905, Rolex is the pinnacle of luxury watchmaking. Hans Wilsdorf’s vision of creating watches that combine precision and elegance revolutionized the watch industry for centuries. Every Rolex watch represents a harmonious blend of innovation and tradition.",
+  "rolexFact1": "Rolex invented the first waterproof wristwatch, the 'Oyster', in 1926, revolutionizing the watch industry.",
+  "rolexFact2": "It takes about one year to produce each Rolex watch, with more than 200 individual components being meticulously assembled.",
+  "rolexFact3": "Rolex watches have been worn on many historical expeditions, from the summit of Mount Everest to the deepest point in the Mariana Trench.",
+  "storeDescription": "Since 2005, our boutique has represented the Rolex legacy with unwavering standards. As an official Rolex dealer, we present extraordinary works of time, reflecting the prestige and heritage of the brand in an exceptional atmosphere.",
+  "storeFact1": "Our staff undergoes extensive training directly from Rolex to provide expert knowledge on every collection and model.",
+  "storeFact2": "Our store features a special service center operated by Rolex-certified watchmakers.",
+  "storeFact3": "We hold exclusive events throughout the year, offering our customers early access to limited releases and special collections before they go on general sale.",
+  "craftsmanshipDescription": "Each Rolex watch is the pinnacle of Swiss watchmaking. Carefully and precisely created, these watches combine time-honored craftsmanship with modern technology, honed over generations.",
+  "craftFact1": "Every Rolex movement is assembled by hand and tested in five positions to ensure accuracy in various conditions, exceeding official chronometer certification standards.",
+  "craftFact2": "Rolex retains its own gold smelting facility, allowing it to fully control the production of 18-carat gold alloys, including the Everose gold, which never fades.",
+  "craftFact3": "Iconic Rolex decoration starts with a piece of gold or platinum, which is worked for up to 6 hours with precision to achieve its unique pattern.",
+  "hero_title": "Luxury Watches for Every Occasion",
   "hero_subtitle": "Discover timeless elegance with our exclusive collection",
   "video_not_supported": "Your browser does not support the video tag.",
   "shop_now": "Shop Now",
@@ -111,7 +111,7 @@
   "feature_titanium": "Titanium Construction",
   "feature_dive": "Dive Timer",
   "feature_water_300": "300m Water Resistance",
-   "notFound": "Blog not found",
+  "notFound": "Blog not found",
   "backToBlog": "Back to Blog Page",
   "technicalSpecifications": "Technical Specifications",
   "diameter": "Diameter",
@@ -132,77 +132,67 @@
   "orders": "My Orders",
   "noOrders": "You have no orders yet.",
   "myProducts": "My Products",
-  
+
   "profile": "Profile Information",
   "editProfile": "Edit Profile",
-  
-    "newTimepieces2025": "New Timepieces of 2025",
-    "exclusiveReleases": "Exclusively released this year",
-    "hoverForVideo": "Hover to preview video",
-    "tapToReveal": "Tap to reveal more info",
-    "back": "Back",
-    
-    "caseDiameter": "Case Diameter",
-    "price": "Price",
-    "limitedTo": "Limited to",
-    "pieces": "pieces",
-    "regularRelease": "Regular release",
-    "addToFavorites": "Add to Favorites",
-    "removeFromFavorites": "Remove from Favorites",
-    "limitedEdition": "Limited Edition",
-  
-    "gmtMasterII": "GMT-Master II",
-    "gmtMasterDescription": "A modern and functional design with dual time zone and Cerachrom bezel.",
-   
-    "cerachromBezel": "Cerachrom Bezel",
-    "jubileeBracelet": "Jubilee Bracelet",
-  
-    "oysterPerpetual": "Oyster Perpetual",
-    "oysterPerpetualDescription": "Combining simplicity and precision, the Oyster Perpetual is timeless.",
-    "superlativeChronometer": "Superlative Chronometer",
-    "colorfulDial": "Colorful Dial",
-    "paramagneticEscapeWheel": "Paramagnetic Escape Wheel",
-  
-    "rolex1908": "Rolex 1908",
-    "rolex1908Description": "A model reflecting elegance and Rolex heritage.",
-    "slimCase": "Slim Case",
-    "openCaseBack": "Open Case Back",
-    "handWoundElegance": "Hand-Wound Elegance",
-  
-    "datejust2025": "Datejust 2025",
-    "datejustDescription": "A classic model with timeless design and daily practicality.",
-    
-    "dateCyclops": "Date Cyclops Lens",
-    "classicDesign": "Classic Design"
-  ,  
-  
-    "ourTeam": {
-      "title": "Our Team",
-      "description": "Meet our professional team who tirelessly work to ensure your success. Each member brings unique skills and experience to achieve our shared vision."
-    },
-    "discount": "Discount",
-  
-    "outOfStock": "Out of Stock",
-    "addToCartShort": "Add to Cart",
-   
-    "new": "New",
-    "positions": {
-      "ceo": "Chief Executive Officer",
-      "cto": "Chief Technology Officer",
-      "marketingManager": "Marketing Manager",
-      "designDirector": "Design Director",
-      "leadDeveloper": "Lead Developer",
-      "productManager": "Product Manager"
-    },
-    "product": {
-    "discount": "Discount",
-    "addToWishlist": "Add to Wishlist",
-    "viewDetails": "View Details",
-    "outOfStock": "Out of Stock",
-    "addToCartShort": "Add to Cart",
-    "inStock": "In Stock",
-    "new": "New"
+
+  "newTimepieces2025": "New Timepieces of 2025",
+  "exclusiveReleases": "Exclusively released this year",
+  "hoverForVideo": "Hover to preview video",
+  "tapToReveal": "Tap to reveal more info",
+  "back": "Back",
+
+  "caseDiameter": "Case Diameter",
+  "price": "Price",
+  "limitedTo": "Limited to",
+  "pieces": "pieces",
+  "regularRelease": "Regular release",
+  "addToFavorites": "Add to Favorites",
+  "removeFromFavorites": "Remove from Favorites",
+  "limitedEdition": "Limited Edition",
+
+  "gmtMasterII": "GMT-Master II",
+  "gmtMasterDescription": "A modern and functional design with dual time zone and Cerachrom bezel.",
+
+  "cerachromBezel": "Cerachrom Bezel",
+  "jubileeBracelet": "Jubilee Bracelet",
+
+  "oysterPerpetual": "Oyster Perpetual",
+  "oysterPerpetualDescription": "Combining simplicity and precision, the Oyster Perpetual is timeless.",
+  "superlativeChronometer": "Superlative Chronometer",
+  "colorfulDial": "Colorful Dial",
+  "paramagneticEscapeWheel": "Paramagnetic Escape Wheel",
+
+  "rolex1908": "Rolex 1908",
+  "rolex1908Description": "A model reflecting elegance and Rolex heritage.",
+  "slimCase": "Slim Case",
+  "openCaseBack": "Open Case Back",
+  "handWoundElegance": "Hand-Wound Elegance",
+
+  "datejust2025": "Datejust 2025",
+  "datejustDescription": "A classic model with timeless design and daily practicality.",
+
+  "dateCyclops": "Date Cyclops Lens",
+  "classicDesign": "Classic Design",
+  "ourTeam": {
+    "title": "Our Team",
+    "description": "Meet our professional team who tirelessly work to ensure your success. Each member brings unique skills and experience to achieve our shared vision."
   },
+  "discount": "Discount",
+
+  "outOfStock": "Out of Stock",
+  "addToCartShort": "Add to Cart",
+
+  "new": "New",
+  "positions": {
+    "ceo": "Chief Executive Officer",
+    "cto": "Chief Technology Officer",
+    "marketingManager": "Marketing Manager",
+    "designDirector": "Design Director",
+    "leadDeveloper": "Lead Developer",
+    "productManager": "Product Manager"
+  },
+
   "hero": {
     "title": "Luxury Watches for Every Occasion",
     "subtitle": "Discover timeless elegance with our exclusive collection",
@@ -218,7 +208,7 @@
         "price": "Starting from $2,500",
         "features": {
           "1": "Sapphire Crystal",
-          "2": "Automatic Movement", 
+          "2": "Automatic Movement",
           "3": "50m Water Resistance"
         }
       },
@@ -244,59 +234,86 @@
       }
     }
   },
-    "teamBios": {
-      "johnDoe": "John has over 15 years of leadership experience in technology, focusing on continuous development and innovation.",
-      "janeSmith": "Jane is a technology visionary with extensive experience in software architecture and emerging technologies.",
-      "samGreen": "Sam has a great passion for creating brand stories and crafting impactful marketing strategies.",
-      "mariaRodriguez": "Maria combines artistic design with practical solutions to enhance user experiences across all platforms.",
-      "alexChen": "Alex is a full-stack developer specializing in performance optimization and scalable architecture.",
-      "emmaWatson": "Emma excels at transforming customer needs into exceptional value and user satisfaction."
-    },
-    
-        
-        "featuredSubtitle": "Discover our exclusive collection of prestigious timepieces",
-        
-        "rolexSubmariner": "Rolex Submariner",
-        "rolexDayDate": "Rolex Day-Date",
-        "rolexGMTMaster": "Rolex GMT-Master II",
-        
-        "submarinerDescription": "The Rolex Submariner is a line of sports watches designed for diving and known for their resistance to water and corrosion.",
-        "dayDateDescription": "The Rolex Day-Date is Rolex's most prestigious model, worn by more presidents, leaders and visionaries than any other watch.",
-        "gmtDescription": "The Rolex GMT-Master II is designed to display the time in two different time zones simultaneously during intercontinental flights.",
-        
-        "waterResistant": "300m Water Resistant",
-        "automaticMovement": "Automatic Movement",
-        "ceramicBezel": "Ceramic Bezel",
-        "dayDateComplication": "Day-Date Complication",
-        "flutedBezel": "Fluted Bezel",
-        "prestigiousBracelet": "President Bracelet",
-        "dualTimeZone": "Dual Time Zone",
-        "rotatingBezel": "24-Hour Rotating Bezel",
-        "24hourHand": "24-Hour Hand",
-        
-        "submarinerDial": "Black",
-        "dayDateDial": "Champagne",
-        "gmtDial": "Black",
-        
-        "inStock": "In Stock",
-        "comingSoon": "Coming Soon",
-        "notifyMe": "Notify Me",
-        
-        "addToCart": "Add to Cart",
-        "addToWishlist": "Add to Wishlist",
-        "viewDetails": "View Details",
-        
-        "addedToWishlist": "Added to wishlist!",
-        "addedToCart": "Added to cart successfully!",
-        
-          "common": {
-             "loading": "Loading...",
-    "companyName": {
-      "luxury": "LUXURY",
-      "shop": "SHOP"
-    }
+  "teamBios": {
+    "johnDoe": "John has over 15 years of leadership experience in technology, focusing on continuous development and innovation.",
+    "janeSmith": "Jane is a technology visionary with extensive experience in software architecture and emerging technologies.",
+    "samGreen": "Sam has a great passion for creating brand stories and crafting impactful marketing strategies.",
+    "mariaRodriguez": "Maria combines artistic design with practical solutions to enhance user experiences across all platforms.",
+    "alexChen": "Alex is a full-stack developer specializing in performance optimization and scalable architecture.",
+    "emmaWatson": "Emma excels at transforming customer needs into exceptional value and user satisfaction."
   },
+
+  "featuredSubtitle": "Discover our exclusive collection of prestigious timepieces",
+
+  "rolexSubmariner": "Rolex Submariner",
+  "rolexDayDate": "Rolex Day-Date",
+  "rolexGMTMaster": "Rolex GMT-Master II",
+
+  "submarinerDescription": "The Rolex Submariner is a line of sports watches designed for diving and known for their resistance to water and corrosion.",
+  "dayDateDescription": "The Rolex Day-Date is Rolex's most prestigious model, worn by more presidents, leaders and visionaries than any other watch.",
+  "gmtDescription": "The Rolex GMT-Master II is designed to display the time in two different time zones simultaneously during intercontinental flights.",
+
+  "waterResistant": "300m Water Resistant",
+  "automaticMovement": "Automatic Movement",
+  "ceramicBezel": "Ceramic Bezel",
+  "dayDateComplication": "Day-Date Complication",
+  "flutedBezel": "Fluted Bezel",
+  "prestigiousBracelet": "President Bracelet",
+  "dualTimeZone": "Dual Time Zone",
+  "rotatingBezel": "24-Hour Rotating Bezel",
+  "24hourHand": "24-Hour Hand",
+
+  "submarinerDial": "Black",
+  "dayDateDial": "Champagne",
+  "gmtDial": "Black",
+
+  "inStock": "In Stock",
+  "comingSoon": "Coming Soon",
+  "notifyMe": "Notify Me",
+
+  "addToCart": "Add to Cart",
+  "addToWishlist": "Add to Wishlist",
+  "viewDetails": "View Details",
+
+  "addedToWishlist": "Added to wishlist!",
+  "addedToCart": "Added to cart successfully!"
+
+,
+  "register": {
+    "title": "Create Account",
+    "fullName": "Full Name",
+    "fullNamePlaceholder": "Enter your full name",
+    "email": "Email",
+    "emailPlaceholder": "Enter your email address",
+    "password": "Password",
+    "passwordPlaceholder": "Create a password",
+    "confirmPassword": "Confirm Password",
+    "confirmPasswordPlaceholder": "Confirm your password",
+    "passwordHint": "Password must be at least 8 characters",
+    "submitButton": "Register",
+    "haveAccount": "Already have an account?",
+    "loginLink": "Log in",
+    "termsAgreement": "By registering, you agree to our Terms of Use and Privacy Policy.",
+    "bannerTitle": "Welcome to Luxury Fashion",
+    "bannerSubtitle": "Enjoy many benefits with your account",
+    "benefits": {
+      "specialOffers": "Stay informed about special offers and discounts",
+      "firstOrderDiscount": "Get 10% off your first order",
+      "freeShipping": "Free shipping options",
+      "productNotifications": "Receive notifications about new products"
+    },
+    "successMessage": "Registration completed successfully! Please log in.",
+    "allFieldsRequired": "Please fill in all fields",
+    "invalidEmail": "Email address is not in the correct format",
+    "passwordMismatch": "Passwords do not match",
+    "passwordTooShort": "Password must be at least 8 characters",
+    "generalError": "An error occurred during registration",
+    "emailInUse": "This email is already registered",
+    "passwordRequirements": "Password requirements not met"
+  },
+
   "login": {
+    "redirectingToForgotPassword": "Redirecting to the Forgot Password page...",
     "title": "Sign in to your account",
     "email": "Email Address",
     "emailPlaceholder": "Enter your email",
@@ -317,165 +334,159 @@
     "alreadyLoggedIn": "You are already logged in.",
     "anotherAccountActive": "Another account is currently active.",
     "logoutFirst": "Please log out first.",
-  
 
-    
     "successMessage": "Logged in successfully!",
     "generalError": "An error occurred during login",
     "invalidCredentials": "Incorrect email or password",
+
+    "register": {
+      "successMessage": "Registration successful! Welcome aboard.",
+      "generalError": "Something went wrong. Please try again.",
+      "emailInUse": "This email is already in use.",
+      "passwordHint": "Your password must be at least 8 characters long and include an uppercase letter, a number, and a special character.",
+      "title": "Register",
+      "fullName": "Full Name",
+      "fullNamePlaceholder": "Enter your full name",
+      "email": "Email",
+      "emailPlaceholder": "Enter your email address",
+      "password": "Password",
+      "passwordPlaceholder": "Enter your password",
+      "confirmPassword": "Confirm Password",
+      "confirmPasswordPlaceholder": "Repeat your password",
+      "passwordMismatch": "Passwords do not match",
+      "submitButton": "Register",
+      "haveAccount": "Already have an account?",
+      "loginLink": "Log In",
+      "termsAgreement": "By registering, you agree to our {{terms}} and {{privacy}}.",
+      "termsAndConditions": "Terms and Conditions",
+      "privacyPolicy": "Privacy Policy",
+      "bannerTitle": "Join the Luxury Shopping Experience",
+      "bannerSubtitle": "Gain premium benefits by registering:",
+      "benefits": {
+        "specialOffers": "Special offers and campaigns",
+        "firstOrderDiscount": "10% discount on first order",
+        "freeShipping": "Free shipping options",
+        "productNotifications": "Notifications about new products"
+      }
+    },
+    "dashboard": "Dashboard",
+    "logout": "Logout",
+    "checkout": {
+      "emptyCartError": "Your cart is empty. Please add items before proceeding to payment.",
+      "paymentSuccess": "Payment was successful!",
+      "paymentError": "An error occurred during payment. Please try again.",
+      "emptyCart": "Your cart is empty",
+      "addItemsFirst": "Please add some items before checking out.",
+      "returnToProducts": "Return to Products",
+      "total": "Total: {{amount}} AZN",
+      "cardHolder": "Cardholder Name",
+      "nameOnCard": "Name on Card",
+      "processing": "Processing...",
+      "pay": "Pay",
+      "title": "Checkout Page",
+      "orderSummary": "Order Summary",
+      "discount": "Discount",
+      "subtotal": "Subtotal"
+    },
+
+    "thankYou": {
+      "mainTitle": "Thank You for Your Order!",
+      "subtitle": "Your order has been successfully received and is being processed.",
+      "orderNumber": "Order Number",
+      "estimatedDelivery": "Estimated Delivery",
+      "continueShopping": "Continue Shopping",
+      "viewOrder": "View Order",
+      "benefits": {
+        "title": "Benefits for You",
+        "subtitle": "Additional advantages of our services:",
+        "freeShipping": "Free Shipping",
+        "easyReturn": "Easy Returns",
+        "guarantee": "Product Guarantee",
+        "securePayment": "Secure Payment"
+      }
+    },
+    "errorTitle": "Page Not Found",
+    "notFoundMessage": "Sorry, the page you are looking for does not exist.",
+    "backToHome": "Back to Home",
+
+    "customer4Name": "Nigar Huseynova",
+
+    "customerPosition": "Customer",
+    "customer2Position": "Customer",
+    "customer3Position": "Customer",
+    "customer4Position": "Customer",
+
+    "customer4Feedback": "Great design and quality products. I had a wonderful experience.",
+
+    "hero_title1": "Rolex Collection",
+    "hero_subtitle1": "The perfect blend of luxury and precision",
+
+    "filters": "Filters",
+    "price_range": "Price Range",
+    "available": "Only Available",
+    "new_models": "New Models",
+    "discounted": "Discounted Items",
+    "apply_filters": "Apply Filters",
+    "search_placeholder": "Search...",
+    "no_results": "No Products Found",
+    "no_results_message": "Please adjust your search and filter parameters.",
+    "loading_products": "Loading products...",
+    "error_message": "Error loading products. Please try again later.",
+    "retry": "Try Again",
     
-   
-  "register": {
-    "successMessage": "Registration successful! Welcome aboard.",
-    "generalError": "Something went wrong. Please try again.",
-    "emailInUse": "This email is already in use.",
-     "passwordHint": "Your password must be at least 8 characters long and include an uppercase letter, a number, and a special character.",
-    "title": "Register",
-    "fullName": "Full Name",
-    "fullNamePlaceholder": "Enter your full name",
-    "email": "Email",
-    "emailPlaceholder": "Enter your email address",
-    "password": "Password",
-    "passwordPlaceholder": "Enter your password",
-    "confirmPassword": "Confirm Password",
-    "confirmPasswordPlaceholder": "Repeat your password",
-    "passwordMismatch": "Passwords do not match",
-    "submitButton": "Register",
-    "haveAccount": "Already have an account?",
-    "loginLink": "Log In",
-    "termsAgreement": "By registering, you agree to our {{terms}} and {{privacy}}.",
-    "termsAndConditions": "Terms and Conditions",
-    "privacyPolicy": "Privacy Policy",
-    "bannerTitle": "Join the Luxury Shopping Experience",
-    "bannerSubtitle": "Gain premium benefits by registering:",
-    "benefits": {
-      "specialOffers": "Special offers and campaigns",
-      "firstOrderDiscount": "10% discount on first order",
-      "freeShipping": "Free shipping options",
-      "productNotifications": "Notifications about new products"
-    }
-  },
-  "dashboard": "Dashboard",
-  "logout": "Logout",
-  "checkout": {
-    "emptyCartError": "Your cart is empty. Please add items before proceeding to payment.",
-    "paymentSuccess": "Payment was successful!",
-    "paymentError": "An error occurred during payment. Please try again.",
-    "emptyCart": "Your cart is empty",
-    "addItemsFirst": "Please add some items before checking out.",
-    "returnToProducts": "Return to Products",
-    "total": "Total: {{amount}} AZN",
-    "cardHolder": "Cardholder Name",
-    "nameOnCard": "Name on Card",
-    "processing": "Processing...",
-    "pay": "Pay",
-    "title": "Checkout Page",
-    "orderSummary": "Order Summary",
-    "discount": "Discount",
-    "subtotal": "Subtotal"
-   
-  },
-  
-  "thankYou": {
-    "mainTitle": "Thank You for Your Order!",
-    "subtitle": "Your order has been successfully received and is being processed.",
-    "orderNumber": "Order Number",
-    "estimatedDelivery": "Estimated Delivery",
-    "continueShopping": "Continue Shopping",
-    "viewOrder": "View Order",
-    "benefits": {
-      "title": "Benefits for You",
-      "subtitle": "Additional advantages of our services:",
-      "freeShipping": "Free Shipping",
-      "easyReturn": "Easy Returns",
-      "guarantee": "Product Guarantee",
-      "securePayment": "Secure Payment"
-    }
-  },
-  "errorTitle": "Page Not Found",
-  "notFoundMessage": "Sorry, the page you are looking for does not exist.",
-  "backToHome": "Back to Home",
- 
-  "customer4Name": "Nigar Huseynova",
+    "next_page": "Next",
+    "loginet1": "Sign in",
+    "thankYouMessage": "Thank you",
 
-  "customerPosition": "Customer",
-  "customer2Position": "Customer",
-  "customer3Position": "Customer",
-  "customer4Position": "Customer",
-
-
-  "customer4Feedback": "Great design and quality products. I had a wonderful experience.",
-
- 
-  "hero_title1": "Rolex Collection",
-  "hero_subtitle1": "The perfect blend of luxury and precision",
- 
-  "filters": "Filters",
-  "price_range": "Price Range",
-  "available": "Only Available",
-  "new_models": "New Models",
-  "discounted": "Discounted Items",
-  "apply_filters": "Apply Filters",
-  "search_placeholder": "Search...",
-  "no_results": "No Products Found",
-  "no_results_message": "Please adjust your search and filter parameters.",
-  "loading_products": "Loading products...",
-  "error_message": "Error loading products. Please try again later.",
-  "retry": "Try Again",
-  "products_found": "products found",
-  "next_page": "Next",
-  "loginet": "Login",
-  "thankYouMessage": "Thank you",
-  
     "faqTitle": "Frequently Asked Questions",
     "question1Title": "How do I place an order?",
     "question1Content": "To place an order, simply browse our products, select the items you want, add them to your cart, and proceed to checkout. Follow the steps to provide shipping and payment information, then confirm your order.",
-    
+
     "question2Title": "What payment methods do you accept?",
     "question2Content": "We accept major credit cards (Visa, MasterCard, American Express), PayPal, Google Pay, and Apple Pay. We also offer bank transfer options for large orders.",
-    
+
     "question3Title": "How can I track my order?",
     "question3Content": "Once your order is shipped, you'll receive a tracking number via email. You can also check your order status by logging into your account and viewing your order history.",
-    
+
     "question4Title": "What is your return policy?",
     "question4Content": "We offer a 30-day return policy for most products. Items must be in their original condition with all packaging. Please contact customer service to initiate a return. Custom orders are non-returnable.",
-    
+
     "question5Title": "How long does shipping take?",
     "question5Content": "Shipping times vary depending on your location. Domestic orders typically arrive within 3-5 business days, while international orders may take 7-14 business days. Express shipping options are available during checkout.",
-    
+
     "question6Title": "Do you ship internationally?",
     "question6Content": "Yes, we ship to most countries worldwide. Shipping costs and times vary by location. Any import duties or taxes are the responsibility of the customer.",
-    
+
     "question7Title": "Are your products authentic?",
     "question7Content": "Absolutely. We only sell 100% authentic products sourced directly from manufacturers or authorized distributors. We stand behind the authenticity of every item we sell.",
-    
+
     "question8Title": "How do I contact customer service?",
     "question8Content": "You can reach our customer service team by email at support@example.com, by phone at +1-800-123-4567, or through the live chat on our website. Our support hours are Monday to Friday, 9 AM to 6 PM EST.",
-    
+
     "question9Title": "Do you offer gift wrapping?",
     "question9Content": "Yes, we offer gift wrapping services for an additional fee. You can select this option during checkout and even include a personalized message for the recipient.",
-    
+
     "question10Title": "What if my order arrives damaged?",
     "question10Content": "If your order arrives damaged, please contact us within 48 hours. Take photos of the damaged items and packaging, and our team will assist you with a replacement or refund.",
-    
+
     "question11Title": "Do you have a loyalty program?",
     "question11Content": "Yes, we have a rewards program where you earn points for every purchase. These points can be redeemed for discounts on future orders. You can sign up for the program during checkout or in your account settings.",
-    
+
     "question12Title": "Can I cancel my order?",
     "question12Content": "Orders can be canceled if they haven't been processed yet. Please contact customer service immediately if you wish to cancel. Once an order has been shipped, it cannot be canceled, but you can return it according to our return policy.",
-    
+
     "question13Title": "Do you offer warranties on your products?",
     "question13Content": "Most of our products come with a manufacturer's warranty. The duration and coverage vary by brand and product. Warranty information is included in the product description and packaging.",
-    
+
     "question14Title": "How can I change my account information?",
     "question14Content": "You can update your account information by logging into your account and going to the 'Account Settings' page. From there, you can modify your personal details, address, and payment methods.",
-    
+
     "question15Title": "Do you offer bulk discounts?",
     "question15Content": "Yes, we offer discounts for bulk orders. Please contact our sales team at sales@example.com with details about the products and quantities you're interested in, and we'll provide you with a custom quote.",
-    
+
     "askYourQuestion": "Still Have Questions?",
     "didntFindAnswer": "Didn't find the answer you were looking for? Submit your question below and our team will get back to you via email as soon as possible.",
-   
+
     "enterYourEmail": "Enter your email address",
     "yourQuestion": "Your Question",
     "typeYourQuestion": "Type your question here and we'll respond to your email...",
@@ -489,15 +500,16 @@
     "errorSubmittingQuestion": "There was an error submitting your question. Please try again.",
     "Failed to load products. Please try again later.": "Failed to load products. Please try again later.",
     "Rolex Kolleksiyası": "Rolex Collection",
-    "Lüks və dəqiqliyin mükəmməl birləşməsi": "Perfect combination of luxury and precision",
+  
     "Ana Səhifə": "Home",
-    "Məhsullar": "Products",
+    "Məhsullar1": "Products",
     "Filtrlər": "Filters",
-    "Qiymət Aralığı": "Price Range",
+    "QiymətAralığı": "Price Range",
     "Yalnız mövcud olanlar": "Only available ones",
     "Yeni modellər": "New models",
     "Endirimdə olanlar": "Discounted items",
     "Filtrləri tətbiq et": "Apply filters",
+    
     "Axtarış...": "Search...",
     "məhsul tapıldı": "products found",
     "Məhsullar yüklənir...": "Loading products...",
@@ -509,59 +521,58 @@
     "product.toggleWishlist": "Add/Remove from Wishlist",
     "product.inCart": "In Cart",
     "dial": "Dial",
-  "tapForDetails": "Tap for details",
-  "rolexRainbow": "Rolex Rainbow",
-  "rainbowDescription": "The Rolex Rainbow model, adorned with exquisite gemstones and crafted with exceptional precision",
-  "diamondBezel": "Diamond bezel",
-  "luxuryDesign": "Luxury design",
-  "chronograph": "Chronograph function",
-  "rainbowDial": "Rainbow-colored dial",
-  "wishlist": {
-    "title": "Your Wishlist",
-    "empty": "Your wishlist is empty.",
-    "addToCart": "Add to Cart",
-    "remove": "Remove"
-  },
+    "tapForDetails": "Tap for details",
+    "rolexRainbow": "Rolex Rainbow",
+    "rainbowDescription": "The Rolex Rainbow model, adorned with exquisite gemstones and crafted with exceptional precision",
+    "diamondBezel": "Diamond bezel",
+    "luxuryDesign": "Luxury design",
+    "chronograph": "Chronograph function",
+    "rainbowDial": "Rainbow-colored dial",
+    "wishlist": {
+      "title": "Your Wishlist",
+      "empty": "Your wishlist is empty.",
+      "addToCart": "Add to Cart",
+      "remove": "Remove"
+    },
+"products_found": "products found",
+    "validation": {
+      "emailRequired": "Email address is required"
+    },
+    "passwordReset": {
+      "title": "Forgot Password",
+      "subtitle": "Enter your email address and we'll send you a link to reset your password",
+      "success": "Password reset link has been sent to your email. Please check your inbox.",
+      "error": "Failed to send reset link: {{message}}",
+      "loginPrompt": "Remember your password?",
+      "registerPrompt": "Don't have an account?"
+    },
+    "buttons": {
+      "resetPassword": "Send Reset Link",
+      "loading": "Processing...",
+      "login": "Sign In",
+      "register": "Sign Up"
+    },
+    "navigation": {
+      "home": "Home",
+      "products": "Products",
+      "about": "About Us",
+      "contact": "Contact",
+      "blog": "Blog",
+      "faq": "FAQs"
+    },
+    "general": {
+      "search": "Search",
+      "loading": "Loading...",
+      "error": "An error occurred"
+    },
+    "hiAdmin": "Hi, Admin",
 
-"validation": {
-  "emailRequired": "Email address is required"
-},
-"passwordReset": {
-  "title": "Forgot Password",
-  "subtitle": "Enter your email address and we'll send you a link to reset your password",
-  "success": "Password reset link has been sent to your email. Please check your inbox.",
-  "error": "Failed to send reset link: {{message}}",
-  "loginPrompt": "Remember your password?",
-  "registerPrompt": "Don't have an account?"
-},
-"buttons": {
-  "resetPassword": "Send Reset Link",
-  "loading": "Processing...",
-  "login": "Sign In",
-  "register": "Sign Up"
-}
-,
-"navigation": {
-"home": "Home",
-"products": "Products",
-"about": "About Us",
-"contact": "Contact",
-"blog": "Blog",
-"faq": "FAQs"
-},
-"general": {
-"search": "Search",
-"loading": "Loading...",
-"error": "An error occurred"
-},
-"hiAdmin": "Hi, Admin",
-   
     "users": "Users",
     "blogs": "Blogs",
-   
+
     "totalSales": "Total Sales",
     "fromLastMonth": "from last month",
- 
+
     "customers": "Customers",
     "averageOrderValue": "Average Order Value",
     "monthlySales": "Monthly Sales",
@@ -572,15 +583,15 @@
     "recentOrders": "Recent Orders",
     "last24Hours": "Last 24 Hours",
     "orderID": "Order ID",
-    "customer": "Customer",
-   
+    
+
     "amount": "Amount",
     "status": "Status",
     "completed": "Completed",
     "processing": "Processing",
     "topSellingProducts": "Top Selling Products",
     "thisMonth": "This Month",
-   
+
     "sold": "Sold",
     "revenue": "Revenue",
     "id": "ID",
@@ -593,15 +604,15 @@
     "noProductsFound": "No products found",
     "noProductsAvailable": "No products available",
     "loadingUsers": "Loading users...",
-   
+
     "role": "Role",
-  
+
     "user": "User",
     "noUsersFound": "No users found",
     "noUsersAvailable": "No users available",
     "addBlog": "Add Blog",
     "loadingBlogs": "Loading blogs...",
-   
+
     "date": "Date",
     "noBlogsFound": "No blogs found",
     "noBlogsAvailable": "No blogs available",
@@ -609,7 +620,7 @@
     "editBlog": "Edit Blog",
     "productName": "Product Name",
     "discountedPrice": "Discounted Price",
-   
+
     "product.imageUrl": "Image URL",
     "product.description": "Description",
     "product.rating": "Rating",
@@ -669,86 +680,547 @@
     "failedToUpdateBlog": "Failed to update blog",
     "blogDeletedSuccess": "Blog deleted successfully",
     "failedToDeleteBlog": "Failed to delete blog",
-  "errors": {
-    "userFetch": "Error while getting user information",
-    "cartUpdate": "Error updating cart"
-  },
-  "sort": {
-    "label": "Sort products:",
-    "price_asc": "Price: Low to High",
-    "price_desc": "Price: High to Low",
-    "name_asc": "Name: A - Z",
-    "name_desc": "Name: Z - A",
-    "discounted": "Discounted Products"
-  },
+    "errors": {
+      "userFetch": "Error while getting user information",
+      "cartUpdate": "Error updating cart"
+    },
+    "sort": {
+      "label": "Sort products:",
+      "price_asc": "Price: Low to High",
+      "price_desc": "Price: High to Low",
+      "name_asc": "Name: A - Z",
+      "name_desc": "Name: Z - A",
+      "discounted": "Discounted Products"
+    },
 
-  "myOrders": "My Orders",
-  
-
-  "total": "Total",
-  "orders": {
-    "pageTitle": "My Orders",
     "myOrders": "My Orders",
-    "recentOrders": "Recent Orders",
-    "noOrders": "You don't have any orders yet",
-    "orderDetails": "Order Details",
-    "orderNumber": "Order #",
-    "orderDate": "Order Date",
-    "estimatedDelivery": "Estimated Delivery",
-    "items": "Items",
-    "quantity": "Quantity",
+    "contactNumber": "Contact Number",
+    "monday": "Monday",
+    "friday": "Friday",
+    "saturday": "Saturday",
+    "sendMessage": "Send Message",
+    "subject": "Subject",
+    "phoneNumber": "Phone Number",
+    "send": "Send",
+    "ourStores": "Our Stores",
+    "storesDescription": "Contact us for more details about our store locations.",
+
     "total": "Total",
-    "moreItems": "more items",
-    "viewOrder": "Track Order",
-    "status": {
-      "pending": "Pending",
-      "processing": "Processing",
-      "shipped": "Shipped",
-      "delivered": "Delivered",
-      "cancelled": "Cancelled"
+    "orders": {
+      "pageTitle": "My Orders",
+      "myOrders": "My Orders",
+      "recentOrders": "Recent Orders",
+      "noOrders": "You don't have any orders yet",
+      "orderDetails": "Order Details",
+      "orderNumber": "Order #",
+      "orderDate": "Order Date",
+      "estimatedDelivery": "Estimated Delivery",
+      "items": "Items",
+      "quantity": "Quantity",
+      "total": "Total",
+      "moreItems": "more items",
+      "viewOrder": "Track Order",
+      "status": {
+        "pending": "Pending",
+        "processing": "Processing",
+        "shipped": "Shipped",
+        "delivered": "Delivered",
+        "cancelled": "Cancelled"
+      }
+    },
+    "common.companyName.luxury":"LUXWatches",
+    "common": {"companyName": {
+        "luxury": "Luxury",
+        "shop": "Shop",
+         "cancel": "Cancel",
+    "selectRole": "Select Role"
+      },
+      "loading": "Loading",
+      "errorOccurred": "An error occurred",
+      "currency": "AZN"
+      
+    },
+    "adminDashboard": "Admin Dashboard",
+    "blogs1": {
+      "title": "Blogs About Rolex",
+      "noPosts": "No blog posts available at the moment.",
+      "readMore": "Read More",
+      "error": "Failed to load blog posts."
+    },
+    "coupon": {
+      "title": "Discount Coupon",
+      "apply": "Apply",
+      "checking": "Checking...",
+      "remove": "Remove Coupon",
+      "placeholder": "Enter coupon code",
+      "applied": "Coupon applied:",
+      "discount": "discount",
+      "invalid": "Invalid coupon code",
+      "error": "Error applying coupon. Please try again."
+    },
+
+    "cart": {
+      "shop": "Continue Shopping",
+      "title": "Shopping Cart",
+      "empty": "Your cart is empty",
+      "remove": "Remove",
+      "checkout": "Proceed to Checkout",
+      "orderSummary": "Order Summary",
+      "discount": "Discount",
+      "subtotal": "Subtotal",
+      "total": "Total",
+      "itemRemoved": "Item removed from cart",
+      "quantityUpdated": "Quantity updated"
     }
   },
-  "common": {
-    "loading": "Loading",
-    "errorOccurred": "An error occurred"
+
+  "cart": {
+    "title": "Shopping Cart",
+    "empty": "Your cart is currently empty.",
+    "shop": "Start Shopping",
+    "remove": "Remove",
+    "quantityUpdated": "Quantity updated",
+    "itemRemoved": "Item removed from cart",
+    "orderSummary": "Order Summary",
+    "subtotal": "Subtotal",
+    "discount": "Discount",
+    "total": "Total",
+    "checkout": "Proceed to Checkout"
   },
-  "adminDashboard": "Admin Dashboard",
-  "blogs1": {
-    "title": "Blogs About Rolex",
-    "noPosts": "No blog posts available at the moment.",
-    "readMore": "Read More",
-    "error": "Failed to load blog posts."
+  "errors": {
+    "userFetch": "An error occurred while fetching user data.",
+    "cartUpdate": "An error occurred while updating the cart."
   },
-  "coupon": {
-        "title": "Discount Coupon",
-        "apply": "Apply",
-        "checking": "Checking...",
-        "remove": "Remove Coupon",
-        "placeholder": "Enter coupon code",
-        "applied": "Coupon applied:",
-        "discount": "discount",
-        "invalid": "Invalid coupon code",
-        "error": "Error applying coupon. Please try again."
+  "customerTestimonials": "Customer Testimonials",
+  "customer1Name": "Ali Mammadov",
+  "customer2Name": "Leyla Aliyeva",
+  "customer3Name": "Orkhan Huseynov",
+  "customer4Name": "Aygun Samadova",
+  "customerPosition": "Gold Customer",
+  "customer1Position": "Premium Customer",
+  "customer2Position": "Regular Customer",
+  "customer3Position": "Watch Specialist",
+  "customer4Position": "Collector",
+  "customer1Feedback": "The quality and variety of watches were truly excellent. The staff was very professional and friendly. Shopping here was a very pleasant experience for me.",
+  "customer2Feedback": "The gold bracelet I bought from this store is both high quality and beautifully designed. The store management and employees are very sincere and helpful.",
+  "customer3Feedback": "The quality and design of the watches are excellent. The service is also very good. I recommend it to all my friends.",
+  "customer4Feedback": "Very professional team and quality products. The selection of jewelry is also very wide and diverse.",
+  
+  "sort": {
+    "label": "Sort by:",
+    "price_asc": "Price: Low to High",
+    "price_desc": "Price: High to Low",
+    "name_asc": "Name: A-Z",
+    "name_desc": "Name: Z-A",
+    "discounted": "Discounted Items"
+  },
+  "contactNumber": "Contact Number",
+ 
+  "workingHoursWeekdays": "Monday - Friday: {{start}} - {{end}}",
+  "workingHoursSaturday": "Saturday: {{start}} - {{end}}",
+  "monday": "Monday",
+  "friday": "Friday",
+  "saturday": "Saturday",
+  "sendMessage": "Send Us a Message",
+  "name": "Name",
+
+  "phoneNumber": "Phone Number",
+
+  "send": "Send",
+  "ourStores": "Our Stores",
+  "storesDescription": "Visit our stores to experience our products first-hand.",
+  "stores": {
+    "baku": {
+      "name": "Baku Flagship Store",
+      "address": "28 May Street, 15, Baku, Azerbaijan",
+      "hours": "Monday - Saturday: 10:00 - 20:00"
+    },
+    "istanbul": {
+      "name": "Istanbul Store",
+      "address": "Istiklal Street No: 123, Beyoglu, Istanbul, Turkey",
+      "hours": "Every day: 09:00 - 21:00"
+    },
+    "london": {
+      "name": "London Store",
+      "address": "123 Oxford Street, London, UK",
+      "hours": "Monday - Friday: 09:00 - 19:00, Saturday: 10:00 - 18:00"
+    },
+    "dubai": {
+      "name": "Dubai Store",
+      "address": "Dubai Mall, Financial Center Road, Dubai, UAE",
+      "hours": "Every day: 10:00 - 22:00"
+    }
+  },
+  "Status": "Status",
+  "Yalnız mövcud olanlar": "Only available",
+  "Yeni modellər": "New models",
+  "Endirimdə olanlar": "Discounted",
+  "Filtrləri tətbiq et": "Apply filters",
+  "Filtrlər": "Filters",
+  "Axtarış...": "Search...",
+  "wishlist": {
+    "title": "Wishlist",
+    "empty": "Your wishlist is currently empty.",
+    "addToCart": "Add to Cart",
+    "remove": "Remove from list"
+  },
+  "Rolex Kolleksiyası": "Rolex Collection",
+    "Lüks və dəqiqliyin mükəmməl birləşməsi": "Perfect combination of luxury and precision",
+     "productsfound": "products found",
+     "loading": "Loading...",
+     "notFound": "Product not found.",
+     "backButton": "Back",
+     "watchVideo": "Click to watch video",
+     "discount": "-{{percent}}%",
+     "reviewsTitle": "Customer Reviews",
+     "writeReview": "Write a Review",
+     "addReview": "Add Review",
+     "cancelReview": "Cancel",
+     "submitReview": "Submit Review",
+     "submittingReview": "Submitting...",
+     "ratingLabel": "Rating",
+     "nameLabel": "Your Name",
+     "namePlaceholder": "Enter your name",
+     "commentLabel": "Your Review",
+     "commentPlaceholder": "Write your thoughts about the product...",
+     "reviews": "{{count}} reviews | Write a review",
+     "inStock": "In Stock",
+     "outOfStock": "Out of Stock",
+     "technicalSpecs": "Technical Specifications",
+     "addToCart": "Add to Cart",
+     "addToWishlist": "Add to Wishlist",
+     "removeFromWishlist": "Remove from Wishlist",
+     "shareYourReview": "Share Your Review",
+     "formValidationError": "Please fill in all required fields.",
+     "messageSentSuccess": "Your message has been sent successfully!",
+     "messageSentError": "There was an error sending your message. Please try again later.",
+     "blogs2": {
+      "error": "Failed to load blog posts."
+    },
+    "blogs1": {
+      "title": "Blogs",
+      "noPosts": "There are currently no blog posts available.",
+      "readMore": "Read more"
+    },
+    "blog1": {
+      "loading": "Loading blog...",
+      "notFound": "Blog not found",
+      "returnToBlog": "Return to Blog Page",
+      "loadError": "Error loading blog data:",
+      "loadFailed": "Failed to load blog data.",
+      "heroImageAlt": "Hero image for {{title}}",
+      "techSpecs": "Technical Specifications",
+      "specs": {
+        "diameter": "Diameter",
+        "movement": "Movement",
+        "material": "Material",
+        "waterResistance": "Water Resistance",
+        "powerReserve": "Power Reserve",
+        "bezel": "Bezel"
       },
-   
-      "cart": {
-        "title": "Shopping Cart",
-        "empty": "Your cart is empty",
-        "remove": "Remove",
-        "checkout": "Proceed to Checkout",
-        "orderSummary": "Order Summary",
-        "discount": "Discount",
-        "subtotal": "Subtotal",
-        "total": "Total",
-        "itemRemoved": "Item removed from cart",
-        "quantityUpdated": "Quantity updated"
+      "gallery": "Gallery",
+      "galleryImageAlt": "{{title}} - Image {{number}}",
+      "relatedPosts": "Related Articles",
+      "noRelatedPosts": "No related articles available"
+    },
+    "coupon": {
+      "title": "Discount Coupon",
+      "placeholder": "Enter coupon code",
+      "apply": "Apply",
+      "checking": "Checking",
+      "applied": "Coupon applied:",
+      "remove": "Remove",
+      "discount": "discount",
+      "errors": {
+        "invalid": "Invalid coupon code",
+        "expired": "This coupon has expired",
+        "used": "This coupon has already been used",
+        "minimum": "Minimum purchase amount not met",
+        "generic": "Error applying coupon"
       }
-    }}
+    },
+
+  "checkout": {
+    "orderSummary": "Order Summary",
+    "subtotal": "Subtotal",
+    "discount": "Discount",
+    "total": "Total",
+    "pay": "Pay Now",
+    "processing": "Processing Payment",
+    "emptyCart": "Your Cart is Empty",
+    "addItemsFirst": "Please add items to your cart before checkout",
+    "returnToProducts": "Return to Products",
+    "paymentError": "Payment failed. Please try again.",
+    "paymentErrorLog": "Error during payment:",
+    "cardHolderPlaceholder": "Cardholder name",
+    "premiumBank": "Premium Bank"
+  },
+  "failedToLoadProducts": "Failed to load products. Please try again later.",
+  "failedToLoadUsers": "Failed to load users. Please try again later.",
+  "failedToLoadBlogs": "Failed to load blogs. Please try again later.",
+  "noDataReturned": "No data returned from the server.",
+  "productAddedSuccess": "Product added successfully.",
+  "failedToAddProduct": "Failed to add product.",
+  "productUpdatedSuccess": "Product updated successfully.",
+  "failedToUpdateProduct": "Failed to update product.",
+  "confirmDelete": "Are you sure you want to delete?",
+  "confirmDeleteText": "This action cannot be undone.",
+  "yes": "Yes",
+  "no": "No",
+  "deleteCancelled": "Delete operation cancelled.",
+  "productDeletedSuccess": "Product deleted successfully.",
+  "failedToDeleteProduct": "Failed to delete product.",
+  "userDeletedSuccess": "User deleted successfully.",
+  "failedToDeleteUser": "Failed to delete user.",
+  "blogAddedSuccess": "Blog added successfully.",
+  "failedToAddBlog": "Failed to add blog.",
+  "blogUpdatedSuccess": "Blog updated successfully.",
+  "failedToUpdateBlog": "Failed to update blog.",
+  "blogDeletedSuccess": "Blog deleted successfully.",
+  "failedToDeleteBlog": "Failed to delete blog.",
+  "hiAdmin": "Hi, Admin!",
+  "dashboard": "Dashboard",
+  "products": "Products",
+  "users": "Users",
+  "blog": "Blog",
+  "search": "Search",
+  "totalSales": "Total Sales",
+  "fromLastMonth": "from last month",
+  "orders": "Orders",
+  "customers": "Customers",
+  "averageOrderValue": "Average Order Value",
+  "monthlySales": "Monthly Sales",
+  "lastYear": "Last Year",
+  "salesByCategory": "Sales by Category",
+  "currentYear": "Current Year",
+  "recentOrders": "Recent Orders",
+  "last24Hours": "Last 24 Hours",
+  "orderID": "Order ID",
+  "customer": "Customer",
+  "product1": "Product",
+  "amount": "Amount",
+  "status2": "Status",
+  "completed": "Completed",
+  "processing": "Processing",
+  "watches": "watches",
+  "topSellingProducts": "Top Selling Products",
+  "thisMonth": "This Month",
+  "price": "Price",
+  "sold": "Sold",
+  "revenue": "Revenue",
+  "products": "Products",
+  "addProduct": "Add Product",
+  "loadingProducts": "Loading products...",
+  "id": "ID",
+  "image": "Image",
+  "name": "Name",
+  "model": "Model",
+  "price": "Price",
+  "actions": "Actions",
+  "noProductsFound": "No products found.",
+  "noProductsAvailable": "No products available.",
+  "users": "Users",
+  "loadingUsers": "Loading users...",
+  "email": "Email",
+  "role": "Role",
+  "registered": "Registered",
+  "user": "User",
+  "noUsersFound": "No users found.",
+  "noUsersAvailable": "No users available.",
+  "blogs": "Blogs",
+  "addBlog": "Add Blog",
+  "loadingBlogs": "Loading blogs...",
+  "title": "Title",
+  "author": "Author",
+  "category": "Category",
+  "date": "Date",
+  "noBlogsFound": "No blogs found.",
+  "noBlogsAvailable": "No blogs available.",
+  "editProduct": "Edit Product",
+  "addBlog": "Add Blog",
+  "editBlog": "Edit Blog",
+
+  "productName": "Product Name",
+  "model": "Model",
+  "price": "Price",
+  "discountedPrice": "Discounted Price",
+  "discounted": "Discounted",
+  "product": {
+    "imageUrl": "Image URL",
+    "description": "Description",
+    "rating": "Rating",
+    "availability": "Available",
+    "material": "Material",
+    "movement": "Movement",
+    "caseDiameter": "Case Diameter",
+    "waterResistance": "Water Resistance",
+    "add": "Add Product",
+    "update": "Update Product",
+    "discount": "Discount",
+    "addToWishlist": "Add to Wishlist",
+    "viewDetails": "View Details",
+    "outOfStock": "Out of Stock",
+    "addToCartShort": "Add to Cart",
+    "inStock": "In Stock",
+    "new": "New"
+  },
+
+  "blog3": {
+    "title": "Title",
+    "content": "Content",
+    "date": "Date",
+    "readTime": "Read Time",
+    "author": "Author",
+    "category": "Category",
+    "imageUrl": "Image URL",
+    "gallery": "Gallery",
+    "watchDetails": "Watch Details",
+    "diameter": "Diameter",
+    "movement": "Movement",
+    "material": "Material",
+    "waterResistance": "Water Resistance",
+    "power": "Power Reserve",
+    "bezel": "Bezel",
+    "add": "Add Blog",
+    "update": "Update Blog"
+  },
+
+  "user": {
+    "name": "Name",
+    "email": "Email",
+    "role": "Role",
+    "add": "Add User",
+    "update": "Update User"
+  },
+
+
+  "roles": {
+    "admin": "Admin",
+    "user": "User"
+  },
+  "getNotified": "Get notified about the product",
+  "notifyMeDescription": "We will send you a notification via email when this product becomes available again.",
+  "fullName": "Full name",
+  "enterName": "Enter your name",
   
+  "thankYou2": "Thank you!",
+  "notificationSuccess": "You will be notified when the product becomes available.",
+  "faqTitle": "Frequently Asked Questions",
+  "question1Title": "What is the return policy?",
+  "question1Content": "Our return policy allows returns within 30 days of purchase.",
+  "question2Title": "How can I track my order?",
+  "question2Content": "You can track your order using the tracking number provided in your confirmation email.",
+  "question3Title": "Do you ship internationally?",
+  "question3Content": "Yes, we offer international shipping to most countries.",
+  "question4Title": "What payment methods do you accept?",
+  "question4Content": "We accept all major credit cards, PayPal, and Apple Pay.",
+  "question5Title": "Is my data secure on your website?",
+  "question5Content": "Yes, we use SSL encryption to ensure your data is secure.",
+  "question6Title": "How do I change my password?",
+  "question6Content": "You can change your password by visiting your account settings and clicking 'Change Password'.",
+  "question7Title": "How can I contact customer support?",
+  "question7Content": "You can reach our customer support team by emailing support@example.com.",
+  "question8Title": "Do you offer gift cards?",
+  "question8Content": "Yes, we offer gift cards that can be purchased on our website.",
+  "question9Title": "How do I apply a discount code?",
+  "question9Content": "You can apply your discount code at checkout in the designated field.",
+  "question10Title": "Can I modify my order after placing it?",
+  "question10Content": "Once an order is placed, it cannot be modified. Please contact us as soon as possible if you need assistance.",
+  "question11Title": "What should I do if I received a damaged product?",
+  "question11Content": "Please contact customer support immediately, and we will assist you with a replacement or refund.",
+  "question12Title": "How can I update my account information?",
+  "question12Content": "You can update your account information by visiting your profile page and clicking 'Edit Profile'.",
+  "question13Title": "What are your business hours?",
+  "question13Content": "Our business hours are Monday to Friday, 9 AM to 6 PM.",
+  "question14Title": "How do I cancel my order?",
+  "question14Content": "To cancel your order, please contact customer support immediately. Orders cannot be canceled once shipped.",
+  "question15Title": "Can I make a special request for my order?",
+  "question15Content": "If you have a special request, please include it in the order notes during checkout, and we will do our best to accommodate it.",
+  "askYourQuestion": "Ask Your Question",
+  "didntFindAnswer": "Didn't find the answer you were looking for?",
+
+  "enterYourEmail": "Enter your email",
+  "yourQuestion": "Your Question",
+  "typeYourQuestion": "Type your question here",
+  "sendQuestion": "Send Question",
+  "thankYouMessage": "Thank you!",
+  "questionSubmittedSuccess": "Your question has been submitted successfully.",
+  "willRespondSoon": "We will respond to you as soon as possible.",
+  "pleaseCompleteAllFields": "Please complete all fields.",
+  "invalidEmailFormat": "Invalid email format.",
+  "errorSubmittingQuestion": "There was an error submitting your question.",
   
+  "error": "Error occurred: {{error}}",
+  "pageTitle": "My Orders",
+  "sectionTitle": "Recent Orders",
   
-      
-      
-    
-  
-  
+  "orderNumber": "Order №: ",
+  "orderDate": "Order Date: ",
+  "estimatedDelivery": "Estimated Delivery: ",
+  "totalAmount": "Total Amount: ",
+  "orderDetails": "Order Details",
+  "orderItems": "Items",
+  "itemName": "Product Name",
+  "itemQuantity": "Quantity: ",
+  "itemPrice": "Price: ",
+  "orderCardNumber": "Order №: ",
+
+  "tracking": "Tracking",
+  "askForHelp": "Need help?",
+  "pageTitle": {
+    "orders": "Order Tracking",
+    "recentOrders": "Recent Orders"
+  },
+  "loading": "Loading...",
+  "errorOccurred": "An error occurred: {{error}}",
+  "noOrders": "No orders found.",
+  "status": {
+    "pending": "Pending",
+    "processing": "Processing",
+    "shipped": "Shipped",
+    "delivered": "Delivered",
+    "cancelled": "Cancelled"
+  },
+  "orderDetailsTitle": "Order Details",
+  "orderNumberLabel": "Order Number",
+  "orderDates": {
+    "orderDate": "Order Date",
+    "estimatedDelivery": "Estimated Delivery"
+  },
+  "items": {
+    "product": "Product",
+    "quantity": "Quantity",
+    "price": "Price",
+    "total": "Total"
+  },
+  "moreItems": "more items",
+  "error": {
+    "userNotLoggedIn": "User not logged in."
+  },
+  "auth": {
+    "passwordReset": {
+      "title": "Reset Password",
+      "subtitle": "Enter your email address and we will send you instructions to reset your password",
+      "loginPrompt": "Remember your password?",
+      "registerPrompt": "Don't have an account?",
+      "error": "Failed to send reset email: {{message}}",
+      "success": "Password reset instructions have been sent to your email address"
+    },
+    "email": {
+      "label": "Email Address",
+      "placeholder": "Enter your email address"
+    },
+    "buttons": {
+      "resetPassword": "Reset Password",
+      "loading": "Loading...",
+      "login": "Login",
+      "register": "Register"
+    },
+    "logo": {
+      "alt": "Company Logo"
+    },
+    "validation": {
+      "emailRequired": "Email address is required"
+    }
+  }
+}

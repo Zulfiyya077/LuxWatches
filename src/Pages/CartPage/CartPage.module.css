@@ -22,7 +22,7 @@
   color: var(--burgundy);
   position: relative;
   display: inline-block;
-  left: 50%;
+  left: 45%;
   transform: translateX(-50%);
   text-transform: uppercase;
   letter-spacing: 2px;

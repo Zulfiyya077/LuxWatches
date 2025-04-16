@@ -19,7 +19,8 @@ const CartPage = () => {
     removeItem, 
     isEmpty,
     cartTotal, 
-    setItems 
+    setItems,
+    totalItems
   } = useCart();
   
   const [forceUpdate, setForceUpdate] = useState(0);
@@ -27,6 +28,11 @@ const CartPage = () => {
   const { t } = useTranslation();
   const { calculateSubtotal, calculateDiscount, getFinalPrice, appliedCoupon } = useCoupon();
   
+  // Track total items and cart total with refs
+  const prevTotalItemsRef = useRef(totalItems);
+  const prevCartTotalRef = useRef(cartTotal);
+  // State for displaying total price
+  const [displayTotal, setDisplayTotal] = useState(getFinalPrice());
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -35,24 +41,18 @@ const CartPage = () => {
   const handleForceUpdate = () => {
     setForceUpdate(prev => prev + 1);
   };
-  
 
-  useEffect(() => {
-  
-    const timer = setTimeout(() => {
-      handleForceUpdate();
-    }, 100);
-    
-    return () => clearTimeout(timer);
-  }, []);
-
- 
+  // Həll 1: Səbət dəyişikliklərində dərhal hesablama
   useEffect(() => {
     setCartItems(items);
- 
+    const newTotal = getFinalPrice();
+    setDisplayTotal(newTotal);
     handleForceUpdate();
-  }, [items, cartTotal]);
-  
+    
+    prevTotalItemsRef.current = totalItems;
+    prevCartTotalRef.current = cartTotal;
+  }, [items, totalItems, cartTotal, getFinalPrice]);
+
   const updateCartInSupabase = async () => {
     const { data: user, error } = await supabase.auth.getUser(); 
 
@@ -95,30 +95,33 @@ const CartPage = () => {
     }
   }, [cartItems]); 
 
-  const subtotal = calculateSubtotal();
-  const discount = calculateDiscount();
-  const finalTotal = getFinalPrice();
+  // Həll 2: Qiymətləri dərhal hesablama funcksiyası
+  const recalculateCart = () => {
+    const newTotal = getFinalPrice();
+    setDisplayTotal(newTotal);
+    handleForceUpdate();
+  };
 
+  // Həll 3: setTimeout-ları ləğv edib dərhal yeniləmə
   const handleQuantityChange = (itemId, newQuantity) => {
     if (newQuantity <= 0) {
       toast.info(t("cart.itemRemoved"));
       removeItem(itemId);
     } else {
       updateItemQuantity(itemId, newQuantity);
-      setTimeout(() => {
-        handleForceUpdate();
-      }, 50);
-      
+      // Dərhal yeniləmə (setTimeout olmadan)
+      recalculateCart();
       toast.success(t("cart.quantityUpdated"));
     }
   };
+
   const handleRemoveItem = (itemId) => {
     removeItem(itemId);
-    setTimeout(() => {
-      handleForceUpdate();
-    }, 50);
+    // Dərhal yeniləmə (setTimeout olmadan)
+    recalculateCart();
     toast.info(t("cart.itemRemoved"));
   };
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: { 
@@ -149,6 +152,13 @@ const CartPage = () => {
       x: [0, -10, 10, -10, 10, 0],
       transition: { duration: 0.5 }
     }
+  };
+
+  // Qiymət hesablamalarının hər rendering zamanı yenilənməsini təmin etmək
+  const { subtotal, discount, finalTotal } = {
+    subtotal: calculateSubtotal(),
+    discount: calculateDiscount(),
+    finalTotal: displayTotal
   };
 
   return (
@@ -209,7 +219,7 @@ const CartPage = () => {
           <div className={styles.cartItemsContainer}>
             {items.map((item) => (
               <motion.div 
-                key={`${item.id}-${forceUpdate}`}
+                key={`${item.id}-${item.quantity}-${forceUpdate}`}
                 className={styles.cartItem}
                 variants={itemVariants}
                 whileHover={{ scale: 1.02, transition: { duration: 0.2 } }}
@@ -267,7 +277,6 @@ const CartPage = () => {
             ))}
           </div>
         
-
           <motion.div
             variants={itemVariants}
             className={styles.couponSection}

@@ -152,7 +152,7 @@ const Navbar = () => {
           {/* <span className={styles.logoText}>LUXURY</span>
           <span className={styles.logoAccent}>WATCHES</span> */}
           
-          <img className={styles.logoText} src="/videos/Screenshot Capture - 2025-04-14 - 02-25-33-Photoroom.png" alt="logo" />
+        <img className={styles.logoText} src="/videos/Screenshot Capture - 2025-04-14 - 02-25-33-Photoroom.png" alt="logo" />
 
         </Link>
 
@@ -292,14 +292,16 @@ const Navbar = () => {
                     onClick={handleLogout}
                     className={styles.dropdownItem}
                   >
-                    {t("logout")}
+                    {t("logout")} 
                   </button>
                 </div>
               </div>
             ) : (
               <div className={styles.authLinks}>
                 <Link to="/login" className={styles.authLink}>
-                  {t("loginet")}
+
+                  {t("loginet1")}
+
                 </Link>
               </div>
             )}

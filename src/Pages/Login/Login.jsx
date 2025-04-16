@@ -42,6 +42,11 @@ const Login = () => {
     checkLoggedInStatus();
   }, [t]);
 
+    useEffect(() => {
+      window.scrollTo(0, 0);
+    }, []);
+  
+   
 
   const showSuccessToast = (message) => {
     toast.dismiss();
@@ -234,7 +239,7 @@ const Login = () => {
         <div className={styles.formContainer}>
           <div className={styles.logo}>
             <span className={styles.logoText}>{t('common.companyName.luxury') || 'Luxury'}</span>
-            <span className={styles.logoAccent}>{t('common.companyName.shop') || 'Shop'}</span>
+            
           </div>
           
           <h1 className={styles.title}>{t('login.title') || 'Daxil ol'}</h1>

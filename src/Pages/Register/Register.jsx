@@ -170,9 +170,7 @@ const Register = () => {
             <span className={styles.logoText}>
               {t("common.companyName.luxury")}
             </span>
-            <span className={styles.logoAccent}>
-              {t("common.companyName.shop")}
-            </span>
+           
           </div>
 
           <h1 className={styles.title}>{t("register.title")}</h1>

@@ -81,13 +81,11 @@ const CheckoutForm = () => {
 
   const subtotal = calculateSubtotal();
   
- 
   const discount = calculateDiscount();
   
   const finalTotal = getFinalPrice();
 
   const handleCardChange = (event) => {
- 
     if (event.error) {
       setCardError(event.error.message);
     } else {
@@ -116,7 +114,7 @@ const CheckoutForm = () => {
         navigate("/thankyou");
       }, 1500);
     } catch (error) {
-      console.error("Ödəniş zamanı xəta:", error);
+      console.error(t("checkout.paymentErrorLog"), error);
       setCardError(t("checkout.paymentError"));
       setLoading(false);
     }
@@ -170,7 +168,7 @@ const CheckoutForm = () => {
             variants={fadeInUp}
           >
             <span>{t("checkout.subtotal")}:</span>
-            <span>{subtotal.toFixed(2)} AZN</span>
+            <span>{subtotal.toFixed(2)} {t("common.currency")}</span>
           </motion.div>
           
           {/* Show discount if coupon is applied */}
@@ -186,7 +184,7 @@ const CheckoutForm = () => {
                 {appliedCoupon && <span className={styles.couponCode}>({appliedCoupon.code})</span>}:
               </span>
               <span className={styles.discountAmount}>
-                -{discount.toFixed(2)} AZN
+                -{discount.toFixed(2)} {t("common.currency")}
               </span>
             </motion.div>
           )}
@@ -196,7 +194,7 @@ const CheckoutForm = () => {
             variants={fadeInUp}
           >
             <span>{t("checkout.total")}:</span>
-            <span className={styles.finalAmount}>{finalTotal.toFixed(2)} AZN</span>
+            <span className={styles.finalAmount}>{finalTotal.toFixed(2)} {t("common.currency")}</span>
           </motion.div>
         </motion.div>
       </motion.div>
@@ -209,7 +207,7 @@ const CheckoutForm = () => {
           <div className={styles.cardFront}>
             <div className={styles.cardChip}></div>
             <div className={styles.cardLogo}>
-              <span className={styles.bankName}>Premium Bank</span>
+              <span className={styles.bankName}>{t("checkout.premiumBank")}</span>
             </div>
             <div className={styles.cardNumber}>
               <CardElement 

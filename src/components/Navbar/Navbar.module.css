@@ -125,7 +125,6 @@
   font-size: 1rem;
   font-weight: 500;
   color: var(--text-color-light);
-  background-color: white;
   border: 1px solid var(--gold-color);
   color: red;
   padding: 0.25rem 0.5rem;
@@ -844,6 +843,7 @@
 .dropdownItem {
   display: block;
   padding: 0.75rem 1rem;
+  background-color: #444;
   text-decoration: none;
   color: var(--text-color);
   transition: background-color 0.3s, color 0.3s;
@@ -1143,6 +1143,7 @@
   display: flex;
   align-items: center;
   padding: 0.75rem 1rem;
+  background-color: #444;
   font-size: 1rem;
   font-weight: 400;
   color: var(--text-color-light);
