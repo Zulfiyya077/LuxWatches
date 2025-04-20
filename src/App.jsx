@@ -128,14 +128,14 @@ const AppRoutes = () => {
           
           <ToastContainer
             position="bottom-right"
-            autoClose={5000}
+            autoClose={2000} // Changed from 5000 to 2000
             hideProgressBar={false}
             newestOnTop
             closeOnClick
             rtl={false}
-            pauseOnFocusLoss
+            pauseOnFocusLoss={false} // Changed from true to false
             draggable
-            pauseOnHover
+            pauseOnHover={false} // Changed from true to false
             theme={theme === "dark" ? "dark" : "light"}
           />
         </>

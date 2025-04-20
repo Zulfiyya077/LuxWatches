@@ -1039,5 +1039,6 @@
     "validation": {
       "emailRequired": "E-poçt ünvanı tələb olunur"
     }
-  }
+  },
+  "common.loading":"Yüklənir"
 }

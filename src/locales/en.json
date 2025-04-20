@@ -1023,7 +1023,7 @@
   "loadingUsers": "Loading users...",
   "email": "Email",
   "role": "Role",
-  "registered": "Registered",
+  
   "user": "User",
   "noUsersFound": "No users found.",
   "noUsersAvailable": "No users available.",
@@ -1222,5 +1222,7 @@
     "validation": {
       "emailRequired": "Email address is required"
     }
-  }
+  },
+  "common.loading":"Loading"
+  
 }

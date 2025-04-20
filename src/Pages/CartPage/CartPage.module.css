@@ -117,8 +117,8 @@
 }
 
 .cartItem {
-  background: var(--black);
-  color: var(--off-white);
+  /* background: var(--black);
+  color: var(--off-white); */
   border-radius: 16px;
   overflow: hidden;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);

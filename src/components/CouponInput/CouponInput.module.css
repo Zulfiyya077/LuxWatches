@@ -2,7 +2,7 @@
 
   
   .couponContainer {
-    background: var(--black);
+    /* background: var(--black); */
     border-radius: 12px;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
     padding: 1.5rem;
@@ -44,7 +44,7 @@
   }
   
   .darkMode {
-    background: var(--black);
+    /* background: var(--black); */
     color: var(--off-white);
   }
   
@@ -218,6 +218,7 @@
     transition: all 0.2s;
     text-transform: uppercase;
     letter-spacing: 0.5px;
+    margin: 0px 10px;
   }
   
   .removeCouponBtn:hover {

@@ -3,6 +3,7 @@ import { useCart } from "react-use-cart";
 import { useNavigate } from "react-router-dom";
 import { Heart, ShoppingCart, Star, Eye } from "lucide-react";
 import { useTranslation } from "react-i18next";
+import { toast } from 'react-toastify';
 import styles from "./ProductCard.module.css";
 import { useAuth } from "../../context/AuthContext";
 import { useWishlist } from "react-use-wishlist"; 
@@ -41,15 +42,17 @@ const ProductCard = ({ product, viewMode = "grid" }) => {
   const handleToggleWishlist = (e) => {
     e.stopPropagation();
     if (!user) {
-      alert(t("product.needLoginToWishlist"));
+      toast.info(t("product.needLoginToWishlist"), { autoClose: 2000 });
       navigate("/login");
       return;
     }
 
     if (isInWishlist) {
       removeWishlistItem(id);
+      toast.info(t("product.removedFromWishlist"), { autoClose: 2000 });
     } else {
       addWishlistItem(product);
+      toast.success(t("product.addedToWishlist"), { autoClose: 2000 });
     }
 
     setIsInWishlist(!isInWishlist);
@@ -149,12 +152,13 @@ const ProductCard = ({ product, viewMode = "grid" }) => {
               onClick={(e) => {
                 e.stopPropagation();
                 if (!user) {
-                  alert(t("product.needLoginToCart"));
+                  toast.info(t("product.needLoginToCart"), { autoClose: 2000 });
                   navigate("/login");
                   return;
                 }
                 if (availability) {
                   addItem(product);
+                  toast.success(t("product.addedToCart"), { autoClose: 2000 });
                 }
               }}
               disabled={!availability}
