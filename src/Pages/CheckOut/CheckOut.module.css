@@ -3,7 +3,7 @@
 .checkoutContainer {
   display: flex;
   justify-content: center;
-  max-width: 1000px;
+  max-width: 1500px;
   margin: 2rem auto;
   padding: 0 1.5rem;
   font-family: 'Helvetica Neue', Arial, sans-serif;
@@ -174,8 +174,8 @@
 
 .cardFront {
   
-  
-  width: 500px;
+  margin-left: 75px;
+  width: 450px;
   text-align: center;
   height: 100%;
   background: linear-gradient(60deg, var(--deep-green), var(--light-green), rgb(142, 56, 56), rgb(17, 16, 12));

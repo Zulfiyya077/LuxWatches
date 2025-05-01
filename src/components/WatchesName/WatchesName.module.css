@@ -2,18 +2,15 @@
 .container {
   width: 100%;
   padding: 2rem 0;
-  background-color: var(--secondary-bg, #f8f8f8);
   position: relative;
-  border-top: 1px solid rgba(0, 0, 0, 0.08);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
   overflow: hidden;
 }
 
-.containerDark {
+/* .containerDark {
   background-color: var(--secondary-bg, #1e1e1e);
   border-top: 1px solid rgba(255, 255, 255, 0.08);
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-}
+} */
 
 .marqueeContainer {
   width: 100%;

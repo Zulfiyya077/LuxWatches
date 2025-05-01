@@ -1,5 +1,4 @@
-
-import React, { createContext, useState, useContext, useEffect, useRef } from "react";
+import React, { createContext, useState, useContext, useEffect } from "react";
 import { useCart } from "react-use-cart";
 import supabase from "../supabaseClient";
 
@@ -9,19 +8,14 @@ export const CouponProvider = ({ children }) => {
   const [appliedCoupon, setAppliedCoupon] = useState(null);
   const [loading, setLoading] = useState(false);
   const [couponError, setCouponError] = useState(null);
+  const [calculatedSubtotal, setCalculatedSubtotal] = useState(0);
+  const [calculatedDiscount, setCalculatedDiscount] = useState(0);
+  const [calculatedFinalPrice, setCalculatedFinalPrice] = useState(0);
+  
+  // UseCart hook-undan cart məlumatlarını almaq
   const { items, isEmpty, cartTotal, updateItemQuantity } = useCart();
-  
 
-  const itemsRef = useRef(items);
-  const [cartUpdate, setCartUpdate] = useState(0);
-  
- 
-  useEffect(() => {
-    itemsRef.current = items;
-    setCartUpdate(prev => prev + 1);
-  }, [items, cartTotal]);
-
-
+  // İlkin yükləmə zamanı localStorage-dan kupon məlumatlarını almaq
   useEffect(() => {
     const savedCoupon = localStorage.getItem("appliedCoupon");
     if (savedCoupon) {
@@ -34,7 +28,7 @@ export const CouponProvider = ({ children }) => {
     }
   }, []);
 
-
+  // Kupon məlumatlarını localStorage-da saxlamaq
   useEffect(() => {
     if (appliedCoupon) {
       localStorage.setItem("appliedCoupon", JSON.stringify(appliedCoupon));
@@ -43,14 +37,75 @@ export const CouponProvider = ({ children }) => {
     }
   }, [appliedCoupon]);
 
+  // Cart məlumatları və ya kupon dəyişdikdə qiymətləri yeniləmək
+  useEffect(() => {
+    const subtotal = calculateCartSubtotal();
+    const discount = calculateCartDiscount(subtotal);
+    const finalPrice = Math.max(0, subtotal - discount);
+    
+    setCalculatedSubtotal(subtotal);
+    setCalculatedDiscount(discount);
+    setCalculatedFinalPrice(finalPrice);
+    
+    console.log("Qiymətlər yeniləndi:", {
+      subtotal,
+      discount,
+      finalPrice,
+      items: items.length,
+      isEmpty
+    });
+  }, [items, isEmpty, cartTotal, appliedCoupon]);
 
+  // Cart-ın ümumi məbləğini hesablamaq
+  const calculateCartSubtotal = () => {
+    if (isEmpty || !items || items.length === 0) return 0;
+    
+    console.log("Subtotal hesablanır. Items:", items);
+  
+    let totalAmount = 0;
+    for (const item of items) {
+      const itemPrice = item.discounted ? parseFloat(item.discountedPrice) : parseFloat(item.price);
+      const quantity = parseInt(item.quantity || 1);
+      const itemTotal = itemPrice * quantity;
+      
+      console.log(`Məhsul: ${item.name}, Qiymət: ${itemPrice}, Miqdar: ${quantity}, Cəm: ${itemTotal}`);
+      totalAmount += itemTotal;
+    }
+    
+    console.log(`Ümumi məbləğ: ${totalAmount}`);
+    return totalAmount;
+  };
+
+  // Tətbiq edilən kuponun endirimi hesablamaq
+  const calculateCartDiscount = (subtotal) => {
+    if (!appliedCoupon || isEmpty) return 0;
+    
+    console.log("Endirim hesablanır. Subtotal:", subtotal, "Kupon:", appliedCoupon);
+    
+    if (appliedCoupon.discount_type === 'percentage') {
+      // Faiz endirimi
+      const discountValue = parseFloat(appliedCoupon.discount_value);
+      const discountAmount = (subtotal * discountValue) / 100;
+      console.log(`Faiz endirimi: ${discountValue}%, Məbləğ: ${discountAmount}`);
+      return discountAmount;
+    } else if (appliedCoupon.discount_type === 'fixed') {
+      // Sabit endirimi
+      const discountValue = parseFloat(appliedCoupon.discount_value);
+      const discountAmount = Math.min(subtotal, discountValue);
+      console.log(`Sabit endirimi: ${discountValue} AZN, Tətbiq edilən: ${discountAmount}`);
+      return discountAmount;
+    }
+    
+    return 0;
+  };
+
+  // Kupon tətbiq etmək
   const applyCoupon = async (code) => {
     setLoading(true);
     setCouponError(null);
     
     try {
       console.log("Kupon kodunu yoxlayırıq:", code);
-      
       
       if (!supabase) {
         console.log("Supabase mövcud deyil, fake kuponları yoxlayırıq");
@@ -78,7 +133,7 @@ export const CouponProvider = ({ children }) => {
       
       if (error) {
         console.error("Supabase xətası:", error);
-   
+        // Demo kuponları yoxlayaq
         const demoData = checkDemoCoupon(code);
         
         if (demoData) {
@@ -105,8 +160,6 @@ export const CouponProvider = ({ children }) => {
 
       setAppliedCoupon(data);
       setCouponError(null);
-   
-      setCartUpdate(prev => prev + 1);
     } catch (error) {
       console.error("Kupon tətbiq edilərkən xəta:", error);
       setCouponError(error.message || "Kupon tətbiq edilərkən xəta baş verdi");
@@ -116,6 +169,7 @@ export const CouponProvider = ({ children }) => {
     }
   };
 
+  // Test kuponlarını yoxlamaq
   const checkDemoCoupon = (code) => {
     const demoCoupons = [
       {
@@ -153,64 +207,16 @@ export const CouponProvider = ({ children }) => {
     );
   };
 
+  // Kuponu silmək
   const removeCoupon = () => {
     setAppliedCoupon(null);
     setCouponError(null);
   };
 
-
-  const calculateSubtotal = () => {
-    if (isEmpty || !itemsRef.current || itemsRef.current.length === 0) return 0;
-    
-    console.log("Subtotal hesablanır. Items:", itemsRef.current);
-  
-    let totalAmount = 0;
-    for (const item of itemsRef.current) {
-      const itemPrice = item.discounted ? parseFloat(item.discountedPrice) : parseFloat(item.price);
-      const quantity = parseInt(item.quantity);
-      const itemTotal = itemPrice * quantity;
-      
-      console.log(`Məhsul: ${item.name}, Qiymət: ${itemPrice}, Miqdar: ${quantity}, Cəm: ${itemTotal}`);
-      totalAmount += itemTotal;
-    }
-    
-    console.log(`Ümumi məbləğ: ${totalAmount}`);
-    return totalAmount;
-  };
-
-  const calculateDiscount = () => {
-    if (!appliedCoupon || isEmpty) return 0;
-    
-    const subtotal = calculateSubtotal();
-    console.log("Endirim hesablanır. Subtotal:", subtotal, "Kupon:", appliedCoupon);
-    
-    if (appliedCoupon.discount_type === 'percentage') {
-      // Faiz endirimi
-      const discountValue = parseFloat(appliedCoupon.discount_value);
-      const discountAmount = (subtotal * discountValue) / 100;
-      console.log(`Faiz endirimi: ${discountValue}%, Məbləğ: ${discountAmount}`);
-      return discountAmount;
-    } else if (appliedCoupon.discount_type === 'fixed') {
-      // Sabit endirimi
-      const discountValue = parseFloat(appliedCoupon.discount_value);
-      const discountAmount = Math.min(subtotal, discountValue);
-      console.log(`Sabit endirimi: ${discountValue} AZN, Tətbiq edilən: ${discountAmount}`);
-      return discountAmount;
-    }
-    
-    return 0;
-  };
-
-  // Son qiyməti hesablamaq
-  const getFinalPrice = () => {
-    const subtotal = calculateSubtotal();
-    const discount = calculateDiscount();
-    
-    const finalPrice = Math.max(0, subtotal - discount);
-    console.log(`Son qiymət: Subtotal(${subtotal}) - Discount(${discount}) = ${finalPrice}`);
-    
-    return finalPrice;
-  };
+  // Komponentin interfeysi üçün lazımi hesablama metodları
+  const calculateSubtotal = () => calculatedSubtotal;
+  const calculateDiscount = () => calculatedDiscount;
+  const getFinalPrice = () => calculatedFinalPrice;
 
   return (
     <CouponContext.Provider
@@ -222,8 +228,7 @@ export const CouponProvider = ({ children }) => {
         removeCoupon,
         calculateSubtotal,
         calculateDiscount,
-        getFinalPrice,
-        cartUpdate
+        getFinalPrice
       }}
     >
       {children}

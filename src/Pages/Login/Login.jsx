@@ -83,7 +83,7 @@ const Login = () => {
   const showInfoToast = (message) => {
      toast.dismiss();
     toast.info(message, {
-      position: "top-right",
+      position: "bottom-right",
       autoClose: 2000, 
       hideProgressBar: false,
       closeOnClick: true,
@@ -212,7 +212,7 @@ const Login = () => {
     showInfoToast(t('login.redirectingToForgotPassword') || 'Şifrə yeniləmə səhifəsinə yönləndirilirsiniz...');
     setTimeout(() => {
       navigate('/forgot-password');
-    }, 1000);
+    }, 1500);
   };
 
   const togglePasswordVisibility = () => {
@@ -223,7 +223,7 @@ const Login = () => {
     <div className={styles.container}>
     
       <ToastContainer
-        position="top-right"
+        position="bottom-right"
         autoClose={2000}
         hideProgressBar={false}
         newestOnTop={true}

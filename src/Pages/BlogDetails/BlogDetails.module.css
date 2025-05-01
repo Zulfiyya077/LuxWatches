@@ -2,7 +2,7 @@
     max-width: 1200px;
     margin: 0 auto;
     padding: 2rem;
-    font-family: 'Cormorant Garamond', 'Georgia', serif;
+    /* font-family: 'Cormorant Garamond', 'Georgia', serif; */
     color: #333;
     background-color: #fff;
   }
@@ -22,20 +22,38 @@
   .darkMode .blogHeader {
     border-bottom-color: #333;
   }
-  
+ 
   .blogTitle {
-    font-size: 2.8rem;
-    font-weight: 500;
-    margin-bottom: 1.2rem;
-    line-height: 1.2;
-    color: #1a1a1a;
-    letter-spacing: -0.5px;
+    font-size: 2.5rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 3rem;
+    position: relative;
+    text-transform: uppercase;
+    letter-spacing: 2px;
   }
   
-  .darkMode .blogTitle {
-    color: #f8f8f8;
+  .darkmode .blogTitle {
+    color: #d4af37; 
+    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
   }
   
+  .lightmode .blogTitle {
+    color: #730026;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .blogTitle::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(90deg, #730026, #d4af37);
+    border-radius: 2px;
+  }
   .metaInfo {
     display: flex;
     justify-content: center;
@@ -422,3 +440,66 @@
     font-size: 2rem;
     margin-bottom: 1.5rem;
   }
+  /* Luxurious Navigation Section and Back Button Styles */
+.navigationSection {
+  display: flex;
+  align-items: center;
+  margin: 2rem 0;
+}
+
+.backButton {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  font-family: 'Georgia', serif; /* Elegant serif font */
+  font-size: 1rem;
+  font-weight: 400;
+  color: #b8860b; /* Gold color for luxury feel */
+  transition: all 0.3s ease;
+  position: relative;
+  padding-bottom: 3px;
+}
+
+.backButton:hover {
+  color: #d4af37; /* Brighter gold on hover */
+}
+
+/* Create an elegant underline effect on hover */
+.backButton:after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 1px;
+  bottom: 0;
+  left: 0;
+  background-color: #d4af37;
+  transition: all 0.3s ease;
+}
+
+.backButton:hover:after {
+  width: 100%;
+}
+
+.backIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  margin-right: 10px;
+  background: linear-gradient(135deg, #f8f4e3 0%, #eaddca 100%); /* Soft cream/gold gradient */
+  border: 1px solid #d4af37;
+  color: #8b4513; /* Warm brown color for the arrow */
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.backIcon:hover {
+  transform: translateX(-3px);
+  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.15);
+  background: linear-gradient(135deg, #f5e7c1 0%, #e6c681 100%); /* Warmer gold gradient on hover */
+}

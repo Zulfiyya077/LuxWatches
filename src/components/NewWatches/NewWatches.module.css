@@ -1,1093 +1,1133 @@
-/* NewWatches.module.css - Fixed */
+/* NewWatches.module.css - Adapted */
 .newWatchesSection {
-    padding: 4rem 1.5rem;
-    position: relative;
-    overflow: hidden;
-    background-attachment: fixed;
-    transition: all 0.3s ease;
+  padding: 6rem 2rem;
+  position: relative;
+  overflow: hidden;
+  font-family: 'Poppins', sans-serif;
+  transition: all 0.3s ease;
+}
+
+/* Decorative elements added */
+.newWatchesSection::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(212, 175, 55, 0.15) 0%, rgba(212, 175, 55, 0) 70%);
+  z-index: 0;
+}
+
+.newWatchesSection::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(212, 175, 55, 0.1) 0%, rgba(212, 175, 55, 0) 70%);
+  z-index: 0;
+}
+
+/* Theme Variants */
+.light {
+  background: #ffffff;
+  color: #1a1a1a;
+}
+
+.dark {
+  background: #080808;
+  color: #ffffff;
+}
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+.sectionHeader {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.sectionTitle {
+  font-size: 2.5rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 3rem;
+  position: relative;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.dark .sectionTitle {
+  color: #d4af37; 
+  text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.light .sectionTitle {
+  color: #730026;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.sectionTitle::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(90deg, #730026, #d4af37);
+  border-radius: 2px;
+}
+
+.sectionSubtitle {
+  font-size: 1.2rem;
+  font-weight: 300;
+  opacity: 0;
+  animation: fadeIn 0.7s forwards 0.5s;
+}
+
+.watchesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 2.5rem;
+  margin-top: 2rem;
+}
+
+.watchCard {
+  perspective: 2000px;
+  height: 600px;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.6s forwards;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.watchCard:hover {
+  transform: translateY(-10px);
+}
+
+.cardInner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.8s cubic-bezier(0.645, 0.045, 0.355, 1);
+  transform-style: preserve-3d;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+}
+
+.cardInner.flipped {
+  transform: rotateY(180deg);
+}
+
+.cardFront,
+.cardBack {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.cardFront {
+  display: flex;
+  flex-direction: column;
+}
+
+.light .cardFront {
+  background: #ffffff;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.dark .cardFront {
+  background: #1e1e1e;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.cardBack {
+  transform: rotateY(180deg);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.light .cardBack {
+  background: #ffffff;
+  color: #1a1a1a;
+}
+
+.dark .cardBack {
+  background: #1e1e1e;
+  color: #f0f0f0;
+}
+
+.mediaContainer {
+  position: relative;
+  width: 100%;
+  height: 320px;
+  overflow: hidden;
+}
+
+.watchImage,
+.watchVideo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity 0.3s ease;
+}
+
+.watchVideo {
+  opacity: 0;
+  z-index: 2;
+}
+
+.watchCard:hover .watchVideo {
+  opacity: 1;
+}
+
+.watchCard:hover .watchImage {
+  opacity: 0;
+}
+
+.frontInfo {
+  padding: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  flex-grow: 1;
+  justify-content: space-between;
+}
+
+.watchName {
+  font-size: 1.25rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+.watchPrice {
+  font-weight: 600;
+  font-size: 1.2rem;
+  color: #d4af37;
+  margin-bottom: 0.75rem;
+}
+
+.hoverInstruction {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  padding: 0.35rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 5;
+}
+
+.watchCard:hover .hoverInstruction {
+  opacity: 1;
+}
+
+.clickInstruction {
+  font-size: 0.85rem;
+  opacity: 0.7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  margin-top: 0.5rem;
+}
+
+.favoriteButton,
+.favoriteButtonBack {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.dark .favoriteButton,
+.dark .favoriteButtonBack {
+  background: rgba(30, 30, 30, 0.9);
+  color: #f0f0f0;
+}
+
+.favoriteButton:hover,
+.favoriteButtonBack:hover {
+  transform: scale(1.1);
+}
+
+.favoriteActive {
+  color: #ff3b30;
+}
+
+.favoriteAnimation {
+  animation: heartBeat 0.5s forwards;
+}
+
+.favoriteButtonBack {
+  position: relative;
+  top: auto;
+  right: auto;
+  width: auto;
+  border-radius: 25px;
+  padding: 0.5rem 1rem;
+  display: flex;
+  gap: 8px;
+  align-self: center;
+  margin-top: 1rem;
+}
+
+.limitedBadge {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  background: #ae0000;
+  color: white;
+  padding: 0.3rem 0.6rem;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  z-index: 5;
+}
+
+.luxuryBadge {
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+  background: rgba(212, 175, 55, 0.9);
+  color: #000;
+  padding: 0.25rem 0.75rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  z-index: 5;
+}
+
+.releaseYearBadge {
+  position: absolute;
+  bottom: 15px;
+  left: 15px;
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  z-index: 5;
+}
+
+.backButton {
+  align-self: flex-start;
+  background: transparent;
+  border: none;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.9rem;
+  padding: 0.2rem 0;
+  margin-bottom: 1rem;
+  cursor: pointer;
+  color: inherit;
+  opacity: 0.8;
+  transition: opacity 0.2s ease;
+}
+
+.backButton:hover {
+  opacity: 1;
+}
+
+.watchDetails {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  height: 200px;
+}
+
+.watchNameBack {
+  font-size: 1.4rem;
+  font-weight: 500;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.featuresContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  justify-content: center;
+}
+
+.featureTag {
+  background: rgba(212, 175, 55, 0.15);
+  color: #d4af37;
+  padding: 0.25rem 0.6rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+}
+
+.dark .featureTag {
+  background: rgba(212, 175, 55, 0.2);
+}
+
+.watchDescription {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.specificationGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.specItem {
+  display: flex;
+  flex-direction: column;
+}
+
+.specTitle {
+  font-size: 0.75rem;
+  opacity: 0.7;
+  margin-bottom: 0.25rem;
+}
+
+.specValue {
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.priceInfoBack {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.priceLabel {
+  font-size: 0.9rem;
+  opacity: 0.7;
+  margin-bottom: 0.25rem;
+}
+
+.priceValueBack {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #d4af37;
+}
+
+.availabilityInfo {
+  text-align: center;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+.limitedInfo {
+  color: #ae0000;
+}
+
+.dark .limitedInfo {
+  color: #ff8a80;
+}
+
+.regularRelease {
+  opacity: 0.8;
+}
+
+/* Color Variants */
+.gold .cardInner {
+  border: 1px solid rgba(212, 175, 55, 0.3);
+}
+
+.gold .cardFront,
+.gold .cardBack {
+  box-shadow: 0 0 25px rgba(212, 175, 55, 0.15);
+}
+
+.burgundy .cardInner {
+  border: 1px solid rgba(128, 0, 32, 0.3);
+}
+
+.burgundy .watchPrice,
+.burgundy .priceValueBack {
+  color: #800020;
+}
+
+.burgundy .featureTag {
+  background: rgba(128, 0, 32, 0.15);
+  color: #800020;
+}
+
+.green .cardInner {
+  border: 1px solid rgba(0, 66, 37, 0.3);
+}
+
+.green .watchPrice,
+.green .priceValueBack {
+  color: #004225;
+}
+
+.green .featureTag {
+  background: rgba(0, 66, 37, 0.15);
+  color: #004225;
+}
+
+.black .cardInner {
+  border: 1px solid rgba(40, 40, 40, 0.3);
+}
+
+.black .watchPrice,
+.black .priceValueBack {
+  color: #888;
+}
+
+.black .featureTag {
+  background: rgba(40, 40, 40, 0.15);
+  color: #aaa;
+}
+
+/* Animations */
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
   }
-  
-  /* Theme Variants */
-  .light {
-    background: linear-gradient(135deg, #ffffff 0%, #f5f5f5 100%);
-    color: #1a1a1a;
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
-  
-  .dark {
-    background: linear-gradient(135deg, #121212 0%, #1e1e1e 100%);
-    color: #f0f0f0;
+}
+
+@keyframes expandWidth {
+  from {
+    width: 0;
   }
-  
-  .container {
-    max-width: 1280px;
-    margin: 0 auto;
-    position: relative;
-    z-index: 2;
+  to {
+    width: 120px;
   }
-  
-  .sectionHeader {
-    text-align: center;
-    margin-bottom: 3rem;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 0.8;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes heartBeat {
+  0% {
+    transform: scale(1);
+  }
+  14% {
+    transform: scale(1.3);
+  }
+  28% {
+    transform: scale(1);
+  }
+  42% {
+    transform: scale(1.3);
+  }
+  70% {
+    transform: scale(1);
+  }
+}
+
+/* Improved Responsive Styles */
+@media (max-width: 1024px) {
+  .watchesGrid {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 2rem;
   }
   
   .sectionTitle {
-    font-size: 2.5rem;
-    font-weight: 300;
-    letter-spacing: 1px;
-    margin-bottom: 0.5rem;
-    opacity: 0;
-    animation: fadeInDown 0.7s forwards;
-  }
-  
-  .titleSeparator {
-    height: 2px;
-    width: 0;
-    background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.8), transparent);
-    /* margin: 1rem auto; */
-    animation: expandWidth 0.7s forwards 0.3s;
-  }
-  
-  .sectionSubtitle {
-    font-size: 1.2rem;
-    font-weight: 300;
-    opacity: 0;
-    animation: fadeIn 0.7s forwards 0.5s;
-  }
-  
-  .watchesGrid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 2.5rem;
-    margin-top: 2rem;
-  }
-  
-  .watchCard {
-    perspective: 2000px;
-    height: 600px;
-    opacity: 0;
-    transform: translateY(20px);
-    animation: fadeInUp 0.6s forwards;
-    transition: transform 0.3s ease;
-    cursor: pointer;
-    border-radius: 12px;
-    overflow: hidden;
-  }
-  
-  .watchCard:hover {
-    transform: translateY(-10px);
-  }
-  
-  .cardInner {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    transition: transform 0.8s cubic-bezier(0.645, 0.045, 0.355, 1);
-    transform-style: preserve-3d;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
-    border-radius: 12px;
-  }
-  
-  .cardInner.flipped {
-    transform: rotateY(180deg);
-  }
-  
-  .cardFront,
-  .cardBack {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    backface-visibility: hidden;
-    border-radius: 12px;
-    overflow: hidden;
-  }
-  
-  .cardFront {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .light .cardFront {
-    background: #ffffff;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-  }
-  
-  .dark .cardFront {
-    background: #1e1e1e;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-  }
-  
-  .cardBack {
-    transform: rotateY(180deg);
-    padding: 1.5rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
-  
-  .light .cardBack {
-    background: #ffffff;
-    color: #1a1a1a;
-  }
-  
-  .dark .cardBack {
-    background: #1e1e1e;
-    color: #f0f0f0;
+    font-size: 2rem;
   }
   
   .mediaContainer {
-    position: relative;
-    width: 100%;
-    height: 320px;
-    overflow: hidden;
+    height: 300px;
+  }
+}
+
+@media (max-width: 768px) {
+  .newWatchesSection {
+    padding: 4rem 1.5rem;
   }
   
-  .watchImage,
-  .watchVideo {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: opacity 0.3s ease;
+  .watchesGrid {
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1.5rem;
   }
   
-  .watchVideo {
-    opacity: 0;
-    z-index: 2;
+  .watchCard {
+    height: 440px;
   }
   
-  .watchCard:hover .watchVideo {
-    opacity: 1;
+  .mediaContainer {
+    height: 260px;
   }
   
-  .watchCard:hover .watchImage {
-    opacity: 0;
+  .specificationGrid {
+    grid-template-columns: 1fr;
+  }
+  
+  .watchNameBack {
+    font-size: 1.2rem;
   }
   
   .frontInfo {
-    padding: 1.2rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    flex-grow: 1;
-    justify-content: space-between;
+    padding: 1rem;
+  }
+}
+
+
+@media (max-width: 576px) {
+  .newWatchesSection {
+    padding: 3rem 1rem;
   }
   
-  .watchName {
-    font-size: 1.25rem;
-    font-weight: 500;
-    margin-bottom: 0.5rem;
+  .watchesGrid {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
   }
   
-  .watchPrice {
-    font-weight: 600;
-    font-size: 1.2rem;
-    color: #d4af37;
-    margin-bottom: 0.75rem;
+  .watchCard {
+    height: 420px;
   }
   
-  .hoverInstruction {
-    position: absolute;
-    bottom: 10px;
-    left: 10px;
-    background: rgba(0, 0, 0, 0.6);
-    color: white;
-    padding: 0.35rem 0.75rem;
-    border-radius: 20px;
-    font-size: 0.75rem;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    z-index: 5;
+  .mediaContainer {
+    height: 240px;
   }
   
-  .watchCard:hover .hoverInstruction {
-    opacity: 1;
+  .watchName, .watchNameBack {
+    font-size: 1.1rem;
   }
   
-  .clickInstruction {
-    font-size: 0.85rem;
-    opacity: 0.7;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 5px;
-    margin-top: 0.5rem;
+  .sectionTitle {
+    font-size: 1.5rem;
   }
   
-  .favoriteButton,
-  .favoriteButtonBack {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    background: rgba(255, 255, 255, 0.9);
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    z-index: 10;
-    transition: all 0.3s ease;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  .dark .favoriteButton,
-  .dark .favoriteButtonBack {
-    background: rgba(30, 30, 30, 0.9);
-    color: #f0f0f0;
-  }
-  
-  .favoriteButton:hover,
-  .favoriteButtonBack:hover {
-    transform: scale(1.1);
-  }
-  
-  .favoriteActive {
-    color: #ff3b30;
-  }
-  
-  .favoriteAnimation {
-    animation: heartBeat 0.5s forwards;
-  }
-  
-  .favoriteButtonBack {
-    position: relative;
-    top: auto;
-    right: auto;
-    width: auto;
-    border-radius: 25px;
-    padding: 0.5rem 1rem;
-    display: flex;
-    gap: 8px;
-    align-self: center;
-    margin-top: 1rem;
-  }
-  
-  .limitedBadge {
-    position: absolute;
-    top: 15px;
-    left: 15px;
-    background: #ae0000;
-    color: white;
-    padding: 0.3rem 0.6rem;
-    border-radius: 20px;
-    font-size: 0.75rem;
-    font-weight: 500;
-    z-index: 5;
-  }
-  
-  .luxuryBadge {
-    position: absolute;
-    bottom: 15px;
-    right: 15px;
-    background: rgba(212, 175, 55, 0.9);
-    color: #000;
-    padding: 0.25rem 0.75rem;
-    border-radius: 4px;
-    font-size: 0.75rem;
-    font-weight: 700;
-    letter-spacing: 1px;
-    z-index: 5;
-  }
-  
-  .releaseYearBadge {
-    position: absolute;
-    bottom: 15px;
-    left: 15px;
-    background: rgba(0, 0, 0, 0.6);
-    color: white;
-    padding: 0.25rem 0.5rem;
-    border-radius: 4px;
-    font-size: 0.75rem;
-    z-index: 5;
-  }
-  
-  .backButton {
-    align-self: flex-start;
-    background: transparent;
-    border: none;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    font-size: 0.9rem;
-    padding: 0.2rem 0;
-    margin-bottom: 1rem;
-    cursor: pointer;
-    color: inherit;
-    opacity: 0.8;
-    transition: opacity 0.2s ease;
-  }
-  
-  .backButton:hover {
-    opacity: 1;
-  }
-  
-  .watchDetails {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    height: 200px;
-  }
-  
-  .watchNameBack {
-    font-size: 1.4rem;
-    font-weight: 500;
-    margin-bottom: 1rem;
-    text-align: center;
-  }
-  
-  .featuresContainer {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    margin-bottom: 1rem;
-    justify-content: center;
-  }
-  
-  .featureTag {
-    background: rgba(212, 175, 55, 0.15);
-    color: #d4af37;
-    padding: 0.25rem 0.6rem;
-    border-radius: 4px;
-    font-size: 0.8rem;
-  }
-  
-  .dark .featureTag {
-    background: rgba(212, 175, 55, 0.2);
-  }
-  
-  .watchDescription {
-    font-size: 0.9rem;
-    line-height: 1.5;
-    margin-bottom: 1.5rem;
-    text-align: center;
+  .sectionSubtitle {
+    font-size: 1rem;
   }
   
   .specificationGrid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;
-    margin-bottom: 1.5rem;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
   }
   
-  .specItem {
-    display: flex;
-    flex-direction: column;
+  .watchDescription {
+    font-size: 0.6rem;
+    margin-bottom: 0.5rem;
   }
   
-  .specTitle {
+  .favoriteButtonBack {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.6rem;
+  }
+  
+  .featureTag {
     font-size: 0.75rem;
-    opacity: 0.7;
-    margin-bottom: 0.25rem;
+    padding: 0.2rem 0.5rem;
+  }
+}
+
+/* Back side styling improvements */
+.watchDetails {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  max-height: 100%;
+  padding-right: 4px; /* For scrollbar */
+}
+
+.watchDetails::-webkit-scrollbar {
+  width: 4px;
+}
+
+.watchDetails::-webkit-scrollbar-thumb {
+  background-color: rgba(212, 175, 55, 0.5);
+  border-radius: 4px;
+}
+
+.cardBack {
+  display: flex;
+  flex-direction: column;
+  padding: 1.25rem;
+  justify-content: flex-start;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Fix for back side button */
+.favoriteButtonBack {
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: auto;
+  min-width: 180px;
+  border-radius: 25px;
+  padding: 0.5rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 0;
+  z-index: 10;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.dark .favoriteButtonBack {
+  background: rgba(30, 30, 30, 0.9);
+}
+
+/* Space adjustment for back side elements */
+.priceInfoBack {
+  margin-bottom: 3rem; /* Space for favorite button */
+}
+
+/* Additional responsiveness adjustments */
+@media (max-height: 700px) {
+  .watchCard {
+    height: 450px;
   }
   
-  .specValue {
-    font-size: 0.9rem;
-    font-weight: 500;
-  }
-  
-  .priceInfoBack {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 1rem;
-  }
-  
-  .priceLabel {
-    font-size: 0.9rem;
-    opacity: 0.7;
-    margin-bottom: 0.25rem;
-  }
-  
-  .priceValueBack {
-    font-size: 1.3rem;
-    font-weight: 600;
-    color: #d4af37;
-  }
-  
-  .availabilityInfo {
-    text-align: center;
-    font-size: 0.9rem;
-    margin-bottom: 1rem;
-  }
-  
-  .limitedInfo {
-    color: #ae0000;
-  }
-  
-  .dark .limitedInfo {
-    color: #ff8a80;
-  }
-  
-  .regularRelease {
-    opacity: 0.8;
-  }
-  
-  /* Color Variants */
-  .gold .cardInner {
-    border: 1px solid rgba(212, 175, 55, 0.3);
-  }
-  
-  .gold .cardFront,
-  .gold .cardBack {
-    box-shadow: 0 0 25px rgba(212, 175, 55, 0.15);
-  }
-  
-  .burgundy .cardInner {
-    border: 1px solid rgba(128, 0, 32, 0.3);
-  }
-  
-  .burgundy .watchPrice,
-  .burgundy .priceValueBack {
-    color: #800020;
-  }
-  
-  .burgundy .featureTag {
-    background: rgba(128, 0, 32, 0.15);
-    color: #800020;
-  }
-  
-  .green .cardInner {
-    border: 1px solid rgba(0, 66, 37, 0.3);
-  }
-  
-  .green .watchPrice,
-  .green .priceValueBack {
-    color: #004225;
-  }
-  
-  .green .featureTag {
-    background: rgba(0, 66, 37, 0.15);
-    color: #004225;
-  }
-  
-  .black .cardInner {
-    border: 1px solid rgba(40, 40, 40, 0.3);
-  }
-  
-  .black .watchPrice,
-  .black .priceValueBack {
-    color: #888;
-  }
-  
-  .black .featureTag {
-    background: rgba(40, 40, 40, 0.15);
-    color: #aaa;
-  }
-  
-  /* Animations */
-  @keyframes fadeInDown {
-    from {
-      opacity: 0;
-      transform: translateY(-20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-  
-  @keyframes expandWidth {
-    from {
-      width: 0;
-    }
-    to {
-      width: 120px;
-    }
-  }
-  
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 0.8;
-    }
-  }
-  
-  @keyframes fadeInUp {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-  
-  @keyframes heartBeat {
-    0% {
-      transform: scale(1);
-    }
-    14% {
-      transform: scale(1.3);
-    }
-    28% {
-      transform: scale(1);
-    }
-    42% {
-      transform: scale(1.3);
-    }
-    70% {
-      transform: scale(1);
-    }
-  }
-  
-  /* Improved Responsive Styles */
-  @media (max-width: 1024px) {
-    .watchesGrid {
-      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-      gap: 2rem;
-    }
-    
-    .sectionTitle {
-      font-size: 2rem;
-    }
-    
-    .mediaContainer {
-      height: 300px;
-    }
-  }
-  
-  @media (max-width: 768px) {
-    .newWatchesSection {
-      padding: 2.5rem 1rem;
-    }
-    
-    .watchesGrid {
-      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-      gap: 1.5rem;
-    }
-    
-    .watchCard {
-      height: 440px;
-    }
-    
-    .mediaContainer {
-      height: 260px;
-    }
-    
-    .specificationGrid {
-      grid-template-columns: 1fr;
-    }
-    
-    .watchNameBack {
-      font-size: 1.2rem;
-    }
-    
-    .frontInfo {
-      padding: 1rem;
-    }
-  }
-  
- 
-@media (max-width: 576px) {
-    .watchesGrid {
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-      gap: 1rem;
-    }
-    
-    .watchCard {
-      height: 420px;
-    }
-    
-    .mediaContainer {
-      height: 240px;
-    }
-    
-    .watchName, .watchNameBack {
-      font-size: 1.1rem;
-    }
-    
-    .sectionTitle {
-      font-size: 1.5rem;
-    }
-    
-    .sectionSubtitle {
-      font-size: 1rem;
-    }
-    
-    .specificationGrid {
-      gap: 0.5rem;
-      margin-bottom: 1rem;
-    }
-    
-    .watchDescription {
-      font-size: 0.6rem;
-      margin-bottom: 0.5rem;
-    }
-    
-    .favoriteButtonBack {
-      padding: 0.4rem 0.8rem;
-      font-size: 0.6rem;
-    }
-    
-    .featureTag {
-      font-size: 0.75rem;
-      padding: 0.2rem 0.5rem;
-    }
-  }
-  
-  /* Arxa tərəf məlumatları üçün əlavə stilləmələr */
   .watchDetails {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    overflow-y: auto;
-    max-height: 100%;
-    padding-right: 4px; /* Scrollbar üçün yer */
+    font-size: 0.9rem;
   }
   
-  .watchDetails::-webkit-scrollbar {
-    width: 4px;
+  .watchDescription {
+    margin-bottom: 1rem;
   }
   
-  .watchDetails::-webkit-scrollbar-thumb {
-    background-color: rgba(212, 175, 55, 0.5);
-    border-radius: 4px;
+  .specificationGrid {
+    margin-bottom: 1rem;
+  }
+}
+
+/* Improvements for scrolling on back side on small screens */
+@media (max-width: 768px) and (max-height: 800px) {
+  .watchDetails {
+    padding-bottom: 3rem;
   }
   
   .cardBack {
-    display: flex;
-    flex-direction: column;
-    padding: 1.25rem;
-    justify-content: flex-start;
-    position: relative;
-    overflow: hidden;
-  }
-  
-  /* Arxa tərəf düyməsi üçün fix */
-  .favoriteButtonBack {
-    position: absolute;
-    bottom: 15px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: auto;
-    min-width: 180px;
-    border-radius: 25px;
-    padding: 0.5rem 1rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    margin-top: 0;
-    z-index: 10;
-    background: rgba(255, 255, 255, 0.9);
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  .dark .favoriteButtonBack {
-    background: rgba(30, 30, 30, 0.9);
-  }
-  
-  /* Arxa tərəfin digər elementləri üçün boşluqları tənzimləyək */
-  .priceInfoBack {
-    margin-bottom: 3rem; /* Sevimli düyməsi üçün yer saxlayırıq */
-  }
-  
-  /* Responsivlik üçün əlavə dəyişikliklər */
-  @media (max-height: 700px) {
-    .watchCard {
-      height: 450px;
-    }
-    
-    .watchDetails {
-      font-size: 0.9rem;
-    }
-    
-    .watchDescription {
-      margin-bottom: 1rem;
-    }
-    
-    .specificationGrid {
-      margin-bottom: 1rem;
-    }
-  }
-  
-  /* Kartın arxa hissəsində kiçik ekranlar üçün scrolling-i asanlaşdırmaq */
-  @media (max-width: 768px) and (max-height: 800px) {
-    .watchDetails {
-      padding-bottom: 3rem;
-    }
-    
-    .cardBack {
-      overflow-y: auto;
-    }
-  }
-
-  /* Arxa tərəfin əsas struktur stilləri */
-.cardBack {
-    display: flex;
-    flex-direction: column;
-    padding: 1.25rem;
-    position: relative;
-    height: 100%;
-    overflow: hidden;
-  }
-  
-  /* Geri düyməsi */
-  .backButton {
-    align-self: flex-start;
-    background: transparent;
-    border: none;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    font-size: 0.9rem;
-    padding: 0.4rem 0;
-    margin-bottom: 0.75rem;
-    cursor: pointer;
-    color: inherit;
-    opacity: 0.8;
-    transition: opacity 0.2s ease;
-    z-index: 5;
-  }
-  
-  .backButton:hover {
-    opacity: 1;
-  }
-  
-  /* Məlumatlar konteynerinin scrollable olmasını təmin etmək */
-  .watchDetails {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
     overflow-y: auto;
-    padding-right: 5px;
-    padding-bottom: 60px; /* Favorit düyməsi üçün yer saxlayır */
-    max-height: calc(100% - 40px); /* Geri düyməsi üçün yer çıxarılır */
-    scrollbar-width: thin;
-    scrollbar-color: rgba(212, 175, 55, 0.5) transparent;
   }
-  
-  /* WebKit browser üçün scrollbar stilləməsi */
-  .watchDetails::-webkit-scrollbar {
-    width: 4px;
-  }
-  
-  .watchDetails::-webkit-scrollbar-thumb {
-    background-color: rgba(212, 175, 55, 0.5);
-    border-radius: 4px;
-  }
-  
-  .watchDetails::-webkit-scrollbar-track {
-    background: transparent;
-  }
-  
-  /* Watch adı */
+}
+
+/* Main structure styles for back side */
+.cardBack {
+  display: flex;
+  flex-direction: column;
+  padding: 1.25rem;
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* Back button */
+.backButton {
+  align-self: flex-start;
+  background: transparent;
+  border: none;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.9rem;
+  padding: 0.4rem 0;
+  margin-bottom: 0.75rem;
+  cursor: pointer;
+  color: inherit;
+  opacity: 0.8;
+  transition: opacity 0.2s ease;
+  z-index: 5;
+}
+
+.backButton:hover {
+  opacity: 1;
+}
+
+/* Making details container scrollable */
+.watchDetails {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  padding-right: 5px;
+  padding-bottom: 60px; /* Space for favorite button */
+  max-height: calc(100% - 40px); /* Space for back button removed */
+  scrollbar-width: thin;
+  scrollbar-color: rgba(212, 175, 55, 0.5) transparent;
+}
+
+/* WebKit scrollbar styling */
+.watchDetails::-webkit-scrollbar {
+  width: 4px;
+}
+
+.watchDetails::-webkit-scrollbar-thumb {
+  background-color: rgba(212, 175, 55, 0.5);
+  border-radius: 4px;
+}
+
+.watchDetails::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Watch name */
+.watchNameBack {
+  font-size: 1.4rem;
+  font-weight: 500;
+  margin-bottom: 0.75rem;
+  text-align: center;
+}
+
+/* Features container */
+.featuresContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+  justify-content: center;
+}
+
+.featureTag {
+  background: rgba(212, 175, 55, 0.15);
+  color: #d4af37;
+  padding: 0.25rem 0.6rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+}
+
+/* Compact style for description text */
+.watchDescription {
+  font-size: 0.9rem;
+  line-height: 1.4;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+/* Specifications grid */
+.specificationGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.specItem {
+  display: flex;
+  flex-direction: column;
+}
+
+.specTitle {
+  font-size: 0.75rem;
+  opacity: 0.7;
+  margin-bottom: 0.2rem;
+}
+
+.specValue {
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+/* Price information */
+.priceInfoBack {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.priceLabel {
+  font-size: 0.85rem;
+  opacity: 0.7;
+  margin-bottom: 0.2rem;
+}
+
+.priceValueBack {
+  font-size: 1.0rem;
+  font-weight: 600;
+  color: #d4af37;
+}
+
+/* Availability status */
+.availabilityInfo {
+  text-align: center;
+  font-size: 0.85rem;
+  margin-bottom: 0.5rem;
+}
+
+.limitedInfo {
+  color: #ae0000;
+}
+
+.regularRelease {
+  opacity: 0.8;
+}
+
+/* Favorite button - fixed position at bottom center */
+.favoriteButtonBack {
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: auto;
+  min-width: 160px;
+  border-radius: 25px;
+  padding: 0.5rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  z-index: 10;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.favoriteButtonBack:hover {
+  transform: translateX(-50%) scale(1.05);
+}
+
+.dark .favoriteButtonBack {
+  background: rgba(30, 30, 30, 0.9);
+  color: #f0f0f0;
+}
+
+/* Responsive parameters */
+@media (max-width: 768px) {
   .watchNameBack {
-    font-size: 1.4rem;
-    font-weight: 500;
-    margin-bottom: 0.75rem;
-    text-align: center;
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
   }
   
-  /* Xüsusiyyətlər konteyner */
-  .featuresContainer {
-    display: flex;
-    flex-wrap: wrap;
+  .watchDescription {
+    font-size: 0.85rem;
+    line-height: 1.35;
+    margin-bottom: 0.75rem;
+  }
+  
+  .specificationGrid {
     gap: 0.5rem;
     margin-bottom: 0.75rem;
-    justify-content: center;
+  }
+  
+  .featuresContainer {
+    gap: 0.4rem;
+    margin-bottom: 0.5rem;
   }
   
   .featureTag {
-    background: rgba(212, 175, 55, 0.15);
-    color: #d4af37;
-    padding: 0.25rem 0.6rem;
-    border-radius: 4px;
-    font-size: 0.8rem;
-  }
-  
-  /* Açıqlama mətni üçün kompakt stil */
-  .watchDescription {
-    font-size: 0.9rem;
-    line-height: 1.4;
-    margin-bottom: 1rem;
-    text-align: center;
-  }
-  
-  /* Spesifikasiyalar grid */
-  .specificationGrid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 0.75rem;
-    margin-bottom: 1rem;
-  }
-  
-  .specItem {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .specTitle {
+    padding: 0.2rem 0.5rem;
     font-size: 0.75rem;
-    opacity: 0.7;
-    margin-bottom: 0.2rem;
   }
   
-  .specValue {
-    font-size: 0.9rem;
-    font-weight: 500;
-  }
-  
-  /* Qiymət məlumatı */
-  .priceInfoBack {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 0.5rem;
-  }
-  
-  .priceLabel {
+  .favoriteButtonBack {
+    min-width: 140px;
+    padding: 0.4rem 0.8rem;
     font-size: 0.85rem;
-    opacity: 0.7;
-    margin-bottom: 0.2rem;
+    bottom: 10px;
+  }
+}
+
+@media (max-width: 576px) {
+  .cardBack {
+    padding: 1rem;
+  }
+  
+  .watchDetails {
+    padding-bottom: 50px;
+  }
+  
+  .watchNameBack {
+    font-size: 1.0rem;
+  }
+  
+  .specificationGrid {
+    gap: 0.4rem;
   }
   
   .priceValueBack {
-    font-size: 1.0rem;
-    font-weight: 600;
-    color: #d4af37;
+    font-size: 1.1rem;
   }
   
-  /* Mövcudluq statusu */
-  .availabilityInfo {
-    text-align: center;
-    font-size: 0.85rem;
+  .favoriteButtonBack {
+    min-width: 130px;
+    padding: 0.35rem 0.7rem;
+    font-size: 0.8rem;
+  }
+}
+
+/* Card interior for 480-768px range */
+@media (min-width: 480px) and (max-width: 768px) {
+  /* Card size */
+  .watchCard {
+    height: 450px;
+  }
+  
+  /* Font sizes */
+  .watchName, .watchNameBack {
+    font-size: 0.7rem;
+    margin-bottom: 0.4rem;
+  }
+  
+  .watchDescription {
+    font-size: 0.7rem;
+    line-height: 1.1;
+    margin-bottom: 0.6rem;
+  }
+  
+  .watchPrice, .priceValueBack {
+    font-size: 0.7rem;
+  }
+  
+  .specTitle {
+    font-size: 0.7rem;
+    margin-bottom: 0.15rem;
+  }
+  
+  .specValue {
+    font-size: 0.7rem;
+  }
+  
+  .favoriteButton {
+    width: 35px;
+    height: 35px;
+  }
+  
+  .favoriteButtonBack {
+    min-width: 130px;
+    padding: 0.35rem 0.7rem;
+    font-size: 0.8rem;
+    bottom: 12px;
+  }
+  
+  .backButton {
+    width: 50px;
+    font-size: 0.6rem;
+    padding: 0.3rem 0;
     margin-bottom: 0.5rem;
   }
   
-  .limitedInfo {
-    color: #ae0000;
+  /* Feature tags */
+  .featureTag {
+    padding: 0.15rem 0.4rem;
+    font-size: 0.7rem;
   }
   
-  .regularRelease {
-    opacity: 0.8;
+  .featuresContainer {
+    gap: 0.3rem;
+    margin-bottom: 0.5rem;
   }
   
-  /* Favorit düyməsi - aşağıda və ortada sabit mövqedə */
-  .favoriteButtonBack {
-    position: absolute;
-    bottom: 15px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: auto;
-    min-width: 160px;
-    border-radius: 25px;
-    padding: 0.5rem 1rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    z-index: 10;
-    background: rgba(255, 255, 255, 0.9);
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
+  /* Specification grid */
+  .specificationGrid {
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
   }
   
-  .favoriteButtonBack:hover {
-    transform: translateX(-50%) scale(1.05);
+  /* Badges */
+  .limitedBadge, .luxuryBadge, .releaseYearBadge {
+    font-size: 0.7rem;
+    padding: 0.2rem 0.4rem;
   }
   
-  .dark .favoriteButtonBack {
-    background: rgba(30, 30, 30, 0.9);
-    color: #f0f0f0;
+  .watchDetails {
+    font-size: 0.7rem;
+    padding-bottom: 50px;
+    padding-right: 3px;
   }
   
-  /* Responsiv parametrlər */
-  @media (max-width: 768px) {
-    .watchNameBack {
-      font-size: 1.2rem;
-      margin-bottom: 0.5rem;
-    }
-    
-    .watchDescription {
-      font-size: 0.85rem;
-      line-height: 1.35;
-      margin-bottom: 0.75rem;
-    }
-    
-    .specificationGrid {
-      gap: 0.5rem;
-      margin-bottom: 0.75rem;
-    }
-    
-    .featuresContainer {
-      gap: 0.4rem;
-      margin-bottom: 0.5rem;
-    }
-    
-    .featureTag {
-      padding: 0.2rem 0.5rem;
-      font-size: 0.75rem;
-    }
-    
-    .favoriteButtonBack {
-      min-width: 140px;
-      padding: 0.4rem 0.8rem;
-      font-size: 0.85rem;
-      bottom: 10px;
-    }
+  /* Price info */
+  .priceInfoBack {
+    margin-bottom: 0.4rem;
   }
   
-  @media (max-width: 576px) {
-    .cardBack {
-      padding: 1rem;
-    }
-    
-    .watchDetails {
-      padding-bottom: 50px;
-    }
-    
-    .watchNameBack {
-      font-size: 1.0rem;
-    }
-    
-    .specificationGrid {
-      gap: 0.4rem;
-    }
-    
-    .priceValueBack {
-      font-size: 1.1rem;
-    }
-    
-    .favoriteButtonBack {
-      min-width: 130px;
-      padding: 0.35rem 0.7rem;
-      font-size: 0.8rem;
-    }
+  .priceLabel {
+    font-size: 0.5rem;
   }
+  
+  /* Availability info */
+  .availabilityInfo {
+    font-size: 0.75rem;
+    margin-bottom: 0.4rem;
+  }
+  
+  /* Hover instruction */
+  .hoverInstruction {
+    font-size: 0.7rem;
+    padding: 0.25rem 0.6rem;
+  }
+  
+  /* Click instruction */
+  .clickInstruction {
+    font-size: 0.75rem;
+  }
+}
 
-  /* Kartin icerisi 480-768px arasi üçün xüsusi media sorğusu */
-@media (min-width: 480px) and (max-width: 768px) {
-    /* Kartın ölçüsü */
-    .watchCard {
-      height: 450px;
-    }
-    
-    /* Font ölçüləri */
-    .watchName, .watchNameBack {
-      font-size: 0.7rem;
-      margin-bottom: 0.4rem;
-    }
-    
-    .watchDescription {
-      font-size: 0.7rem;
-      line-height: 1.1;
-      margin-bottom: 0.6rem;
-    }
-    
-    .watchPrice, .priceValueBack {
-      font-size: 0.7rem;
-    }
-    
-    .specTitle {
-      font-size: 0.7rem;
-      margin-bottom: 0.15rem;
-    }
-    
-    .specValue {
-      font-size: 0.7rem;
-    }
-    
-  
-    .favoriteButton {
-      width: 35px;
-      height: 35px;
-    }
-    
-    .favoriteButtonBack {
-      min-width: 130px;
-      padding: 0.35rem 0.7rem;
-      font-size: 0.8rem;
-      bottom: 12px;
-    }
-    
-    .backButton {
-        width: 50px;
-      font-size: 0.6rem;
-      padding: 0.3rem 0;
-      margin-bottom: 0.5rem;
-    }
-    
-    /* Feature taglar */
-    .featureTag {
-      padding: 0.15rem 0.4rem;
-      font-size: 0.7rem;
-    }
-    
-    .featuresContainer {
-      gap: 0.3rem;
-      margin-bottom: 0.5rem;
-    }
-    
-    /* Specification grid */
-    .specificationGrid {
-      gap: 0.5rem;
-      margin-bottom: 0.75rem;
-    }
-    
-    /* Badge-lər */
-    .limitedBadge, .luxuryBadge, .releaseYearBadge {
-      font-size: 0.7rem;
-      padding: 0.2rem 0.4rem;
-    }
-    
- 
-    .watchDetails {
-        font-size: 0.7rem;
-      padding-bottom: 50px;
-      padding-right: 3px;
-    }
-    
-    /* Qiymət info */
-    .priceInfoBack {
-      margin-bottom: 0.4rem;
-    }
-    
-    .priceLabel {
-      font-size: 0.5rem;
-    }
-    
-    /* Mövcudluq məlumatı */
-    .availabilityInfo {
-      font-size: 0.75rem;
-      margin-bottom: 0.4rem;
-    }
-    
-    /* Hover təlimatı */
-    .hoverInstruction {
-      font-size: 0.7rem;
-      padding: 0.25rem 0.6rem;
-    }
-    
-    /* Klikləmə təlimatı */
-    .clickInstruction {
-      font-size: 0.75rem;
-    }
+/* Easier vertical scrolling on small screens */
+@media (min-width: 480px) and (max-width: 768px) and (max-height: 700px) {
+  .watchDetails {
+    max-height: calc(100% - 30px);
   }
   
-  /* Kiçik ekranlarda vertical scrolling-i asanlaşdırmaq */
-  @media (min-width: 480px) and (max-width: 768px) and (max-height: 700px) {
-    .watchDetails {
-      max-height: calc(100% - 30px);
-    }
-    
-    .cardBack {
-      padding: 1rem 1rem 0.75rem;
-    }
-    
-    .specificationGrid {
-      grid-template-columns: 1fr; /* Kiçik ekranlarda spesifikasiyaları alt-alta düzürük */
-      gap: 0.4rem;
-      margin-bottom: 0.6rem;
-    }
+  .cardBack {
+    padding: 1rem 1rem 0.75rem;
   }
+  
+  .specificationGrid {
+    grid-template-columns: 1fr; /* Specifications stacked vertically on small screens */
+    gap: 0.4rem;
+    margin-bottom: 0.6rem;
+  }
+}

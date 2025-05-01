@@ -18,13 +18,6 @@
   "featuredModels": "Featured Models",
   "buy": "Buy",
   "luxuryWatches": "Lux Watches",
-  "customerTestimonials": "Customer Testimonials",
-  "customer1Name": "John D.",
-  "customer1Feedback": "The Rolex Submariner is the perfect watch for me!",
-  "customer2Name": "Sophia L.",
-  "customer2Feedback": "I bought the watch and I'm very happy. Not only does it look beautiful, but it’s also very comfortable.",
-  "customer3Name": "James T.",
-  "customer3Feedback": "The best watch experience and amazing design!",
   "aboutDescription": "We specialize in selling high-quality luxury watches. Therefore, we strive to offer our customers only the best watches. Working with us means experiencing perfection.",
 
   "ourMission": "Our Mission",
@@ -36,7 +29,6 @@
   "contactUs": "Contact Us",
   "contactDescription": "If you have any questions about our watches and services, don’t hesitate to reach out to us. Contact our customer service for the best solutions.",
   "support": "Support",
-  "email": "Email Address",
   "additionalInfo": "Additional Information",
   "additionalInfoDescription": "If you have any questions, feel free to contact us.",
   "yourName": "Your Name",
@@ -111,7 +103,6 @@
   "feature_titanium": "Titanium Construction",
   "feature_dive": "Dive Timer",
   "feature_water_300": "300m Water Resistance",
-  "notFound": "Blog not found",
   "backToBlog": "Back to Blog Page",
   "technicalSpecifications": "Technical Specifications",
   "diameter": "Diameter",
@@ -122,15 +113,10 @@
   "bezel": "Bezel",
   "gallery": "Gallery",
   "relatedPosts": "Related Posts",
-  "backButton": "Back to Blog Page",
-  "author": "Author",
-  "category": "Category",
   "readTime": "Read Time",
-  "loading": "Loading...",
   "welcome": "Welcome!",
 
   "orders": "My Orders",
-  "noOrders": "You have no orders yet.",
   "myProducts": "My Products",
 
   "profile": "Profile Information",
@@ -311,6 +297,9 @@
     "emailInUse": "This email is already registered",
     "passwordRequirements": "Password requirements not met"
   },
+  "thankYou": {
+    "recommendedTitle": "Recommended Products"
+  },
 
   "login": {
     "redirectingToForgotPassword": "Redirecting to the Forgot Password page...",
@@ -435,7 +424,7 @@
     "retry": "Try Again",
     
     "next_page": "Next",
-    "loginet1": "Sign in",
+   
     "thankYouMessage": "Thank you",
 
     "faqTitle": "Frequently Asked Questions",
@@ -867,11 +856,10 @@
   "Rolex Kolleksiyası": "Rolex Collection",
     "Lüks və dəqiqliyin mükəmməl birləşməsi": "Perfect combination of luxury and precision",
      "productsfound": "products found",
-     "loading": "Loading...",
+   
      "notFound": "Product not found.",
      "backButton": "Back",
      "watchVideo": "Click to watch video",
-     "discount": "-{{percent}}%",
      "reviewsTitle": "Customer Reviews",
      "writeReview": "Write a Review",
      "addReview": "Add Review",
@@ -884,11 +872,9 @@
      "commentLabel": "Your Review",
      "commentPlaceholder": "Write your thoughts about the product...",
      "reviews": "{{count}} reviews | Write a review",
-     "inStock": "In Stock",
-     "outOfStock": "Out of Stock",
+     
      "technicalSpecs": "Technical Specifications",
-     "addToCart": "Add to Cart",
-     "addToWishlist": "Add to Wishlist",
+   
      "removeFromWishlist": "Remove from Wishlist",
      "shareYourReview": "Share Your Review",
      "formValidationError": "Please fill in all required fields.",
@@ -980,13 +966,8 @@
   "failedToDeleteBlog": "Failed to delete blog.",
   "hiAdmin": "Hi, Admin!",
   "dashboard": "Dashboard",
-  "products": "Products",
-  "users": "Users",
-  "blog": "Blog",
-  "search": "Search",
   "totalSales": "Total Sales",
   "fromLastMonth": "from last month",
-  "orders": "Orders",
   "customers": "Customers",
   "averageOrderValue": "Average Order Value",
   "monthlySales": "Monthly Sales",
@@ -1005,17 +986,13 @@
   "watches": "watches",
   "topSellingProducts": "Top Selling Products",
   "thisMonth": "This Month",
-  "price": "Price",
   "sold": "Sold",
   "revenue": "Revenue",
-  "products": "Products",
   "addProduct": "Add Product",
   "loadingProducts": "Loading products...",
   "id": "ID",
   "image": "Image",
-  "name": "Name",
   "model": "Model",
-  "price": "Price",
   "actions": "Actions",
   "noProductsFound": "No products found.",
   "noProductsAvailable": "No products available.",
@@ -1023,8 +1000,6 @@
   "loadingUsers": "Loading users...",
   "email": "Email",
   "role": "Role",
-  
-  "user": "User",
   "noUsersFound": "No users found.",
   "noUsersAvailable": "No users available.",
   "blogs": "Blogs",
@@ -1037,15 +1012,17 @@
   "noBlogsFound": "No blogs found.",
   "noBlogsAvailable": "No blogs available.",
   "editProduct": "Edit Product",
-  "addBlog": "Add Blog",
   "editBlog": "Edit Blog",
-
+  "removedFromWishlist": "Product removed from wishlist!",
+ 
   "productName": "Product Name",
-  "model": "Model",
-  "price": "Price",
+
   "discountedPrice": "Discounted Price",
   "discounted": "Discounted",
   "product": {
+     "addedToWishlist": "Product added to wishlist",
+     "addedToCart": "Product added to cart",
+    "removedFromWishlist": "Removed from wishlist",
     "imageUrl": "Image URL",
     "description": "Description",
     "rating": "Rating",
@@ -1187,6 +1164,7 @@
     "orderDate": "Order Date",
     "estimatedDelivery": "Estimated Delivery"
   },
+  
   "items": {
     "product": "Product",
     "quantity": "Quantity",
@@ -1223,6 +1201,61 @@
       "emailRequired": "Email address is required"
     }
   },
-  "common.loading":"Loading"
+  "common.loading":"Loading",
+  "thankYou": {
+    "pageTitle": "Thank You for Your Order",
+    "mainTitle": "Your Order Has Been Successfully Placed!",
+    "subtitle": "We've emailed you the order details.",
+    "orderNumber": "Order Number",
+    "estimatedDelivery": "Estimated Delivery Date",
+    "continueShopping": "Continue Shopping",
+    "viewOrder": "View Order",
+    "recommendedTitle": "Recommended Products",
+    "benefits": {
+      "title": "Why Choose Us?",
+      "subtitle": "Discover the benefits we offer",
+      "freeShipping": "Free Shipping",
+      "easyReturn": "Easy Return",
+      "guarantee": "Quality Guarantee",
+      "securePayment": "Secure Payment"
+    }
+  },
   
+  "modelsReady": "AI models ready. You can upload an image.",
+  "imageLoaded": "Image uploaded. Starting wrist detection...",
+
+  "uploadImage": "Upload Image",
+  "reset": "Reset",
+  "manualMode": "Manual Mode",
+  "returnToAI": "Return to AI",
+  "zoomIn": "Zoom In",
+  "zoomOut": "Zoom Out",
+  "save": "Save",
+  "watchSize": "Watch Size",
+  "watchRotation": "Watch Rotation",
+  "aiAccuracy": "AI Detection Accuracy:",
+  "fast": "Fast",
+  "normal": "Normal",
+  "high": "High",
+  "wristDetected": "Wrist successfully detected! Confidence: ",
+  "wristNotFound": "Wrist not found. Upload a clearer image or adjust parameters.",
+  "detectionAccuracy": "Detection Accuracy",
+  "skinToneDetected": "Skin tone detected",
+  "manualModeActive": "Manual mode is active. Click and drag to position the watch.",
+  "aiModeActive": "AI mode is active.",
+  "manualInstructions": "You are in manual mode. Click and drag to position the watch, use sliders for size and rotation.",
+  "aiInstructions": "AI automatically detects your wrist. Clear, well-lit images are recommended for better results.",
+  "modelLoadError": "Failed to load AI models. Please refresh the page or try another browser.",
+  "waitForModels": "AI models are still loading. Please wait.",
+  "modelsNotLoaded": "AI models are not fully loaded.",
+  "analysisError": "Technical error during image analysis. Switching to manual mode.",
+  "saveError": "Error saving the image.",
+  "accuracySet": "Accuracy set to",
+  "reanalyzing": "Reanalyzing...",
+  "imageSaved": "Image successfully saved!",
+  "hideTryOn": "Hide Try-On",
+  "loadingReviews": "Loading reviews...",
+  "virtualTryOn": "Virtual Try-On",
+  "reviewSubmitted": "Review submitted",
+  "loginet1": "Sign in"
 }

@@ -7,12 +7,12 @@
 }
 
 .watchesShowcase.light {
-  background: linear-gradient(145deg, #f9f9f9, #ffffff);
+  background: #ffffff;
   color: #111111;
 }
 
 .watchesShowcase.dark {
-  background: linear-gradient(145deg, #111111, #080808);
+  background:#080808;
   color: #f9f9f9;
 }
 
@@ -45,13 +45,36 @@
   position: relative;
   z-index: 1;
 }
-
 .sectionTitle {
-  font-size: 3.2rem;
-  font-weight: 300;
-  letter-spacing: 3px;
+  font-size: 2.5rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 3rem;
+  position: relative;
   text-transform: uppercase;
-  margin-bottom: 1rem;
+  letter-spacing: 2px;
+}
+
+.dark .sectionTitle {
+  color: #d4af37; 
+  text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.light .sectionTitle {
+  color: #730026;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.sectionTitle::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(90deg, #730026, #d4af37);
+  border-radius: 2px;
 }
 
 .titleSeparator {

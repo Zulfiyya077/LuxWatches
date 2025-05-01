@@ -87,7 +87,7 @@
   .discountBadge {
     top: 10px;
     right: 10px;
-    background-color: var(--discount-background);
+    background-color: var( --luxury-burgundy);
   }
   
 

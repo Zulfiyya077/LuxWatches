@@ -549,7 +549,7 @@
 }
 
 .viewBtn svg {
-  stroke: var(--text-secondary);
+  /* stroke: var(--text-secondary); */
   stroke-width: 1.5;
   fill: none;
   transition: var(--transition-standard);

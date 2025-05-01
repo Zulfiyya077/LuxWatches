@@ -42,11 +42,11 @@
       background-position: 0% 50%;
     }
   }
-  
+/*   
   .darkMode {
     /* background: var(--black); */
-    color: var(--off-white);
-  }
+    /* color: var(--off-white); */
+  
   
   .darkMode .couponInput {
     background: #2c2c2c;

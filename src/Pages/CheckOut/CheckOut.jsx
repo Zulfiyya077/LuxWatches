@@ -14,6 +14,7 @@ import CouponInput from "../../components/CouponInput/CouponInput";
 import { motion } from "framer-motion"; 
 import styles from "./Checkout.module.css";
 
+
 const stripePromise = loadStripe("YOUR_STRIPE_PUBLIC_KEY");
 
 const CARD_ELEMENT_OPTIONS = {

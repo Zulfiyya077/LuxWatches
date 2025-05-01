@@ -220,6 +220,71 @@
   --box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
 }
 
+:root {
+
+  
+  /* Shared Colors */
+  --text-color: #333333;
+  --gold: #d4af37;
+  --dark-gold: #b8860b;
+  --premium-gold: #ffd700;
+  --light-gold: #f1c40f;
+  --gold-hover: #b8960c;
+  --deep-green: #004d40;
+  --light-green: #00695c;
+  --dark-green: #013220;
+  --burgundy: #800020;
+  --light-burgundy: #a52a2a;
+  --black: #1a1a1a;
+  --off-white: #f5f5f5;
+  --cream: #f8f6ea;
+  
+  /* Accent Colors */
+  --accent-color: #D4AF37;
+  --accent-gradient: linear-gradient(90deg, #D4AF37, #F7EF8A, #D4AF37);
+  --accent-light: rgba(212, 175, 55, 0.2);
+  --accent-color-dark: #F7EF8A;
+  --accent-gradient-dark: linear-gradient(90deg, #F7EF8A, #D4AF37, #F7EF8A);
+  --accent-dark: rgba(247, 239, 138, 0.2);
+  --metallic-gradient: linear-gradient(145deg, #e6c567, #d4af37, #b8860b);
+  
+  /* Utility Colors */
+  --error-bg-light: rgba(244, 67, 54, 0.1);
+  --error-color-light: #f44336;
+  --success-bg-light: rgba(76, 175, 80, 0.1);
+  --success-color-light: #4caf50;
+  --info-bg-light: rgba(33, 150, 243, 0.1);
+  --info-color-light: #2196f3;
+  --error-bg-dark: rgba(244, 67, 54, 0.2);
+  --error-color-dark: #ff6b6b;
+  --success-bg-dark: rgba(76, 175, 80, 0.2);
+  --success-color-dark: #69f0ae;
+  --info-bg-dark: rgba(1, 30, 54, 0.2);
+  --info-color-dark: #64b5f6;
+  --red: #dc3545;
+  --green: #198754;
+  
+  /* Logo Colors */
+  --logo-primary-light: #111;
+  --logo-accent-light: #8B7D4B;
+  --logo-primary-dark: #f0f0f0;
+  --logo-accent-dark: #F7EF8A;
+  
+  /* Effects */
+  --box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  --shadow-light: 0 15px 50px rgba(0, 0, 0, 0.1);
+  --shadow-elevated: 0 15px 35px rgba(0, 0, 0, 0.25);
+  --shadow-dark: 0 15px 50px rgba(0, 0, 0, 0.3);
+  --transition-standard: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+[data-theme='dark'] {
+  --primary-bg: #121212;
+  --secondary-bg: #1e1e1e;
+  --text-color: #f0f0f0;
+  --box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -227,10 +292,10 @@
 }
 
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background-color: var(--primary-bg);
   color: var(--text-color);
-  transition: background-color 0.3s, color 0.3s;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .app {
@@ -244,7 +309,81 @@ body {
   padding: 1rem;
 }
 
-/* Lüks skroll stilləri */
+/* Light Mode Styles */
+.light-mode {
+  background-color: #fff;
+  color: #333;
+}
+
+.light-mode .navbar-light {
+  background-color: #f1f1f1;
+  color: #333;
+}
+
+.light-mode .footer-light {
+  background-color: #f1f1f1;
+  color: #333;
+}
+
+.light-mode .theme-toggle-btn {
+  background-color: #013f15;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.light-mode .theme-toggle-btn:hover {
+  background-color: #005507;
+}
+
+/* Dark Mode Styles */
+.dark-mode {
+  background-color: #121212;
+  color: #f6ff00;
+}
+
+.dark-mode .navbar-dark {
+  background-color: #333;
+  color: #f1f1f1;
+}
+
+.dark-mode .footer-dark {
+  background-color: #333;
+  color: #f1f1f1;
+}
+
+.dark-mode .theme-toggle-btn {
+  background-color: #333;
+  color: #f1f1f1;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.dark-mode .theme-toggle-btn:hover {
+  background-color: #555;
+}
+
+/* Navbar Styles */
+.navbar-light, .navbar-dark {
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar-content h1 {
+  margin: 0;
+}
+
+/* Footer Styles */
+.footer-light, .footer-dark {
+  padding: 20px;
+  text-align: center;
+}
+
+/* Luxury Scroll Styles */
 ::-webkit-scrollbar {
   width: 10px;
 }
@@ -254,7 +393,7 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--gold-color);
+  background: var(--gold);
   border-radius: 5px;
 }
 
@@ -262,7 +401,7 @@ body {
   background: var(--gold-hover);
 }
 
-/* Ana responsivlik tənzimləmələri */
+/* Responsive Adjustments */
 @media (max-width: 768px) {
   :root {
     --box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
@@ -282,4 +421,3 @@ body {
     width: 6px;
   }
 }
-

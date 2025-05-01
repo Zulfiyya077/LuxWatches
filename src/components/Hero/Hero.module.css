@@ -80,7 +80,7 @@
 }
 
 .title {
-  font-family: 'Playfair Display', serif;
+  /* font-family: 'Playfair Display', serif; */
   font-size: 3rem;
   font-weight: 700;
   margin-bottom: 1rem;
@@ -111,7 +111,7 @@
 }
 
 .collectionName {
-  font-family: 'Playfair Display', serif;
+  /* font-family: 'Playfair Display', serif; */
   font-size: 1.8rem;
   color: #d4af37;
   margin-bottom: 0.5rem;

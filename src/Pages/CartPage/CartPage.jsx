@@ -170,7 +170,7 @@ const CartPage = () => {
       className={`${styles.cartPage} ${theme === "dark" ? styles.darkMode : ""}`}
     >
       <ToastContainer
-        position="top-right"
+        position="bottom-right"
         autoClose={3000}
         hideProgressBar={false}
         newestOnTop

@@ -108,10 +108,6 @@ const Footer = () => {
       <MdEmail className={`${styles.contactIcon} ${themeClass}`} />
       <span>info@luxurywatches.az</span>
     </li>
-    <li className={styles.contactItem}>
-      <MdEmail className={`${styles.contactIcon} ${themeClass}`} />
-      <span>support@luxurywatches.az</span>
-    </li>
    
   </ul>
 </div>

@@ -500,6 +500,34 @@ const AdminDashboard = () => {
     setSidebarOpen(!sidebarOpen);
   };
 
+  const closeSidebarOnOutsideClick = (e) => {
+    // Only close if sidebar is open and the click is outside the sidebar
+    if (sidebarOpen && e.target.closest(`.${styles.sidebar}`) === null) {
+      setSidebarOpen(false);
+    }
+  };
+  useEffect(() => {
+    // Only add the event listener when the sidebar is open
+    if (sidebarOpen) {
+      document.addEventListener('mousedown', closeSidebarOnOutsideClick);
+      document.addEventListener('touchstart', closeSidebarOnOutsideClick);
+    }
+    
+    // Clean up the event listener when component unmounts or sidebar closes
+    return () => {
+      document.removeEventListener('mousedown', closeSidebarOnOutsideClick);
+      document.removeEventListener('touchstart', closeSidebarOnOutsideClick);
+    };
+  }, [sidebarOpen]);
+  
+  // 4. Add this to your JSX, right after the <aside> element:
+  {sidebarOpen && (
+    <div 
+      className={styles.sidebarBackdrop}
+      onClick={() => setSidebarOpen(false)}
+    />
+  )}
+
   return (
     <div
       className={`${styles.container} ${

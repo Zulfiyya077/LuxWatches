@@ -939,3 +939,59 @@
     padding-top: 12px;
   }
 }
+
+/* Add or modify these styles in your Dashboard.module.css file */
+
+/* Make the sidebar fixed position for mobile */
+@media (max-width: 768px) {
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 300px;
+    /* z-index: 1000; */
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+  }
+  
+  .sidebarOpen {
+    transform: translateX(0);
+  }
+  
+  /* Add this new class for the backdrop */
+  .sidebarBackdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    /* z-index: 999; */
+  }
+  
+  /* Make sure the content doesn't overlap with the sidebar */
+  .content {
+    margin-left: 0;
+    width: 100%;
+  }
+}
+
+/* Ensure the menu button stays visible */
+.mobileHeader {
+  position: sticky;
+  top: 0;
+  /* z-index: 100; */
+  background-color: inherit;
+  padding: 1rem;
+  align-items: center;
+}
+
+.menuButton {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  color: inherit;
+}

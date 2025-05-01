@@ -180,7 +180,7 @@ const BlogDetails = () => {
 
       <div className={styles.navigationSection}>
         <Link to="/blog" className={styles.backButton}>
-          <span className={styles.backIcon}>←</span> {t("blog1.returnToBlog")}
+          <button className={styles.backIcon}>←</button> {t("blog1.returnToBlog")}
         </Link>
       </div>
     </div>

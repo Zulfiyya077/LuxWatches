@@ -21,12 +21,6 @@
   "rolexDayDate": "Rolex Day-Date",
   "rolexGMTMaster": "Rolex GMT-Master II",
   "customerTestimonials": "Müştəri Şərhləri",
-  "customer1Name": "John D.",
-  "customer1Feedback": "Rolex Submariner mənim üçün mükəmməl saatdır!",
-  "customer2Name": "Sophia L.",
-  "customer2Feedback": "Saatı aldım və çox xoşbəxtəm. Sadəcə gözəl görünmür, həm də çox rahatdır.",
-  "customer3Name": "James T.",
-  "customer3Feedback": "Ən yaxşı saat təcrübəsi və möhtəşəm dizayn!",
   "aboutDescription": "Biz yüksək keyfiyyətli lüks saatların satışı ilə məşğul oluruq. Buna görə də, müştərilərimizə yalnız ən yaxşı saatları təklif etməyə çalışırıq. Bizimlə işləmək, mükəmməlliyi yaşamaq deməkdir.",
   "contact_us": "Bizimlə Əlaqə",
   "newsletter": "Bülletenə Abunə Olun",
@@ -123,7 +117,7 @@
   "bezel": "Bezel",
   "gallery": "Qalereya",
   "relatedPosts": "Oxşar Məqalələr",
-  "backButton": "Bloq Səhifəsinə Qayıt",
+  
   "author": "Müəllif",
   "category": "Kateqoriya",
   "readTime": "Oxuma Vaxtı",
@@ -131,7 +125,7 @@
   "welcome": "Xoş gəlmisiniz!",
 
   "orders": "Sifarişlərim",
-  "noOrders": "Hələki heç bir sifariş yoxdur.",
+ 
   "myProducts": "Mənim məhsullarım",
 
   "profile": "Profil məlumatları",
@@ -142,9 +136,11 @@
   },
 
   "product": {
-
+      "addedToWishlist": "Məhsul istək siyahısına əlavə edildi",
+    "addedToCart": "Məhsul səbətə əlavə edildi",
+  "removedFromWishlist": "İstək siyahısından silindi",
     "discount": "Endirim",
-    "addToWishlist": "Sevimlilərə Əlavə Et",
+    
     "viewDetails": "Ətraflı Bax",
     "outOfStock": "Anbarlarda Yoxdur",
     "addToCartShort": "Səbətə Əlavə Et",
@@ -237,25 +233,15 @@
   "submarinerDial": "Qara",
   "dayDateDial": "Şampan",
   "gmtDial": "Qara",
-
-  "inStock": "Anbarda Mövcuddur",
   "comingSoon": "Tezliklə Gələcək",
   "notifyMe": "Məni Xəbərdar Et",
 
-  "addToCart": "Səbətə Əlavə Et",
+
   "addToWishlist": "İstək Siyahısına Əlavə Et",
   "viewDetails": "Ətraflı Bax",
 
   "addedToWishlist": "İstək Siyahısına Əlavə Olundu!",
   "addedToCart": "Səbətə Uğurla Əlavə Olundu!",
-  "common": {
-    "loading": "Yüklənir...",
-    "companyName": {
-      "luxury": "LÜKS",
-      "shop": "SAAT"
-    }
-  },
-
   "workingHoursWeekdays": "Bazar ertəsi - Cümə: {{start}} - {{end}}",
   "workingHoursSaturday": "Şənbə: {{start}} - {{end}}",
 
@@ -281,7 +267,7 @@
       "hours": "Hər gün: 10:00 - 22:00"
     }
   },
-  "customerTestimonials": "Müştəri rəyləri",
+
   "customer1Name": "Əli Məmmədov",
   "customer2Name": "Leyla Əliyeva",
   "customer3Name": "Orxan Hüseynov",
@@ -296,14 +282,6 @@
   "customer3Feedback": "Saatların keyfiyyəti və dizaynı əladır. Xidmət də çox yaxşıdır. Bütün dostlarıma tövsiyə edirəm.",
   "customer4Feedback": "Çox peşəkar kollektiv və keyfiyyətli məhsullar. Zərgərlik məmulatlarının seçimi də çox geniş və müxtəlifdir.",
   
-  "sort": {
-    "label": "Çeşidləmə:",
-    "price_asc": "Qiymət: aşağıdan yuxarıya",
-    "price_desc": "Qiymət: yuxarıdan aşağıya",
-    "name_asc": "Ad: A-Z",
-    "name_desc": "Ad: Z-A",
-    "discounted": "Endirimli məhsullar"
-  },
   "contactNumber": "Əlaqə nömrəsi",
   "monday": "Bazar ertəsi",
   "friday": "Cümə",
@@ -327,9 +305,20 @@
 
   "logout": "Çıxış",
   "checkout": {
-    "orderSummary": "Sifariş Məlumatı",
+    "orderSummary": "Sifarişin Xülasəsi",
+    "subtotal": "Məbləğ",
     "discount": "Endirim",
-    "subtotal": "Aralıq cəm",
+    "total": "Yekun məbləğ",
+    "pay": "Ödə",
+    "processing": "Ödəniş emal olunur",
+    "emptyCart": "Səbətiniz boşdur",
+    "addItemsFirst": "Zəhmət olmasa, ödənişdən əvvəl səbətinizə məhsul əlavə edin",
+    "returnToProducts": "Məhsullara qayıt",
+    "paymentError": "Ödəniş zamanı xəta baş verdi. Zəhmət olmasa, yenidən cəhd edin.",
+    "paymentErrorLog": "Ödəniş zamanı xəta:",
+    "cardHolderPlaceholder": "Kart sahibinin adı",
+    "premiumBank": "Premium Bank"
+   ,
 
     "orders": {
       "pageTitle": "Sifarişlərim",
@@ -353,24 +342,17 @@
         "cancelled": "Ləğv edilib"
       }
     },
-    "common": {
-      "loading": "Yüklənir",
-      "errorOccurred": "Xəta yarandı"
-    },
 
-    "pay": "Ödəniş et",
-    "processing": "İcra olunur...",
+
     "title": "Ödəniş",
-    "total": "Cəmi: ",
+   
     "cardHolder": "KART SAHİBİ",
     "nameOnCard": "AD SOYAD",
 
-    "emptyCart": "Səbətiniz boşdur",
-    "addItemsFirst": "Ödəniş etmək üçün əvvəlcə səbətinizə məhsul əlavə edin.",
-    "returnToProducts": "Məhsullara qayıt",
+   
     "emptyCartError": "Səbətinizdə məhsul yoxdur.",
-    "paymentSuccess": "Ödəniş uğurla tamamlandı!",
-    "paymentError": "Xəta baş verdi. Təkrar cəhd edin."
+    "paymentSuccess": "Ödəniş uğurla tamamlandı!"
+ 
   },
   "register": {
     "passwordHint": "Şifrəniz ən azı 8 simvol olmalıdır və bir böyük hərf, bir rəqəm və bir xüsusi simvol daxil etməlidir.",
@@ -443,15 +425,6 @@
     "quickCheckout": "Sürətli alış-veriş",
     "exclusiveOffers": "Eksklüziv təkliflər"
   },
-
-  "customer4Name": "Nigar Hüseynova",
-
-  "customerPosition": "Müştəri",
-  "customer2Position": "Müştəri",
-  "customer3Position": "Müştəri",
-  "customer4Position": "Müştəri",
-
-  "customer4Feedback": "Gözəl dizayn və keyfiyyətli məhsullar. Əla təcrübə yaşadım.",
   "login": {
     "redirectingToForgotPassword": "Şifrəni unutmusunuz səhifəsinə yönləndirilirsiniz...",
 
@@ -494,7 +467,6 @@
   "loading_products": "Məhsullar yüklənir...",
   "error_message": "Məhsullar yüklənərkən xəta baş verdi. Zəhmət olmasa yenidən cəhd edin.",
   "retry": "Yenidən cəhd edin",
-  "productsfound": "məhsul tapıldı",
   "next_page": "Növbəti",
   
 
@@ -658,10 +630,6 @@
     "update": "Yenilə"
   },
 
-  "roles": {
-    "admin": "Administrator",
-    "user": "İstifadəçi"
-  },
   "Failed to load products. Please try again later.": "Məhsulların yüklənməsi alınmadı. Zəhmət olmasa daha sonra yenidən cəhd edin.",
   "Rolex Kolleksiyası": "Rolex Kolleksiyası",
   "Ana Səhifə": "Ana Səhifə",
@@ -735,9 +703,15 @@
   "recentOrders": "Son Sifarişlər",
   "last24Hours": "Son 24 Saat",
   "orderID": "Sifariş İD",
-
+ "status2": "Status ",
   "amount": "Məbləğ",
-  "status": "Status",
+  "status": {
+    "pending": "Gözləmədədir",
+    "processing": "Emal olunur",
+    "shipped": "Göndərildi",
+    "delivered": "Çatdırıldı",
+    "cancelled": "Ləğv edildi"
+  },
   "completed": "Tamamlanıb",
   "processing": "İşlənir",
   "topSellingProducts": "Ən Çox Satan Məhsullar",
@@ -815,15 +789,22 @@
     "error": "Blogları yükləmək mümkün olmadı."
   },
   "coupon": {
-    "title": "Endirim Kuponu",
-    "apply": "Tətbiq et",
-    "checking": "Yoxlanılır...",
-    "remove": "Kuponu sil",
-    "placeholder": "Kupon kodunu daxil edin",
-    "applied": "Kupon tətbiq edildi:",
-    "discount": "endirim",
     "invalid": "Yanlış kupon kodu",
-    "error": "Kupon tətbiq edilərkən xəta baş verdi. Zəhmət olmasa yenidən cəhd edin."
+    "error": "Kupon tətbiq edilərkən xəta baş verdi. Zəhmət olmasa yenidən cəhd edin.",
+    "title": "Endirim Kuponu",
+    "placeholder": "Kupon kodunu daxil edin",
+    "apply": "Tətbiq et",
+    "checking": "Yoxlanılır",
+    "applied": "Kupon tətbiq edildi:",
+    "remove": "Sil",
+    "discount": "endirim",
+    "errors": {
+      "invalid": "Yanlış kupon kodu",
+      "expired": "Bu kuponun müddəti bitib",
+      "used": "Bu kupon artıq istifadə olunub",
+      "minimum": "Minimum alış məbləği qarşılanmayıb",
+      "generic": "Kupon tətbiq edilərkən xəta baş verdi"
+    }
   },
 
   "cart": {
@@ -855,7 +836,7 @@
   "Lüks və dəqiqliyin mükəmməl birləşməsi": "Lüks və dəqiqliyin mükəmməl birləşməsi",
   
    "productsfound": "məhsul tapıldı",
-   "loading": "Yüklənir...",
+   
    "notFound": "Məhsul tapılmadı.",
    "backButton": "Geri",
    "watchVideo": "Videonu izləmək üçün klikləyin",
@@ -876,7 +857,6 @@
    "outOfStock": "Stokda yoxdur",
    "technicalSpecs": "Texniki Xüsusiyyətlər",
    "addToCart": "Səbətə əlavə et",
-   "addToWishlist": "Seçilmişlərə əlavə et",
    "removeFromWishlist": "Seçilmişlərdən çıxar",
    "shareYourReview": "Rəyinizi Bildirin",
    "formValidationError": "Zəhmət olmasa bütün tələb olunan sahələri doldurun.",
@@ -904,52 +884,21 @@
     "noRelatedPosts": "Oxşar məqalə mövcud deyil"
   }
   ,
-  "coupon": {
-    "title": "Endirim Kuponu",
-    "placeholder": "Kupon kodunu daxil edin",
-    "apply": "Tətbiq et",
-    "checking": "Yoxlanılır",
-    "applied": "Kupon tətbiq edildi:",
-    "remove": "Sil",
-    "discount": "endirim",
-    "errors": {
-      "invalid": "Yanlış kupon kodu",
-      "expired": "Bu kuponun müddəti bitib",
-      "used": "Bu kupon artıq istifadə olunub",
-      "minimum": "Minimum alış məbləği qarşılanmayıb",
-      "generic": "Kupon tətbiq edilərkən xəta baş verdi"
-    }
-  },
   "common": {
     "currency": "AZN",
     "companyName": {
       "luxury": "Lüks",
-      "shop": "Mağaza"
+      "shop": "Mağaza",
+      "cancel": "Ləğv et",
+    "selectRole": "Rol seçin",
+    "loading": "Yüklənir",
+      "errorOccurred": "Xəta yarandı",
+      "companyName": {
+        "luxury": "LÜKS",
+        "shop": "SAAT"
+      }
     }
   },
-  "checkout": {
-    "orderSummary": "Sifarişin Xülasəsi",
-    "subtotal": "Məbləğ",
-    "discount": "Endirim",
-    "total": "Yekun məbləğ",
-    "pay": "Ödə",
-    "processing": "Ödəniş emal olunur",
-    "emptyCart": "Səbətiniz boşdur",
-    "addItemsFirst": "Zəhmət olmasa, ödənişdən əvvəl səbətinizə məhsul əlavə edin",
-    "returnToProducts": "Məhsullara qayıt",
-    "paymentError": "Ödəniş zamanı xəta baş verdi. Zəhmət olmasa, yenidən cəhd edin.",
-    "paymentErrorLog": "Ödəniş zamanı xəta:",
-    "cardHolderPlaceholder": "Kart sahibinin adı",
-    "premiumBank": "Premium Bank"
-  },
-  "addBlog": "Bloq əlavə et",
-  "editBlog": "Bloqu redaktə et",
-
-  "productName": "Məhsulun adı",
-  "model": "Model",
-  "price": "Qiymət",
-  "discountedPrice": "Endirimli qiymət",
-  "discounted": "Endirimli",
 
 
   "blog3": {
@@ -972,19 +921,6 @@
     "update": "Bloqu yenilə"
   },
 
-  "user": {
-    "name": "Ad",
-    "email": "Email",
-    "role": "Rol",
-    "add": "İstifadəçi əlavə et",
-    "update": "İstifadəçini yenilə"
-  },
-
-  "common": {
-    "cancel": "Ləğv et",
-    "selectRole": "Rol seçin"
-  },
-
   "roles": {
     "admin": "Admin",
     "user": "İstifadəçi"
@@ -993,7 +929,7 @@
     "orders": "Şifariş İzlə",
     "recentOrders": "Son Şifarişlər"
   },
-  "loading": "Yüklənir...",
+  
   "errorOccurred": "Xəta baş verdi: {{error}}",
   "noOrders": "Heç bir şifariş tapılmadı.",
 
@@ -1040,5 +976,42 @@
       "emailRequired": "E-poçt ünvanı tələb olunur"
     }
   },
-  "common.loading":"Yüklənir"
+  "common.loading":"Yüklənir",
+  
+  "modelsReady": "AI modelləri hazırdır. Şəkil yükləyə bilərsiniz.",
+  "imageLoaded": "Şəkil yükləndi. Biləyi təyin etməyə başlayırıq...",
+
+  "uploadImage": "Şəkil yüklə",
+  "reset": "Sıfırla",
+  "manualMode": "Əl rejimi",
+  "returnToAI": "AI rejiminə qayıt",
+  "zoomIn": "Yaxınlaşdır",
+  "zoomOut": "Uzaqlaşdır",
+  "save": "Yadda saxla",
+  "watchSize": "Saatın ölçüsü",
+  "watchRotation": "Saatın fırlanması",
+  "aiAccuracy": "AI ilə aşkarlama dəqiqliyi:",
+  "fast": "Sürətli",
+  "normal": "Normal",
+  "high": "Yüksək",
+  "wristDetected": "Bilək uğurla tapıldı! Etibar: ",
+  "wristNotFound": "Bilək tapılmadı. Daha aydın və işıqlı şəkil yükləyin və ya parametrləri tənzimləyin.",
+  "detectionAccuracy": "Aşkarlama dəqiqliyi",
+  "skinToneDetected": "Dəri rəngi təyin olundu",
+  "manualModeActive": "Əl rejimi aktivdir. Saatı yerləşdirmək üçün klikləyin və sürükləyin.",
+  "aiModeActive": "AI rejimi aktivdir.",
+  "manualInstructions": "Əl rejimindəsiniz. Saatı yerləşdirmək üçün klikləyin və sürükləyin, ölçü və fırlanma üçün sürgülərdən istifadə edin.",
+  "aiInstructions": "AI avtomatik olaraq biləyi təyin edir. Daha yaxşı nəticə üçün aydın və işıqlı şəkillər tövsiyə olunur.",
+  "modelLoadError": "AI modellərini yükləmək mümkün olmadı. Səhifəni yeniləyin və ya başqa brauzer sınayın.",
+  "waitForModels": "AI modelləri hələ yüklənir. Zəhmət olmasa gözləyin.",
+  "modelsNotLoaded": "AI modelləri tam yüklənməyib.",
+  "analysisError": "Şəklin təhlili zamanı texniki səhv baş verdi. Əl rejiminə keçir.",
+  "saveError": "Şəkli yadda saxlamaq mümkün olmadı.",
+  "accuracySet": "Dəqiqlik dərəcəsi təyin olundu:",
+  "reanalyzing": "Təkrar təhlil edilir...",
+  "imageSaved": "Şəkil uğurla yadda saxlanıldı!",
+  "hideTryOn": "Sınağı gizlət",
+  "loadingReviews": "Yorumlar yüklənir...",
+  "virtualTryOn": "Virtual Taxma",
+  "reviewSubmitted": "Yorum göndərildi"
 }

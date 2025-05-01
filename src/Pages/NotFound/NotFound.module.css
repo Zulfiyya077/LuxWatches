@@ -52,7 +52,7 @@
 }
 
 .digit4 {
-  font-family: 'Playfair Display', serif;
+  /* font-family: 'Playfair Display', serif; */
   font-size: 210px;
   font-weight: 700;
   color: var(--gold-dark);
@@ -110,7 +110,7 @@
 }
 
 .errorTitle {
-  font-family: 'Playfair Display', serif;
+  /* font-family: 'Playfair Display', serif; */
   font-size: 48px;
   color: var(--gold-medium);
   margin-bottom: 20px;

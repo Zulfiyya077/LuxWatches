@@ -54,13 +54,11 @@
   color: var(--deep-green);
   margin: 4rem 0;
   padding: 3rem;
-  background-color: var(--black);
   border-radius: 12px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
   position: relative;
   overflow: hidden;
   border: 1px solid var(--gold);
-  color: var(--off-white);
 }
 
 .darkMode .emptyCart {
@@ -280,8 +278,7 @@
 }
 
 .orderSummary {
-  background: var(--black);
-  color: var(--off-white);
+
   padding: 1.8rem;
   border-radius: 16px;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);

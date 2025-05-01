@@ -252,7 +252,7 @@ const Navbar = () => {
                   {getAvatarLetter()}
                 </div>
                 
-                <div 
+                {/* <div 
                   className={styles.greeting}
                   onClick={(e) => {
                     e.stopPropagation();
@@ -260,7 +260,7 @@ const Navbar = () => {
                   }}
                 >
                   Salam, {getUserDisplayName()}
-                </div>
+                </div> */}
                 
               
                 {isAdmin && (

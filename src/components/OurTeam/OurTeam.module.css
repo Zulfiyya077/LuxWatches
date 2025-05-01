@@ -18,13 +18,24 @@
     max-width: 800px;
     margin: 0 auto 4rem;
   }
-  
   .sectionTitle {
     font-size: 2.5rem;
-    margin-bottom: 1rem;
     font-weight: 700;
+    text-align: center;
+    margin-bottom: 3rem;
     position: relative;
-    display: inline-block;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+  
+  .dark .sectionTitle {
+    color: #d4af37; 
+    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  }
+  
+  .light .sectionTitle {
+    color: #730026;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
   
   .sectionTitle::after {
@@ -35,9 +46,12 @@
     transform: translateX(-50%);
     width: 80px;
     height: 4px;
-    background: linear-gradient(90deg, #ff7e5f, #feb47b);
+    background: linear-gradient(90deg, #730026, #d4af37);
     border-radius: 2px;
   }
+ 
+  
+ 
   
   .sectionDescription {
     font-size: 1.2rem;
