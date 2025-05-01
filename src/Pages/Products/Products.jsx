@@ -49,7 +49,7 @@ const Products = () => {
     };
 
     fetchProducts();
-  }, []);
+  }, [t]);
 
   const handleSortChange = (option) => {
     setSortOption(option);
@@ -72,6 +72,12 @@ const Products = () => {
 
   const toggleFilters = () => {
     setFilterOpen(!filterOpen);
+    // Add a class to the body to prevent scrolling when filter is open on mobile
+    if (!filterOpen) {
+      document.body.classList.add('filter-open');
+    } else {
+      document.body.classList.remove('filter-open');
+    }
   };
 
   const applyFilters = (products) => {
@@ -132,6 +138,8 @@ const Products = () => {
 
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
+    // Scroll to top when changing page
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const filteredProducts = applyFilters(products);
@@ -147,42 +155,53 @@ const Products = () => {
     pageNumbers.push(i);
   }
 
+  // Theme-based styling
   const themeStyles = {
     container: theme === 'dark' ? styles.darkContainer : styles.lightContainer,
     text: theme === 'dark' ? styles.darkText : styles.lightText,
     button: theme === 'dark' ? styles.darkButton : styles.lightButton,
     input: theme === 'dark' ? styles.darkInput : styles.lightInput,
     card: theme === 'dark' ? styles.darkCard : styles.lightCard,
+    accent: theme === 'dark' ? styles.goldAccent : styles.burgundyAccent,
+    border: theme === 'dark' ? styles.darkBorder : styles.lightBorder,
+    shadow: theme === 'dark' ? styles.darkShadow : styles.lightShadow,
   };
 
   return (
     <div className={`${styles.productsContainer} ${themeStyles.container}`}>
-      <div className={styles.heroSection}>
+      <div className={`${styles.heroSection} ${themeStyles.accent}`}>
         <div className={styles.heroContent}>
-          <h1 className={`${styles.heroTitle1} ${themeStyles.text}`}>{t('Rolex Kolleksiyası')}</h1>
-          <p className={`${styles.heroSubtitle1} ${themeStyles.text}`}>{t('Lüks və dəqiqliyin mükəmməl birləşməsi')}</p>
+          <h1 className={`${styles.heroTitle} ${themeStyles.text}`}>{t('Rolex Kolleksiyası')}</h1>
+          <p className={`${styles.heroSubtitle} ${themeStyles.text}`}>{t('Lüks və dəqiqliyin mükəmməl birləşməsi')}</p>
         </div>
       </div>
 
       <div className={styles.breadcrumbs}>
-        <Link to="/" className={`${styles.breadcrumbLink} ${themeStyles.text}`}>
+        <Link to="/" className={`${styles.breadcrumbLink} ${themeStyles.accent}`}>
           {t('Ana Səhifə')}
         </Link>
-        {/* <span className={`${styles.breadcrumbSeparator} ${themeStyles.text}`}>/</span>
-        <span className={`${styles.breadcrumbCurrent} ${themeStyles.text}`}>{t('Məhsullar1')}</span> */}
+        <span className={`${styles.breadcrumbSeparator} ${themeStyles.text}`}>/</span>
+        <span className={`${styles.breadcrumbCurrent} ${themeStyles.text}`}>{t('Məhsullar')}</span>
       </div>
 
-      <div className={styles.productsWrapper}>
-        <div className={`${styles.filterSidebar} ${themeStyles.card}`} data-open={filterOpen}>
-          <div className={styles.filterHeader}>
+      <div className={`${styles.productsWrapper} ${filterOpen ? styles.filterOpen : ''}`}>
+        <div 
+          className={`${styles.filterSidebar} ${themeStyles.card} ${themeStyles.border} ${themeStyles.shadow}`} 
+          data-open={filterOpen}
+        >
+          <div className={`${styles.filterHeader} ${themeStyles.accent}`}>
             <h3 className={themeStyles.text}>{t('Filtrlər')}</h3>
-            <button className={`${styles.closeFilter} ${themeStyles.button}`} onClick={toggleFilters}>
+            <button 
+              className={`${styles.closeFilter} ${themeStyles.button}`} 
+              onClick={toggleFilters}
+              aria-label="Close filters"
+            >
               ×
             </button>
           </div>
 
           <div className={styles.filterSection}>
-            {/* <h4 className={`${styles.filterTitle} ${themeStyles.text}`}>{t('QiymətAralığı')}</h4> */}
+            <h4 className={`${styles.filterTitle} ${themeStyles.text}`}>{t('Qiymət Aralığı')}</h4>
             <div className={styles.priceSliderContainer}>
               <input
                 type="range"
@@ -195,15 +214,7 @@ const Products = () => {
                     filters.priceRange[1],
                   ])
                 }
-                className={styles.priceSlider}
-                style={{
-                  WebkitAppearance: "none",
-                  appearance: "none",
-                  height: "8px",
-                  borderRadius: "5px",
-                  background: `linear-gradient(to right, #D4AF37 0%, #D4AF37 ${((filters.priceRange[0] - 5000) / (100000 - 5000)) * 100}%,rgb(68, 18, 1) ${((filters.priceRange[0] - 5000) / (100000 - 5000)) * 100}%, #014421 100%)`,
-                  outline: "none",
-                }}
+                className={`${styles.priceSlider} ${themeStyles.accent}`}
               />
               <input
                 type="range"
@@ -216,14 +227,7 @@ const Products = () => {
                     parseInt(e.target.value),
                   ])
                 }
-                className={styles.priceSlider}  style={{
-                  WebkitAppearance: "none",
-                  appearance: "none",
-                  height: "8px",
-                  borderRadius: "5px",
-                  background: `linear-gradient(to right, #D4AF37 0%, #D4AF37 ${((filters.priceRange[0] - 5000) / (100000 - 5000)) * 100}%,rgb(68, 18, 1) ${((filters.priceRange[0] - 5000) / (100000 - 5000)) * 100}%, #014421 100%)`,
-                  outline: "none",
-                }}
+                className={`${styles.priceSlider} ${themeStyles.accent}`}
               />
               <div className={styles.priceRange}>
                 <span className={themeStyles.text}>{filters.priceRange[0]}$</span>
@@ -271,26 +275,27 @@ const Products = () => {
             </div>
           </div>
 
-          <button className={`${styles.applyFilters} ${themeStyles.button}`}>{t('Filtrləri tətbiq et')}</button>
+          <button className={`${styles.applyFilters} ${themeStyles.accent}`}>{t('Filtrləri tətbiq et')}</button>
         </div>
 
         <div className={`${styles.productsContent} ${themeStyles.container}`}>
-          <div className={styles.productsToolbar}>
+          <div className={`${styles.productsToolbar} ${themeStyles.card} ${themeStyles.border} ${themeStyles.shadow}`}>
             <div className={styles.toolbarLeft}>
               <button
-                className={`${styles.filterToggleBtn} ${themeStyles.button}`}
+                className={`${styles.filterToggleBtn} ${themeStyles.accent}`}
                 onClick={toggleFilters}
+                aria-label="Toggle filters"
               >
-                <Filter size={18} color={theme === 'dark' ? "#fff" : "#000"} />
+                <Filter size={18} />
                 <span>{t('Filtrlər')}</span>
               </button>
 
               <div className={styles.searchContainer}>
-                <Search size={18} className={styles.searchIcon} color={theme === 'dark' ? "#fff" : "#000"} />
+                <Search size={18} className={`${styles.searchIcon} ${themeStyles.text}`} />
                 <input
                   type="text"
                   placeholder={t('Axtarış...')}
-                  className={`${styles.searchInput} ${themeStyles.input}`}
+                  className={`${styles.searchInput} ${themeStyles.input} ${themeStyles.border}`}
                   value={searchTerm}
                   onChange={handleSearchChange}
                 />
@@ -304,10 +309,11 @@ const Products = () => {
                 <button
                   className={`${styles.viewBtn} ${
                     viewMode === "grid" ? styles.active : ""
-                  } ${themeStyles.button}`}
+                  } ${themeStyles.button} ${themeStyles.border}`}
                   onClick={() => handleViewModeChange("grid")}
+                  aria-label="Grid view"
                 >
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke={theme === 'dark' ? "#fff" : "#000"}>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor">
                     <rect x="3" y="3" width="7" height="7" rx="1" />
                     <rect x="14" y="3" width="7" height="7" rx="1" />
                     <rect x="3" y="14" width="7" height="7" rx="1" />
@@ -317,10 +323,11 @@ const Products = () => {
                 <button
                   className={`${styles.viewBtn} ${
                     viewMode === "list" ? styles.active : ""
-                  } ${themeStyles.button}`}
+                  } ${themeStyles.button} ${themeStyles.border}`}
                   onClick={() => handleViewModeChange("list")}
+                  aria-label="List view"
                 >
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke={theme === 'dark' ? "#fff" : "#000"}>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor">
                     <rect x="3" y="4" width="18" height="2" rx="1" />
                     <rect x="3" y="11" width="18" height="2" rx="1" />
                     <rect x="3" y="18" width="18" height="2" rx="1" />
@@ -331,19 +338,25 @@ const Products = () => {
           </div>
 
           <div className={styles.resultsInfo}>
-            <span className={themeStyles.text}>{sortedProducts.length} {t('productsfound')}</span>
-            
+            <span className={themeStyles.text}>
+              {sortedProducts.length} {t('məhsul tapıldı')}
+            </span>
           </div>
          
           {loading ? (
             <div className={`${styles.loadingContainer} ${themeStyles.container}`}>
-              <div className={styles.spinner}></div>
+              <div className={`${styles.spinner} ${themeStyles.accent}`}></div>
               <p className={themeStyles.text}>{t('Məhsullar yüklənir...')}</p>
             </div>
           ) : error ? (
             <div className={`${styles.errorContainer} ${themeStyles.container}`}>
               <p className={themeStyles.text}>{error}</p>
-              <button className={themeStyles.button} onClick={() => window.location.reload()}>{t('Yenidən cəhd edin')}</button>
+              <button 
+                className={`${themeStyles.button} ${themeStyles.accent}`} 
+                onClick={() => window.location.reload()}
+              >
+                {t('Yenidən cəhd edin')}
+              </button>
             </div>
           ) : (
             <div className={`${styles.productList} ${styles[viewMode]}`}>
@@ -359,7 +372,9 @@ const Products = () => {
               ) : (
                 <div className={`${styles.noResults} ${themeStyles.container}`}>
                   <h3 className={themeStyles.text}>{t('Heç bir məhsul tapılmadı')}</h3>
-                  <p className={themeStyles.text}>{t('Zəhmət olmasa axtarış və filtr parametrlərinizi dəyişin.')}</p>
+                  <p className={themeStyles.text}>
+                    {t('Zəhmət olmasa axtarış və filtr parametrlərinizi dəyişin.')}
+                  </p>
                 </div>
               )}
             </div>
@@ -367,21 +382,31 @@ const Products = () => {
 
           {!loading && !error && totalPages > 1 && (
             <div className={styles.pagination}>
+              {currentPage > 1 && (
+                <button 
+                  className={`${styles.pageBtn} ${styles.prevBtn} ${themeStyles.button} ${themeStyles.border}`}
+                  onClick={() => handlePageChange(currentPage - 1)}
+                >
+                  <ChevronDown size={16} className={styles.prevIcon} /> {t('Əvvəlki')}
+                </button>
+              )}
+              
               {pageNumbers.map(number => (
                 <button 
                   key={number}
-                  className={`${styles.pageBtn} ${currentPage === number ? styles.active : ''} ${themeStyles.button}`}
+                  className={`${styles.pageBtn} ${currentPage === number ? `${styles.active} ${themeStyles.accent}` : ''} ${themeStyles.button} ${themeStyles.border}`}
                   onClick={() => handlePageChange(number)}
                 >
                   {number}
                 </button>
               ))}
+              
               {currentPage < totalPages && (
                 <button 
-                  className={`${styles.pageBtn} ${styles.nextBtn} ${themeStyles.button}`}
+                  className={`${styles.pageBtn} ${styles.nextBtn} ${themeStyles.button} ${themeStyles.border}`}
                   onClick={() => handlePageChange(currentPage + 1)}
                 >
-                  {t('Növbəti')} <ChevronDown size={16} />
+                  {t('Növbəti')} <ChevronDown size={16} className={styles.nextIcon} />
                 </button>
               )}
             </div>

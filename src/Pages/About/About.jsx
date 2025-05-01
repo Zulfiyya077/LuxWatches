@@ -1,13 +1,13 @@
-import React, { useState } from "react";
+import React from "react";
 import AboutSection from "../../components/About/AboutSection";
 import OurTeam from "../../components/OurTeam/OurTeam";
 
 
-const AboutPage = ({ darkMode }) => {
+const AboutPage = () => {
   return (
     <div>
-      <AboutSection darkMode={darkMode} />
-      <OurTeam darkMode={darkMode} />
+      <AboutSection  />
+      <OurTeam />
    
     </div>
   );

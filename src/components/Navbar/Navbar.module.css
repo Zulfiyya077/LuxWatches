@@ -1,1327 +1,457 @@
+/* Import Poppins font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+:root {
+  /* Theme Colors */
+  --dark-bg: #080808;
+  --dark-bg-secondary: #121212;
+  --dark-card-bg: #1A1A1A;
+  --dark-border: #333333;
+  --dark-hover: #222222;
+  --dark-text-primary: #FFFFFF;
+  --dark-text-secondary: #B0B0B0;
+  
+  --light-bg: #FFFFFF;
+  --light-bg-secondary: #F5F5F5;
+  --light-card-bg: #FFFFFF;
+  --light-border: #E0E0E0;
+  --light-hover: #F9F9F9;
+  --light-text-primary: #333333;
+  --light-text-secondary: #777777;
+  
+  /* Accent Colors */
+  --gold: #D4AF37;
+  --gold-hover: #BF9F30;
+  --gold-light: rgba(212, 175, 55, 0.2);
+  --burgundy: #730026;
+  --burgundy-hover: #5A001E;
+  --burgundy-light: rgba(115, 0, 38, 0.2);
+  
+  /* Shadows */
+  --shadow-standard: 0 4px 12px rgba(0, 0, 0, 0.1);
+  --shadow-elevated: 0 8px 24px rgba(0, 0, 0, 0.15);
+  --dark-shadow-standard: 0 4px 12px rgba(0, 0, 0, 0.4);
+  --dark-shadow-elevated: 0 8px 24px rgba(0, 0, 0, 0.6);
+  
+  /* Transitions */
+  --transition-standard: all 0.3s ease;
+  --transition-bounce: all 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+/* Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Navbar container */
 .navbar {
-  background-color: var(--secondary-bg);
-  box-shadow: var(--box-shadow);
   position: sticky;
   top: 0;
   z-index: 1000;
-  transition: background-color 0.3s, box-shadow 0.3s, height 0.3s ease;
+  transition: var(--transition-standard);
+  box-shadow: var(--shadow-standard);
 }
 
-.navbar.dark {
-  background-color: var(--secondary-bg);
+.light {
+  background-color: var(--light-bg);
+  color: var(--light-text-primary);
+  border-bottom: 1px solid var(--light-border);
+}
+
+.dark {
+  background-color: var(--dark-bg);
+  color: var(--dark-text-primary);
+  border-bottom: 1px solid var(--dark-border);
+  box-shadow: var(--dark-shadow-standard);
 }
 
 .container {
-  max-width: 1200px;
+  max-width: 1440px;
   margin: 0 auto;
-  padding: 0 1rem;
+  padding: 0 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   height: 70px;
 }
 
+/* Logo */
 .logo {
   text-decoration: none;
   display: flex;
-  flex-direction: column;
-  line-height: 1;
+  align-items: center;
+  z-index: 1001;
+  position: relative;
 }
 
-.logoText {
- width: 100px;
- transition: width 0.3s ease;
+.logoImg {
+  width: 100px;
+  height: auto;
+  transition: var(--transition-standard);
 }
 
-.logoAccent {
-  font-size: 0.875rem;
-  color: var(--text-color);
-  letter-spacing: 5px;
+/* Desktop Control/Buttons for Theme & Language */
+.desktopControls {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 }
 
+/* Navigation Links - Desktop */
 .menuWrapper {
   display: flex;
   align-items: center;
+  justify-content: flex-end;
+  flex: 1;
 }
 
 .navLinks {
-  display: none;
+  display: flex;
+  align-items: center;
+  margin: 0 auto; /* Center the navigation */
 }
 
-@media (min-width: 992px) {
-  .navLinks {
-    display: flex;
-    gap: 2rem;
-    margin-right: 2rem;
-  }
+.navLinksContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .navLink {
-  color: var(--text-color);
   text-decoration: none;
   font-weight: 500;
-  transition: color 0.3s;
+  font-size: 0.95rem;
+  padding: 0.5rem 1rem;
   position: relative;
-  padding: 0.5rem 0;
+  transition: var(--transition-standard);
+}
+
+.light .navLink {
+  color: var(--light-text-primary);
+}
+
+.dark .navLink {
+  color: var(--dark-text-primary);
 }
 
 .navLink::after {
   content: '';
   position: absolute;
   bottom: 0;
-  left: 0;
+  left: 50%;
   width: 0;
   height: 2px;
-  background-color: var(--gold-color);
-  transition: width 0.3s;
+  transform: translateX(-50%);
+  transition: width 0.3s ease;
 }
 
-.navLink:hover {
-  color: var(--gold-color);
+.light .navLink::after {
+  background-color: var(--burgundy);
+}
+
+.dark .navLink::after {
+  background-color: var(--gold);
+}
+
+.light .navLink:hover {
+  color: var(--burgundy);
+}
+
+.dark .navLink:hover {
+  color: var(--gold);
 }
 
 .navLink:hover::after {
-  width: 100%;
+  width: 80%;
 }
 
+/* Nav Actions */
 .navActions {
   display: flex;
   align-items: center;
   gap: 1rem;
 }
 
+/* Theme Toggle Button - Desktop */
 .themeToggle {
   background: none;
   border: none;
   cursor: pointer;
-  font-size: 1.2rem;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0.25rem;
-  border-radius: 50%;
-  transition: background-color 0.3s, transform 0.3s;
+  transition: var(--transition-standard);
 }
 
-.themeToggle:hover {
-  background-color: rgba(212, 175, 55, 0.1);
-  transform: rotate(90deg);
+.light .themeToggle {
+  color: var(--light-text-primary);
 }
 
+.dark .themeToggle {
+  color: var(--dark-text-primary);
+}
+
+.light .themeToggle:hover {
+  background-color: var(--burgundy-light);
+  color: var(--burgundy);
+  transform: rotate(15deg);
+}
+
+.dark .themeToggle:hover {
+  background-color: var(--gold-light);
+  color: var(--gold);
+  transform: rotate(15deg);
+}
+
+/* Language Dropdown - Desktop */
 .langDropdown {
   position: relative;
   cursor: pointer;
-  display: flex;
-  align-items: center;
-  border: none;
-  border-radius: 5px;
-  transition: all 0.3s ease;
+  z-index: 10;
 }
 
 .langSelected {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  font-size: 1rem;
-  font-weight: 500;
-  color: var(--text-color-light);
-  border: 1px solid var(--gold-color);
-  /* color: red; */
-  padding: 0.25rem 0.5rem;
+  padding: 0.4rem 0.8rem;
   border-radius: 4px;
-  transition: background-color 0.3s ease;
-}
-
-.cartLink{
-  font-size: 20px;
-}
-
-.cartLink, .favLink {
-  position: relative;
-  text-decoration: none;
-  font-size: 20px;
-  transition: color 0.3s;
-}
-
-.cartLink:hover, .favLink:hover {
-  color: var(--gold-color);
-}
-
-.authLinks {
-  display: none;
-}
-
-@media (min-width: 768px) {
-  .authLinks {
-    display: flex;
-    gap: 1rem;
-  }
-}
-
-.authLink {
-  text-decoration: none;
-  color: var(--text-color);
+  font-size: 0.9rem;
   font-weight: 500;
-  transition: color 0.3s;
-  padding: 0.5rem 0;
+  transition: var(--transition-standard);
 }
 
-.authLink:hover {
-  color: var(--gold-color);
+.light .langSelected {
+  background-color: var(--light-bg-secondary);
+  color: var(--light-text-primary);
+  border: 1px solid var(--burgundy);
 }
 
-.userMenu {
-  position: relative;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  margin-left: 10px;
+.dark .langSelected {
+  background-color: var(--dark-bg-secondary);
+  color: var(--dark-text-primary);
+  border: 1px solid var(--gold);
 }
 
-.greeting {
+.langMenu {
+  position: absolute;
+  top: calc(100% + 5px);
+  left: 0;
+  width: 100%;
+  background-color: inherit;
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: var(--shadow-standard);
+  list-style: none;
+  padding: 0;
+  z-index: 20;
+}
+
+.light .langMenu {
+  background-color: var(--light-bg);
+  border: 1px solid var(--light-border);
+}
+
+.dark .langMenu {
+  background-color: var(--dark-bg);
+  border: 1px solid var(--dark-border);
+  box-shadow: var(--dark-shadow-standard);
+}
+
+.langMenu li {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  color: var(--gold-color);
-  font-weight: 500;
-  font-size: 1rem;
+  padding: 0.5rem 0.8rem;
   cursor: pointer;
+  transition: var(--transition-standard);
 }
 
-.greeting::after {
-  content: '▼';
-  font-size: 0.7rem;
-  margin-left: 5px;
-  transition: transform 0.3s;
+.light .langMenu li {
+  color: var(--light-text-primary);
 }
 
-.userMenu:hover .greeting::after {
-  transform: rotate(180deg);
+.dark .langMenu li {
+  color: var(--dark-text-primary);
 }
 
-.userDropdown {
-  position: absolute;
-  top: calc(100% + 10px);
-  right: 0;
-  width: 180px;
-  background-color: var(--secondary-bg);
-  border-radius: 8px;
-  box-shadow: var(--box-shadow);
-  padding: 0.5rem 0;
-  margin-top: 0.5rem;
-  z-index: 10;
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(-10px);
-  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+.light .langMenu li:hover {
+  background-color: var(--burgundy-light);
+  color: var(--burgundy);
 }
 
-.userDropdown.show {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
-  animation: fadeIn 0.2s ease forwards;
+.dark .langMenu li:hover {
+  background-color: var(--gold-light);
+  color: var(--gold);
 }
 
-.dropdownItem {
-  display: block;
-  padding: 0.75rem 1rem;
-  text-decoration: none;
-  color: var(--text-color);
-  transition: background-color 0.3s, color 0.3s;
-  text-align: left;
-  width: 100%;
-  background: none;
-  border: none;
-  font-size: 1rem;
-  cursor: pointer;
-  font-weight: 500;
-}
-
-.dropdownItem:hover {
-  background-color: rgba(212, 175, 55, 0.1);
-  color: var(--gold-color);
-}
-
-.mobileMenuToggle {
-  display: block;
-  background: none;
-  border: none;
-  cursor: pointer;
-  width: 30px;
-  height: 30px;
+/* Cart & Favorites */
+.cartLink, .favLink {
   position: relative;
-  margin-left: 1rem;
-}
-
-@media (min-width: 992px) {
-  .mobileMenuToggle {
-    display: none;
-  }
-}
-
-.hamburger, .close {
-  position: absolute;
-  top: 50%;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  background-color: var(--text-color);
-  transform: translateY(-50%);
-  transition: background-color 0.3s;
-}
-
-.hamburger::before, .hamburger::after {
-  content: '';
-  position: absolute;
-  width: 100%;
-  height: 2px;
-  background-color: var(--text-color);
-  transition: transform 0.3s;
-}
-
-.hamburger::before {
-  top: -8px;
-}
-
-.hamburger::after {
-  bottom: -8px;
-}
-
-.close {
-  background-color: transparent;
-}
-
-.close::before, .close::after {
-  content: '';
-  position: absolute;
-  width: 100%;
-  height: 2px;
-  background-color: var(--text-color);
-}
-
-.close::before {
-  transform: rotate(45deg);
-}
-
-.close::after {
-  transform: rotate(-45deg);
-}
-
-@media (max-width: 991px) {
-  .navLinks {
-    position: fixed;
-    top: 70px;
-    left: 0;
-    width: 100%;
-    height: 0;
-    background-color: var(--secondary-bg);
-    flex-direction: column;
-    align-items: center;
-    gap: 0;
-    overflow: hidden;
-    transition: height 0.3s;
-    box-shadow: var(--box-shadow);
-    z-index: 1001;
-  }
-  
-  .navLinks.active {
-    height: auto;
-    max-height: 90vh;
-    padding: 1rem 0;
-    display: flex;
-    overflow-y: auto;
-  }
-  
-  .navLink {
-    width: 100%;
-    text-align: center;
-    padding: 1rem 0;
-    border-bottom: 1px solid rgba(212, 175, 55, 0.1);
-  }
-  
-  .navLink:last-child {
-    border-bottom: none;
-  }
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-.desktopSearchForm {
-  display: flex;
-  align-items: center;
-  background-color: var(--bg-secondary, #f5f5f5);
-  border-radius: 20px;
-  padding: 4px 12px;
-  width: 300px;
-  margin-right: 20px;
-}
-
-.dark .desktopSearchForm {
-  background-color: var(--dark-bg-secondary, #333);
-}
-
-.mobileSearchForm {
-  display: none; 
-  width: 100%;
-  margin-bottom: 15px;
-  background-color: var(--bg-secondary, #f5f5f5);
-  border-radius: 20px;
-  padding: 8px 12px;
-}
-
-.dark .mobileSearchForm {
-  background-color: var(--dark-bg-secondary, #333);
-}
-
-.searchInput {
-  flex: 1;
-  border: none;
-  background-color: transparent;
-  padding: 8px;
-  font-size: 0.9rem;
-  color: inherit;
-  outline: none;
-}
-
-.searchSubmit {
-  background: none;
-  border: none;
-  cursor: pointer;
-  color: inherit;
+  text-decoration: none;
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 0.5rem;
+  border-radius: 50%;
+  transition: var(--transition-standard);
 }
 
-.searchSubmit:hover {
-  opacity: 0.8;
+.light .cartLink, .light .favLink {
+  color: var(--light-text-primary);
 }
 
-@media (max-width: 1024px) {
-  .desktopSearchForm {
-    width: 220px;
-  }
+.dark .cartLink, .dark .favLink {
+  color: var(--dark-text-primary);
 }
 
-@media (max-width: 768px) {
-  .desktopSearchForm {
-    display: none;
-  }
-  
-  .mobileSearchForm {
-    display: flex;
-  }
-  
-  .greeting {
-    display: none;
-  }
-  
-  .userMenu {
-    margin-left: 5px;
-    margin-right: 5px;
-  }
-  
-  .userDropdown {
-    right: -15px;
-  }
-  
-  .navActions {
-    gap: 0.7rem;
-  }
-  
-  .adminButton {
-    padding: 4px 8px;
-    font-size: 0.8rem;
-    margin-left: 6px;
-  }
+.light .cartLink:hover, .light .favLink:hover {
+  background-color: var(--burgundy-light);
+  color: var(--burgundy);
+  transform: translateY(-2px);
+}
+
+.dark .cartLink:hover, .dark .favLink:hover {
+  background-color: var(--gold-light);
+  color: var(--gold);
+  transform: translateY(-2px);
 }
 
 .cartIconContainer, .favIconContainer {
   position: relative;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .cartCounter {
   position: absolute;
-  top: -8px;
-  right: -8px;
-  background-color: #d43737; 
-  color: white;
-  border-radius: 50%;
+  top: -6px;
+  right: -6px;
   width: 18px;
   height: 18px;
-  font-size: 12px;
-  font-weight: bold;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.darkMode .cartCounter {
-  background-color: #f5e05f; 
-  color: #1a1a1a;
-}
-
-.cartLink {
-  text-decoration: none;
-  color: inherit;
-  display: flex;
-  align-items: center;
-  position: relative;
-}
-
-.nav-icon {
-  position: relative;
-}
-
-.cart-count, .icon-count {
-  position: absolute;
-  top: -8px;
-  right: -8px;
-  background-color: red;
-  color: white;
   border-radius: 50%;
-  padding: 2px 6px;
   font-size: 10px;
-}
-
-.langMenu {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  width: 100%;
-  min-width: 80px;
-  background-color: var(--dropdown-background-light);
-  border: 1px solid var(--border-color-light);
-  border-radius: 5px;
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  z-index: 10;
-  transition: background-color 0.3s ease, border-color 0.3s ease;
-}
-
-[data-theme="dark"] .langMenu {
-  background-color: var(--dropdown-background-dark);
-  border-color: var(--border-color-dark);
-}
-
-.langMenu li {
-  display: flex;
-  align-items: center;
-  padding: 0.75rem 1rem;
-  font-size: 1rem;
-  font-weight: 400;
-  color: var(--text-color-light);
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-[data-theme="dark"] .langMenu li {
-  color: var(--text-color-dark);
-}
-
-.langMenu li:hover {
-  background-color: var(--hover-background-light);
-}
-
-[data-theme="dark"] .langMenu li:hover {
-  background-color: var(--hover-background-dark);
-}
-
-.langMenu li svg {
-  margin-right: 0.5rem;
-  width: 20px;
-  height: 20px;
-}
-
-.langDropdown:hover .langSelected {
-  background-color: var(--hover-background-light);
-  border-color: var(--hover-border-light);
-}
-
-[data-theme="dark"] .langDropdown:hover .langSelected {
-  background-color: var(--hover-background-dark);
-  border-color: var(--hover-border-dark);
-}
-
-.langDropdown.open .langSelected {
-  border-color: var(--hover-border-light);
-}
-
-[data-theme="dark"] .langDropdown.open .langSelected {
-  border-color: var(--hover-border-dark);
-}
-
-.userAvatar {
-  width: 40px;
-  height: 40px;
-  background-color: var(--gold-color, #d4af37);
-  color: white;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.2rem;
-  margin-right: 10px;
-  transition: background-color 0.3s, transform 0.3s;
-}
-
-.userAvatar:hover {
-  background-color: var(--accent-hover, #b8960e);
-  transform: scale(1.05);
-}
-
-.dark .userDropdown {
-  background-color: var(--secondary-bg);
-  border-color: var(--border-color-dark, #444);
-}
-
-.dark .dropdownItem {
-  color: var(--text-color);
-}
-
-.dark .dropdownItem:hover {
-  background-color: rgba(212, 175, 55, 0.15);
-}
-
-/* Admin Button */
-.adminButton {
-  background-color: var(--gold-color, #d4af37);
-  color: white;
-  border: none;
-  border-radius: 4px;
-  padding: 6px 12px;
-  margin-left: 10px;
-  font-size: 0.9rem;
   font-weight: 600;
-  cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
   display: flex;
   align-items: center;
   justify-content: center;
-  white-space: nowrap;
+  transition: var(--transition-standard);
 }
 
-.adminButton:hover {
-  background-color: var(--accent-hover, #b8960e);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+.light .cartCounter {
+  background-color: var(--burgundy);
+  color: white;
 }
 
-.dark .adminButton {
-  background-color: #f7ef8a;
-  color: #1a1a1a;
+.dark .cartCounter {
+  background-color: var(--gold);
+  color: var(--dark-bg);
 }
 
-.dark .adminButton:hover {
-  background-color: #f7d338;
-}
-
-/* Mobil və tablet ekranlar üçün konteyner ölçüsünü uyğunlaşdır */
-@media (max-width: 992px) {
-  .container {
-    padding: 0 0.75rem;
-  }
-}
-
-/* Mobil və çox kiçik ekranlar üçün xüsusi ayarlar */
-@media (max-width: 576px) {
-  .greeting {
-    display: none !important; /* "Salam, {userName}" yazısını tamamilə gizlət */
-  }
-  
-  .navActions {
-    gap: 0.35rem; /* Elementlər arasındakı boşluğu azalt */
-  }
-  
-  .userMenu {
-    margin-left: 3px;
-    margin-right: 3px;
-  }
-  
-  .userAvatar {
-    width: 28px;
-    height: 28px;
-    font-size: 0.85rem;
-    margin-right: 3px;
-  }
-  
-  .adminButton {
-    padding: 2px 5px;
-    font-size: 0.65rem;
-    margin-left: 2px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    max-width: 50px;
-  }
-  
-  .themeToggle {
-    font-size: 0.9rem;
-    padding: 0.1rem;
-  }
-  
-  .logoText {
-    width: 70px; /* Logo ölçüsünü azalt */
-  }
-  
-  .container {
-    padding: 0 0.4rem; /* Konteyner kənarlarını azalt */
-    height: 60px; /* Navbar hündürlüyünü azalt */
-  }
-  
-  .langSelected {
-    padding: 0.1rem 0.25rem;
-    font-size: 0.7rem;
-    gap: 0.2rem;
-  }
-  
-  .cartIconContainer, .favIconContainer {
-    transform: scale(0.85); /* İkonların ölçüsünü kiçilt */
-  }
-  
-  .cartCounter {
-    width: 15px;
-    height: 15px;
-    font-size: 10px;
-    top: -5px;
-    right: -5px;
-  }
-  
-  .mobileMenuToggle {
-    width: 25px;
-    height: 25px;
-    margin-left: 0.5rem;
-  }
-  
-  .navLinks.active {
-    top: 60px; /* Container ölçüsünə uyğun */
-
-.navLink {
-  color: var(--text-color);
-  text-decoration: none;
-  font-weight: 500;
-  transition: color 0.3s;
-  position: relative;
-  padding: 0.5rem 0;
-}
-
-.navLink::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background-color: var(--gold-color);
-  transition: width 0.3s;
-}
-
-.navLink:hover {
-  color: var(--gold-color);
-}
-
-.navLink:hover::after {
-  width: 100%;
-}
-
-.navActions {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-
-.themeToggle {
-  background: none;
-  border: none;
-  cursor: pointer;
-  font-size: 1.2rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0.25rem;
-  border-radius: 50%;
-  transition: background-color 0.3s, transform 0.3s;
-}
-
-.themeToggle:hover {
-  background-color: rgba(212, 175, 55, 0.1);
-  transform: rotate(90deg);
-}
-
-.langSelected {
-  background-color: white;
-  border: 1px solid var(--gold-color);
-  color: red;
-  padding: 0.25rem 0.5rem;
-  border-radius: 4px;
-  font-size: 0.875rem;
-  cursor: pointer;
-}
-.cartLink{
-  font-size: 20px;
-}
-.cartLink, .favLink {
-  position: relative;
-  text-decoration: none;
-  font-size: 20px;
-  transition: color 0.3s;
-}
-
-.cartLink:hover, .favLink:hover {
-  color: var(--gold-color);
-}
-
+/* Auth Links */
 .authLinks {
-  display: none;
-}
-
-@media (min-width: 768px) {
-  .authLinks {
-    display: flex;
-    gap: 1rem;
-  }
+  display: flex;
+  align-items: center;
 }
 
 .authLink {
   text-decoration: none;
-  color: var(--text-color);
   font-weight: 500;
-  transition: color 0.3s;
-  padding: 0.5rem 0;
+  padding: 0.4rem 1rem;
+  border-radius: 4px;
+  transition: var(--transition-standard);
 }
 
-.authLink:hover {
-  color: var(--gold-color);
+.light .authLink {
+  color: var(--light-text-primary);
+  background-color: var(--burgundy-light);
 }
 
-.userMenu {
-  position: relative;
-  cursor: pointer;
+.dark .authLink {
+  color: var(--dark-text-primary);
+  background-color: var(--gold-light);
 }
 
-.greeting {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  color: var(--gold-color);
-  font-weight: 500;
-}
-
-.greeting::after {
-  content: '▼';
-  font-size: 0.7rem;
-}
-
-.userDropdown {
-  position: absolute;
-  top: 100%;
-  right: 0;
-  width: 180px;
-  background-color: var(--secondary-bg);
-  border-radius: 8px;
-  box-shadow: var(--box-shadow);
-  padding: 0.5rem 0;
-  margin-top: 0.5rem;
-  display: none;
-  z-index: 10;
-}
-
-.userDropdown {
-  display: block;
-  animation: fadeIn 0.2s ease forwards;
-}
-
-.dropdownItem {
-  display: block;
-  padding: 0.75rem 1rem;
-  background-color: #444;
-  text-decoration: none;
-  color: var(--text-color);
-  transition: background-color 0.3s, color 0.3s;
-  text-align: left;
-  width: 100%;
-  background: none;
-  border: none;
-  font-size: 1rem;
-  cursor: pointer;
-}
-
-.dropdownItem:hover {
-  background-color: rgba(212, 175, 55, 0.1);
-  color: var(--gold-color);
-}
-
-.mobileMenuToggle {
-  display: block;
-  background: none;
-  border: none;
-  cursor: pointer;
-  width: 30px;
-  height: 30px;
-  position: relative;
-  margin-left: 1rem;
-}
-
-@media (min-width: 992px) {
-  .mobileMenuToggle {
-    display: none;
-  }
-}
-
-.hamburger, .close {
-  position: absolute;
-  top: 50%;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  background-color: var(--text-color);
-  transform: translateY(-50%);
-  transition: background-color 0.3s;
-}
-
-.hamburger::before, .hamburger::after {
-  content: '';
-  position: absolute;
-  width: 100%;
-  height: 2px;
-  background-color: var(--text-color);
-  transition: transform 0.3s;
-}
-
-.hamburger::before {
-  top: -8px;
-}
-
-.hamburger::after {
-  bottom: -8px;
-}
-
-.close {
-  background-color: transparent;
-}
-
-.close::before, .close::after {
-  content: '';
-  position: absolute;
-  width: 100%;
-  height: 2px;
-  background-color: var(--text-color);
-}
-
-.close::before {
-  transform: rotate(45deg);
-}
-
-.close::after {
-  transform: rotate(-45deg);
-}
-
-
-@media (max-width: 991px) {
-  .navLinks {
-    position: fixed;
-    top: 70px;
-    left: 0;
-    width: 100%;
-    height: 0;
-    background-color: var(--secondary-bg);
-    flex-direction: column;
-    align-items: center;
-    gap: 0;
-    overflow: hidden;
-    transition: height 0.3s;
-    box-shadow: var(--box-shadow);
-  }
-  
-  .navLinks.active {
-    height: auto;
-    padding: 1rem 0;
-    display: flex;
-  }
-  
-  .navLink {
-    width: 100%;
-    text-align: center;
-    padding: 1rem 0;
-    border-bottom: 1px solid rgba(212, 175, 55, 0.1);
-  }
-  
-  .navLink:last-child {
-    border-bottom: none;
-  }
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-.desktopSearchForm {
-  display: flex;
-  align-items: center;
-  background-color: var(--bg-secondary, #f5f5f5);
-  border-radius: 20px;
-  padding: 4px 12px;
-  width: 300px;
-  margin-right: 20px;
-}
-
-.dark .desktopSearchForm {
-  background-color: var(--dark-bg-secondary, #333);
-}
-
-
-.mobileSearchForm {
-  display: none; 
-  width: 100%;
-  margin-bottom: 15px;
-  background-color: var(--bg-secondary, #f5f5f5);
-  border-radius: 20px;
-  padding: 8px 12px;
-}
-
-.dark .mobileSearchForm {
-  background-color: var(--dark-bg-secondary, #333);
-}
-
-.searchInput {
-  flex: 1;
-  border: none;
-  background-color: transparent;
-  padding: 8px;
-  font-size: 0.9rem;
-  color: inherit;
-  outline: none;
-}
-
-.searchSubmit {
-  background: none;
-  border: none;
-  cursor: pointer;
-  color: inherit;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.searchSubmit:hover {
-  opacity: 0.8;
-}
-
-
-@media (max-width: 1024px) {
-  .desktopSearchForm {
-    width: 220px;
-  }
-}
-
-@media (max-width: 768px) {
-  
-  .desktopSearchForm {
-    display: none;
-  }
-  
-
-  .mobileSearchForm {
-    display: flex;
-  }
- 
-}
-
-.cartIconContainer {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.cartCounter {
-  position: absolute;
-  top: -8px;
-  right: -8px;
-  background-color: #d43737; 
+.light .authLink:hover {
+  background-color: var(--burgundy);
   color: white;
-  border-radius: 50%;
-  width: 18px;
-  height: 18px;
-  font-size: 12px;
-  font-weight: bold;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  transform: translateY(-2px);
 }
 
-.darkMode .cartCounter {
-  background-color: #f5e05f; 
-  color: #1a1a1a;
+.dark .authLink:hover {
+  background-color: var(--gold);
+  color: var(--dark-bg);
+  transform: translateY(-2px);
 }
 
-.cartLink {
-  text-decoration: none;
-  color: inherit;
-  display: flex;
-  align-items: center;
-  position: relative;
-}
-
-.nav-icon {
-  position: relative;
-}
-
-.cart-count, .icon-count {
-  position: absolute;
-  top: -8px;
-  right: -8px;
-  background-color: red;
-  color: white;
-  border-radius: 50%;
-  padding: 2px 6px;
-  font-size: 10px;
-}
-
-.langDropdown {
-  position: relative;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  border: none;
-  border-radius: 5px;
-  transition: all 0.3s ease;
-}
-
-
-.langSelected {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: 1rem;
-  font-weight: 500;
-  color: var(--text-color-light);
-  background-color: var(--selected-background-light);
-  transition: background-color 0.3s ease;
-}
-
-
-[data-theme="dark"] .langSelected {
-  background-color: var(--selected-background-dark);
-  color: var(--text-color-dark);
-}
-
-.langMenu {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  width: 100%;
-  background-color: var(--dropdown-background-light);
-  border: 1px solid var(--border-color-light);
-  border-radius: 5px;
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  z-index: 10;
-  transition: background-color 0.3s ease, border-color 0.3s ease;
-}
-
-/* Dark mode menu */
-[data-theme="dark"] .langMenu {
-  background-color: var(--dropdown-background-dark);
-  border-color: var(--border-color-dark);
-}
-
-/* Style for each language option in the dropdown */
-.langMenu li {
-  display: flex;
-  align-items: center;
-  padding: 0.75rem 1rem;
-  background-color: #444;
-  font-size: 1rem;
-  font-weight: 400;
-  color: var(--text-color-light);
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-/* Dark mode language items */
-[data-theme="dark"] .langMenu li {
-  color: var(--text-color-dark);
-}
-
-/* Hover effect for language items */
-.langMenu li:hover {
-  background-color: var(--hover-background-light);
-}
-
-/* Dark mode hover effect */
-[data-theme="dark"] .langMenu li:hover {
-  background-color: var(--hover-background-dark);
-}
-
-/* Style for the flags inside the dropdown */
-.langMenu li svg {
-  margin-right: 0.5rem;
-  width: 20px;
-  height: 20px;
-}
-
-/* Style for the dropdown when it's open */
-.langDropdown:hover .langSelected {
-  background-color: var(--hover-background-light);
-  border-color: var(--hover-border-light);
-}
-
-/* Dark mode dropdown hover effect */
-[data-theme="dark"] .langDropdown:hover .langSelected {
-  background-color: var(--hover-background-dark);
-  border-color: var(--hover-border-dark);
-}
-
-/* Arrow indicator when the dropdown is open */
-.langDropdown.open .langSelected {
-  border-color: var(--hover-border-light);
-}
-
-/* Dark mode arrow indicator */
-[data-theme="dark"] .langDropdown.open .langSelected {
-  border-color: var(--hover-border-dark);
-}
-
+/* User Menu */
 .userMenu {
   position: relative;
   display: flex;
   align-items: center;
-  cursor: pointer;
+  margin-left: 0.5rem;
 }
 
 .userAvatar {
   width: 40px;
   height: 40px;
-  background-color: var(--accent-color);
-  color: white;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.2rem;
-  margin-right: 10px;
-  transition: background-color 0.3s, transform 0.3s;
-}
-
-.userAvatar:hover {
-  background-color: darkred; /* Hover zamanı daha tünd bir rəng */
-  transform: scale(1.05); /* Hover zamanı kiçik bir böyütmə */
-}
-
-.greeting {
-  font-size: 1rem;
-  color: var(--footer-text);
-}
-
-.userDropdown {
-  position: absolute;
-  top: 100%;
-  right: 0;
-  background-color: white; /* Dropdown arxa fonu */
-  border: 1px solid var(--input-border-color);
-  border-radius: 5px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  z-index: 1000;
-  width: 200px; /* Dropdown genişliyi */
-  transition: opacity 0.3s ease, transform 0.3s ease;
-  opacity: 0; /* Başlanğıcda görünməz */
-  transform: translateY(-10px); /* Başlanğıcda yuxarıda */
-}
-
-.userDropdown.show {
-  opacity: 1; /* Görünür olduqda */
-  transform: translateY(0); /* Yuxarıdan aşağıya doğru */
-}
-
-.dropdownItem {
-  padding: 10px 15px;
-  text-decoration: none;
-  color: var(--link-color);
-  display: block;
-  transition: background-color 0.3s;
-}
-
-.dropdownItem:hover {
-  background-color: var(--accent-color); /* Hover zamanı arxa fon */
-  color: white; /* Hover zamanı yazı rəngi */
-}
-
-/* ... Keep all your existing CSS code ... */
-
-/* Updated User Menu Styles */
-.userMenu {
-  position: relative;
-  display: flex;
-  align-items: center;
+  font-weight: 600;
   cursor: pointer;
-  margin-left: 10px;
+  transition: var(--transition-standard);
 }
 
-.userAvatar {
-  width: 40px;
-  height: 40px;
-  background-color: var(--gold-color, #d4af37);
+.light .userAvatar {
+  background-color: var(--burgundy);
   color: white;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.2rem;
-  margin-right: 10px;
-  transition: background-color 0.3s, transform 0.3s;
 }
 
-.userAvatar:hover {
-  background-color: var(--accent-hover, #b8960e);
+.dark .userAvatar {
+  background-color: var(--gold);
+  color: var(--dark-bg);
+}
+
+.light .userAvatar:hover {
+  box-shadow: 0 0 0 2px var(--burgundy-light);
   transform: scale(1.05);
 }
 
-.greeting {
-  font-size: 1rem;
-  color: var(--text-color);
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-}
-
-.greeting::after {
-  content: '▼';
-  font-size: 0.7rem;
-  margin-left: 5px;
-  transition: transform 0.3s;
-}
-
-.userMenu:hover .greeting::after {
-  transform: rotate(180deg);
+.dark .userAvatar:hover {
+  box-shadow: 0 0 0 2px var(--gold-light);
+  transform: scale(1.05);
 }
 
 .userDropdown {
   position: absolute;
   top: calc(100% + 10px);
   right: 0;
-  background-color: var(--secondary-bg, white);
-  border: 1px solid var(--border-color, #eaeaea);
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  z-index: 1000;
   width: 200px;
+  border-radius: 8px;
+  overflow: hidden;
   opacity: 0;
   visibility: hidden;
   transform: translateY(-10px);
-  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+  transition: all 0.3s ease;
+  z-index: 30;
+  box-shadow: var(--shadow-elevated);
+}
+
+.light .userDropdown {
+  background-color: var(--light-bg);
+  border: 1px solid var(--light-border);
+}
+
+.dark .userDropdown {
+  background-color: var(--dark-bg);
+  border: 1px solid var(--dark-border);
+  box-shadow: var(--dark-shadow-elevated);
 }
 
 .userDropdown.show {
@@ -1331,516 +461,524 @@
 }
 
 .dropdownItem {
-  padding: 12px 15px;
-  text-decoration: none;
-  color: var(--text-color);
-  display: block;
-  transition: background-color 0.3s, color 0.3s;
-  font-weight: 500;
+  width: 100%;
+  text-align: left;
+  padding: 0.8rem 1rem;
+  font-size: 0.9rem;
   border: none;
   background: none;
-  text-align: left;
-  width: 100%;
   cursor: pointer;
-  font-size: 1rem;
+  transition: var(--transition-standard);
 }
 
-.dropdownItem:hover {
-  background-color: rgba(212, 175, 55, 0.1);
-  color: var(--gold-color, #d4af37);
-}
-
-/* Dark Theme adjustments */
-.dark .userDropdown {
-  background-color: var(--secondary-bg);
-  border-color: var(--border-color-dark, #444);
+.light .dropdownItem {
+  color: var(--light-text-primary);
 }
 
 .dark .dropdownItem {
-  color: var(--text-color);
+  color: var(--dark-text-primary);
+}
+
+.light .dropdownItem:hover {
+  background-color: var(--burgundy-light);
+  color: var(--burgundy);
 }
 
 .dark .dropdownItem:hover {
-  background-color: rgba(212, 175, 55, 0.15);
+  background-color: var(--gold-light);
+  color: var(--gold);
 }
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  .userMenu {
-    margin-right: 15px;
-  }
-  
-  .greeting {
-    display: none;
-  }
-  
-  .userDropdown {
-    right: -15px;
-  }
-}
-
-/* Mobile Styles */
-@media (max-width: 600px) {
-  .logoText {
-    font-size: 1.2rem; /* Reduce the font size for smaller screens */
-  }
-
-  .logoAccent {
-    font-size: 0.75rem; /* Make the accent text smaller */
-  }
-
-  .desktopSearchForm {
-    width: 180px; /* Make search form smaller on mobile */
-  }
-
-  .mobileSearchForm {
-    display: flex;
-    width: 100%;
-    margin-bottom: 10px;
-    background-color: var(--bg-secondary, #f5f5f5);
-    border-radius: 20px;
-    padding: 8px 12px;
-  }
-
-  .cartLink, .favLink {
-    font-size: 18px; /* Resize icons for mobile */
-  }
-
-  .navLinks {
-    display: none; /* Hide desktop menu on small screens */
-  }
-
-  .mobileMenuToggle {
-    display: block; /* Show hamburger menu on small screens */
-  }
-
-  .logo {
-    flex-direction: row; /* Adjust logo to row layout for smaller screens */
-  }
-
-  .navLink {
-    font-size: 0.9rem; /* Reduce font size for navigation links */
-  }
-
-  .langSelected {
-    font-size: 0.8rem; /* Resize language selection button */
-  }
-
-  .navLink {
-    font-size: 0.85rem; /* Adjust text size of navigation links */
-  }
-
-  .userMenu {
-    margin-left: 10px;
-  }
-
-  .userAvatar {
-    width: 35px;
-    height: 35px;
-    font-size: 1rem; /* Reduce avatar size */
-  }
-
-  .cartIconContainer {
-    position: relative;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    margin-left: 10px;
-  }
-
-  /* Mobile dropdown adjustments */
-  .userDropdown {
-    width: 100%;
-    left: 0; /* Make the dropdown fit the screen */
-  }
-
-  .dropdownItem {
-    padding: 12px;
-    font-size: 0.9rem; /* Adjust item size for mobile */
-  }
-}
-/* Add this to your Navbar.module.css file */
 
 /* Admin Button */
 .adminButton {
-  background-color: var(--gold-color, #d4af37);
-  color: white;
   border: none;
   border-radius: 4px;
-  padding: 6px 12px;
-  margin-left: 10px;
-  font-size: 0.9rem;
+  padding: 0.4rem 0.8rem;
+  font-size: 0.8rem;
   font-weight: 600;
+  margin-left: 0.6rem;
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  transition: var(--transition-standard);
 }
 
-.adminButton:hover {
-  background-color: var(--accent-hover, #b8960e);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+.light .adminButton {
+  background-color: var(--burgundy);
+  color: white;
 }
 
-/* Dark theme adjustments */
 .dark .adminButton {
-  background-color: #f7ef8a;
-  color: #1a1a1a;
+  background-color: var(--gold);
+  color: var(--dark-bg);
+}
+
+.light .adminButton:hover {
+  background-color: var(--burgundy-hover);
+  transform: translateY(-2px);
 }
 
 .dark .adminButton:hover {
-  background-color: #f7d338;
+  background-color: var(--gold-hover);
+  transform: translateY(-2px);
 }
 
-/* Mobile adjustments */
-@media (max-width: 768px) {
-  .adminButton {
-    padding: 4px 8px;
-    font-size: 0.8rem;
-    margin-left: 6px;
-  }
-}
-
-/* Very small screens */
-@media (max-width: 480px) {
-  .userMenu {
-    flex-wrap: wrap;
-  }
-  
-  .adminButton {
-    order: 3;
-    margin-top: 5px;
-    margin-left: 0;
-    width: 100%;
-  }
-}
-
-/* Əsas navbar və container üçün */
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 1rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 70px;
-}
-
-/* Mobil və tablet ekranlar üçün konteyner ölçüsünü uyğunlaşdır */
-@media (max-width: 992px) {
-  .container {
-    padding: 0 0.75rem;
-  }
-}
-
-/* Logo ölçüsü */
-.logoText {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: var(--gold-color);
-  letter-spacing: 2px;
-}
-
-.logoAccent {
-  font-size: 0.875rem;
-  color: var(--text-color);
-  letter-spacing: 5px;
-}
-
-/* Tablet üçün */
-@media (max-width: 992px) {
-  .logoText {
-    font-size: 1.3rem;
-    letter-spacing: 1px;
-  }
-  
-  .logoAccent {
-    font-size: 0.75rem;
-    letter-spacing: 3px;
-  }
-}
-
-/* Mobil üçün */
-@media (max-width: 576px) {
-  .logoText {
-    font-size: 1.1rem;
-    letter-spacing: 0.5px;
-  }
-  
-  .logoAccent {
-    font-size: 0.7rem;
-    letter-spacing: 2px;
-  }
-}
-
-/* NavLink-lərin düzgün yerləşdirilməsi üçün */
-.navLinks {
+/* Mobile Menu Toggle */
+.mobileMenuToggle {
   display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  align-items: center;
+  justify-content: center;
+  margin-left: 0.5rem;
+  transition: var(--transition-standard);
 }
 
+.light .mobileMenuToggle {
+  color: var(--light-text-primary);
+}
+
+.dark .mobileMenuToggle {
+  color: var(--dark-text-primary);
+}
+
+.light .mobileMenuToggle:hover {
+  background-color: var(--burgundy-light);
+  color: var(--burgundy);
+}
+
+.dark .mobileMenuToggle:hover {
+  background-color: var(--gold-light);
+  color: var(--gold);
+}
+
+.menuIcon {
+  transition: transform 0.3s ease;
+}
+
+.mobileMenuToggle:hover .menuIcon {
+  transform: rotate(90deg);
+}
+
+/* Close button for mobile menu - X düyməsi */
+.closeMenuBtn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: none;
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  transition: var(--transition-standard);
+  animation: fadeIn 0.3s ease forwards;
+}
+
+.light .closeMenuBtn {
+  color: var(--light-text-primary);
+  background-color: var(--burgundy-light);
+}
+
+.dark .closeMenuBtn {
+  color: var(--dark-text-primary);
+  background-color: var(--gold-light);
+}
+
+.light .closeMenuBtn:hover {
+  background-color: var(--burgundy);
+  color: white;
+  transform: rotate(90deg);
+}
+
+.dark .closeMenuBtn:hover {
+  background-color: var(--gold);
+  color: var(--dark-bg);
+  transform: rotate(90deg);
+}
+
+/* Floating Controls - ekranın sol alt küncündə dairəvi düymələr - YALNIZ tablet və mobil üçün */
+.floatingControls {
+  position: fixed;
+  left: 20px;
+  bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 990;
+}
+
+.floatingButton {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.floatingButton:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
+}
+
+.floatingButton:active {
+  transform: translateY(0);
+}
+
+/* Theme button styling */
+.themeButton.light {
+  background-color: var(--burgundy);
+  color: white;
+}
+
+.themeButton.dark {
+  background-color: var(--gold);
+  color: var(--dark-bg);
+}
+
+/* Language button styling */
+.langButton.light {
+  background-color: var(--burgundy);
+  color: white;
+}
+
+.langButton.dark {
+  background-color: var(--gold);
+  color: var(--dark-bg);
+}
+
+/* Language dropdown for floating button */
+.floatingLangDropdown {
+  position: relative;
+}
+
+.floatingLangMenu {
+  position: absolute;
+  bottom: 0;
+  left: 55px;
+  border-radius: 10px;
+  padding: 8px;
+  width: 120px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.light.floatingLangMenu {
+  background-color: var(--light-bg);
+  border: 1px solid var(--light-border);
+}
+
+.dark.floatingLangMenu {
+  background-color: var(--dark-bg);
+  border: 1px solid var(--dark-border);
+}
+
+.langOption {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  border: none;
+  background: none;
+  width: 100%;
+  text-align: left;
+  transition: var(--transition-standard);
+}
+
+.light .langOption {
+  color: var(--light-text-primary);
+}
+
+.dark .langOption {
+  color: var(--dark-text-primary);
+}
+
+.light .langOption:hover {
+  background-color: var(--burgundy-light);
+  color: var(--burgundy);
+}
+
+.dark .langOption:hover {
+  background-color: var(--gold-light);
+  color: var(--gold);
+}
+
+/* Responsive styles */
 @media (min-width: 992px) {
   .navLinks {
+    gap: 2rem;
+  }
+
+  .navLinksContainer {
     display: flex;
     gap: 2rem;
-    margin-right: 2rem;
+    flex-direction: row;
+    margin-top: 0; /* Desktop-də margin-top ləğv et */
   }
 }
 
-/* Mobil menyu açıldığında */
 @media (max-width: 991px) {
+  .container {
+    height: 65px;
+  }
+
+  .logoImg {
+    width: 85px;
+  }
+
+  .mobileMenuToggle {
+    display: flex;
+  }
+  
+  /* Tablet və mobil ölçülər üçün desktop control elementlərini gizlət */
+  .desktopControls {
+    display: none;
+  }
+
   .navLinks {
     position: fixed;
-    top: 70px;
-    left: 0;
-    width: 100%;
-    height: 0;
-    background-color: var(--secondary-bg);
+    top: 0;
+    right: -100%;
+    width: 280px;
+    height: 100%;
+    background-color: transparent;
+    backdrop-filter: blur(15px);
     flex-direction: column;
     align-items: center;
-    gap: 0;
-    overflow: hidden;
-    transition: height 0.3s;
-    box-shadow: var(--box-shadow);
-    z-index: 1001; /* Digər elementlərin üzərində olması üçün */
+    justify-content: flex-start;
+    padding: 80px 30px 30px;
+    transition: right 0.4s cubic-bezier(0.77, 0.2, 0.05, 1.0);
+    z-index: 999;
+    overflow-y: auto;
   }
-  
+
+  .light .navLinks {
+    background-color: rgba(255, 255, 255, 0.95);
+    border-left: 1px solid var(--light-border);
+    box-shadow: -5px 0 20px rgba(0, 0, 0, 0.1);
+  }
+
+  .dark .navLinks {
+    background-color: rgba(8, 8, 8, 0.95);
+    border-left: 1px solid var(--dark-border);
+    box-shadow: -5px 0 20px rgba(0, 0, 0, 0.3);
+  }
+
   .navLinks.active {
-    height: auto;
-    max-height: 90vh; /* Maksimum hündürlük təyin edərək daşmaların qarşısını alırıq */
-    padding: 1rem 0;
-    display: flex;
-    overflow-y: auto; /* Əgər menyu çox uzundursa, sürüşdürmək mümkün olsun */
+    right: 0;
   }
-  
+
+  .navLinksContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    margin-top: 0; /* X düyməsinin görünürlüyünə əsasən düzəldildi */
+  }
+
   .navLink {
     width: 100%;
-    text-align: center;
-    padding: 1rem 0;
-    border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+    padding: 16px 0;
+    font-size: 1.1rem;
+    text-align: left;
+    position: relative;
+    border-bottom: 1px solid;
   }
-}
 
-/* NavActions bölməsi - dil seçimi, tema dəyişmə, səbət, istifadəçi menyusu */
-.navActions {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
+  .light .navLink {
+    border-color: rgba(115, 0, 38, 0.1);
+  }
 
-/* Tablet və mobil cihazlar üçün kiçildilmiş boşluqlar */
-@media (max-width: 768px) {
+  .dark .navLink {
+    border-color: rgba(212, 175, 55, 0.1);
+  }
+
+  .navLink::after {
+    bottom: -1px;
+    left: 0;
+    transform: none;
+  }
+
+  .navLink:hover::after {
+    width: 30%;
+  }
+
   .navActions {
     gap: 0.5rem;
   }
-}
-
-/* Dil seçimi */
-.langDropdown {
-  position: relative;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  border: none;
-  border-radius: 5px;
-}
-
-.langSelected {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: 1rem;
-  font-weight: 500;
-  padding: 0.25rem 0.5rem;
-}
-
-/* Mobil cihazlar üçün dil seçimi ölçüsünü azalt */
-@media (max-width: 768px) {
-  .langSelected {
-    font-size: 0.85rem;
-    padding: 0.2rem 0.4rem;
-    gap: 0.3rem;
-  }
-}
-
-/* Dil menyu düzgün yerləşdirilməsi */
-.langMenu {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  width: 100%;
-  min-width: 80px; /* Minimum genişlik təyin et */
-  background-color: var(--dropdown-background-light);
-  border: 1px solid var(--border-color-light);
-  border-radius: 5px;
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  z-index: 10;
-}
-
-/* Səbət və Sevimlilər ikonlarının düzgün görünməsi */
-.cartIconContainer, .favIconContainer {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.cartCounter {
-  position: absolute;
-  top: -8px;
-  right: -8px;
-  background-color: #d43737; 
-  color: white;
-  border-radius: 50%;
-  width: 18px;
-  height: 18px;
-  font-size: 12px;
-  font-weight: bold;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* İstifadəçi menyusunun düzgün yerləşdirilməsi */
-.userMenu {
-  position: relative;
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-  margin-left: 10px;
-}
-
-/* Mobil cihazlar üçün istifadəçi menyusunu daha kompakt et */
-@media (max-width: 768px) {
-  .userMenu {
-    margin-left: 5px;
-  }
   
+  /* Hamburger menyunun overlay effekti */
+  .navLinks::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease;
+    z-index: -1;
+    backdrop-filter: blur(3px);
+  }
+
+  .navLinks.active::before {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 15px;
+    height: 60px;
+  }
+
+  .logoImg {
+    width: 75px;
+  }
+
   .userAvatar {
     width: 35px;
     height: 35px;
-    font-size: 1rem;
-  }
-  
-  .greeting {
-    display: none; /* Mobil cihazlarda salamlama mesajını gizlət */
-  }
-}
-
-/* Çox kiçik ekranlar üçün daha da kompakt et */
-@media (max-width: 360px) {
-  .userAvatar {
-    width: 30px;
-    height: 30px;
     font-size: 0.9rem;
-    margin-right: 5px;
   }
-  
-  .themeToggle {
-    font-size: 1rem;
-    padding: 0.15rem;
-  }
-  
-  .cartLink, .favLink {
-    font-size: 16px;
-  }
-}
 
-/* İstifadəçi dropdown menyusu */
-.userDropdown {
-  position: absolute;
-  top: calc(100% + 10px);
-  right: 0;
-  background-color: var(--secondary-bg, white);
-  border: 1px solid var(--border-color, #eaeaea);
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  z-index: 1000;
-  width: 200px;
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(-10px);
-  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
-}
-
-/* Mobil cihazlar üçün dropdown menyunu düzəlt */
-@media (max-width: 480px) {
-  .userDropdown {
-    width: 150px; /* Kiçik ekranlarda eni azalt */
-    right: -20px; /* Sağa doğru düzəliş */
-  }
-}
-
-/* Admin düyməsi */
-.adminButton {
-  background-color: var(--gold-color, #d4af37);
-  color: white;
-  border: none;
-  border-radius: 4px;
-  padding: 6px 12px;
-  margin-left: 10px;
-  font-size: 0.9rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  white-space: nowrap; /* Mətni sındırmamaq üçün */
-}
-
-/* Mobil cihazlar üçün admin düyməsini kiçilt */
-@media (max-width: 768px) {
   .adminButton {
-    padding: 4px 8px;
+    padding: 0.3rem 0.6rem;
+    font-size: 0.7rem;
+    margin-left: 0.4rem;
+  }
+
+  .authLink {
+    padding: 0.3rem 0.8rem;
     font-size: 0.8rem;
-    margin-left: 6px;
+  }
+
+  .navLink {
+    font-size: 1rem;
+    padding: 14px 0;
+  }
+  
+  /* X düyməsinin ölçüsünü tənzimlə */
+  .closeMenuBtn {
+    top: 15px;
+    right: 15px;
+    width: 35px;
+    height: 35px;
   }
 }
 
-/* Çox kiçik ekranlar üçün */
-@media (max-width: 360px) {
+@media (max-width: 576px) {
+  .container {
+    padding: 0 10px;
+    height: 55px;
+  }
+
+  .logoImg {
+    width: 70px;
+  }
+
+  .userAvatar {
+    width: 32px;
+    height: 32px;
+    font-size: 0.8rem;
+  }
+
   .adminButton {
-    padding: 3px 6px;
-    font-size: 0.75rem;
-    margin-left: 4px;
+    padding: 0.25rem 0.5rem;
+    font-size: 0.65rem;
   }
-}
 
-/* İcon-lar və tema düyməsi üçün */
-.themeToggle, .cartLink, .favLink {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+  .cartLink, .favLink {
+    padding: 0.4rem;
+  }
 
-/* Kiçik ekranlarda hamburger menyu düyməsi */
-.mobileMenuToggle {
-  display: block;
-  background: none;
-  border: none;
-  cursor: pointer;
-  width: 30px;
-  height: 30px;
-  position: relative;
-  margin-left: 1rem;
-}
+  .cartCounter {
+    width: 16px;
+    height: 16px;
+    font-size: 9px;
+  }
 
-@media (min-width: 992px) {
   .mobileMenuToggle {
-    display: none;
+    width: 35px;
+    height: 35px;
+  }
+
+  .navLinks {
+    width: 260px;
+    padding: 70px 25px 25px;
+  }
+
+  .navLink {
+    font-size: 0.95rem;
+    padding: 12px 0;
+  }
+
+  .floatingControls {
+    left: 15px;
+    bottom: 15px;
+  }
+
+  .floatingButton {
+    width: 40px;
+    height: 40px;
+  }
+  
+  /* X düyməsinin ölçüsünü daha da azalt */
+  .closeMenuBtn {
+    top: 15px;
+    right: 15px;
+    width: 32px;
+    height: 32px;
   }
 }
 
-@media (max-width: 360px) {
-  .menuWrapper {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    flex-wrap: nowrap;
+/* Hamburger menyu açıldıqda animasiya effektləri */
+.navLinks.active .navLink {
+  animation: fadeInRight 0.4s ease forwards;
+  opacity: 0;
+  transform: translateX(20px);
+}
+
+.navLinks.active .navLink:nth-child(1) { animation-delay: 0.1s; }
+.navLinks.active .navLink:nth-child(2) { animation-delay: 0.2s; }
+.navLinks.active .navLink:nth-child(3) { animation-delay: 0.3s; }
+.navLinks.active .navLink:nth-child(4) { animation-delay: 0.4s; }
+.navLinks.active .navLink:nth-child(5) { animation-delay: 0.5s; }
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
   }
-}}}
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

@@ -4,7 +4,9 @@ import { useTranslation } from "react-i18next";
 import { useCart } from "react-use-cart";
 import styles from "./Navbar.module.css";
 import { ThemeContext } from "../../context/ThemeContext";
-import { FiShoppingCart } from "react-icons/fi";
+import { FiShoppingCart, FiMenu } from "react-icons/fi";
+import { BsMoon, BsSun } from "react-icons/bs";
+import { IoHeartOutline, IoClose } from "react-icons/io5";
 import ReactCountryFlag from "react-country-flag";
 import { useWishlist } from "react-use-wishlist";
 import { useUser } from "../UserContext";
@@ -25,12 +27,36 @@ const Navbar = () => {
   const [langMenuOpen, setLangMenuOpen] = useState(false);
   const [userMenuOpen, setUserMenuOpen] = useState(false);
   const [authLoading, setAuthLoading] = useState(true); 
+  const [isMobile, setIsMobile] = useState(false);
+  
   const userMenuRef = useRef(null);
-
+  const mobileMenuRef = useRef(null);
+  const langMenuRef = useRef(null);
   
   const isAdmin = user?.email === ADMIN_EMAIL;
- 
   const isAdminDashboard = location.pathname === "/admin" || location.pathname.startsWith("/admin/");
+
+  // Aktiv səhifəni müəyyən etmək üçün funksiya
+  const isActive = (path) => {
+    if (path === '/') {
+      return location.pathname === path;
+    }
+    return location.pathname.startsWith(path);
+  };
+
+  // Ekran ölçüsünün dəyişikliyini izləyir
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 992);
+    };
+    
+    handleResize(); // İlkin yüklənmədə ekran ölçüsünü təyin edir
+    window.addEventListener('resize', handleResize);
+    
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -40,11 +66,9 @@ const Navbar = () => {
     return () => clearTimeout(timer);
   }, []);
 
-
   useEffect(() => {
     if (!authLoading) {
       if (isAdminDashboard && !isAdmin && isAuthenticated) {
-     
         navigate('/');
       } else if (isAdminDashboard && !isAuthenticated) {
         navigate('/login');
@@ -52,7 +76,6 @@ const Navbar = () => {
     }
   }, [isAdminDashboard, isAdmin, isAuthenticated, navigate, authLoading]);
 
-  
   const getUserDisplayName = () => {
     if (user?.raw_user_meta_data?.full_name) {
       return user.raw_user_meta_data.full_name;
@@ -82,25 +105,23 @@ const Navbar = () => {
     }
   };
 
+  // Menyunu bağlamaq üçün ayrıca funksiya
+  const closeMobileMenu = () => {
+    setMobileMenuOpen(false);
+    document.body.style.overflow = '';
+  };
 
   useEffect(() => {
     const handleClickOutside = (event) => {
-     
       if (!mobileMenuOpen) return;
-     
-      const toggleButton = document.querySelector(`.${styles.mobileMenuToggle}`);
       
-      
-      const menuElement = document.querySelector(`.${styles.navLinks}`);
-      
- 
+      // Check if click is outside menu and toggle button
       if (
-        toggleButton && 
-        !toggleButton.contains(event.target) && 
-        menuElement && 
-        !menuElement.contains(event.target)
+        mobileMenuRef.current && 
+        !mobileMenuRef.current.contains(event.target) &&
+        !event.target.closest(`.${styles.mobileMenuToggle}`)
       ) {
-        setMobileMenuOpen(false);
+        closeMobileMenu();
       }
     };
 
@@ -108,12 +129,16 @@ const Navbar = () => {
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, [mobileMenuOpen, styles.mobileMenuToggle, styles.navLinks]);
+  }, [mobileMenuOpen]);
 
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (userMenuRef.current && !userMenuRef.current.contains(event.target)) {
         setUserMenuOpen(false);
+      }
+      
+      if (langMenuRef.current && !langMenuRef.current.contains(event.target)) {
+        setLangMenuOpen(false);
       }
     };
 
@@ -133,191 +158,258 @@ const Navbar = () => {
     setLangMenuOpen(false);
   };
 
-
-  const handleMobileMenuToggle = (e) => {
-    e.stopPropagation();
+  const handleMobileMenuToggle = () => {
     setMobileMenuOpen(!mobileMenuOpen);
+    // Prevent body scrolling when menu is open
+    if (!mobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
   };
-
   
   const goToAdminDashboard = () => {
     navigate('/admin');
     setUserMenuOpen(false);
   };
 
+  const isDarkMode = theme === "dark";
+
   return (
-    <nav className={`${styles.navbar} ${theme === "dark" ? styles.dark : ""}`}>
-      <div className={styles.container}>
-        <Link to="/" className={styles.logo}>
-          {/* <span className={styles.logoText}>LUXURY</span>
-          <span className={styles.logoAccent}>WATCHES</span> */}
-          
-        <img className={styles.logoText} src="/videos/Screenshot Capture - 2025-04-14 - 02-25-33-Photoroom.png" alt="logo" />
+    <>
+      <nav className={`${styles.navbar} ${isDarkMode ? styles.dark : styles.light}`}>
+        <div className={styles.container}>
+          <Link to="/" className={styles.logo}>
+            <img 
+              className={styles.logoImg} 
+              src="/videos/Screenshot Capture - 2025-04-14 - 02-25-33-Photoroom.png" 
+              alt="Luxury Watches Logo" 
+            />
+          </Link>
 
-        </Link>
-
-        <div className={styles.menuWrapper}>
-          <div
-            className={`${styles.navLinks} ${
-              mobileMenuOpen ? styles.active : ""
-            }`}
-          >
-            <Link to="/" className={styles.navLink} onClick={() => setMobileMenuOpen(false)}>
-              {t("home")}
-            </Link>
-            <Link to="/products" className={styles.navLink} onClick={() => setMobileMenuOpen(false)}>
-              {t("products")}
-            </Link>
-            <Link to="/about" className={styles.navLink} onClick={() => setMobileMenuOpen(false)}>
-              {t("about")}
-            </Link>
-            <Link to="/blog" className={styles.navLink} onClick={() => setMobileMenuOpen(false)}>
-              {t("blog")}
-            </Link>
-            <Link to="/contact" className={styles.navLink} onClick={() => setMobileMenuOpen(false)}>
-              {t("contact")}
-            </Link>
-      
-          </div>
-
-          <div className={styles.navActions}>
-            <button onClick={toggleTheme} className={styles.themeToggle}>
-              {theme === "dark" ? "☀️" : "🌙"}
-            </button>
-
-            <div
-              className={styles.langDropdown}
-              onClick={(e) => {
-                e.stopPropagation();
-                setLangMenuOpen(!langMenuOpen);
-              }}
+          <div className={styles.menuWrapper}>
+            <div 
+              className={`${styles.navLinks} ${mobileMenuOpen ? styles.active : ""}`}
+              ref={mobileMenuRef}
             >
-              <div className={styles.langSelected}>
-                <ReactCountryFlag
-                  countryCode={
-                    languages.find((l) => l.code === i18n.language)?.flag || "US"
-                  }
-                  svg
-                />
-                {languages.find((l) => l.code === i18n.language)?.label || "EN"}
-              </div>
-              {langMenuOpen && (
-                <ul className={styles.langMenu}>
-                  {languages.map((lang) => (
-                    <li
-                      key={lang.code}
-                      onClick={() => changeLanguage(lang.code)}
-                    >
-                      <ReactCountryFlag countryCode={lang.flag} svg />
-                      {lang.label}
-                    </li>
-                  ))}
-                </ul>
+              {/* X bağlama düyməsi - hamburger menu açıq olduqda */}
+              {mobileMenuOpen && (
+                <button className={styles.closeMenuBtn} onClick={closeMobileMenu} aria-label="Close menu">
+                  <IoClose size={24} />
+                </button>
               )}
+              
+              {/* Naviqasiya linkləri - aktiv səhifə rəngli göstərilir */}
+              <div className={styles.navLinksContainer}>
+                <Link 
+                  to="/" 
+                  className={`${styles.navLink} ${isActive('/') ? styles.activeLink : ''}`} 
+                  onClick={closeMobileMenu}
+                >
+                  {t("home")}
+                </Link>
+                <Link 
+                  to="/products" 
+                  className={`${styles.navLink} ${isActive('/products') ? styles.activeLink : ''}`} 
+                  onClick={closeMobileMenu}
+                >
+                  {t("products")}
+                </Link>
+                <Link 
+                  to="/about" 
+                  className={`${styles.navLink} ${isActive('/about') ? styles.activeLink : ''}`} 
+                  onClick={closeMobileMenu}
+                >
+                  {t("about")}
+                </Link>
+                <Link 
+                  to="/blog" 
+                  className={`${styles.navLink} ${isActive('/blog') ? styles.activeLink : ''}`} 
+                  onClick={closeMobileMenu}
+                >
+                  {t("blog")}
+                </Link>
+                <Link 
+                  to="/contact" 
+                  className={`${styles.navLink} ${isActive('/contact') ? styles.activeLink : ''}`} 
+                  onClick={closeMobileMenu}
+                >
+                  {t("contact")}
+                </Link>
+              </div>
             </div>
 
-                     {isAuthenticated && (!isAdmin || !isAdminDashboard) && (
-              <>
-                <Link to="/cart" className={styles.cartLink}>
-                  <div className={styles.cartIconContainer}>
-                    <FiShoppingCart size={24} />
-                    {totalItems > 0 && (
-                      <span className={styles.cartCounter}>{totalItems}</span>
-                    )}
-                  </div>
-                </Link>
-
-                <Link to="/favorites" className={styles.favLink}>
-                  <div className={styles.favIconContainer}>
-                    <span className={styles.icon}>❤️</span>
-                    {totalWishlistItems > 0 && (
-                      <span className={styles.cartCounter}>
-                        {totalWishlistItems}
-                      </span>
-                    )}
-                  </div>
-                </Link>
-              </>
-            )}
-
-            {isAuthenticated ? (
-              <div className={styles.userMenu} ref={userMenuRef}>
-                <div
-                  className={styles.userAvatar}
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    setUserMenuOpen(!userMenuOpen);
-                  }}
-                >
-                  {getAvatarLetter()}
-                </div>
-                
-                {/* <div 
-                  className={styles.greeting}
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    setUserMenuOpen(!userMenuOpen);
-                  }}
-                >
-                  Salam, {getUserDisplayName()}
-                </div> */}
-                
-              
-                {isAdmin && (
+            <div className={styles.navActions}>
+              {/* Desktop tema və dil seçimi düymələri - mobil olmadıqda */}
+              {!isMobile && (
+                <div className={styles.desktopControls}>
                   <button 
-                    onClick={goToAdminDashboard} 
-                    className={styles.adminButton}
+                    onClick={toggleTheme} 
+                    className={styles.themeToggle}
+                    aria-label={isDarkMode ? "Switch to light mode" : "Switch to dark mode"}
                   >
-                    Admin
+                    {isDarkMode ? <BsSun size={20} /> : <BsMoon size={20} />}
                   </button>
-                )}
-                
-                <div
-                  className={`${styles.userDropdown} ${
-                    userMenuOpen ? styles.show : ""
-                  }`}
-                >
-                
+                  
+                  <div
+                    className={styles.langDropdown}
+                    onClick={() => setLangMenuOpen(!langMenuOpen)}
+                    ref={langMenuRef}
+                  >
+                    <div className={styles.langSelected}>
+                      <ReactCountryFlag
+                        countryCode={
+                          languages.find((l) => l.code === i18n.language)?.flag || "US"
+                        }
+                        svg
+                      />
+                      {languages.find((l) => l.code === i18n.language)?.label || "EN"}
+                    </div>
+                    {langMenuOpen && (
+                      <ul className={styles.langMenu}>
+                        {languages.map((lang) => (
+                          <li
+                            key={lang.code}
+                            onClick={() => changeLanguage(lang.code)}
+                          >
+                            <ReactCountryFlag countryCode={lang.flag} svg />
+                            {lang.label}
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                  </div>
+                </div>
+              )}
+
+              {isAuthenticated && (!isAdmin || !isAdminDashboard) && (
+                <>
+                  <Link to="/cart" className={`${styles.cartLink} ${isActive('/cart') ? styles.activeIcon : ''}`}>
+                    <div className={styles.cartIconContainer}>
+                      <FiShoppingCart size={22} />
+                      {totalItems > 0 && (
+                        <span className={styles.cartCounter}>{totalItems}</span>
+                      )}
+                    </div>
+                  </Link>
+
+                  <Link to="/favorites" className={`${styles.favLink} ${isActive('/favorites') ? styles.activeIcon : ''}`}>
+                    <div className={styles.favIconContainer}>
+                      <IoHeartOutline size={22} />
+                      {totalWishlistItems > 0 && (
+                        <span className={styles.cartCounter}>
+                          {totalWishlistItems}
+                        </span>
+                      )}
+                    </div>
+                  </Link>
+                </>
+              )}
+
+              {isAuthenticated ? (
+                <div className={styles.userMenu} ref={userMenuRef}>
+                  <div
+                    className={styles.userAvatar}
+                    onClick={() => setUserMenuOpen(!userMenuOpen)}
+                  >
+                    {getAvatarLetter()}
+                  </div>
+                                
                   {isAdmin && (
-                    <Link 
-                      to="/admin" 
-                      className={styles.dropdownItem}
-                      onClick={() => setUserMenuOpen(false)}
+                    <button 
+                      onClick={goToAdminDashboard} 
+                      className={styles.adminButton}
                     >
-                      {t("adminDashboard")}
-                    </Link>
+                      Admin
+                    </button>
                   )}
                   
-                  <button
-                    onClick={handleLogout}
-                    className={styles.dropdownItem}
+                  <div
+                    className={`${styles.userDropdown} ${
+                      userMenuOpen ? styles.show : ""
+                    }`}
                   >
-                    {t("logout")} 
-                  </button>
+                  
+                    {isAdmin && (
+                      <Link 
+                        to="/admin" 
+                        className={styles.dropdownItem}
+                        onClick={() => setUserMenuOpen(false)}
+                      >
+                        {t("adminDashboard")}
+                      </Link>
+                    )}
+                    
+                    <button
+                      onClick={handleLogout}
+                      className={styles.dropdownItem}
+                    >
+                      {t("logout")} 
+                    </button>
+                  </div>
                 </div>
-              </div>
-            ) : (
-              <div className={styles.authLinks}>
-                <Link to="/login" className={styles.authLink}>
+              ) : (
+                <div className={styles.authLinks}>
+                  <Link to="/login" className={`${styles.authLink} ${isActive('/login') ? styles.activeLink : ''}`}>
+                    {t("loginet1")}
+                  </Link>
+                </div>
+              )}
 
-                  {t("loginet1")}
-
-                </Link>
+              <button
+                className={styles.mobileMenuToggle}
+                onClick={handleMobileMenuToggle}
+                aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
+              >
+                <FiMenu size={24} className={styles.menuIcon} />
+              </button>
+            </div>
+          </div>
+        </div>
+      </nav>
+      
+      {/* Floating Controls - YALNIZ tablet və mobil üçün */}
+      {isMobile && (
+        <div className={styles.floatingControls}>
+          <button 
+            onClick={toggleTheme} 
+            className={`${styles.floatingButton} ${styles.themeButton} ${isDarkMode ? styles.dark : styles.light}`}
+            aria-label={isDarkMode ? "Switch to light mode" : "Switch to dark mode"}
+          >
+            {isDarkMode ? <BsSun size={18} /> : <BsMoon size={18} />}
+          </button>
+          
+          <div className={styles.floatingLangDropdown}>
+            <button 
+              className={`${styles.floatingButton} ${styles.langButton} ${isDarkMode ? styles.dark : styles.light}`}
+              onClick={() => setLangMenuOpen(!langMenuOpen)}
+              aria-label="Change language"
+            >
+              <ReactCountryFlag
+                countryCode={languages.find((l) => l.code === i18n.language)?.flag || "US"}
+                svg
+                style={{ width: '18px', height: '18px' }}
+              />
+            </button>
+            
+            {langMenuOpen && (
+              <div className={`${styles.floatingLangMenu} ${isDarkMode ? styles.dark : styles.light}`}>
+                {languages.map((lang) => (
+                  <button
+                    key={lang.code}
+                    className={styles.langOption}
+                    onClick={() => changeLanguage(lang.code)}
+                  >
+                    <ReactCountryFlag countryCode={lang.flag} svg />
+                    <span>{lang.label}</span>
+                  </button>
+                ))}
               </div>
             )}
           </div>
-
-          <button
-            className={styles.mobileMenuToggle}
-            onClick={handleMobileMenuToggle}
-          >
-            <span
-              className={mobileMenuOpen ? styles.close : styles.hamburger}
-            ></span>
-          </button>
         </div>
-      </div>
-    </nav>
+      )}
+    </>
   );
 };
 

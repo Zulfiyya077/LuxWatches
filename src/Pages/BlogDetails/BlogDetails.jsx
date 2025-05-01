@@ -2,7 +2,7 @@
 import React, { useEffect, useContext, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { ThemeContext } from "../../context/ThemeContext";
-import { useTranslation } from "react-i18next"; // Import useTranslation hook
+import { useTranslation } from "react-i18next";
 import styles from "./BlogDetails.module.css";
 import supabase from "../../supabaseClient";
 import { format } from "date-fns";
@@ -10,12 +10,15 @@ import { format } from "date-fns";
 const BlogDetails = () => {
   const { id } = useParams();
   const { theme } = useContext(ThemeContext);
-  const { t } = useTranslation(); // Initialize the translation hook
+  const { t } = useTranslation();
   
   const [blog, setBlog] = useState(null);
   const [relatedPosts, setRelatedPosts] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
+  
+  // Check if theme is dark mode
+  const isDarkMode = theme === "dark";
 
   useEffect(() => {
     let isMounted = true;
@@ -48,17 +51,27 @@ const BlogDetails = () => {
             ? format(new Date(blogData.date), "dd MMM yyyy")
             : "";
 
+        // Get related posts with the same category
         const { data: relatedData, error: relatedError } = await supabase
           .from("blog")
-          .select("id, title, image, date")
+          .select("id, title, image, date, category")
           .eq("category", blogData.category)
-          .neq("id", Number(id));
+          .neq("id", Number(id))
+          .limit(4); // Limit to 4 related posts
 
         if (relatedError) throw relatedError;
 
+        // Format dates for related posts
+        const formattedRelatedPosts = relatedData?.map(post => ({
+          ...post,
+          formattedDate: post.date && !isNaN(new Date(post.date))
+            ? format(new Date(post.date), "dd MMM yyyy")
+            : post.date
+        })) || [];
+
         if (isMounted) {
           setBlog({ ...blogData, formattedDate });
-          setRelatedPosts(relatedData || []);
+          setRelatedPosts(formattedRelatedPosts);
         }
       } else {
         if (isMounted) setError(t("blog1.notFound"));
@@ -73,7 +86,7 @@ const BlogDetails = () => {
 
   if (loading) {
     return (
-      <div className={`${styles.notFound} ${theme === "dark" ? styles.darkMode : ""}`}>
+      <div className={`${styles.notFound} ${isDarkMode ? styles.darkMode : ""}`}>
         <h2>{t("blog1.loading")}</h2>
       </div>
     );
@@ -81,24 +94,30 @@ const BlogDetails = () => {
 
   if (error) {
     return (
-      <div className={`${styles.notFound} ${theme === "dark" ? styles.darkMode : ""}`}>
+      <div className={`${styles.notFound} ${isDarkMode ? styles.darkMode : ""}`}>
         <h2>{error}</h2>
-        <Link to="/blog" className={styles.backButton}>{t("blog1.returnToBlog")}</Link>
+        <Link to="/blog" className={styles.backButton}>
+          <button className={styles.backIcon}>←</button> 
+          {t("blog1.returnToBlog")}
+        </Link>
       </div>
     );
   }
 
   if (!blog) {
     return (
-      <div className={`${styles.notFound} ${theme === "dark" ? styles.darkMode : ""}`}>
+      <div className={`${styles.notFound} ${isDarkMode ? styles.darkMode : ""}`}>
         <h2>{t("blog1.notFound")}</h2>
-        <Link to="/blog" className={styles.backButton}>{t("blog1.returnToBlog")}</Link>
+        <Link to="/blog" className={styles.backButton}>
+          <button className={styles.backIcon}>←</button> 
+          {t("blog1.returnToBlog")}
+        </Link>
       </div>
     );
   }
 
   return (
-    <div className={`${styles.blogDetailsContainer} ${theme === "dark" ? styles.darkMode : ""}`}>
+    <div className={`${styles.blogDetailsContainer} ${isDarkMode ? styles.darkMode : ""}`}>
       <div className={styles.blogHeader}>
         <h1 className={styles.blogTitle}>{blog.title}</h1>
         <div className={styles.metaInfo}>
@@ -167,9 +186,21 @@ const BlogDetails = () => {
           <div className={styles.relatedGrid}>
             {relatedPosts.map(post => (
               <Link key={post.id} to={`/blog/${post.id}`} className={styles.relatedCard}>
-                <img src={post.image} alt={post.title} className={styles.relatedImage} />
-                <h4 className={styles.relatedPostTitle}>{post.title}</h4>
-                <span className={styles.relatedDate}>{post.date}</span>
+                <div className={styles.relatedImageWrapper}>
+                  <img src={post.image} alt={post.title} className={styles.relatedImage} />
+                </div>
+                <div className={styles.relatedContent}>
+                  <h4 className={styles.relatedPostTitle}>{post.title}</h4>
+                  <div className={styles.relatedMeta}>
+                    <span className={styles.relatedDate}>{post.formattedDate}</span>
+                    {post.category && (
+                      <>
+                        
+                        <span className={styles.relatedCategory}>{post.category}</span>
+                      </>
+                    )}
+                  </div>
+                </div>
               </Link>
             ))}
           </div>

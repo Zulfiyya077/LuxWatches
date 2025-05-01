@@ -11,6 +11,7 @@ import { useTranslation } from "react-i18next";
 const WristTryOn = ({ watchImage, watchDiameter }) => {
   const { theme, toggleTheme } = useTheme();
   const { t } = useTranslation();
+  const isDarkMode = theme === 'dark';
   
   const canvasRef = useRef(null);
   const uploadInputRef = useRef(null);
@@ -403,12 +404,8 @@ const WristTryOn = ({ watchImage, watchDiameter }) => {
     renderCanvas();
   }, [userImage, watchImg, watchPosition, watchSize, watchRotation, zoomLevel, panPosition, handSegmentation, manualMode]);
 
-  const containerClass = `${styles.tryOnContainer} ${theme === 'dark' ? styles.darkTheme : ''}`;
-
   return (
-    <div className={containerClass}>
-     
-      
+    <div className={`${styles.tryOnContainer} ${isDarkMode ? styles.darkTheme : ''}`}>
       <div 
         className={styles.videoContainer}
         style={{ cursor: manualMode ? 'grab' : 'default' }}

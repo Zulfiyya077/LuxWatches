@@ -1,4 +1,3 @@
-// Review data strukturunu import etmək
 import React, { useState, useEffect, useRef } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import {
@@ -26,6 +25,8 @@ const SingleProduct = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const { theme } = useTheme();
+  const isDarkMode = theme === 'dark';
+  
   const [product, setProduct] = useState(null);
   const [selectedImage, setSelectedImage] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -180,73 +181,72 @@ const SingleProduct = () => {
     setNewReview((prev) => ({ ...prev, rating }));
   };
 
-// İşləyən versiya:
-// Yeni review əlavə etmək funksiyasını təkmilləşdirək
-const handleReviewSubmit = async (e) => {
-  e.preventDefault();
-  if (!newReview.name || !newReview.comment) return;
+  // Yeni review əlavə etmək funksiyası
+  const handleReviewSubmit = async (e) => {
+    e.preventDefault();
+    if (!newReview.name || !newReview.comment) return;
 
-  setReviewSubmitting(true);
+    setReviewSubmitting(true);
 
-  const newReviewObj = {
-    id: Date.now(),
-    name: newReview.name,
-    rating: newReview.rating,
-    comment: newReview.comment,
-    created_at: new Date().toISOString(),
+    const newReviewObj = {
+      id: Date.now(),
+      name: newReview.name,
+      rating: newReview.rating,
+      comment: newReview.comment,
+      created_at: new Date().toISOString(),
+    };
+
+    try {
+      // 1. Əvvəlcə cari məlumatları alaq
+      const { data: currentProduct, error: fetchError } = await supabase
+        .from("Products")
+        .select("reviews")
+        .eq("id", id)
+        .single();
+
+      if (fetchError) {
+        console.error("Məlumatları alarkən xəta:", fetchError.message);
+        toast.error(t("reviewError"));
+        setReviewSubmitting(false);
+        return;
+      }
+
+      // 2. Yeni review array-i hazırlayaq
+      let updatedReviews = [];
+      
+      // Mövcud reviews massivini emal edək
+      if (currentProduct.reviews) {
+        // Artıq jsonb tipi olduğu üçün əlavə parse etməyə ehtiyac yoxdur
+        updatedReviews = Array.isArray(currentProduct.reviews) 
+          ? [newReviewObj, ...currentProduct.reviews]
+          : [newReviewObj];
+      } else {
+        updatedReviews = [newReviewObj];
+      }
+
+      // 3. Yeniləmə əməliyyatı - burada sadəcə array ötürürük, JSON.stringify etmirik
+      const { error } = await supabase
+        .from("Products")
+        .update({ reviews: updatedReviews })
+        .eq("id", id);
+
+      if (error) {
+        console.error("Review əlavə edilə bilmədi:", error.message);
+        toast.error(t("reviewError"));
+      } else {
+        // UI-ı yeniləyirik
+        setReviews(updatedReviews);
+        setNewReview({ name: "", rating: 5, comment: "" });
+        setShowReviewForm(false);
+        toast.success(t("reviewSubmitted"));
+      }
+    } catch (err) {
+      console.error("Review göndərilərkən xəta:", err);
+      toast.error(t("reviewError"));
+    }
+
+    setReviewSubmitting(false);
   };
-
-  try {
-    // 1. Əvvəlcə cari məlumatları alaq
-    const { data: currentProduct, error: fetchError } = await supabase
-      .from("Products")
-      .select("reviews")
-      .eq("id", id)
-      .single();
-
-    if (fetchError) {
-      console.error("Məlumatları alarkən xəta:", fetchError.message);
-      toast.error(t("reviewError"));
-      setReviewSubmitting(false);
-      return;
-    }
-
-    // 2. Yeni review array-i hazırlayaq
-    let updatedReviews = [];
-    
-    // Mövcud reviews massivini emal edək
-    if (currentProduct.reviews) {
-      // Artıq jsonb tipi olduğu üçün əlavə parse etməyə ehtiyac yoxdur
-      updatedReviews = Array.isArray(currentProduct.reviews) 
-        ? [newReviewObj, ...currentProduct.reviews]
-        : [newReviewObj];
-    } else {
-      updatedReviews = [newReviewObj];
-    }
-
-    // 3. Yeniləmə əməliyyatı - burada sadəcə array ötürürük, JSON.stringify etmirik
-    const { error } = await supabase
-      .from("Products")
-      .update({ reviews: updatedReviews })
-      .eq("id", id);
-
-    if (error) {
-      console.error("Review əlavə edilə bilmədi:", error.message);
-      toast.error(t("reviewError"));
-    } else {
-      // UI-ı yeniləyirik
-      setReviews(updatedReviews);
-      setNewReview({ name: "", rating: 5, comment: "" });
-      setShowReviewForm(false);
-      toast.success(t("reviewSubmitted"));
-    }
-  } catch (err) {
-    console.error("Review göndərilərkən xəta:", err);
-    toast.error(t("reviewError"));
-  }
-
-  setReviewSubmitting(false);
-};
 
   const handleAddToCart = () => {
     addItem(product);
@@ -263,9 +263,7 @@ const handleReviewSubmit = async (e) => {
   if (loading)
     return (
       <div
-        className={`${styles.loading} ${
-          theme === "dark" ? styles.darkMode : ""
-        }`}
+        className={`${styles.loading} ${isDarkMode ? styles.darkMode : ""}`}
       >
         {t("loading")}
       </div>
@@ -274,9 +272,7 @@ const handleReviewSubmit = async (e) => {
   if (!product)
     return (
       <div
-        className={`${styles.notFound} ${
-          theme === "dark" ? styles.darkMode : ""
-        }`}
+        className={`${styles.notFound} ${isDarkMode ? styles.darkMode : ""}`}
       >
         {t("notFound")}
       </div>
@@ -357,9 +353,7 @@ const handleReviewSubmit = async (e) => {
 
   return (
     <div
-      className={`${styles.singleProductContainer} ${
-        theme === "dark" ? styles.darkMode : ""
-      }`}
+      className={`${styles.singleProductContainer} ${isDarkMode ? styles.darkMode : ""}`}
     >
       <button className={styles.backButton} onClick={handleGoBack}>
         <ChevronLeft size={24} />
@@ -411,31 +405,31 @@ const handleReviewSubmit = async (e) => {
             </h2>
 
             <div className={styles.reviewsList}>
-  {loadingReviews ? (
-    <div className={styles.reviewsLoading}>{t("loadingReviews")}</div>
-  ) : reviews.length === 0 ? (
-    <div className={styles.noReviews}>{t("noReviews")}</div>
-  ) : (
-    reviews.map((review, index) => (
-      <div key={review.id || `review-${index}`} className={styles.reviewItem}>
-        <div className={styles.reviewHeader}>
-          <div className={styles.reviewerInfo}>
-            <div className={styles.reviewerAvatar}>
-              <User size={24} />
+              {loadingReviews ? (
+                <div className={styles.reviewsLoading}>{t("loadingReviews")}</div>
+              ) : reviews.length === 0 ? (
+                <div className={styles.noReviews}>{t("noReviews")}</div>
+              ) : (
+                reviews.map((review, index) => (
+                  <div key={review.id || `review-${index}`} className={styles.reviewItem}>
+                    <div className={styles.reviewHeader}>
+                      <div className={styles.reviewerInfo}>
+                        <div className={styles.reviewerAvatar}>
+                          <User size={24} />
+                        </div>
+                        <span className={styles.reviewerName}>{review.name}</span>
+                      </div>
+                      <div className={styles.reviewRating}>
+                        {renderRatingStars(review.rating)}
+                      </div>
+                    </div>
+                    <div className={styles.reviewContent}>
+                      <p>{review.comment}</p>
+                    </div>
+                  </div>
+                ))
+              )}
             </div>
-            <span className={styles.reviewerName}>{review.name}</span>
-          </div>
-          <div className={styles.reviewRating}>
-            {renderRatingStars(review.rating)}
-          </div>
-        </div>
-        <div className={styles.reviewContent}>
-          <p>{review.comment}</p>
-        </div>
-      </div>
-    ))
-  )}
-</div>
 
             <div className={styles.addReviewContainer}>
               {!showReviewForm ? (
@@ -604,7 +598,7 @@ const handleReviewSubmit = async (e) => {
                 </button>
 
                 <button
-                  className={styles.tryOnButton || styles.addToCartButton}
+                  className={styles.tryOnButton}
                   onClick={() => setShowTryOn(!showTryOn)}
                 >
                   <span>{showTryOn ? t("hideTryOn") : t("virtualTryOn")}</span>
@@ -614,10 +608,7 @@ const handleReviewSubmit = async (e) => {
                 <div className={styles.tryOnSection}>
                   <WristTryOn
                     watchImage={selectedImage}
-                    watchName={product.name}
-                    watchPrice={
-                      product.discounted ? validDiscountedPrice : validPrice
-                    }
+                    watchDiameter={product.details?.diameter || 40}
                     productData={product}
                   />
                 </div>

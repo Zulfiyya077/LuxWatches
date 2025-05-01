@@ -1,19 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
 .wishlistContainer {
-  
+  font-family: 'Poppins', sans-serif;
   max-width: 1200px;
   margin: 50px auto;
   padding: 30px;
   border-radius: 16px;
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-  color: #333;
   perspective: 1000px;
 }
 
-/* Dark theme override for container */
-.wishlistContainer.darkTheme {
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+/* Light theme styles */
+.lightTheme {
+  background-color: #ffffff;
+  color: #333;
+  box-shadow: 0 10px 30px rgba(115, 0, 38, 0.08);
+}
+
+/* Dark theme styles */
+.darkTheme {
+  background-color: #080808;
   color: #f0f0f0;
+  box-shadow: 0 10px 30px rgba(212, 175, 55, 0.1);
 }
 
 /* Header styles */
@@ -23,7 +32,6 @@
   font-size: 2.2rem;
   padding-bottom: 15px;
   position: relative;
-  color: #333;
   letter-spacing: 1px;
   font-weight: 700;
 }
@@ -36,17 +44,25 @@
   transform: translateX(-50%);
   width: 100px;
   height: 3px;
-  background: linear-gradient(90deg, #a30000, #ff9d00);
   border-radius: 3px;
 }
 
-/* Dark theme override for header */
-.wishlistContainer.darkTheme h2 {
-  color: #f0f0f0;
+/* Light theme header */
+.lightTheme h2 {
+  color: #730026;
 }
 
-.wishlistContainer.darkTheme h2::after {
-  background: linear-gradient(90deg, #ff6b6b, #ffd700);
+.lightTheme h2::after {
+  background: linear-gradient(90deg, #730026, #aa0039);
+}
+
+/* Dark theme header */
+.darkTheme h2 {
+  color: #d4af37;
+}
+
+.darkTheme h2::after {
+  background: linear-gradient(90deg, #d4af37, #ffd700);
 }
 
 /* Empty wishlist message */
@@ -54,8 +70,6 @@
   text-align: center;
   font-size: 1.2rem;
   padding: 40px;
-  color: #777;
-  background-color: rgba(255, 255, 255, 0.5);
   border-radius: 12px;
   backdrop-filter: blur(5px);
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
@@ -67,10 +81,16 @@
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* Dark theme override for empty message */
-.wishlistContainer.darkTheme .emptyMessage {
+/* Light theme empty message */
+.lightTheme .emptyMessage {
+  color: #777;
+  background-color: rgba(115, 0, 38, 0.05);
+}
+
+/* Dark theme empty message */
+.darkTheme .emptyMessage {
   color: #aaa;
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: rgba(212, 175, 55, 0.1);
 }
 
 /* Wishlist grid layout */
@@ -87,27 +107,35 @@
   border-radius: 16px;
   overflow: hidden;
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  background-color: #fff;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.07);
   transform-style: preserve-3d;
   position: relative;
+  animation: float 6s ease-in-out infinite;
+  animation-delay: calc(var(--i, 0) * 0.2s);
 }
 
-/* Dark theme override for items */
-.wishlistContainer.darkTheme .wishlistItem {
-  background-color: #3d2929; /* Darker burgundy */
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+/* Light theme item */
+.lightTheme .wishlistItem {
+  background-color: #fff;
+  box-shadow: 0 8px 20px rgba(115, 0, 38, 0.07);
+}
+
+/* Dark theme item */
+.darkTheme .wishlistItem {
+  background-color: #181818;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
 }
 
 /* Hover effects */
 .wishlistItem:hover {
   transform: translateY(-10px) rotateX(5deg);
-  box-shadow: 0 15px 30px rgba(163, 0, 0, 0.2);
 }
 
-/* Dark theme override for hover */
-.wishlistContainer.darkTheme .wishlistItem:hover {
-  box-shadow: 0 15px 30px rgba(255, 107, 107, 0.2);
+.lightTheme .wishlistItem:hover {
+  box-shadow: 0 15px 30px rgba(115, 0, 38, 0.2);
+}
+
+.darkTheme .wishlistItem:hover {
+  box-shadow: 0 15px 30px rgba(212, 175, 55, 0.2);
 }
 
 /* Image wrapper */
@@ -118,7 +146,7 @@
   position: relative;
 }
 
-/* Image wrapper before pseudo-element for shine effect */
+/* Image wrapper shine effect */
 .imageWrapper::before {
   content: "";
   position: absolute;
@@ -126,15 +154,26 @@
   left: -100%;
   width: 50%;
   height: 200%;
-  background: linear-gradient(
-    to right,
-    rgba(255, 255, 255, 0) 0%,
-    rgba(255, 255, 255, 0.3) 100%
-  );
   transform: rotate(25deg);
   transition: all 0.7s ease;
   z-index: 1;
   pointer-events: none;
+}
+
+.lightTheme .imageWrapper::before {
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(115, 0, 38, 0.2) 100%
+  );
+}
+
+.darkTheme .imageWrapper::before {
+  background: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(212, 175, 55, 0.3) 100%
+  );
 }
 
 .wishlistItem:hover .imageWrapper::before {
@@ -166,12 +205,14 @@
 .wishlistItem h3 {
   margin: 0 0 15px 0;
   font-size: 1.3rem;
-  color: #333;
   font-weight: 600;
 }
 
-/* Dark theme override for title */
-.wishlistContainer.darkTheme .wishlistItem h3 {
+.lightTheme .wishlistItem h3 {
+  color: #333;
+}
+
+.darkTheme .wishlistItem h3 {
   color: #f0f0f0;
 }
 
@@ -179,7 +220,6 @@
 .price {
   font-weight: 700;
   margin: 0 0 20px 0;
-  color: #a30000; /* Burgundy price */
   font-size: 1.4rem;
   position: relative;
   display: inline-block;
@@ -192,21 +232,27 @@
   left: 0;
   width: 40px;
   height: 2px;
-  background-color: #ffd700; /* Gold underline */
   transition: width 0.3s ease;
+}
+
+.lightTheme .price {
+  color: #730026;
+}
+
+.lightTheme .price::after {
+  background-color: #730026;
+}
+
+.darkTheme .price {
+  color: #d4af37;
+}
+
+.darkTheme .price::after {
+  background-color: #d4af37;
 }
 
 .wishlistItem:hover .price::after {
   width: 100%;
-}
-
-/* Dark theme override for price */
-.wishlistContainer.darkTheme .price {
-  color: #ff6b6b; /* Lighter red in dark mode */
-}
-
-.wishlistContainer.darkTheme .price::after {
-  background-color: #ffd700; /* Gold in dark mode too */
 }
 
 /* Button group */
@@ -230,30 +276,55 @@
   font-size: 0.85rem;
   position: relative;
   overflow: hidden;
+  font-family: 'Poppins', sans-serif;
 }
 
-.addToCartButton {
-  background-color: #a30000; /* Burgundy button */
+/* Light theme buttons */
+.lightTheme .addToCartButton {
+  background-color: #730026;
   color: white;
 }
 
-.removeButton {
+.lightTheme .removeButton {
   background-color: transparent;
   color: #555;
   border: 1px solid #ddd;
 }
 
-/* Button hover */
-.addToCartButton:hover {
-  background-color: #c50000; /* Lighter burgundy on hover */
+.lightTheme .addToCartButton:hover {
+  background-color: #aa0039;
   transform: translateY(-3px);
-  box-shadow: 0 5px 10px rgba(163, 0, 0, 0.3);
+  box-shadow: 0 5px 10px rgba(115, 0, 38, 0.3);
 }
 
-.removeButton:hover {
+.lightTheme .removeButton:hover {
   background-color: #f5f5f5;
   transform: translateY(-3px);
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Dark theme buttons */
+.darkTheme .addToCartButton {
+  background-color: #d4af37;
+  color: #080808;
+}
+
+.darkTheme .removeButton {
+  background-color: transparent;
+  color: #d4af37;
+  border: 1px solid #d4af37;
+}
+
+.darkTheme .addToCartButton:hover {
+  background-color: #ffd700;
+  transform: translateY(-3px);
+  box-shadow: 0 5px 10px rgba(212, 175, 55, 0.3);
+}
+
+.darkTheme .removeButton:hover {
+  background-color: rgba(212, 175, 55, 0.1);
+  transform: translateY(-3px);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
 }
 
 /* Button ripple effect */
@@ -264,11 +335,20 @@
   left: 50%;
   width: 0;
   height: 0;
-  background: rgba(255, 255, 255, 0.2);
   border-radius: 50%;
   transform: translate(-50%, -50%);
   opacity: 0;
   transition: width 0.6s ease, height 0.6s ease, opacity 0.6s ease;
+}
+
+.lightTheme .addToCartButton::after, 
+.lightTheme .removeButton::after {
+  background: rgba(115, 0, 38, 0.2);
+}
+
+.darkTheme .addToCartButton::after, 
+.darkTheme .removeButton::after {
+  background: rgba(212, 175, 55, 0.2);
 }
 
 .addToCartButton:active::after, .removeButton:active::after {
@@ -276,26 +356,6 @@
   height: 300px;
   opacity: 1;
   transition: 0s;
-}
-
-/* Dark theme override for buttons */
-.wishlistContainer.darkTheme .addToCartButton {
-  background-color: #ff4d4d; /* Brighter red in dark mode */
-}
-
-.wishlistContainer.darkTheme .removeButton {
-  color: #ddd;
-  border: 1px solid #555;
-}
-
-.wishlistContainer.darkTheme .addToCartButton:hover {
-  background-color: #ff6b6b; /* Even brighter red on hover in dark mode */
-  box-shadow: 0 5px 10px rgba(255, 75, 75, 0.3);
-}
-
-.wishlistContainer.darkTheme .removeButton:hover {
-  background-color: #4a3535;
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
 }
 
 /* Tablet responsiveness */
@@ -356,6 +416,7 @@
   
   .wishlistContainer {
     padding: 15px;
+    margin: 30px auto;
   }
   
   .wishlistContainer h2 {
@@ -371,25 +432,6 @@
   }
 }
 
-/* 3D card flip animation for empty state */
-@keyframes cardFlip {
-  0% { transform: rotateY(0deg); }
-  100% { transform: rotateY(180deg); }
-}
-
-/* Shimmer loading animation */
-@keyframes shimmer {
-  0% { background-position: -200% 0; }
-  100% { background-position: 200% 0; }
-}
-
-/* Add a loading state class */
-.loading {
-  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
-  background-size: 200% 100%;
-  animation: shimmer 1.5s infinite;
-}
-
 /* Float animation */
 @keyframes float {
   0% { transform: translateY(0px); }
@@ -397,7 +439,14 @@
   100% { transform: translateY(0px); }
 }
 
-.wishlistItem {
-  animation: float 6s ease-in-out infinite;
-  animation-delay: calc(var(--i, 0) * 0.2s);
+/* Loading state animation */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.loading {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
 }

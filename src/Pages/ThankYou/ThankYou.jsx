@@ -12,18 +12,24 @@ const ThankYou = () => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-
-    document.title = t('thankYou.pageTitle') || 'Thank You for Your Order';
+    document.title = t('thankYou.pageTitle') || 'Sifarişiniz üçün Təşəkkürlər';
+    
+    // Poppins fontunu əlavə et
+    const link = document.createElement('link');
+    link.href = 'https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap';
+    link.rel = 'stylesheet';
+    document.head.appendChild(link);
+    
+    return () => {
+      document.head.removeChild(link);
+    };
   }, [t]);
-
 
   const getThemedClass = (baseClass) => {
     return theme === 'dark' ? `${baseClass} ${styles[`${baseClass}Dark`]}` : styles[baseClass];
   };
-
   
   const getOrderNumber = () => {
-  
     const savedOrderNumber = sessionStorage.getItem('orderNumber');
     if (savedOrderNumber) {
       return savedOrderNumber;
@@ -34,7 +40,6 @@ const ThankYou = () => {
     return newOrderNumber;
   };
 
- 
   const getEstimatedDeliveryDate = () => {
     const deliveryDate = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000);
     return deliveryDate.toLocaleDateString(i18n.language, {
@@ -52,7 +57,6 @@ const ThankYou = () => {
             <span className={`${styles.logoText} ${theme === 'dark' ? styles.logoTextDark : ''}`}>
               {t('common.companyName.luxury')}
             </span>
-            
           </div>
 
           <div className={styles.thankYouContent}>

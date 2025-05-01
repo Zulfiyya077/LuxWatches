@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { FaEnvelope, FaLock, FaEye, FaEyeSlash } from 'react-icons/fa';
 import { useTranslation } from 'react-i18next';
@@ -6,7 +6,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import styles from './Login.module.css';
 import supabase from '../../supabaseClient';
-
+import { ThemeContext } from '../../context/ThemeContext';
 
 const ADMIN_EMAIL = "mammadli.zulfiyya77@gmail.com";
 
@@ -14,12 +14,12 @@ const Login = () => {
   const { t } = useTranslation();
   const location = useLocation();
   const navigate = useNavigate();
-  
+  const { theme } = useContext(ThemeContext);
+  const isDarkMode = theme === 'dark';
 
   const initialEmail = location.state?.email || '';
   const initialMessage = location.state?.message || '';
   
-
   const from = location.state?.from?.pathname || "/";
   
   const [email, setEmail] = useState(initialEmail);
@@ -27,7 +27,6 @@ const Login = () => {
   const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [userAlreadyLoggedIn, setUserAlreadyLoggedIn] = useState(false);
-
 
   useEffect(() => {
     const checkLoggedInStatus = async () => {
@@ -42,12 +41,10 @@ const Login = () => {
     checkLoggedInStatus();
   }, [t]);
 
-    useEffect(() => {
-      window.scrollTo(0, 0);
-    }, []);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   
-   
-
   const showSuccessToast = (message) => {
     toast.dismiss();
     toast.success(message, {
@@ -81,7 +78,7 @@ const Login = () => {
   };
 
   const showInfoToast = (message) => {
-     toast.dismiss();
+    toast.dismiss();
     toast.info(message, {
       position: "bottom-right",
       autoClose: 2000, 
@@ -94,11 +91,9 @@ const Login = () => {
       progressClassName: styles.infoToastProgress,
       closeButton: true, 
     });
-  
   };
 
   useEffect(() => {
-   
     if (initialMessage) {
       const timer = setTimeout(() => {
         showSuccessToast(initialMessage);
@@ -220,7 +215,7 @@ const Login = () => {
   };
 
   return (
-    <div className={styles.container}>
+    <div className={styles.container} data-theme={isDarkMode ? 'dark' : 'light'}>
     
       <ToastContainer
         position="bottom-right"
@@ -239,7 +234,6 @@ const Login = () => {
         <div className={styles.formContainer}>
           <div className={styles.logo}>
             <span className={styles.logoText}>{t('common.companyName.luxury') || 'Luxury'}</span>
-            
           </div>
           
           <h1 className={styles.title}>{t('login.title') || 'Daxil ol'}</h1>

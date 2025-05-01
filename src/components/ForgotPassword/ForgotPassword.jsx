@@ -2,6 +2,7 @@ import React, { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { toast } from 'react-toastify';
+import { FaEnvelope, FaSpinner } from 'react-icons/fa';
 import supabase from '../../supabaseClient';
 import { ThemeContext } from '../../context/ThemeContext';
 import styles from './ForgotPassword.module.css';
@@ -10,6 +11,7 @@ const ForgotPassword = () => {
   const { t } = useTranslation();
   const { theme } = useContext(ThemeContext);
   const navigate = useNavigate();
+  const isDarkMode = theme === 'dark';
 
   const [email, setEmail] = useState('');
   const [loading, setLoading] = useState(false);
@@ -48,7 +50,7 @@ const ForgotPassword = () => {
   };
 
   return (
-    <div className={`${styles.container} ${styles[theme]}`}>
+    <div className={`${styles.container} ${styles[isDarkMode ? 'dark' : 'light']}`}>
       <div className={styles.formWrapper}>
         <div className={styles.formContainer}>
           <div className={styles.logoSection}>
@@ -66,7 +68,9 @@ const ForgotPassword = () => {
             <div className={styles.formGroup}>
               <label className={styles.inputLabel}>{t('auth.email.label') || "E-poçt Ünvanı"}</label>
               <div className={styles.inputWrapper}>
-                <i className={`fas fa-envelope ${styles.inputIcon}`}></i>
+                <span className={styles.inputIcon}>
+                  <FaEnvelope />
+                </span>
                 <input
                   type="email"
                   placeholder={t('auth.email.placeholder') || "E-poçt ünvanınızı daxil edin"}
@@ -85,7 +89,7 @@ const ForgotPassword = () => {
             >
               {loading ? (
                 <span className={styles.loadingSpinner}>
-                  <i className="fas fa-spinner fa-spin"></i> {t('auth.buttons.loading') || "Yüklənir..."}
+                  <FaSpinner className="fa-spin" /> {t('auth.buttons.loading') || "Yüklənir..."}
                 </span>
               ) : (
                 t('auth.buttons.resetPassword') || "Şifrəni Sıfırla"

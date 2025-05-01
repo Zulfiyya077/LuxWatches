@@ -2,19 +2,23 @@
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
+  font-family: 'Poppins', sans-serif;
+  transition: all 0.3s ease;
+}
+
+.singleProductContainer {
   color: #333;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #ffffff;
 }
 
 .singleProductContainer.darkMode {
-  color: #eaeaea;
-  background-color: #1a1a1a;
+  color: #f5f5f5;
+  background-color: #080808;
 }
 
 .backButton {
   background: none;
   border: none;
-  color: #333;
   cursor: pointer;
   padding: 10px;
   border-radius: 50%;
@@ -25,18 +29,25 @@
   transition: background-color 0.3s;
 }
 
-.backButton:hover {
-  background-color: rgba(0, 0, 0, 0.1);
+.singleProductContainer:not(.darkMode) .backButton {
+  color: #333;
 }
 
 .darkMode .backButton {
-  color: #eaeaea;
+  color: #f5f5f5;
+}
+
+.backButton:hover {
+  transform: translateX(-5px);
+}
+
+.singleProductContainer:not(.darkMode) .backButton:hover {
+  background-color: rgba(115, 0, 38, 0.1);
 }
 
 .darkMode .backButton:hover {
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: rgba(212, 175, 55, 0.1);
 }
-
 
 .productLayout {
   display: flex;
@@ -64,9 +75,17 @@
 .imageGalleryWrapper {
   width: 100%;
   position: relative;
-  border-radius: 8px;
+  border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.singleProductContainer:not(.darkMode) .imageGalleryWrapper {
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.darkMode .imageGalleryWrapper {
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
 }
 
 .mainImageContainer {
@@ -75,11 +94,14 @@
   position: relative;
   overflow: hidden;
   cursor: zoom-in;
+}
+
+.singleProductContainer:not(.darkMode) .mainImageContainer {
   background-color: #fff;
 }
 
 .darkMode .mainImageContainer {
-  background-color: #2a2a2a;
+  background-color: #1a1a1a;
 }
 
 .mainImageContainer.zooming {
@@ -100,24 +122,34 @@
   transform: translateX(-50%);
   background: rgba(0, 0, 0, 0.7);
   color: white;
-  padding: 5px 10px;
+  padding: 8px 15px;
   border-radius: 20px;
-  font-size: 12px;
+  font-size: 14px;
   display: flex;
   align-items: center;
   gap: 5px;
+  font-family: 'Poppins', sans-serif;
 }
 
 .discountBadge {
   position: absolute;
   top: 15px;
   right: 15px;
-  background-color: #800020; 
-  color: white;
   padding: 5px 10px;
-  border-radius: 4px;
+  border-radius: 8px;
   font-weight: bold;
   font-size: 14px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.singleProductContainer:not(.darkMode) .discountBadge {
+  background-color: #730026;
+  color: white;
+}
+
+.darkMode .discountBadge {
+  background-color: #d4af37;
+  color: #000;
 }
 
 .colorOptions {
@@ -127,11 +159,15 @@
 .colorOptions h3 {
   font-size: 16px;
   margin-bottom: 10px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.singleProductContainer:not(.darkMode) .colorOptions h3 {
   color: #333;
 }
 
 .darkMode .colorOptions h3 {
-  color: #eaeaea;
+  color: #f5f5f5;
 }
 
 .colorSwatches {
@@ -145,45 +181,66 @@
   border-radius: 50%;
   cursor: pointer;
   transition: transform 0.2s;
+}
+
+.singleProductContainer:not(.darkMode) .colorSwatch {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.darkMode .colorSwatch {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .colorSwatch:hover {
   transform: scale(1.15);
 }
 
-
 .productInfo {
-  padding: 20px;
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  border-radius: 12px;
+  transition: all 0.3s ease;
   height: fit-content;
 }
 
+.singleProductContainer:not(.darkMode) .productInfo {
+  background-color: #fff;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
 .darkMode .productInfo {
-  background-color: #2a2a2a;
-  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.05);
+  background-color: #121212;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
 }
 
 .productHeader {
-  margin-bottom: 15px;
+  margin-bottom: 20px;
 }
 
 .productName {
-  font-size: 24px;
-  margin: 0 0 5px 0;
-  color: #000; 
+  font-size: 28px;
+  margin: 0 0 10px 0;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.singleProductContainer:not(.darkMode) .productName {
+  color: #730026;
 }
 
 .darkMode .productName {
-  color: #fff;
+  color: #d4af37;
 }
 
 .productModel {
-  color: #666;
   margin: 0;
-  font-size: 14px;
+  font-size: 16px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.singleProductContainer:not(.darkMode) .productModel {
+  color: #666;
 }
 
 .darkMode .productModel {
@@ -194,7 +251,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
   flex-wrap: wrap;
   gap: 15px;
 }
@@ -212,16 +269,17 @@
 }
 
 .star {
-  stroke: #D4AF37; 
+  stroke: #d4af37;
   fill: none;
+  transition: all 0.2s ease;
 }
 
 .star.filled {
-  fill: #D4AF37; 
+  fill: #d4af37;
 }
 
 .star.half {
-  fill: linear-gradient(90deg, #D4AF37 50%, transparent 50%);
+  fill: linear-gradient(90deg, #d4af37 50%, transparent 50%);
 }
 
 .star.interactive {
@@ -235,21 +293,33 @@
 .ratingValue {
   font-weight: bold;
   margin-left: 5px;
-  color: #D4AF37; 
+  font-family: 'Poppins', sans-serif;
+}
+
+.singleProductContainer:not(.darkMode) .ratingValue {
+  color: #730026;
+}
+
+.darkMode .ratingValue {
+  color: #d4af37;
 }
 
 .reviewsButton {
   background: none;
   border: none;
-  color: #013220; 
   cursor: pointer;
   text-decoration: underline;
   font-size: 14px;
   padding: 0;
+  font-family: 'Poppins', sans-serif;
+}
+
+.singleProductContainer:not(.darkMode) .reviewsButton {
+  color: #730026;
 }
 
 .darkMode .reviewsButton {
-  color: #4CAF50;
+  color: #d4af37;
 }
 
 .availability {
@@ -274,6 +344,10 @@
 
 .statusText {
   font-size: 14px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.singleProductContainer:not(.darkMode) .statusText {
   color: #666;
 }
 
@@ -282,8 +356,12 @@
 }
 
 .productDescription {
-  margin-bottom: 20px;
+  margin-bottom: 25px;
   line-height: 1.6;
+  font-family: 'Poppins', sans-serif;
+}
+
+.singleProductContainer:not(.darkMode) .productDescription {
   color: #444;
 }
 
@@ -292,33 +370,44 @@
 }
 
 .productDetails {
-  margin-bottom: 20px;
+  margin-bottom: 25px;
 }
 
 .productDetails h3 {
-  margin-bottom: 10px;
-  color: #000; 
-  border-bottom: 2px solid #D4AF37; 
+  margin-bottom: 15px;
+  border-bottom: 2px solid;
   padding-bottom: 5px;
   display: inline-block;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+}
+
+.singleProductContainer:not(.darkMode) .productDetails h3 {
+  color: #333;
+  border-bottom-color: #730026;
 }
 
 .darkMode .productDetails h3 {
-  color: #fff;
+  color: #f5f5f5;
+  border-bottom-color: #d4af37;
 }
 
 .specificationsList {
   list-style-type: none;
   padding: 0;
   margin: 0;
+  font-family: 'Poppins', sans-serif;
 }
 
 .specificationsList li {
-  margin-bottom: 8px;
-  padding-bottom: 8px;
-  border-bottom: 1px solid #eee;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
   display: flex;
   flex-wrap: wrap;
+}
+
+.singleProductContainer:not(.darkMode) .specificationsList li {
+  border-bottom: 1px solid #eee;
 }
 
 .darkMode .specificationsList li {
@@ -328,6 +417,9 @@
 .specificationsList li strong {
   min-width: 140px;
   display: inline-block;
+}
+
+.singleProductContainer:not(.darkMode) .specificationsList li strong {
   color: #555;
 }
 
@@ -336,7 +428,7 @@
 }
 
 .productFooter {
-  margin-top: 25px;
+  margin-top: 30px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -348,12 +440,16 @@
   display: flex;
   align-items: baseline;
   gap: 10px;
+  font-family: 'Poppins', sans-serif;
 }
 
 .oldPrice {
   text-decoration: line-through;
+  font-size: 18px;
+}
+
+.singleProductContainer:not(.darkMode) .oldPrice {
   color: #888;
-  font-size: 16px;
 }
 
 .darkMode .oldPrice {
@@ -361,13 +457,16 @@
 }
 
 .currentPrice {
-  font-size: 24px;
+  font-size: 26px;
   font-weight: bold;
-  color: #800020;
+}
+
+.singleProductContainer:not(.darkMode) .currentPrice {
+  color: #730026;
 }
 
 .darkMode .currentPrice {
-  color: #d4838f;
+  color: #d4af37;
 }
 
 .actionButtons {
@@ -377,8 +476,7 @@
 
 .wishlistButton {
   background: none;
-  border: 1px solid #ddd;
-  color: #666;
+  border: 1px solid;
   padding: 10px;
   border-radius: 50%;
   cursor: pointer;
@@ -388,83 +486,115 @@
   justify-content: center;
 }
 
-.wishlistButton:hover {
-  background-color: #f9f9f9;
-}
-
-.wishlistButton.active {
-  color: #f44336;
+.singleProductContainer:not(.darkMode) .wishlistButton {
+  border-color: #ddd;
+  color: #666;
 }
 
 .darkMode .wishlistButton {
-  border: 1px solid #444;
+  border-color: #444;
   color: #aaa;
+}
+
+.singleProductContainer:not(.darkMode) .wishlistButton:hover {
+  background-color: #f9f9f9;
+  color: #730026;
 }
 
 .darkMode .wishlistButton:hover {
   background-color: #333;
+  color: #d4af37;
 }
 
-.darkMode .wishlistButton.active {
-  color: #f44336;
+.wishlistButton.active {
+  color: #f44336 !important;
 }
 
-.addToCartButton {
-  background-color: #013220; 
-  color: white;
+.addToCartButton, .tryOnButton {
   border: none;
-  padding: 10px 20px;
-  border-radius: 4px;
+  padding: 12px 20px;
+  border-radius: 8px;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: all 0.3s;
   display: flex;
   align-items: center;
   gap: 8px;
   font-weight: 600;
+  font-family: 'Poppins', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
-.addToCartButton:hover {
-  background-color: #004d25;
+.singleProductContainer:not(.darkMode) .addToCartButton, 
+.singleProductContainer:not(.darkMode) .tryOnButton {
+  background: linear-gradient(135deg, #730026 0%, #a30038 100%);
+  color: white;
+  box-shadow: 0 4px 15px rgba(115, 0, 38, 0.4);
 }
 
-.addToCartButton.disabled {
-  background-color: #cccccc;
+.darkMode .addToCartButton,
+.darkMode .tryOnButton {
+  background: linear-gradient(135deg, #d4af37 0%, #f2d571 100%);
+  color: #000;
+  box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
+}
+
+.addToCartButton:hover, .tryOnButton:hover {
+  transform: translateY(-2px);
+}
+
+.singleProductContainer:not(.darkMode) .addToCartButton:hover,
+.singleProductContainer:not(.darkMode) .tryOnButton:hover {
+  box-shadow: 0 8px 20px rgba(115, 0, 38, 0.5);
+}
+
+.darkMode .addToCartButton:hover,
+.darkMode .tryOnButton:hover {
+  box-shadow: 0 8px 20px rgba(212, 175, 55, 0.5);
+}
+
+.addToCartButton.disabled, .tryOnButton.disabled {
+  opacity: 0.6;
   cursor: not-allowed;
-}
-
-.darkMode .addToCartButton {
-  background-color: #01563c;
-}
-
-.darkMode .addToCartButton:hover {
-  background-color: #017a56;
+  transform: none !important;
 }
 
 .reviewsSection {
-  margin-top: 30px;
-  padding: 20px;
+  margin-top: 40px;
+  padding: 30px;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.singleProductContainer:not(.darkMode) .reviewsSection {
   background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
 }
 
 .darkMode .reviewsSection {
-  background-color: #2a2a2a;
-  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.05);
+  background-color: #121212;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
 }
 
 .reviewsTitle {
   display: flex;
   align-items: center;
   gap: 10px;
-  margin-bottom: 20px;
+  margin-bottom: 25px;
   padding-bottom: 10px;
-  border-bottom: 2px solid #D4AF37; 
-  color: #000; 
+  border-bottom: 2px solid;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+}
+
+.singleProductContainer:not(.darkMode) .reviewsTitle {
+  color: #333;
+  border-bottom-color: #730026;
 }
 
 .darkMode .reviewsTitle {
-  color: #fff;
+  color: #f5f5f5;
+  border-bottom-color: #d4af37;
 }
 
 .reviewsList {
@@ -474,45 +604,61 @@
 }
 
 .reviewItem {
-  padding: 15px;
+  padding: 20px;
   border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.singleProductContainer:not(.darkMode) .reviewItem {
   background-color: #f9f9f9;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
 }
 
 .darkMode .reviewItem {
-  background-color: #333;
-  box-shadow: 0 2px 4px rgba(255, 255, 255, 0.03);
+  background-color: #1e1e1e;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .reviewHeader {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 15px;
 }
 
 .reviewerInfo {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
 }
 
 .reviewerAvatar {
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background-color: #D4AF37; 
   display: flex;
   align-items: center;
   justify-content: center;
   color: white;
 }
 
+.singleProductContainer:not(.darkMode) .reviewerAvatar {
+  background-color: #730026;
+}
+
+.darkMode .reviewerAvatar {
+  background-color: #d4af37;
+  color: #000;
+}
+
 .reviewerName {
   font-weight: 600;
+  font-family: 'Poppins', sans-serif;
+}
+
+.singleProductContainer:not(.darkMode) .reviewerName {
   color: #333;
 }
 
@@ -522,7 +668,11 @@
 
 .reviewContent {
   margin-bottom: 10px;
-  line-height: 1.5;
+  line-height: 1.6;
+  font-family: 'Poppins', sans-serif;
+}
+
+.singleProductContainer:not(.darkMode) .reviewContent {
   color: #444;
 }
 
@@ -532,71 +682,104 @@
 
 .reviewDate {
   font-size: 12px;
-  color: #777;
   text-align: right;
+  font-family: 'Poppins', sans-serif;
+}
+
+.singleProductContainer:not(.darkMode) .reviewDate {
+  color: #777;
 }
 
 .darkMode .reviewDate {
   color: #999;
 }
 
-.noReviews {
+.noReviews, .reviewsLoading {
   text-align: center;
-  padding: 20px;
+  padding: 25px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.singleProductContainer:not(.darkMode) .noReviews,
+.singleProductContainer:not(.darkMode) .reviewsLoading {
   color: #777;
 }
 
-.darkMode .noReviews {
+.darkMode .noReviews,
+.darkMode .reviewsLoading {
   color: #999;
 }
 
 .addReviewContainer {
-  margin-top: 20px;
+  margin-top: 30px;
   display: flex;
   justify-content: center;
 }
 
 .addReviewButton {
-  background-color: #D4AF37; 
-  color: white;
+  padding: 12px 24px;
   border: none;
-  padding: 10px 20px;
-  border-radius: 4px;
+  border-radius: 8px;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: all 0.3s;
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
   font-weight: 600;
+  font-family: 'Poppins', sans-serif;
 }
 
-.addReviewButton:hover {
-  background-color: #c9a42e;
+.singleProductContainer:not(.darkMode) .addReviewButton {
+  background-color: #730026;
+  color: white;
+  box-shadow: 0 4px 15px rgba(115, 0, 38, 0.4);
 }
 
 .darkMode .addReviewButton {
-  background-color: #b8952e;
+  background-color: #d4af37;
+  color: #000;
+  box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
+}
+
+.addReviewButton:hover {
+  transform: translateY(-2px);
+}
+
+.singleProductContainer:not(.darkMode) .addReviewButton:hover {
+  background-color: #a30038;
+  box-shadow: 0 6px 20px rgba(115, 0, 38, 0.5);
 }
 
 .darkMode .addReviewButton:hover {
-  background-color: #a68629;
+  background-color: #f2d571;
+  box-shadow: 0 6px 20px rgba(212, 175, 55, 0.5);
 }
 
 .reviewForm {
   width: 100%;
-  padding: 20px;
-  border-radius: 8px;
+  padding: 25px;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  font-family: 'Poppins', sans-serif;
+}
+
+.singleProductContainer:not(.darkMode) .reviewForm {
   background-color: #f9f9f9;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
 .darkMode .reviewForm {
-  background-color: #333;
-  box-shadow: 0 2px 8px rgba(255, 255, 255, 0.03);
+  background-color: #1e1e1e;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
 
 .reviewForm h3 {
-  margin-bottom: 15px;
+  margin-bottom: 20px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+}
+
+.singleProductContainer:not(.darkMode) .reviewForm h3 {
   color: #333;
 }
 
@@ -605,13 +788,17 @@
 }
 
 .formGroup {
-  margin-bottom: 15px;
+  margin-bottom: 20px;
 }
 
 .formGroup label {
   display: block;
-  margin-bottom: 5px;
+  margin-bottom: 8px;
   font-weight: 500;
+  font-family: 'Poppins', sans-serif;
+}
+
+.singleProductContainer:not(.darkMode) .formGroup label {
   color: #555;
 }
 
@@ -619,37 +806,47 @@
   color: #bbb;
 }
 
-.reviewInput {
+.reviewInput, .reviewTextarea {
   width: 100%;
-  padding: 10px;
+  padding: 12px;
+  border-radius: 8px;
+  font-family: 'Poppins', sans-serif;
+  transition: all 0.3s ease;
+}
+
+.singleProductContainer:not(.darkMode) .reviewInput,
+.singleProductContainer:not(.darkMode) .reviewTextarea {
   border: 1px solid #ddd;
-  border-radius: 4px;
   background-color: white;
   color: #333;
 }
 
-.darkMode .reviewInput {
-  background-color: #444;
-  border-color: #555;
+.darkMode .reviewInput,
+.darkMode .reviewTextarea {
+  border: 1px solid #444;
+  background-color: #2a2a2a;
   color: #eee;
+}
+
+.reviewInput:focus, .reviewTextarea:focus {
+  outline: none;
+}
+
+.singleProductContainer:not(.darkMode) .reviewInput:focus,
+.singleProductContainer:not(.darkMode) .reviewTextarea:focus {
+  border-color: #730026;
+  box-shadow: 0 0 0 2px rgba(115, 0, 38, 0.2);
+}
+
+.darkMode .reviewInput:focus,
+.darkMode .reviewTextarea:focus {
+  border-color: #d4af37;
+  box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.2);
 }
 
 .reviewTextarea {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
   resize: vertical;
-  min-height: 100px;
-  background-color: white;
-  color: #333;
-  font-family: inherit;
-}
-
-.darkMode .reviewTextarea {
-  background-color: #444;
-  border-color: #555;
-  color: #eee;
+  min-height: 120px;
 }
 
 .ratingSelector {
@@ -660,61 +857,80 @@
 .formActions {
   display: flex;
   justify-content: flex-end;
-  gap: 10px;
-  margin-top: 15px;
+  gap: 15px;
+  margin-top: 20px;
 }
 
 .cancelButton {
-  background-color: #f1f1f1;
-  color: #333;
   border: none;
-  padding: 10px 15px;
-  border-radius: 4px;
+  padding: 10px 20px;
+  border-radius: 8px;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: all 0.3s;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
 }
 
-.cancelButton:hover {
-  background-color: #e5e5e5;
+.singleProductContainer:not(.darkMode) .cancelButton {
+  background-color: #f1f1f1;
+  color: #333;
 }
 
 .darkMode .cancelButton {
-  background-color: #555;
+  background-color: #333;
   color: #eee;
 }
 
+.cancelButton:hover {
+  transform: translateY(-2px);
+}
+
+.singleProductContainer:not(.darkMode) .cancelButton:hover {
+  background-color: #e5e5e5;
+}
+
 .darkMode .cancelButton:hover {
-  background-color: #666;
+  background-color: #444;
 }
 
 .submitButton {
-  background-color: #013220;
-  color: white;
   border: none;
   padding: 10px 20px;
-  border-radius: 4px;
+  border-radius: 8px;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: all 0.3s;
   display: flex;
   align-items: center;
   gap: 8px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
 }
 
-.submitButton:hover {
-  background-color: #004d25;
-}
-
-.submitButton:disabled {
-  background-color: #cccccc;
-  cursor: not-allowed;
+.singleProductContainer:not(.darkMode) .submitButton {
+  background-color: #730026;
+  color: white;
 }
 
 .darkMode .submitButton {
-  background-color: #01563c;
+  background-color: #d4af37;
+  color: #000;
+}
+
+.submitButton:hover:not(:disabled) {
+  transform: translateY(-2px);
+}
+
+.singleProductContainer:not(.darkMode) .submitButton:hover:not(:disabled) {
+  background-color: #a30038;
 }
 
 .darkMode .submitButton:hover:not(:disabled) {
-  background-color: #017a56;
+  background-color: #f2d571;
+}
+
+.submitButton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
 }
 
 .videoPopupOverlay {
@@ -735,7 +951,7 @@
   width: 80%;
   max-width: 800px;
   background-color: black;
-  border-radius: 8px;
+  border-radius: 12px;
   overflow: hidden;
 }
 
@@ -747,8 +963,8 @@
   color: white;
   border: none;
   border-radius: 50%;
-  width: 36px;
-  height: 36px;
+  width: 40px;
+  height: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -772,6 +988,11 @@
   align-items: center;
   height: 300px;
   font-size: 18px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.singleProductContainer:not(.darkMode) .loading,
+.singleProductContainer:not(.darkMode) .notFound {
   color: #666;
 }
 
@@ -779,6 +1000,10 @@
   color: #aaa;
 }
 
+.tryOnSection {
+  margin-top: 30px;
+  width: 100%;
+}
 
 @media (max-width: 768px) {
   .productLayout {
@@ -819,7 +1044,7 @@
   }
   
   .reviewItem {
-    padding: 10px;
+    padding: 15px;
   }
   
   .submitButton, .cancelButton, .addReviewButton {
@@ -827,4 +1052,3 @@
     font-size: 14px;
   }
 }
-

@@ -81,9 +81,11 @@ const AboutSection = () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+  
   const handleClick = () => {
     navigate("/products");
   };
+  
   return (
     <section
       ref={sectionRef}
@@ -91,11 +93,6 @@ const AboutSection = () => {
         theme === "dark" ? styles.darkMode : styles.lightMode
       }`}
     >
-      <div className={styles.backgroundElements}>
-        <div className={styles.circle1}></div>
-        <div className={styles.circle2}></div>
-      </div>
-
       <div className={styles.container}>
         <div className={styles.contentWrapper}>
           <div className={styles.textContent}>

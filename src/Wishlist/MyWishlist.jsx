@@ -12,9 +12,11 @@ const Wishlist = () => {
   const { theme } = useContext(ThemeContext);
   const isDarkTheme = theme === 'dark';
   const { t } = useTranslation();
+  
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, []);
+  
   useEffect(() => {
     setWishlistItems(items);
   }, [items]);
@@ -28,14 +30,18 @@ const Wishlist = () => {
   };
 
   return (
-    <div className={`${styles.wishlistContainer} ${isDarkTheme ? styles.darkTheme : ''}`}>
+    <div className={`${styles.wishlistContainer} ${isDarkTheme ? styles.darkTheme : styles.lightTheme}`}>
       <h2>{t("wishlist.title")}</h2>
       {isWishlistEmpty ? (
         <p className={styles.emptyMessage}>{t("wishlist.empty")}</p>
       ) : (
         <div className={styles.wishlistGrid}>
-          {wishlistItems.map((item) => (
-            <div key={item.id} className={styles.wishlistItem}>
+          {wishlistItems.map((item, index) => (
+            <div 
+              key={item.id} 
+              className={styles.wishlistItem}
+              style={{"--i": index}}
+            >
               <div className={styles.imageWrapper}>
                 <img 
                   src={item.image || ""} 

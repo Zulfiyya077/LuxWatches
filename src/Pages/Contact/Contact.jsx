@@ -17,7 +17,7 @@ L.Icon.Default.mergeOptions({
 const Contact = () => {
   const { theme } = useContext(ThemeContext);
   const { t, i18n } = useTranslation();
-  const darkMode = theme === 'dark';
+  const isDarkMode = theme === 'dark';
   
   const [activeLocation, setActiveLocation] = useState(0);
   const [selectedStore, setSelectedStore] = useState(null);
@@ -154,12 +154,14 @@ const Contact = () => {
   };
 
   const createMarkerIcon = (isActive) => {
+    const markerColor = isDarkMode ? '#d4af37' : '#730026';
+    
     return L.divIcon({
       className: 'custom-marker-icon',
       html: `<div style="
         width: ${isActive ? '40px' : '30px'};
         height: ${isActive ? '40px' : '30px'};
-        background-color: ${darkMode ? '#f2d571' : '#d4af37'};
+        background-color: ${markerColor};
         border-radius: 50%;
         border: 3px solid white;
         box-shadow: 0px 0px 10px rgba(0,0,0,0.3);
@@ -179,11 +181,11 @@ const Contact = () => {
     });
   };
 
-  const mapStyleUrl = darkMode ? 
+  const mapStyleUrl = isDarkMode ? 
     'https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png' : 
     'https://tile.openstreetmap.org/{z}/{x}/{y}.png';
 
-  const mapAttribution = darkMode ?
+  const mapAttribution = isDarkMode ?
     '&copy; <a href="https://stadiamaps.com/">Stadia Maps</a>, &copy; <a href="https://openmaptiles.org/">OpenMapTiles</a> &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors' :
     '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors';
 
@@ -195,7 +197,7 @@ const Contact = () => {
   };
 
   return (
-    <section className={`${styles.contactSection} ${styles[darkMode ? 'dark' : 'light']}`}>
+    <section className={`${styles.contactSection} ${styles[isDarkMode ? 'dark' : 'light']}`}>
       <div className={styles.container}>
         <h2 className={styles.sectionTitle}>{t('contactUs')}</h2>
         <p className={styles.sectionDescription}>{t('contactDescription')}</p>
@@ -329,15 +331,11 @@ const Contact = () => {
                   }}
                 >
                   <Popup>
-                    <div className={styles.markerInfoWindow} style={{ 
-                      padding: '10px', 
-                      maxWidth: '250px',
-                      borderRadius: '8px'
-                    }}>
-                      <h4 style={{ color: '#d4af37', marginBottom: '8px', fontSize: '16px' }}>{store.name}</h4>
-                      <p style={{ fontSize: '14px', marginBottom: '5px', color: '#555' }}>{store.address}</p>
-                      <p style={{ fontSize: '14px', marginBottom: '5px', color: '#555' }}>{store.phone}</p>
-                      <p style={{ fontSize: '14px', color: '#555' }}>{store.hours}</p>
+                    <div className={styles.markerInfoWindow}>
+                      <h4>{store.name}</h4>
+                      <p>{store.address}</p>
+                      <p>{store.phone}</p>
+                      <p>{store.hours}</p>
                     </div>
                   </Popup>
                 </Marker>
