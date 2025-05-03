@@ -13,7 +13,6 @@ const NewWatches = () => {
   const [isLoading, setIsLoading] = useState(true);
   const videoRefs = useRef({});
   
-
   const { addWishlistItem, removeWishlistItem, inWishlist } = useWishlist();
 
   const newModels = [
@@ -111,14 +110,12 @@ const NewWatches = () => {
     }));
   };
 
- 
   const handleAddToFavorites = (e, model) => {
     e.stopPropagation();
 
     if (inWishlist(model.id)) {
       removeWishlistItem(model.id);
     } else {
-   
       addWishlistItem({
         id: model.id,
         name: model.name,
@@ -141,7 +138,6 @@ const NewWatches = () => {
     }
   };
 
- 
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
   useEffect(() => {
@@ -217,7 +213,7 @@ const NewWatches = () => {
                   flippedCards[model.id] ? styles.flipped : ""
                 }`}
               >
-             
+                {/* Front Side */}
                 <div className={styles.cardFront}>
                   <div className={styles.mediaContainer}>
                     <img
@@ -269,7 +265,8 @@ const NewWatches = () => {
                     </div>
                   </div>
                 </div>
-            
+                
+                {/* Back Side */}
                 <div className={styles.cardBack}>
                   <button
                     className={styles.backButton}

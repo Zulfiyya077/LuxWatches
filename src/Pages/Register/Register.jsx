@@ -12,6 +12,7 @@ import { useAuth } from "../../context/AuthContext";
 const Register = () => {
   const { t } = useTranslation();
   const { theme } = useContext(ThemeContext);
+  const isDarkMode = theme === 'dark';
   const { isAuthenticated } = useAuth();
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
@@ -23,12 +24,12 @@ const Register = () => {
 
   const navigate = useNavigate();
 
-
   if (isAuthenticated) {
     return <Navigate to="/" replace />;
   }
 
   const showSuccessToast = (message) => {
+    toast.dismiss();
     toast.success(message, {
       position: "bottom-right",
       autoClose: 3000,
@@ -39,10 +40,12 @@ const Register = () => {
       progress: undefined,
       className: styles.successToast,
       progressClassName: styles.successToastProgress,
+      closeButton: true,
     });
   };
 
   const showErrorToast = (message) => {
+    toast.dismiss();
     toast.error(message, {
       position: "bottom-right",
       autoClose: 3000,
@@ -53,6 +56,7 @@ const Register = () => {
       progress: undefined,
       className: styles.errorToast,
       progressClassName: styles.errorToastProgress,
+      closeButton: true,
     });
   };
 
@@ -86,7 +90,6 @@ const Register = () => {
     }
 
     try {
-      
       const { data, error: signUpError } = await supabase.auth.signUp({
         email,
         password,
@@ -103,7 +106,6 @@ const Register = () => {
       if (signUpError) throw signUpError;
 
       if (data && data.user) {
-      
         const { error: profileError } = await supabase.from('profiles').insert([
           {
             user_id: data.user.id,
@@ -115,7 +117,6 @@ const Register = () => {
 
         if (profileError) {
           console.error("Error creating profile:", profileError);
-          
         }
 
         showSuccessToast(t('register.successMessage') || 'Qeydiyyat uğurla tamamlandı! Zəhmət olmasa, daxil olun.');
@@ -160,29 +161,38 @@ const Register = () => {
   };
 
   return (
-    <div className={`${styles.container} ${theme === 'dark' ? styles.darkTheme : ''}`}>
-  
-      <ToastContainer />
+    <div className={styles.container} data-theme={isDarkMode ? 'dark' : 'light'}>
+      <ToastContainer 
+        position="bottom-right"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={true}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        limit={1}
+      />
       
       <div className={styles.formWrapper}>
         <div className={styles.formContainer}>
           <div className={styles.logo}>
             <span className={styles.logoText}>
-              {t("common.companyName.luxury")}
+              {t("common.companyName.luxury") || "Luxury"}
             </span>
-           
           </div>
 
-          <h1 className={styles.title}>{t("register.title")}</h1>
+          <h1 className={styles.title}>{t("register.title") || "Qeydiyyat"}</h1>
 
           <form onSubmit={handleRegister} className={styles.form}>
             <div className={styles.formGroup}>
-              <label htmlFor="username">{t("register.fullName")}</label>
+              <label htmlFor="username">{t("register.fullName") || "Tam Ad"}</label>
               <div className={styles.inputWrapper}>
                 <input
                   id="username"
                   type="text"
-                  placeholder={t("register.fullNamePlaceholder")}
+                  placeholder={t("register.fullNamePlaceholder") || "Adınızı daxil edin"}
                   value={username}
                   onChange={(e) => setUsername(e.target.value)}
                   required
@@ -194,12 +204,12 @@ const Register = () => {
             </div>
 
             <div className={styles.formGroup}>
-              <label htmlFor="email">{t("register.email")}</label>
+              <label htmlFor="email">{t("register.email") || "E-poçt"}</label>
               <div className={styles.inputWrapper}>
                 <input
                   id="email"
                   type="email"
-                  placeholder={t("register.emailPlaceholder")}
+                  placeholder={t("register.emailPlaceholder") || "E-poçt ünvanınızı daxil edin"}
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required
@@ -211,12 +221,12 @@ const Register = () => {
             </div>
 
             <div className={styles.formGroup}>
-              <label htmlFor="password">{t("register.password")}</label>
+              <label htmlFor="password">{t("register.password") || "Şifrə"}</label>
               <div className={styles.inputWrapper}>
                 <input
                   id="password"
                   type={showPassword ? "text" : "password"}
-                  placeholder={t("register.passwordPlaceholder")}
+                  placeholder={t("register.passwordPlaceholder") || "Şifrənizi daxil edin"}
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   required
@@ -239,13 +249,13 @@ const Register = () => {
 
             <div className={styles.formGroup}>
               <label htmlFor="confirmPassword">
-                {t("register.confirmPassword")}
+                {t("register.confirmPassword") || "Şifrəni təsdiqlə"}
               </label>
               <div className={styles.inputWrapper}>
                 <input
                   id="confirmPassword"
                   type={showConfirmPassword ? "text" : "password"}
-                  placeholder={t("register.confirmPasswordPlaceholder")}
+                  placeholder={t("register.confirmPasswordPlaceholder") || "Şifrəni təkrar daxil edin"}
                   value={confirmPassword}
                   onChange={(e) => setConfirmPassword(e.target.value)}
                   required

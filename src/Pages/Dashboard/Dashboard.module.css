@@ -1,11 +1,43 @@
+/* Admin Dashboard üçün tam yenilənmiş CSS (Footer və Responsivlik problemləri həll edilmiş) */
 
+:root {
+  /* İşıq Tema Dəyişənləri */
+  --background-light: #ffffff;
+  --card-light: #ffffff;
+  --text-primary-light: #333333;
+  --text-secondary-light: #666666;
+  --border-light: #e0e0e0;
+  --hover-light: rgba(115, 0, 38, 0.1);
+  --shadow-light: 0 4px 12px rgba(0, 0, 0, 0.08);
+  
+  /* Qaranlıq Tema Dəyişənləri */
+  --background-dark: #080808;
+  --card-dark: #121212;
+  --text-primary-dark: #f5f5f5;
+  --text-secondary-dark: #aaaaaa;
+  --border-dark: #2a2a2a;
+  --hover-dark: rgba(212, 175, 55, 0.15);
+  --shadow-dark: 0 4px 12px rgba(0, 0, 0, 0.3);
+  
+  /* Əsas Rənglər */
+  --burgundy: #730026;
+  --burgundy-dark: #a30038;
+  --gold: #d4af37;
+  --gold-dark: #e2c158;
+  --green: #198754;
+  --red: #dc3545;
+}
 
+/* Ana Container */
 .container {
   display: flex;
   min-height: 100vh;
   background-color: var(--background-light);
   color: var(--text-primary-light);
   transition: all 0.3s ease;
+  font-family: 'Poppins', sans-serif;
+  position: relative;
+  overflow-x: hidden;
 }
 
 .darkTheme {
@@ -13,19 +45,23 @@
   color: var(--text-primary-dark);
 }
 
+/* Sidebar - Sabit Ölçü, Footer-ə müdaxilə etməyəcək */
 .sidebar {
   width: 240px;
-  height: 350px;
+  height: 350px; /* Sabit hündürlük */
   background-color: var(--card-light);
   border-right: 1px solid var(--border-light);
   padding: 1.5rem 1rem;
   display: flex;
   flex-direction: column;
   position: fixed;
-
-  /* z-index: 10; */
+  left: 0;
+  top: 0;
+  z-index: 100;
   transition: all 0.3s ease;
   box-shadow: var(--shadow-light);
+  overflow-y: auto;
+  border-radius: 0 0 15px 0; /* Bottom-right yuvarlaqlaşdırma */
 }
 
 .darkTheme .sidebar {
@@ -34,11 +70,28 @@
   box-shadow: var(--shadow-dark);
 }
 
+/* Sidebar Arxa Fon */
+.sidebarBackdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 90;
+  display: none;
+}
+
+/* Sidebar Logo */
 .sidebarLogo {
   display: flex;
   align-items: center;
   margin-bottom: 2rem;
   padding: 0 0.5rem;
+  color: var(--burgundy);
+}
+
+.darkTheme .sidebarLogo {
   color: var(--gold);
 }
 
@@ -46,8 +99,10 @@
   font-size: 1.25rem;
   font-weight: 700;
   margin-left: 0.75rem;
+  font-family: 'Poppins', sans-serif;
 }
 
+/* Nav Elementləri */
 .navItem {
   display: flex;
   align-items: center;
@@ -56,6 +111,8 @@
   border-radius: 0.5rem;
   cursor: pointer;
   transition: all 0.2s ease;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.9rem;
 }
 
 .navItem:hover {
@@ -67,16 +124,17 @@
 }
 
 .navItemActive {
-  background-color: var(--gold);
+  background-color: var(--burgundy);
   color: white;
 }
 
 .darkTheme .navItemActive {
-  background-color: var(--gold-dark);
+  background-color: var(--gold);
+  color: #000;
 }
 
 .navItemActive:hover {
-  background-color: var(--gold);
+  background-color: var(--burgundy-dark);
 }
 
 .darkTheme .navItemActive:hover {
@@ -87,33 +145,42 @@
   margin-right: 0.75rem;
 }
 
-/* Main Content Styles */
+/* Əsas Kontent */
 .content {
   flex: 1;
   padding: 1.5rem;
   margin-left: 240px;
   transition: margin-left 0.3s ease;
   overflow-x: hidden;
+  font-family: 'Poppins', sans-serif;
 }
 
-/* Header Styles */
+/* Header */
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.darkTheme .header {
+  border-bottom: 1px solid var(--border-dark);
 }
 
 .pageTitle {
   font-size: 1.75rem;
   font-weight: 700;
-  color: var(--text-primary-light);
+  color: var(--burgundy);
+  font-family: 'Poppins', sans-serif;
 }
 
 .darkTheme .pageTitle {
-  color: var(--text-primary-dark);
+  color: var(--gold);
 }
 
+/* Axtarış Bar */
 .searchBar {
   display: flex;
   align-items: center;
@@ -146,21 +213,14 @@
   color: var(--text-primary-light);
   font-size: 0.875rem;
   outline: none;
+  font-family: 'Poppins', sans-serif;
 }
 
 .darkTheme .searchInput {
   color: var(--text-primary-dark);
 }
 
-.searchInput::placeholder {
-  color: var(--text-secondary-light);
-}
-
-.darkTheme .searchInput::placeholder {
-  color: var(--text-secondary-dark);
-}
-
-/* Dashboard Card Styles */
+/* Dashboard Cards */
 .dashboard {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -170,7 +230,7 @@
 
 .dashboardCard {
   background-color: var(--card-light);
-  border-radius: 0.5rem;
+  border-radius: 0.75rem;
   padding: 1.5rem;
   box-shadow: var(--shadow-light);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -186,14 +246,11 @@
   box-shadow: var(--shadow-dark);
 }
 
-.darkTheme .dashboardCard:hover {
-  box-shadow: var(--shadow-dark);
-}
-
 .cardTitle {
   font-size: 0.875rem;
   color: var(--text-secondary-light);
   margin-bottom: 0.5rem;
+  font-family: 'Poppins', sans-serif;
 }
 
 .darkTheme .cardTitle {
@@ -204,6 +261,12 @@
   font-size: 1.75rem;
   font-weight: 700;
   margin-bottom: 0.75rem;
+  color: var(--burgundy);
+  font-family: 'Poppins', sans-serif;
+}
+
+.darkTheme .cardValue {
+  color: var(--gold);
 }
 
 .cardGrowth {
@@ -211,6 +274,7 @@
   align-items: center;
   font-size: 0.875rem;
   font-weight: 500;
+  font-family: 'Poppins', sans-serif;
 }
 
 .positive {
@@ -221,13 +285,15 @@
   color: var(--red);
 }
 
-/* Chart Styles */
+/* Diaqramlar və Cədvəllər */
 .chartContainer {
   background-color: var(--card-light);
-  border-radius: 0.5rem;
+  border-radius: 0.75rem;
   padding: 1.5rem;
   margin-bottom: 1.5rem;
   box-shadow: var(--shadow-light);
+  max-width: 100%;
+  overflow-x: auto;
 }
 
 .darkTheme .chartContainer {
@@ -240,16 +306,24 @@
   justify-content: space-between;
   align-items: center;
   margin-bottom: 1rem;
+  font-family: 'Poppins', sans-serif;
 }
 
 .chartTitle {
   font-size: 1.125rem;
   font-weight: 600;
+  color: var(--burgundy);
+  font-family: 'Poppins', sans-serif;
+}
+
+.darkTheme .chartTitle {
+  color: var(--gold);
 }
 
 .chartPeriod {
   font-size: 0.875rem;
   color: var(--text-secondary-light);
+  font-family: 'Poppins', sans-serif;
 }
 
 .darkTheme .chartPeriod {
@@ -262,13 +336,13 @@
   gap: 1.5rem;
 }
 
-/* Chart Specific Styles */
+/* Chart Xüsusi Stilləri */
 .chartLine {
   stroke: var(--burgundy);
 }
 
 .darkTheme .chartLine {
-  stroke: var(--burgundy-dark);
+  stroke: var(--gold);
 }
 
 .pieChart {
@@ -276,45 +350,18 @@
 }
 
 .darkTheme .pieChart {
-  fill: var(--burgundy-dark);
+  fill: var(--gold);
 }
 
-.cartesianGrid {
-  stroke: var(--border-light);
-}
-
-.darkTheme .cartesianGrid {
-  stroke: var(--border-dark);
-}
-
-.axis {
-  color: var(--text-secondary-light);
-}
-
-.darkTheme .axis {
-  color: var(--text-secondary-dark);
-}
-
-.tooltip {
-  background-color: var(--card-light);
-  border: 1px solid var(--border-light);
-  box-shadow: var(--shadow-light);
-}
-
-.darkTheme .tooltip {
-  background-color: var(--card-dark);
-  border: 1px solid var(--border-dark);
-  box-shadow: var(--shadow-dark);
-}
-
-/* Table Styles */
+/* Table Container və Cədvəl */
 .tableContainer {
   background-color: var(--card-light);
-  border-radius: 0.5rem;
+  border-radius: 0.75rem;
   padding: 1.5rem;
   margin-bottom: 1.5rem;
   box-shadow: var(--shadow-light);
   overflow-x: auto;
+  width: 100%;
 }
 
 .darkTheme .tableContainer {
@@ -332,11 +379,18 @@
 .tableTitle {
   font-size: 1.125rem;
   font-weight: 600;
+  color: var(--burgundy);
+  font-family: 'Poppins', sans-serif;
+}
+
+.darkTheme .tableTitle {
+  color: var(--gold);
 }
 
 .table {
   width: 100%;
   border-collapse: collapse;
+  font-family: 'Poppins', sans-serif;
 }
 
 .thead {
@@ -351,12 +405,12 @@
   text-align: left;
   padding: 0.75rem;
   font-weight: 600;
-  color: var(--text-secondary-light);
+  color: var(--burgundy);
   font-size: 0.875rem;
 }
 
 .darkTheme .th {
-  color: var(--text-secondary-dark);
+  color: var(--gold);
 }
 
 .td {
@@ -370,6 +424,7 @@
   border-top: 1px solid var(--border-dark);
 }
 
+/* Əlavə Elementlər */
 .productImage, .blogImage {
   width: 40px;
   height: 40px;
@@ -394,7 +449,7 @@
 .addButton {
   display: flex;
   align-items: center;
-  background-color: var(--dark-green);
+  background-color: var(--burgundy);
   color: white;
   border: none;
   border-radius: 0.5rem;
@@ -403,10 +458,20 @@
   font-weight: 500;
   cursor: pointer;
   transition: background-color 0.2s ease;
+  font-family: 'Poppins', sans-serif;
 }
 
 .addButton:hover {
-  background-color: var(--dark-green-dark);
+  background-color: var(--burgundy-dark);
+}
+
+.darkTheme .addButton {
+  background-color: var(--gold);
+  color: #000;
+}
+
+.darkTheme .addButton:hover {
+  background-color: var(--gold-dark);
 }
 
 .addButton span {
@@ -424,11 +489,11 @@
 }
 
 .editButton {
-  color: var(--gold);
+  color: var(--burgundy);
 }
 
 .darkTheme .editButton {
-  color: var(--gold-dark);
+  color: var(--gold);
 }
 
 .deleteButton {
@@ -443,7 +508,7 @@
   background-color: var(--hover-dark);
 }
 
-
+/* Yüklənmə İndikatoru */
 .loadingContainer {
   display: flex;
   align-items: center;
@@ -451,6 +516,7 @@
   flex-direction: column;
   padding: 3rem 0;
   color: var(--text-secondary-light);
+  font-family: 'Poppins', sans-serif;
 }
 
 .darkTheme .loadingContainer {
@@ -471,18 +537,83 @@
   }
 }
 
-/* Empty States */
-.noData {
-  text-align: center;
-  padding: 2rem 0;
-  color: var(--text-secondary-light);
+/* Status İndikatorları */
+.status {
+  display: inline-block;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  font-family: 'Poppins', sans-serif;
 }
 
-.darkTheme .noData {
-  color: var(--text-secondary-dark);
+.completed {
+  background-color: rgba(25, 135, 84, 0.2);
+  color: var(--green);
 }
 
-/* Modal Styles */
+.processing {
+  background-color: rgba(212, 175, 55, 0.2);
+  color: var(--gold);
+}
+
+/* Mobil Header */
+.mobileHeader {
+  display: none;
+  align-items: center;
+  padding: 1rem;
+  background-color: var(--card-light);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 95;
+  box-shadow: var(--shadow-light);
+  height: 60px;
+}
+
+.darkTheme .mobileHeader {
+  background-color: var(--card-dark);
+  box-shadow: var(--shadow-dark);
+}
+
+.menuButton {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  margin-right: 1rem;
+  color: var(--burgundy);
+}
+
+.darkTheme .menuButton {
+  color: var(--gold);
+}
+
+/* Theme Toggle Button */
+.themeToggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--burgundy);
+  padding: 0.25rem;
+  border-radius: 0.25rem;
+  transition: background-color 0.2s ease;
+}
+
+.darkTheme .themeToggle {
+  color: var(--gold);
+}
+
+.themeToggle:hover {
+  background-color: var(--hover-light);
+}
+
+.darkTheme .themeToggle:hover {
+  background-color: var(--hover-dark);
+}
+
+/* Modal Stilləri */
 .modalOverlay {
   position: fixed;
   top: 0;
@@ -498,12 +629,13 @@
 
 .modal {
   background-color: var(--card-light);
-  border-radius: 0.5rem;
+  border-radius: 0.75rem;
   max-width: 600px;
-  width: 100%;
+  width: 95%;
   max-height: 90vh;
   overflow-y: auto;
   box-shadow: var(--shadow-light);
+  font-family: 'Poppins', sans-serif;
 }
 
 .darkTheme .modal {
@@ -515,7 +647,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1.5rem;
+  padding: 1.25rem 1.5rem;
   border-bottom: 1px solid var(--border-light);
 }
 
@@ -526,6 +658,12 @@
 .modalTitle {
   font-size: 1.25rem;
   font-weight: 600;
+  color: var(--burgundy);
+  font-family: 'Poppins', sans-serif;
+}
+
+.darkTheme .modalTitle {
+  color: var(--gold);
 }
 
 .closeButton {
@@ -548,6 +686,7 @@
   color: var(--text-primary-dark);
 }
 
+/* Form Stilləri */
 .formGroup {
   margin-bottom: 1.5rem;
   padding: 0 1.5rem;
@@ -566,6 +705,7 @@
   margin-bottom: 0.5rem;
   font-size: 0.875rem;
   font-weight: 500;
+  font-family: 'Poppins', sans-serif;
 }
 
 .input, .select, .textarea {
@@ -577,6 +717,7 @@
   font-size: 0.875rem;
   color: var(--text-primary-light);
   transition: border-color 0.2s ease;
+  font-family: 'Poppins', sans-serif;
 }
 
 .darkTheme .input, .darkTheme .select, .darkTheme .textarea {
@@ -585,12 +726,12 @@
 }
 
 .input:focus, .select:focus, .textarea:focus {
-  border-color: var(--gold);
+  border-color: var(--burgundy);
   outline: none;
 }
 
 .darkTheme .input:focus, .darkTheme .select:focus, .darkTheme .textarea:focus {
-  border-color: var(--gold-dark);
+  border-color: var(--gold);
 }
 
 .checkbox {
@@ -603,7 +744,7 @@
   display: flex;
   justify-content: flex-end;
   gap: 1rem;
-  padding: 1.5rem;
+  padding: 1.25rem 1.5rem;
   border-top: 1px solid var(--border-light);
 }
 
@@ -620,6 +761,7 @@
   font-weight: 500;
   cursor: pointer;
   transition: background-color 0.2s ease;
+  font-family: 'Poppins', sans-serif;
 }
 
 .darkTheme .cancelButton {
@@ -638,161 +780,111 @@
   padding: 0.5rem 1rem;
   border: none;
   border-radius: 0.5rem;
-  background-color: var(--gold);
+  background-color: var(--burgundy);
   color: white;
   font-size: 0.875rem;
   font-weight: 500;
   cursor: pointer;
   transition: background-color 0.2s ease;
+  font-family: 'Poppins', sans-serif;
 }
 
 .submitButton:hover {
+  background-color: var(--burgundy-dark);
+}
+
+.darkTheme .submitButton {
+  background-color: var(--gold);
+  color: #000;
+}
+
+.darkTheme .submitButton:hover {
   background-color: var(--gold-dark);
 }
 
-/* Status Indicators */
-.status {
-  display: inline-block;
-  padding: 0.25rem 0.5rem;
-  border-radius: 0.25rem;
-  font-size: 0.75rem;
-  font-weight: 600;
-}
-
-.published {
-  background-color: rgba(25, 135, 84, 0.2);
-  color: var(--green);
-}
-
-.draft {
-  background-color: rgba(108, 117, 125, 0.2);
+/* Əlavə utility siniflər */
+.modelText {
+  font-size: 0.85rem;
   color: var(--text-secondary-light);
+  margin-top: 0.25rem;
 }
 
-.darkTheme .draft {
+.darkTheme .modelText {
   color: var(--text-secondary-dark);
 }
 
-/* Mobile Header (hidden by default) */
-.mobileHeader {
-  display: none;
-  align-items: center;
-  margin-bottom: 1.5rem;
+.noData {
+  text-align: center;
+  padding: 2rem 0;
+  color: var(--text-secondary-light);
+  font-family: 'Poppins', sans-serif;
 }
 
-.menuButton {
-  background: none;
-  border: none;
-  font-size: 1.5rem;
-  cursor: pointer;
-  margin-right: 1rem;
-  color: var(--text-primary-light);
+.darkTheme .noData {
+  color: var(--text-secondary-dark);
 }
 
-.darkTheme .menuButton {
-  color: var(--text-primary-dark);
-}
-
-/* Blog list specific styles */
-.blogTitle {
-  font-weight: 600;
-  max-width: 250px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-/* Theme Toggle Button */
-.themeToggle {
-  background: none;
-  border: none;
-  cursor: pointer;
-  margin-left: 1rem;
-  padding: 0.25rem;
-  border-radius: 0.25rem;
-  color: var(--text-primary-light);
-  transition: color 0.2s ease, background-color 0.2s ease;
-}
-
-.darkTheme .themeToggle {
-  color: var(--text-primary-dark);
-}
-
-.themeToggle:hover {
-  background-color: var(--hover-light);
-}
-
-.darkTheme .themeToggle:hover {
-  background-color: var(--hover-dark);
-}
-
-
-.languageSelector {
-  display: flex;
-  align-items: center;
-  margin-left: 1rem;
-}
-
-.languageButton {
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 0.25rem;
-  border-radius: 0.25rem;
-  display: flex;
-  align-items: center;
-  color: var(--text-primary-light);
-  transition: color 0.2s ease, background-color 0.2s ease;
-}
-
-.darkTheme .languageButton {
-  color: var(--text-primary-dark);
-}
-
-.languageButton:hover {
-  background-color: var(--hover-light);
-}
-
-.darkTheme .languageButton:hover {
-  background-color: var(--hover-dark);
-}
-
-.languageIcon {
-  margin-right: 0.5rem;
-}
-
-/* Responsive Styles */
-@media (max-width: 1024px) {
+/* Responziv Stlilər - Ciddi yenilənmiş */
+@media (max-width: 1280px) {
   .dashboard {
     grid-template-columns: repeat(2, 1fr);
   }
   
+  .chartContainer {
+    padding: 1.25rem;
+  }
+  
+  .cardValue {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 992px) {
   .chartGrid {
     grid-template-columns: 1fr;
+  }
+  
+  .content {
+    padding: 1.25rem;
+  }
+  
+  .tableContainer {
+    padding: 1.25rem;
   }
 }
 
 @media (max-width: 768px) {
-  .sidebar {
-    transform: translateX(-100%);
-    width: 240px;
-  }
-  
-  .sidebarOpen {
-    transform: translateX(0);
-  }
-  
-  .content {
-    margin-left: 0;
-  }
-  
+  /* Scroll etdikdə həmişə visible olmaq üçün header-fixed */
   .mobileHeader {
     display: flex;
   }
   
+  /* Sidebar mobil görünüş */
+  .sidebar {
+    transform: translateX(-100%);
+    width: 260px;
+    z-index: 100;
+  }
+  
+  .sidebarOpen {
+    transform: translateX(0);
+    box-shadow: 5px 0 25px rgba(0, 0, 0, 0.15);
+  }
+  
+  .darkTheme .sidebarOpen {
+    box-shadow: 5px 0 25px rgba(0, 0, 0, 0.3);
+  }
+  
+  /* Content-in mobil tənzimləməsi */
+  .content {
+    margin-left: 0;
+    padding-top: 70px; /* Mobil header-in hündürlüyü + padding */
+  }
+  
+  /* Header və search mobil görünüş */
   .header {
     flex-direction: column;
-    align-items: stretch;
+    align-items: flex-start;
   }
   
   .searchBar {
@@ -800,198 +892,90 @@
     margin-top: 1rem;
   }
   
-  .dashboard {
-    grid-template-columns: 1fr;
+  /* Table və Chart mobil görünüş */
+  .table {
+    min-width: 650px; /* Horizontal scroll üçün minimal en */
+  }
+  
+  /* Backdrop göstərilir */
+  .sidebarBackdrop {
+    display: block;
+  }
+  
+  /* Form elementləri tənzimləməsi */
+  .modalFooter, .modalHeader {
+    padding: 1rem;
+  }
+  
+  .formGroup, .formGrid {
+    padding: 0 1rem;
   }
 }
 
 @media (max-width: 576px) {
+  /* Çox kiçik ekranlarda tənzimləmələr */
   .formGrid {
     grid-template-columns: 1fr;
   }
   
   .modal {
-    width: 90%;
+    width: 95%;
   }
   
-  .tableContainer {
-    padding: 1rem;
-  }
-}
-
-.chartContainer {
-  background-color: var(--card-light);
-  border-radius: 0.75rem;
-  padding: 1.75rem;
-  margin-bottom: 1.5rem;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  transition: all 0.3s ease;
-  border: 1px solid transparent;
-}
-
-.darkTheme .chartContainer {
-  background-color: var(--card-dark);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-  border-color: var(--border-dark);
-}
-
-.chartContainer:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
-}
-
-.darkTheme .chartContainer:hover {
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
-}
-
-
-.chartHeader {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 1.5rem;
-  padding-bottom: 0.75rem;
-  border-bottom: 1px solid var(--border-light);
-}
-
-.darkTheme .chartHeader {
-  border-bottom: 1px solid var(--border-dark);
-}
-
-.chartTitle {
-  font-size: 1.25rem;
-  font-weight: 600;
-  color: var(--text-primary-light);
-  position: relative;
-  padding-left: 0.75rem;
-}
-
-.chartTitle::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 0;
-  height: 100%;
-  width: 4px;
-  background: linear-gradient(to bottom, #013220, #800020);
-  border-radius: 2px;
-}
-
-.darkTheme .chartTitle {
-  color: var(--text-primary-dark);
-}
-
-.chartPeriod {
-  font-size: 0.875rem;
-  color: var(--text-secondary-light);
-  background-color: rgba(1, 50, 32, 0.1);
-  padding: 1.35rem 0.85rem;
-  border-radius: 1.5rem;
-  font-weight: 500;
-}
-
-.darkTheme .chartPeriod {
-  color: var(--text-secondary-dark);
-  background-color: rgba(1, 50, 32, 0.2);
-}
-
-.chartGrid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1.75rem;
-  margin-bottom: 2rem;
-}
-
-.pieChart {
-  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
-}
-
-.darkTheme .pieChart {
-  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.2));
-}
-
-
-@media (max-width: 1024px) {
-  .chartGrid {
-    grid-template-columns: 1fr;
-  }
-}
-
-@media (max-width: 576px) {
-  .chartHeader {
+  .tableHeader, .chartHeader {
     flex-direction: column;
     align-items: flex-start;
   }
   
-  .chartPeriod {
-    margin-top: 0.75rem;
+  .addButton, .chartPeriod {
+    margin-top: 0.5rem;
   }
   
-  .chartTitle::before {
-    width: 100%;
-    height: 3px;
-    top: -8px;
-    left: 0;
+  .cardValue {
+    font-size: 1.25rem;
   }
   
-  .chartTitle {
-    padding-left: 0;
-    padding-top: 12px;
+  .dashboard {
+    grid-template-columns: 1fr;
+  }
+  
+  .tableContainer, .chartContainer {
+    padding: 1rem;
   }
 }
 
-/* Add or modify these styles in your Dashboard.module.css file */
-
-/* Make the sidebar fixed position for mobile */
-@media (max-width: 768px) {
-  .sidebar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 100vh;
-    width: 300px;
-    /* z-index: 1000; */
-    transform: translateX(-100%);
-    transition: transform 0.3s ease;
-  }
-  
-  .sidebarOpen {
-    transform: translateX(0);
-  }
-  
-  /* Add this new class for the backdrop */
-  .sidebarBackdrop {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.5);
-    /* z-index: 999; */
-  }
-  
-  /* Make sure the content doesn't overlap with the sidebar */
-  .content {
-    margin-left: 0;
-    width: 100%;
-  }
+/* Sidebar scroll-barını xüsusiləşdirmək */
+.sidebar::-webkit-scrollbar {
+  width: 5px;
 }
 
-/* Ensure the menu button stays visible */
-.mobileHeader {
-  position: sticky;
-  top: 0;
-  /* z-index: 100; */
-  background-color: inherit;
-  padding: 1rem;
-  align-items: center;
+.sidebar::-webkit-scrollbar-track {
+  background: transparent;
 }
 
-.menuButton {
-  background: none;
-  border: none;
-  font-size: 1.5rem;
-  cursor: pointer;
-  padding: 0.5rem;
-  color: inherit;
+.sidebar::-webkit-scrollbar-thumb {
+  background: var(--hover-light);
+  border-radius: 5px;
+}
+
+.darkTheme .sidebar::-webkit-scrollbar-thumb {
+  background: var(--hover-dark);
+}
+
+/* Modal scroll-barını xüsusiləşdirmək */
+.modal::-webkit-scrollbar {
+  width: 5px;
+}
+
+.modal::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.modal::-webkit-scrollbar-thumb {
+  background: var(--hover-light);
+  border-radius: 5px;
+}
+
+.darkTheme .modal::-webkit-scrollbar-thumb {
+  background: var(--hover-dark);
 }

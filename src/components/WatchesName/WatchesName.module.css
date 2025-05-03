@@ -1,16 +1,15 @@
-
 .container {
   width: 100%;
   padding: 2rem 0;
   position: relative;
   overflow: hidden;
+  background-color: var(--light-bg); /* İşıq modda ağ arxa fon */
 }
 
-/* .containerDark {
-  background-color: var(--secondary-bg, #1e1e1e);
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-} */
+.containerDark {
+  background-color: var(--dark-bg); /* Tünd modda qara arxa fon */
+}
+
 
 .marqueeContainer {
   width: 100%;
@@ -68,26 +67,32 @@
 .watchItem:hover, .watchItem.active {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   transform: translateY(-2px);
-  border-color: var(--gold-color, #d4af37);
+  border-color: var(--light-accent);
+  color: var(--light-accent)
 }
 
 .watchItemDark:hover, .watchItemDark.active {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  transform: translateY(-2px);
+  border-color: var(--light-accent);
 }
 
 .watchName {
   font-size: 1rem;
   font-weight: 500;
-  color: var(--text-color, #333);
+  color: var(--light-accent); /* İşıq modda bordo */
   transition: color 0.3s ease;
 }
 
 .watchItemDark .watchName {
-  color: var(--text-color, #f0f0f0);
+  color: var(--dark-accent); /* Tünd modda qızılı */
 }
 
-.watchItem:hover .watchName, .watchItem.active .watchName {
-  color: var(--gold-color, #d4af37);
+.watchItem:hover .watchName,
+.watchItem.active .watchName,
+.watchItemDark:hover .watchName,
+.watchItemDark.active .watchName {
+  color: var(--dark-accent); /* Hover effekti üçün də qızılı */
 }
 
 /* Preview image styles */
@@ -185,3 +190,4 @@
     }
   }
 }
+

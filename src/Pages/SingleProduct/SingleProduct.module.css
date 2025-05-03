@@ -1052,3 +1052,17 @@
     font-size: 14px;
   }
 }
+
+.addToCartButton,
+.tryOnButton {
+  padding: 4px 10px;
+  font-size: 12px;
+  line-height: 1;
+  border-radius: 14px;
+  border: 1px solid #ccc;
+  background-color: white;
+  color: #333;
+  cursor: pointer;
+  height: auto;
+  width: fit-content;
+}

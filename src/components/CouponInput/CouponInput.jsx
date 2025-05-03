@@ -10,6 +10,7 @@ const CouponInput = () => {
   const { applyCoupon, removeCoupon, appliedCoupon, loading, couponError } = useCoupon();
   const { t } = useTranslation();
   const { theme } = useContext(ThemeContext);
+  const isDarkMode = theme === 'dark';
  
   const [isValidating, setIsValidating] = useState(false);
 
@@ -51,9 +52,9 @@ const CouponInput = () => {
     const { discount_type, discount_value } = appliedCoupon;
     
     if (discount_type === 'percentage') {
-      return `${discount_value}% ${t("coupon.discount")}`;
+      return `${discount_value}% ${t("coupon.discount") || "endirim"}`;
     } else if (discount_type === 'fixed') {
-      return `${discount_value} AZN ${t("coupon.discount")}`;
+      return `${discount_value} AZN ${t("coupon.discount") || "endirim"}`;
     }
     
     return "";
@@ -118,7 +119,8 @@ const CouponInput = () => {
 
   return (
     <motion.div 
-      className={`${styles.couponContainer} ${theme === "dark" ? styles.darkMode : ""}`}
+      className={styles.couponContainer}
+      data-theme={isDarkMode ? 'dark' : 'light'}
       variants={containerVariants}
       initial="hidden"
       animate="visible"
@@ -127,7 +129,7 @@ const CouponInput = () => {
         className={styles.couponHeader}
         variants={formItemVariants}
       >
-        {t("coupon.title")}
+        {t("coupon.title") || "Endirim Kuponu"}
       </motion.h3>
       
       <AnimatePresence mode="wait">
@@ -142,7 +144,7 @@ const CouponInput = () => {
             exit="hidden"
           >
             <div className={styles.couponSuccess}>
-              {t("coupon.applied")} <span className={styles.couponCodeText}>{appliedCoupon.code}</span> 
+              {t("coupon.applied") || "Kupon tətbiq edildi"} <span className={styles.couponCodeText}>{appliedCoupon.code}</span> 
               ({getDiscountText()})
             </div>
             <motion.button 
@@ -155,7 +157,7 @@ const CouponInput = () => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              {t("coupon.remove")}
+              {t("coupon.remove") || "Sil"}
             </motion.button>
           </motion.div>
         ) : (
@@ -172,7 +174,7 @@ const CouponInput = () => {
               type="text"
               value={couponCode}
               onChange={(e) => setCouponCode(e.target.value)}
-              placeholder={t("coupon.placeholder")}
+              placeholder={t("coupon.placeholder") || "Kupon kodunu daxil edin"}
               className={styles.couponInput}
               variants={formItemVariants}
               disabled={loading}
@@ -186,7 +188,7 @@ const CouponInput = () => {
               whileHover={!loading && couponCode.trim() ? { scale: 1.05 } : {}}
               whileTap={!loading && couponCode.trim() ? { scale: 0.95 } : {}}
             >
-              {isValidating ? t("coupon.checking") : t("coupon.apply")}
+              {isValidating ? (t("coupon.checking") || "Yoxlanılır") : (t("coupon.apply") || "Tətbiq et")}
               {isValidating && (
                 <motion.span
                   initial={{ opacity: 0 }}

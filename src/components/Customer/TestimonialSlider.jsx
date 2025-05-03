@@ -44,7 +44,7 @@ const TestimonialSlider = () => {
 
   
   const rolexVideo = {
-    src: "/videos/Rolex new watches 2025 – Once upon a first time (1).mp4",
+    src: "https://xdzksswqqqoonxbwcmup.supabase.co/storage/v1/object/sign/videos/testimonialvideo.mp4?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJ2aWRlb3MvdGVzdGltb25pYWx2aWRlby5tcDQiLCJpYXQiOjE3NDYzMDA5NDYsImV4cCI6MTc3NzgzNjk0Nn0.-n5qYCxfohttAQFaKmYMhC4mnWpULoqFF8TulDY87kI",
   
   };
 

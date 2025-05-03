@@ -33,7 +33,12 @@
   --cream: #f8f6ea;
   --metallic-gradient: linear-gradient(145deg, #e6c567, #d4af37, #b8860b);
 }
-
+:root {
+  --light-bg: #ffffff;
+  --light-accent: #730026;
+  --dark-bg: #080808;
+  --dark-accent: #d4af37;
+}
 :root {
 
   --bg-gradient-light: linear-gradient(135deg, #f5f7fa 0%, #e4e8ec 100%);

@@ -13,6 +13,7 @@ import CouponInput from "../../components/CouponInput/CouponInput";
 
 const CartPage = () => {
   const { theme } = useContext(ThemeContext);
+  const isDarkMode = theme === 'dark';
   const { 
     items, 
     updateItemQuantity, 
@@ -162,199 +163,210 @@ const CartPage = () => {
   };
 
   return (
-    <motion.div 
-      key={`cart-page-${forceUpdate}`}
-      initial="hidden"
-      animate="visible"
-      variants={containerVariants}
-      className={`${styles.cartPage} ${theme === "dark" ? styles.darkMode : ""}`}
-    >
-      <ToastContainer
-        position="bottom-right"
-        autoClose={3000}
-        hideProgressBar={false}
-        newestOnTop
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme={theme}
-      />
-      <motion.h1 
-        className={styles.basket}
-        variants={itemVariants}
+    <div className={styles.container} data-theme={isDarkMode ? 'dark' : 'light'}>
+      <motion.div 
+        key={`cart-page-${forceUpdate}`}
+        initial="hidden"
+        animate="visible"
+        variants={containerVariants}
+        className={styles.cartPageWrapper}
       >
-        {t("cart.title")}
-      </motion.h1>
-      
-      {isEmpty ? (
-        <motion.div 
-          variants={itemVariants}
-          className={styles.emptyCart}
-        >
-          <motion.p
-            initial={{ scale: 0.9 }}
-            animate={{ scale: 1 }}
-            transition={{ 
-              repeat: Infinity, 
-              repeatType: "reverse", 
-              duration: 2 
-            }}
-          >
-            {t("cart.empty")}
-          </motion.p>
-          <Link to="/products">
-            <motion.button
-              className={styles.shopButton}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              {t("cart.shop")}
-            </motion.button>
-          </Link>
-        </motion.div>
-      ) : (
-        <AnimatePresence>
-          <div className={styles.cartItemsContainer}>
-            {items.map((item) => (
-              <motion.div 
-                key={`${item.id}-${item.quantity}-${forceUpdate}`}
-                className={styles.cartItem}
-                variants={itemVariants}
-                whileHover={{ scale: 1.02, transition: { duration: 0.2 } }}
-                exit="exit"
-                layout
-              >
-                <div className={styles.imageContainer}>
-                  <img src={item.image} alt={item.name} className={styles.cartItemImage} />
-                </div>
-                <div className={styles.cartItemDetails}>
-                  <h3>{item.name}</h3>
-                  <p className={styles.priceTag}>
-                    {item.discounted ? (
-                      <span className={styles.discountedPrice}>{item.discountedPrice} AZN</span>
-                    ) : (
-                      <span>{item.price} AZN</span>
-                    )}
-                  </p>
-                  <div className={styles.quantityControl}>
-                    <motion.button 
-                      className={styles.quantityBtn}
-                      onClick={() => handleQuantityChange(item.id, item.quantity - 1)}
-                      whileHover={{ scale: 1.2 }}
-                      whileTap={{ scale: 0.9 }}
-                    >
-                      -
-                    </motion.button>
-                    <motion.span
-                      key={`${item.id}-${item.quantity}-${forceUpdate}`}
-                      initial={{ scale: 1.5, opacity: 0.7 }}
-                      animate={{ scale: 1, opacity: 1 }}
-                      transition={{ duration: 0.3 }}
-                    >
-                      {item.quantity}
-                    </motion.span>
-                    <motion.button 
-                      className={styles.quantityBtn}
-                      onClick={() => handleQuantityChange(item.id, item.quantity + 1)}
-                      whileHover={{ scale: 1.2 }}
-                      whileTap={{ scale: 0.9 }}
-                    >
-                      +
-                    </motion.button>
-                  </div>
-                  <motion.button 
-                    className={styles.removeBtn} 
-                    onClick={() => handleRemoveItem(item.id)}
-                    variants={shakeVariants}
-                    whileHover="shake"
-                  >
-                    {t("cart.remove")}
-                  </motion.button>
-                </div>
-              </motion.div>
-            ))}
-          </div>
+        <ToastContainer
+          position="bottom-right"
+          autoClose={3000}
+          hideProgressBar={false}
+          newestOnTop
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme={theme}
+        />
         
-          <motion.div
-            variants={itemVariants}
-            className={styles.couponSection}
-          >
-            <CouponInput />
-          </motion.div>
+        <div className={styles.headerSection}>
+          <div className={styles.logo}>
+            <span className={styles.logoText}>{t("common.companyName.luxury") || "Luxury"}</span>
+          </div>
           
+          <motion.h1 
+            className={styles.title}
+            variants={itemVariants}
+          >
+            {t("cart.title") || "Səbət"}
+          </motion.h1>
+          
+          <div className={styles.separator}></div>
+        </div>
+        
+        {isEmpty ? (
           <motion.div 
             variants={itemVariants}
-            className={styles.orderSummary}
-            key={`summary-${forceUpdate}`}
+            className={styles.emptyCart}
           >
-            <h3 className={styles.summaryTitle}>{t("cart.orderSummary")}</h3>
-            
-            <div className={styles.summaryRow}>
-              <span>{t("cart.subtotal")}:</span>
-              <span>{subtotal.toFixed(2)} AZN</span>
-            </div>
-            
-            {discount > 0 && (
-              <motion.div 
-                className={styles.summaryRow}
-                initial={{ opacity: 0, height: 0 }}
-                animate={{ opacity: 1, height: "auto" }}
-                exit={{ opacity: 0, height: 0 }}
-                transition={{ duration: 0.3 }}
-                key={`discount-${forceUpdate}`}
-              >
-                <span>
-                  {t("cart.discount")} 
-                  {appliedCoupon && <span className={styles.couponCode}>({appliedCoupon.code})</span>}:
-                </span>
-                <span className={styles.discountAmount}>
-                  -{discount.toFixed(2)} AZN
-                </span>
-              </motion.div>
-            )}
-            
-            <div className={`${styles.summaryRow} ${styles.totalRow}`}>
-              <span>{t("cart.total")}:</span>
-              <motion.span 
-                className={styles.totalAmount}
-                key={`total-${forceUpdate}`}
-                initial={{ scale: 1.1 }}
-                animate={{ scale: 1 }}
-                transition={{ duration: 0.5 }}
-              >
-                {finalTotal.toFixed(2)} AZN
-              </motion.span>
-            </div>
-          </motion.div>
-          
-          <motion.div
-            variants={itemVariants}
-            className={styles.checkoutBtnContainer}
-          >
-            <Link to="/checkout" className={styles.checkoutLink}>
-              <motion.button 
-                className={styles.checkoutButton}
+            <motion.p
+              initial={{ scale: 0.9 }}
+              animate={{ scale: 1 }}
+              transition={{ 
+                repeat: Infinity, 
+                repeatType: "reverse", 
+                duration: 2 
+              }}
+            >
+              {t("cart.empty") || "Səbətiniz boşdur"}
+            </motion.p>
+            <Link to="/products">
+              <motion.button
+                className={styles.shopButton}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                initial={{ boxShadow: "0 6px 15px rgba(52, 152, 219, 0.3)" }}
-                animate={{ 
-                  boxShadow: ["0 6px 15px rgba(52, 152, 219, 0.3)", "0 6px 20px rgba(52, 152, 219, 0.5)", "0 6px 15px rgba(52, 152, 219, 0.3)"],
-                  transition: {
-                    duration: 2,
-                    repeat: Infinity
-                  }
-                }}
               >
-                {t("cart.checkout")}
-                <span className={styles.btnShine}></span>
+                {t("cart.shop") || "Alış-verişə başla"}
               </motion.button>
             </Link>
           </motion.div>
-        </AnimatePresence>
-      )}
-    </motion.div>
+        ) : (
+          <AnimatePresence>
+            <div className={styles.cartItemsContainer}>
+              {items.map((item) => (
+                <motion.div 
+                  key={`${item.id}-${item.quantity}-${forceUpdate}`}
+                  className={styles.cartItem}
+                  variants={itemVariants}
+                  whileHover={{ scale: 1.02, transition: { duration: 0.2 } }}
+                  exit="exit"
+                  layout
+                >
+                  <div className={styles.imageContainer}>
+                    <img src={item.image} alt={item.name} className={styles.cartItemImage} />
+                  </div>
+                  <div className={styles.cartItemDetails}>
+                    <h3>{item.name}</h3>
+                    <p className={styles.priceTag}>
+                      {item.discounted ? (
+                        <span className={styles.discountedPrice}>{item.discountedPrice} AZN</span>
+                      ) : (
+                        <span>{item.price} AZN</span>
+                      )}
+                    </p>
+                    <div className={styles.quantityControl}>
+                      <motion.button 
+                        className={styles.quantityBtn}
+                        onClick={() => handleQuantityChange(item.id, item.quantity - 1)}
+                        whileHover={{ scale: 1.2 }}
+                        whileTap={{ scale: 0.9 }}
+                      >
+                        -
+                      </motion.button>
+                      <motion.span
+                        key={`${item.id}-${item.quantity}-${forceUpdate}`}
+                        initial={{ scale: 1.5, opacity: 0.7 }}
+                        animate={{ scale: 1, opacity: 1 }}
+                        transition={{ duration: 0.3 }}
+                      >
+                        {item.quantity}
+                      </motion.span>
+                      <motion.button 
+                        className={styles.quantityBtn}
+                        onClick={() => handleQuantityChange(item.id, item.quantity + 1)}
+                        whileHover={{ scale: 1.2 }}
+                        whileTap={{ scale: 0.9 }}
+                      >
+                        +
+                      </motion.button>
+                    </div>
+                    <motion.button 
+                      className={styles.removeBtn} 
+                      onClick={() => handleRemoveItem(item.id)}
+                      variants={shakeVariants}
+                      whileHover="shake"
+                    >
+                      {t("cart.remove") || "Sil"}
+                    </motion.button>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          
+            <motion.div
+              variants={itemVariants}
+              className={styles.couponSection}
+            >
+              <CouponInput />
+            </motion.div>
+            
+            <motion.div 
+              variants={itemVariants}
+              className={styles.orderSummary}
+              key={`summary-${forceUpdate}`}
+            >
+              <h3 className={styles.summaryTitle}>{t("cart.orderSummary") || "Sifariş Xülasəsi"}</h3>
+              
+              <div className={styles.summaryRow}>
+                <span>{t("cart.subtotal") || "Ara cəm"}:</span>
+                <span>{subtotal.toFixed(2)} AZN</span>
+              </div>
+              
+              {discount > 0 && (
+                <motion.div 
+                  className={styles.summaryRow}
+                  initial={{ opacity: 0, height: 0 }}
+                  animate={{ opacity: 1, height: "auto" }}
+                  exit={{ opacity: 0, height: 0 }}
+                  transition={{ duration: 0.3 }}
+                  key={`discount-${forceUpdate}`}
+                >
+                  <span>
+                    {t("cart.discount") || "Endirim"} 
+                    {appliedCoupon && <span className={styles.couponCode}>({appliedCoupon.code})</span>}:
+                  </span>
+                  <span className={styles.discountAmount}>
+                    -{discount.toFixed(2)} AZN
+                  </span>
+                </motion.div>
+              )}
+              
+              <div className={`${styles.summaryRow} ${styles.totalRow}`}>
+                <span>{t("cart.total") || "Cəmi"}:</span>
+                <motion.span 
+                  className={styles.totalAmount}
+                  key={`total-${forceUpdate}`}
+                  initial={{ scale: 1.1 }}
+                  animate={{ scale: 1 }}
+                  transition={{ duration: 0.5 }}
+                >
+                  {finalTotal.toFixed(2)} AZN
+                </motion.span>
+              </div>
+            </motion.div>
+            
+            <motion.div
+              variants={itemVariants}
+              className={styles.checkoutBtnContainer}
+            >
+              <Link to="/checkout" className={styles.checkoutLink}>
+                <motion.button 
+                  className={styles.checkoutButton}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  initial={{ boxShadow: "0 6px 15px rgba(115, 0, 38, 0.3)" }}
+                  animate={{ 
+                    boxShadow: ["0 6px 15px rgba(115, 0, 38, 0.3)", "0 6px 20px rgba(115, 0, 38, 0.5)", "0 6px 15px rgba(115, 0, 38, 0.3)"],
+                    transition: {
+                      duration: 2,
+                      repeat: Infinity
+                    }
+                  }}
+                >
+                  {t("cart.checkout") || "Sifarişi tamamla"}
+                  <span className={styles.btnShine}></span>
+                </motion.button>
+              </Link>
+            </motion.div>
+          </AnimatePresence>
+        )}
+      </motion.div>
+    </div>
   );
 };
 
