@@ -12,7 +12,7 @@ import { useTranslation } from "react-i18next";
 import { useCoupon } from "../../context/CouponContext";
 import CouponInput from "../../components/CouponInput/CouponInput";
 import { motion } from "framer-motion"; 
-import styles from "./Checkout.module.css";
+import styles from "./CheckOut.module.css";
 
 
 const stripePromise = loadStripe("YOUR_STRIPE_PUBLIC_KEY");
