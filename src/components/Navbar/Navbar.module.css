@@ -768,9 +768,10 @@
   }
 
   .light .navLinks {
-    background-color: rgba(255, 255, 255, 0.95);
+    background: #e1a5b9;
     border-left: 1px solid var(--light-border);
     box-shadow: -5px 0 20px rgba(0, 0, 0, 0.1);
+    color: white;
   }
 
   .dark .navLinks {
@@ -787,6 +788,7 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    
     width: 100%;
     margin-top: 0; /* X düyməsinin görünürlüyünə əsasən düzəldildi */
   }
@@ -798,10 +800,11 @@
     text-align: left;
     position: relative;
     border-bottom: 1px solid;
+   
   }
 
   .light .navLink {
-    border-color: rgba(115, 0, 38, 0.1);
+    border-color: rgba(115, 0, 38, 0.1); color: white;
   }
 
   .dark .navLink {

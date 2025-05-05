@@ -96,7 +96,7 @@ const TestimonialSlider = () => {
           <div className={styles.videoContainer}>
             <video 
               className={styles.video} 
-              src={rolexVideo.src} 
+              src="https://xdzksswqqqoonxbwcmup.supabase.co/storage/v1/object/sign/videos/testimonialvideo.mp4?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJ2aWRlb3MvdGVzdGltb25pYWx2aWRlby5tcDQiLCJpYXQiOjE3NDYzMTAyODQsImV4cCI6MTc3Nzg0NjI4NH0.cUixj-PvQFXEFKsAY0uPRCoOT3JMdjtT0urCG6eG7DI"
               autoPlay 
               muted 
               loop 

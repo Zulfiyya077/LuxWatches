@@ -1,11 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { loadStripe } from "@stripe/stripe-js";
-import {
-  Elements,
-  useStripe,
-  useElements,
-  CardElement,
-} from "@stripe/react-stripe-js";
 import { useNavigate } from "react-router-dom";
 import { useCart } from "react-use-cart";
 import { useTranslation } from "react-i18next";
@@ -13,28 +6,6 @@ import { useCoupon } from "../../context/CouponContext";
 import CouponInput from "../../components/CouponInput/CouponInput";
 import { motion } from "framer-motion"; 
 import styles from "./CheckOut.module.css";
-
-
-const stripePromise = loadStripe("YOUR_STRIPE_PUBLIC_KEY");
-
-const CARD_ELEMENT_OPTIONS = {
-  style: {
-    base: {
-      color: "#f8f6ea", 
-      fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
-      fontSmoothing: "antialiased",
-      fontSize: "16px",
-      "::placeholder": {
-        color: "#bdc3c7",  
-      },
-      iconColor: "#d4af37",  
-    },
-    invalid: {
-      color: "#fa755a",
-      iconColor: "#fa755a",
-    },
-  },
-};
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 30 },
@@ -59,17 +30,12 @@ const staggerItems = {
   }
 };
 
-const scaleOnHover = {
-  whileHover: { scale: 1.05, transition: { duration: 0.3 } },
-  whileTap: { scale: 0.95 }
-};
-
 const CheckoutForm = () => {
-  const stripe = useStripe();
-  const elements = useElements();
   const [loading, setLoading] = useState(false);
+  const [cardNumber, setCardNumber] = useState("");
   const [cardHolder, setCardHolder] = useState("");
-  const [cardError, setCardError] = useState(null);
+  const [expiryDate, setExpiryDate] = useState("");
+  const [cvv, setCvv] = useState("");
   const { t } = useTranslation();
   const { isEmpty, items, emptyCart, cartTotal } = useCart();
   const navigate = useNavigate();
@@ -81,42 +47,55 @@ const CheckoutForm = () => {
   const { calculateSubtotal, calculateDiscount, getFinalPrice, appliedCoupon } = useCoupon();
 
   const subtotal = calculateSubtotal();
-  
   const discount = calculateDiscount();
-  
   const finalTotal = getFinalPrice();
 
-  const handleCardChange = (event) => {
-    if (event.error) {
-      setCardError(event.error.message);
-    } else {
-      setCardError(null);
+  // Format card number with spaces
+  const handleCardNumberChange = (e) => {
+    let value = e.target.value.replace(/\s/g, "");
+    
+    // Limit to 16 digits
+    if (value.length <= 16) {
+      // Add spaces after every 4 digits
+      value = value.replace(/(.{4})/g, "$1 ").trim();
+      setCardNumber(value);
+    }
+  };
+
+  // Format expiry date as MM/YY
+  const handleExpiryDateChange = (e) => {
+    let value = e.target.value.replace(/\D/g, "");
+    
+    if (value.length <= 4) {
+      if (value.length > 2) {
+        value = value.slice(0, 2) + "/" + value.slice(2);
+      }
+      setExpiryDate(value);
+    }
+  };
+
+  // Limit CVV to 3-4 digits
+  const handleCvvChange = (e) => {
+    const value = e.target.value.replace(/\D/g, "");
+    
+    if (value.length <= 4) {
+      setCvv(value);
     }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     
-    if (!stripe || !elements) {
-      return;
-    }
-    
-    const cardElement = elements.getElement(CardElement);
-    
-    if (!cardElement) {
-      return;
-    }
-    
     setLoading(true);
     
     try {
+      // Simulate payment processing
       setTimeout(() => {
         emptyCart();
         navigate("/thankyou");
       }, 1500);
     } catch (error) {
       console.error(t("checkout.paymentErrorLog"), error);
-      setCardError(t("checkout.paymentError"));
       setLoading(false);
     }
   };
@@ -200,36 +179,59 @@ const CheckoutForm = () => {
         </motion.div>
       </motion.div>
 
+      {/* Card information */}
       <motion.div 
-        className={styles.card}
+        className={styles.cardContainer}
         variants={fadeInUp}
       >
-        <div className={styles.cardInner}>
-          <div className={styles.cardFront}>
-            <div className={styles.cardChip}></div>
-            <div className={styles.cardLogo}>
-              <span className={styles.bankName}>{t("checkout.premiumBank")}</span>
-            </div>
-            <div className={styles.cardNumber}>
-              <CardElement 
-                options={CARD_ELEMENT_OPTIONS}
-                onChange={handleCardChange}
-              />
+        {/* Card holder name field */}
+     
+
+        <motion.div 
+          className={styles.card}
+          variants={fadeInUp}
+        >
+          <div className={styles.cardInner}>
+            <div className={styles.cardFront}>
+              <div className={styles.cardChip}></div>
+              <div className={styles.cardLogo}>
+                <span className={styles.bankName}>{t("checkout.premiumBank")}</span>
+              </div>
+              <div className={styles.cardNumber}>
+                <input
+                  type="text"
+                  placeholder="0000 0000 0000 0000"
+                  value={cardNumber}
+                  onChange={handleCardNumberChange}
+                  className={styles.cardNumberInput}
+                />
+              </div>
+              <div className={styles.cardDetails}>
+                <div className={styles.cardExpiry}>
+                
+                  <input
+                    type="text"
+                    placeholder="MM/YY"
+                    value={expiryDate}
+                    onChange={handleExpiryDateChange}
+                    className={styles.expiryInput}
+                  />
+                </div>
+                <div className={styles.cardCvv}>
+               
+                  <input
+                    type="text"
+                    placeholder="CVV"
+                    value={cvv}
+                    onChange={handleCvvChange}
+                    className={styles.cvvInput}
+                  />
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-      </motion.div>
-
-      {cardError && (
-        <motion.div 
-          className={styles.error}
-          initial={{ opacity: 0, y: -10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.3 }}
-        >
-          {cardError}
         </motion.div>
-      )}
+      </motion.div>
 
       <motion.div 
         className={styles.cardActions}
@@ -238,7 +240,7 @@ const CheckoutForm = () => {
         <motion.button
           type="submit"
           className={styles.payButton}
-          disabled={loading || isEmpty || !stripe}
+          disabled={loading || isEmpty}
           whileHover={{ scale: loading ? 1 : 1.05 }}
           whileTap={{ scale: loading ? 1 : 0.95 }}
         >
@@ -261,9 +263,7 @@ const CheckoutPage = () => {
 
   return (
     <div className={styles.checkoutContainer}>
-      <Elements stripe={stripePromise}>
-        <CheckoutForm />
-      </Elements>
+      <CheckoutForm />
     </div>
   );
 };

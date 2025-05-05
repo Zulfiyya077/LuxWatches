@@ -140,7 +140,7 @@
     "addedToCart": "Məhsul səbətə əlavə edildi",
   "removedFromWishlist": "İstək siyahısından silindi",
     "discount": "Endirim",
-    
+     "needLoginToCart": "Səbətə əlavə etmək üçün daxil olun",
     "viewDetails": "Ətraflı Bax",
     "outOfStock": "Anbarlarda Yoxdur",
     "addToCartShort": "Səbətə Əlavə Et",
@@ -317,8 +317,22 @@
     "paymentError": "Ödəniş zamanı xəta baş verdi. Zəhmət olmasa, yenidən cəhd edin.",
     "paymentErrorLog": "Ödəniş zamanı xəta:",
     "cardHolderPlaceholder": "Kart sahibinin adı",
-    "premiumBank": "Premium Bank"
-   ,
+    "premiumBank": "Premium Bank",
+    "cardHolderName": "Kart sahibinin adı",
+    "cardNumber": "Kart nömrəsi",
+    "expiryDate": "Bitmə tarixi",
+    "cvv": "CVV",
+  
+    "applyCoupon": "Kupon tətbiq et",
+    "appliedCoupon": "Tətbiq edilmiş kupon:",
+    "removeCoupon": "Kuponu sil",
+    "invalidCoupon": "Yanlış kupon kodu",
+    "enterCouponCode": "Kupon kodunu daxil edin",
+    "applyButton": "Tətbiq et",
+    "thankYouTitle": "Təşəkkür edirik!",
+    "orderConfirmed": "Sifarişiniz təsdiqləndi",
+    "orderProcessing": "Sifarişiniz emal olunur.",
+    "continueShoppingButton": "Alış-verişə davam et",
 
     "orders": {
       "pageTitle": "Sifarişlərim",
@@ -887,7 +901,7 @@
   "common": {
     "currency": "AZN",
     "companyName": {
-      "luxury": "Lüks",
+      
       "shop": "Mağaza",
       "cancel": "Ləğv et",
     "selectRole": "Rol seçin",

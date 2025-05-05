@@ -185,9 +185,7 @@ const CartPage = () => {
         />
         
         <div className={styles.headerSection}>
-          <div className={styles.logo}>
-            <span className={styles.logoText}>{t("common.companyName.luxury") || "Luxury"}</span>
-          </div>
+          
           
           <motion.h1 
             className={styles.title}

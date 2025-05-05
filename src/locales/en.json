@@ -373,9 +373,25 @@
       "processing": "Processing...",
       "pay": "Pay",
       "title": "Checkout Page",
-      "orderSummary": "Order Summary",
-      "discount": "Discount",
-      "subtotal": "Subtotal"
+  
+      "cardHolderName": "Cardholder Name",
+      "cardNumber": "Card Number",
+      "expiryDate": "Expiry Date",
+      "cvv": "CVV",
+     
+      "paymentErrorLog": "Payment processing error:",
+   
+      "premiumBank": "Premium Bank",
+      "applyCoupon": "Apply Coupon",
+      "appliedCoupon": "Applied Coupon:",
+      "removeCoupon": "Remove Coupon",
+      "invalidCoupon": "Invalid coupon code",
+      "enterCouponCode": "Enter coupon code",
+      "applyButton": "Apply",
+      "thankYouTitle": "Thank You!",
+      "orderConfirmed": "Your order has been confirmed",
+      "orderProcessing": "Your order is being processed.",
+      "continueShoppingButton": "Continue Shopping"
     },
 
     "thankYou": {
@@ -1020,6 +1036,7 @@
   "discountedPrice": "Discounted Price",
   "discounted": "Discounted",
   "product": {
+     "needLoginToCart": "Please log in to add to cart",
      "addedToWishlist": "Product added to wishlist",
      "addedToCart": "Product added to cart",
     "removedFromWishlist": "Removed from wishlist",

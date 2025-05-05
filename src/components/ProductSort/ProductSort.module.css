@@ -4,29 +4,67 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  margin: 20px 0;
+  margin: 24px 0;
   font-family: 'Poppins', sans-serif;
+  background-color: var(--card-background);
+  padding: 16px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  width: 240px;
+}
+
+.sortContainer:hover {
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
 }
 
 .sortLabel {
   font-size: 16px;
   font-weight: 600;
-  margin-bottom: 8px;
+  margin-bottom: 12px;
   color: var(--text-color);
+  position: relative;
+}
+
+.sortLabel::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 40px;
+  height: 2px;
+  background-color: var(--primary-color);
+  transition: width 0.3s ease;
+}
+
+.sortContainer:hover .sortLabel::after {
+  width: 60px;
 }
 
 .sortSelect {
-  padding: 10px 12px;
-  font-size: 14px;
+  padding: 12px 14px;
+  font-size: 15px;
   font-family: 'Poppins', sans-serif;
   border-radius: 6px;
   border: 1px solid var(--border-color);
-  width: 200px;
+  width: 100%;
   background-color: var(--card-background);
   color: var(--text-color);
   outline: none;
   transition: all 0.3s ease;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23730026' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  padding-right: 40px;
+  cursor: pointer;
+}
+
+[data-theme="dark"] .sortSelect {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23d4af37' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
 }
 
 .sortSelect:hover {
@@ -35,40 +73,65 @@
 
 .sortSelect:focus {
   border-color: var(--primary-color);
-  box-shadow: 0 0 0 2px rgba(115, 0, 38, 0.2);
+  box-shadow: 0 0 0 3px var(--primary-color-shadow);
 }
 
-[data-theme="dark"] .sortSelect:focus {
-  box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.2);
-}
-
+/* Seçim seçenəkləri üçün stilləri yenidən tənzimləmək */
 .sortSelect option {
   background-color: var(--card-background);
   color: var(--text-color);
-  padding: 10px;
+  padding: 12px;
 }
 
+/* Select elementi açıldığında göy rəng effektini söndürmək üçün */
+.sortSelect::-ms-expand {
+  display: none;
+}
+
+/* Chrome, Safari və Edge üçün */
+.sortSelect:focus-visible {
+  outline: none;
+  border-color: var(--primary-color);
+}
+
+/* Firefox üçün */
+.sortSelect:-moz-focusring {
+  color: transparent;
+  text-shadow: 0 0 0 var(--text-color);
+}
+
+/* Select hover və focus zamanı göy rəngin qarşısını almaq üçün */
+.sortSelect::selection {
+  background-color: var(--option-hover-bg);
+}
+
+.sortSelect::-moz-selection {
+  background-color: var(--option-hover-bg);
+}
+
+/* Responsiv dizayn üçün media sorğuları */
 @media (max-width: 768px) {
   .sortContainer {
+    width: 200px;
     align-items: center;
-  }
-
-  .sortSelect {
-    width: 150px;
+    margin: 16px auto;
   }
 }
 
 @media (max-width: 480px) {
   .sortContainer {
-    align-items: center;
+    width: 100%;
+    max-width: 280px;
+    padding: 12px;
   }
-
+  
   .sortSelect {
-    width: 120px;
-    padding: 8px;
+    padding: 10px 12px;
+    font-size: 14px;
   }
   
   .sortLabel {
     font-size: 14px;
+    margin-bottom: 10px;
   }
 }
