@@ -1,4 +1,4 @@
-// BlogDetails.jsx
+
 import React, { useEffect, useContext, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { ThemeContext } from "../../context/ThemeContext";
@@ -174,8 +174,11 @@ const BlogDetails = () => {
                   alt={t("blog1.galleryImageAlt", { title: blog.title, number: index + 1 })}
                   className={styles.galleryImage}
                 />
+                
               </div>
             ))}
+
+            
           </div>
         </div>
       )}

@@ -16,28 +16,29 @@ const TestimonialSlider = () => {
       name: t("customer2Name"),
       position: t("customerPosition"),
       feedback: t("customer1Feedback"),
-      imgSrc: "https://xdzksswqqqoonxbwcmup.supabase.co/storage/v1/object/sign/Images/woman.jpg?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJJbWFnZXMvd29tYW4uanBnIiwiaWF0IjoxNzQ0MTkxMDU2LCJleHAiOjE3NDY3ODMwNTZ9.Wo9Icqhf43ZU8YWLZTc8L-GfclyB5E3ryn7pX4WBi3E",
+      imgSrc: "https://xdzksswqqqoonxbwcmup.supabase.co/storage/v1/object/sign/Images/woman.jpg?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJJbWFnZXMvd29tYW4uanBnIiwiaWF0IjoxNzQ2OTQ2MzQyLCJleHAiOjE3Nzg0ODIzNDJ9.ZIqUvOSNT8SDWFygsTRgxKriMw-FqoQlP967H_Yjefw",
       rating: 5,
     },
     {
       name: t("customer1Name"),
       position: t("customer2Position"),
       feedback: t("customer2Feedback"),
-      imgSrc: "https://xdzksswqqqoonxbwcmup.supabase.co/storage/v1/object/sign/Images/man1.jpg?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJJbWFnZXMvbWFuMS5qcGciLCJpYXQiOjE3NDQxOTEwOTYsImV4cCI6MTc0Njc4MzA5Nn0.kxjHV_i-NU3SEN8itv9GqkexurN2cpvQeDLZ91XyowY",
+      imgSrc: "https://xdzksswqqqoonxbwcmup.supabase.co/storage/v1/object/sign/Images/man1.jpg?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJJbWFnZXMvbWFuMS5qcGciLCJpYXQiOjE3NDY5NDY2MDksImV4cCI6MTc0NzU1MTQwOX0.9Jx-owcWJTPLpkPL-0lPJFjOR0GNIf47NFBpkJyPsDU",
       rating: 5,
     },
     {
       name: t("customer3Name"),
       position: t("customer3Position"),
       feedback: t("customer3Feedback"),
-      imgSrc: "https://xdzksswqqqoonxbwcmup.supabase.co/storage/v1/object/sign/Images/man.jpg?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJJbWFnZXMvbWFuLmpwZyIsImlhdCI6MTc0NDE5MTIyMSwiZXhwIjoxNzQ2NzgzMjIxfQ.wjvEn_2QEqzMNjfDtzTmI9szhrhgBNK2v9Y0WL_YOFA",
+      imgSrc: "https://xdzksswqqqoonxbwcmup.supabase.co/storage/v1/object/sign/Images/MAN2.webp?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJJbWFnZXMvTUFOMi53ZWJwIiwiaWF0IjoxNzQ2OTQ2NjQ2LCJleHAiOjE3Nzg0ODI2NDZ9.N5d4SgbQL4tESnGCqExTFGuniGXmofRLCB8AGhWghK4",
       rating: 4,
     },
     {
       name: t("customer4Name"),
       position: t("customer4Position"),
       feedback: t("customer4Feedback"),
-      imgSrc: "https://xdzksswqqqoonxbwcmup.supabase.co/storage/v1/object/sign/Images/women.webp?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJJbWFnZXMvd29tZW4ud2VicCIsImlhdCI6MTc0NDE5MTI3NywiZXhwIjoxNzQ2NzgzMjc3fQ.8iKFISJ3H1ZU1ePV7DHd1WVwfRrCKKmKPviLkDHzF9o",
+      imgSrc: "https://xdzksswqqqoonxbwcmup.supabase.co/storage/v1/object/sign/Images/women.webp?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJJbWFnZXMvd29tZW4ud2VicCIsImlhdCI6MTc0Njk0NjQ2MywiZXhwIjoxNzc4NDgyNDYzfQ.Gojmi5_I2LvtQHVvQ8TidMRFkvsQJIt5K59AifI3dSk",
+     
       rating: 5,
     },
   ];
